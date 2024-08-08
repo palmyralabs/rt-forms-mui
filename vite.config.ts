@@ -34,6 +34,7 @@ export default defineConfig({
         'd3',
         'dayjs',
         '@palmyralabs/palmyra-wire',
+        '@palmyralabs/rt-forms',
         'jspdf',
         'react',
         'html2canvas',

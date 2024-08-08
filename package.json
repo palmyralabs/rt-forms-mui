@@ -47,6 +47,7 @@
     "@emotion/styled": "^11.11.5",
     "@mui/icons-material": "^5.15.15",
     "@mui/material": "^5.15.15",
+    "@mui/x-date-pickers": "^7.12.0",
     "@palmyralabs/rt-forms": "github:palmyralabs/rt-forms"
   },
   "peerDependencies": {
