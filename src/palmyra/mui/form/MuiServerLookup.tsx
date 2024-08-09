@@ -94,4 +94,4 @@ const MuiServerLookup = forwardRef(function MuiServerLookup(props: IServerLookup
     </FieldDecorator></>
 });
 
-export default MuiServerLookup;
+export { MuiServerLookup };

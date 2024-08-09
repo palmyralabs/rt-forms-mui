@@ -7,7 +7,6 @@ import FieldDecorator from './FieldDecorator';
 import { ITextFieldDefinition } from './types';
 
 
-
 const MuiTextField = forwardRef(function MuiTextField(props: TextFieldProps & ITextFieldDefinition, ref: MutableRefObject<ITextField>) {
     // const fieldGroupManager: IFieldGroupManager = useContext(FieldGroupManagerContext);
 
@@ -49,4 +48,4 @@ const MuiTextField = forwardRef(function MuiTextField(props: TextFieldProps & IT
     );
 });
 
-export default MuiTextField;
+export { MuiTextField };

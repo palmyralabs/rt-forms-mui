@@ -6,7 +6,7 @@ import { IServerQueryInput, useServerQuery } from '@palmyralabs/rt-forms';
 import { renderTitle } from '../widget/InfoTooltip';
 import CardLayout from './CardLayout';
 import { ITitle } from '../widget/types';
-import { IPageQueryable } from '../grid/types';
+import { IPageQueryable } from '../mui';
 
 
 interface ServerCardLayoutInput extends IServerQueryInput {

@@ -1,14 +1,16 @@
 import { IEndPoint, PalmyraStoreFactory, PalmyraTreeStore, StoreFactory, TreeQueryStore } from "@palmyralabs/palmyra-wire";
-import AsyncTreeMenuEditor, { IAsyncTreeMenuEditor } from "../../src/palmyra/menu/AsyncTreeMenuEditor";
+
 import { useRef, useState } from "react";
-import AsyncTreeMenu from "../../src/palmyra/menu/AsyncTreeMenu";
+import AsyncTreeMenu from "../../src/palmyra/mui/menu/AsyncTreeMenu";
 import { Button } from "@mui/material";
+import { IAsyncTreeEditor } from "../../src/palmyra/mui/menu/types";
+import { AsyncTreeMenuEditor } from "../../src/palmyra";
 
 const TreeMenu = () => {
     const [readOnly, setReadOnly] = useState<boolean>(true);
 
     const storeFactory: StoreFactory<any> = new PalmyraStoreFactory({ baseUrl: '/testdata' });
-    const treeRef = useRef<IAsyncTreeMenuEditor>();
+    const treeRef = useRef<IAsyncTreeEditor>();
     const MenuEndPoint: IEndPoint = '/menuData.json';
     const SideMenuEndPoint: IEndPoint = '/menuData.json';
     const treeStore: TreeQueryStore<any, any> = new PalmyraTreeStore({ target: "/testdata" }, SideMenuEndPoint);

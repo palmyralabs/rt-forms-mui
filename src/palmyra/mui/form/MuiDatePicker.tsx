@@ -74,4 +74,4 @@ const MuiDatePicker = forwardRef(function MuiDatePicker(props: DatePickerProps<a
     );
 });
 
-export default MuiDatePicker;
+export { MuiDatePicker };

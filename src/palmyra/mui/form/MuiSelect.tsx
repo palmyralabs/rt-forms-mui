@@ -66,4 +66,4 @@ const MuiSelect = forwardRef(function MuiSelect(props: SelectProps & ISelectDefi
     );
 });
 
-export default MuiSelect;
+export { MuiSelect };

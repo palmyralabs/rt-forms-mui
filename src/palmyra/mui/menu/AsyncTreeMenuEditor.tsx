@@ -7,37 +7,15 @@ import cx from "classnames";
 
 import { ClickAwayListener } from "@mui/material";
 import "./AsyncTreeMenu.css";
-import { IEndPoint, StoreFactory, TreeQueryStore } from "@palmyralabs/palmyra-wire";
+import { TreeQueryStore } from "@palmyralabs/palmyra-wire";
 import AsyncTreeCrudDropDown from "./AsyncTreeCrudDropDown";
-import { IChildTreeRequest } from "./types";
+import { IAsyncTreeEditor, IAsyncTreeEditorInput, IChildTreeRequest } from "./types";
 
-
-interface IAsyncTreeEditorInput {
-    storeFactory: StoreFactory<IChildTreeRequest>
-    endPoint: IEndPoint,
-    groupId: number,
-    readOnly?: boolean,
-    fineGrained?: boolean
-}
-
-interface Node {
-    id: number,
-    parent: number,
-    name: string,
-    loaded: boolean,
-    isBranch: true,
-    children: (Node | number)[],
-    selected: 0 | 1 | 2;
-}
-
-interface IAsyncTreeMenuEditor {
-    getValue: () => Node
-}
-
-const AsyncTreeMenuEditor = forwardRef(function AsyncTreeMenuEditor(props: IAsyncTreeEditorInput, ref: MutableRefObject<IAsyncTreeMenuEditor>) {
+const AsyncTreeMenuEditor = forwardRef(function AsyncTreeMenuEditor(props: IAsyncTreeEditorInput, 
+    ref: MutableRefObject<IAsyncTreeEditor>) {
     const groupId = props.groupId;
     const loadedAlertElement = useRef(null);
-    const currentRef = ref ? ref : useRef<IAsyncTreeMenuEditor>(null);
+    const currentRef = ref ? ref : useRef<IAsyncTreeEditor>(null);
 
     let rootNode: INode = { name: "", id: -1, parent: null, children: [], isBranch: true };
     const [data, setData] = useState<INode[]>([rootNode]);
@@ -309,5 +287,4 @@ const LeafNode = (props: ILeafNodeProps) => {
     </>
 }
 
-export default AsyncTreeMenuEditor;
-export type { IAsyncTreeEditorInput, IAsyncTreeMenuEditor }
+export { AsyncTreeMenuEditor };

@@ -6,15 +6,12 @@ import "./AsyncTreeMenu.css";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineLoading } from "react-icons/ai";
 import { IoIosArrowForward } from "react-icons/io";
-import { IChildTreeRequest } from "./types";
+import { IAsyncTreeMenuInput, IChildTreeRequest } from "./types";
 import { TreeQueryStore } from "@palmyralabs/palmyra-wire";
 
 const MENU_STORE_KEY_EXPANDED = 'palmyra.rui.sidemenu.expanded';
 const MENU_STORE_KEY_SELECTED = 'palmyra.rui.sidemenu.expanded.selected';
 
-interface IAsyncTreeMenuInput {
-    store: TreeQueryStore<IChildTreeRequest, any>
-}
 
 export default function AsyncTreeMenu(props: IAsyncTreeMenuInput) {
     const navigate = useNavigate();
@@ -45,22 +42,25 @@ export default function AsyncTreeMenu(props: IAsyncTreeMenuInput) {
     }
 
     const convert = (nodes, parentId) => {
-        const result = nodes.map((d) => {
-            const childIds: string = d.children || "";
-            return {
-                id: d.id,
-                name: d.name,
-                parent: d.parent ? d.parent : parentId,
-                children: d.children ? getChildId(d.children) : [],
-                isBranch: childIds.length > 0,
-                loaded: true,
-                metadata: {
-                    code: d.code, action: d.action, target: d.target
+        if (nodes && Array.isArray(nodes)) {
+            const result = nodes.map((d) => {
+                const childIds: string = d.children || "";
+                return {
+                    id: d.id,
+                    name: d.name,
+                    parent: d.parent ? d.parent : parentId,
+                    children: d.children ? getChildId(d.children) : [],
+                    isBranch: childIds.length > 0,
+                    loaded: true,
+                    metadata: {
+                        code: d.code, action: d.action, target: d.target
+                    }
                 }
-            }
-        });
+            });
 
-        return result;
+            return result;
+        }
+        return [];
     };
 
     function parse(v: NodeId): number {
@@ -109,7 +109,7 @@ export default function AsyncTreeMenu(props: IAsyncTreeMenuInput) {
             //@ts-ignore
             const target: string = element.metadata.code;
             navigate(target);
-        }else if (element.metadata?.target){
+        } else if (element.metadata?.target) {
             //@ts-ignore
             const target: string = element.metadata.target;
             navigate(target);
