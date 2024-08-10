@@ -2,9 +2,8 @@
  * Basic structure to draw the table
  */
 import { MutableRefObject, useRef } from 'react'
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
-import { Paper } from '@mui/material';
-import './Grid.css';
+import { Table, TableBody, TableCell, TableFooter, TableHead, TableRow } from '@mui/material'
+import './BaseGrid.css';
 import ColumnHeader from './ColumnHeader'
 
 import {
@@ -16,31 +15,28 @@ import { IReactTanstackTable } from '..';
 import { BaseGridOptions } from './typesInternal';
 import { useBaseGridManager } from './useBaseGridManager';
 
-
 export default function BaseGrid(props: BaseGridOptions) {
 
   const { rowData, customizer } = props;
-
-  const { onSort, options, onHeaderStyle, EmptyChild, onRowClick, onRowStyle } = useBaseGridManager(props);
+  const { onColumnSort, options, EmptyChild, onRowClick } = useBaseGridManager(props);
   const tableRef: MutableRefObject<IReactTanstackTable> = customizer?.getTableRef() || useRef();
 
   const table = useReactTable(options);
   tableRef.current = table;
 
 
-  return (
-    <TableContainer component={Paper} sx={{ border: '1px solid var(--border-color)', borderRadius: '5px' }}>
-      <Table aria-label="simple table" className='table'>
-        <TableHead className='table-head'>
+  return (<>
+    <div className={props.className}>
+      <Table aria-label={props['aria-label']} className='plr-baseGrid'>
+        <TableHead className='plr-baseGrid-header'>
           {table.getHeaderGroups().map(headerGroup => (
-            <TableRow key={headerGroup.id}>
+            <TableRow key={headerGroup.id} className='plr-baseGrid-header-row'>
               {headerGroup.headers.map(header => {
                 return (
                   header.isPlaceholder ? null : (
                     <ColumnHeader header={header}
                       key={header.id}
-                      onSortChange={onSort}
-                      onHeaderStyle={onHeaderStyle}
+                      onSortChange={onColumnSort}
                     >
                       {flexRender(
                         header.column.columnDef.header,
@@ -58,17 +54,17 @@ export default function BaseGrid(props: BaseGridOptions) {
           <TableBody >
             {
               table.getRowModel().rows
-                .map(row => {
-                  const rowStyle = onRowStyle(row.original);
+                .map((row, index) => {
+                  const rowClassName = 'plr-baseGrid-data-row plr-baseGrid-data-row-' + ((1 == index % 2) ? 'even' : 'odd');
                   return (
-                    <TableRow key={row.id} className='table-row' >
+                    <TableRow key={row.id} className={rowClassName} >
                       {row.getVisibleCells().map(cell => {
                         const meta: any = cell.column.columnDef.meta;
                         return (
                           <TableCell key={cell.id}
+                            className='plr-baseGrid-data-cell'
                             style={{
-                              ...(meta?.columnDef?.type === 'number' ? { textAlign: 'end' } : {}),
-                              ...rowStyle
+                              ...(meta?.columnDef?.type === 'number' ? { textAlign: 'end' } : {})
                             }}
                             onClick={() => onRowClick(row.original)}>
                             {flexRender(
@@ -83,29 +79,30 @@ export default function BaseGrid(props: BaseGridOptions) {
                   )
                 })}
           </TableBody>)}
-        {(null == rowData || undefined == rowData || 0 == rowData.length) ? (<></>) : (
-          <tfoot className='table-footer'>
+        {(!props.showFooter || null == rowData || undefined == rowData || 0 == rowData.length) ? (<></>) : (
+          <TableFooter className='plr-baseGrid-footer'>
             {table.getFooterGroups().map(footerGroup => (
-              <tr key={footerGroup.id} style={{ textAlign: 'end' }}>
+              <TableRow key={footerGroup.id} style={{ textAlign: 'end' }} className='plr-baseGrid-footer-row'>
                 {footerGroup.headers.map(header => (
-                  <th key={header.id}>
+                  <TableCell key={header.id} className='plr-baseGrid-footer-cell'>
                     {header.isPlaceholder
                       ? null
                       : flexRender(
                         header.column.columnDef.footer,
                         header.getContext()
                       )}
-                  </th>
+                  </TableCell>
                 ))}
-              </tr>
+              </TableRow>
             ))}
-          </tfoot>)}
+          </TableFooter>)}
 
       </Table>
       {(null == rowData) ? (<div>
         <LoadingChild />
       </div>) :
         (undefined == rowData) ? (<div>Error while loading data</div>) : (0 == rowData.length) ? (<EmptyChild />) : (<></>)}
-    </TableContainer>
+    </div>
+  </>
   )
 }

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { TableCell } from '@mui/material';
 import { LuArrowDownUp, LuArrowUpDown } from "react-icons/lu";
 
-const ColumnHeader = ({ header, children, onSortChange, onHeaderStyle }) => {
+const ColumnHeader = ({ header, children, onSortChange }) => {
 
     const [sortOrder, setSortOrder] = useState('');
     const columnAttribute = header.column.columnDef.meta?.attribute || header.id;
@@ -29,16 +29,12 @@ const ColumnHeader = ({ header, children, onSortChange, onHeaderStyle }) => {
         onSortChange(columnAttribute, order)
     };
 
-    var headerStyle = onHeaderStyle(header.original)
-    if (!sortDisabled)
-        headerStyle.cursor = 'pointer';
-
     const meta: any = header.column.columnDef.meta;
 
     if (header.column.columnDef.columns) {
         // Render Grouped Columns
         return (
-            <TableCell key={header.id} colSpan={header.colSpan} style={{ ...headerStyle }}>
+            <TableCell className='plr-baseGrid-header-cell' key={header.id} colSpan={header.colSpan}>
                 <div style={{
                     display: 'flex',
                     fontWeight: 'bold',
@@ -53,7 +49,8 @@ const ColumnHeader = ({ header, children, onSortChange, onHeaderStyle }) => {
         )
     } else
         return (
-            <TableCell key={header.id} colSpan={header.colSpan} style={{ ...headerStyle }}>
+            <TableCell key={header.id} colSpan={header.colSpan}
+                className='plr-baseGrid-header-cell'>
                 <div style={{
                     display: 'flex',
                     fontWeight: 'bold',

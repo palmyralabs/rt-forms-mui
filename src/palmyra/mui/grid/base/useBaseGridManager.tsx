@@ -6,12 +6,10 @@ import { getCoreRowModel } from "@tanstack/react-table";
 const useBaseGridManager = (o: BaseGridOptions) => {
 
     const { columnDefs, rowData, customizer } = o;
-    
-    const onSortColumn = o.onSortColumn|| (() => undefined);
+
+    const onColumnSort = o.onColumnSort || (() => undefined);
     const EmptyChild = o.EmptyChild || defaultEmptyChild;
     const onRowClick = o.onRowClick || (() => undefined);
-    const onRowStyle = o.onRowStyle || (() => { })
-    const onHeaderStyle = o.onHeaderStyle || (() => { })    
 
     const preProcessData = customizer?.preProcessData || ((d: any) => d);
     const tableOptions = customizer?.getTableOptions ? customizer.getTableOptions() : {};
@@ -34,7 +32,7 @@ const useBaseGridManager = (o: BaseGridOptions) => {
     const [sortColumn, setSortColumn] = useState({});
 
     useEffect(() => {
-        onSortColumn(sortColumn);
+        onColumnSort(sortColumn);
     }, [sortColumn])
 
     const onSortChange = (column, sortOrder) => {
@@ -47,9 +45,9 @@ const useBaseGridManager = (o: BaseGridOptions) => {
         }
         setSortColumn(sort);
     }
-    const onSort = o.onSortColumn ? onSortChange : () => undefined;
+    const onSort = o.onColumnSort ? onSortChange : () => undefined;
 
-    return { onSort, onRowClick, options, onRowStyle, onHeaderStyle, EmptyChild }
+    return { onColumnSort: onSort, onRowClick, options, EmptyChild }
 }
 
 export { useBaseGridManager }
