@@ -274,6 +274,48 @@
             "name": "Server Lookup",
             "code": "palmyra-ui/example/serverlookup",
             "parent": 43
+        },
+        {
+            "id": 46,
+            "name": "Card Layout",
+            "code": "palmyra-ui/layout",
+            "children": "47, 48"
+        },
+        {
+            "id": 47,
+            "name": "Card Layout",
+            "code": "palmyra-ui/layout/card",
+            "parent": 46
+        },
+        {
+            "id": 48,
+            "name": "Server Card Layout",
+            "code": "palmyra-ui/layout/serverCard",
+            "parent": 46
+        },
+        {
+            "id": 49,
+            "name": "Menu",
+            "code": "palmyra-ui/layout/menu",
+            "children": "50,51,52"
+        },
+        {
+            "id": 50,
+            "name": "Tree Menu",
+            "code": "palmyra-ui/layout/treeMenu",
+            "parent": 49
+        },
+        {
+            "id": 51,
+            "name": "Side Menu",
+            "code": "palmyra-ui/layout/sideMenu",
+            "parent": 49
+        },
+        {
+            "id": 52,
+            "name": "Static Menu",
+            "code": "palmyra-ui/layout/staticMenu",
+            "parent": 49
         }
     ],
     "status": 200
