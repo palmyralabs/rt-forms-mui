@@ -4,20 +4,33 @@ import { InputType } from "zlib";
 import { AutocompleteRenderOptionState } from "@mui/material";
 import { FieldOptions, IServerLookupOptions } from "@palmyralabs/rt-forms";
 
+
+interface IFieldProps {
+    size?: 'small' | 'medium' | 'large'
+}
+
+
 interface ILayoutOptions {
     customContainerClass?: string,
     customLabelClass?: string,
     customFieldClass?: string,
-    colspan?: number
+    colspan?: number,
+    fieldProps?: IFieldProps
 }
 
 interface MuiInputFieldOptions extends FieldOptions {
-    title?: string,
+    label?: string,
+    labelMode?: "label" | "title"
     attribute: string
 }
 
-interface ISelectDefinition extends MuiInputFieldOptions, ILayoutOptions {
-    options?: Record<any, any> | Record<string, any>
+type IRadioGroupOptions = Record<any, any> | Record<string, any> | { value: any, label: string }[];
+
+type FlexDirection = 'column' | 'row'
+
+interface ValueLabel {
+    value: number,
+    label: string
 }
 
 interface ITextFieldDefinition extends MuiInputFieldOptions, ILayoutOptions {
@@ -28,6 +41,10 @@ interface IDatePickerDefinition extends MuiInputFieldOptions, ILayoutOptions {
     serverPattern?: string,
     displayPattern?: string,
     disableFuture?: boolean,
+    disablePast?: boolean,
+    disableHighlightToday?: boolean,
+    displayWeekNumber?: boolean,
+    disableOpenPicker?: boolean
     variant?: 'standard' | 'outlined' | 'filled'
 }
 
@@ -40,7 +57,36 @@ interface IServerLookupDefinition extends MuiInputFieldOptions, ILayoutOptions, 
         option: any,
         state: AutocompleteRenderOptionState,
         ownerState: any,
-    ) => React.ReactNode    
+    ) => React.ReactNode
+}
+
+interface ISelectDefinition extends MuiInputFieldOptions, ILayoutOptions {
+    options?: Record<any, any> | Record<string, any>
+}
+
+interface ISwitchDefinition extends MuiInputFieldOptions, ILayoutOptions {
+    options?: Record<any, any> | Record<string, any>
+    switch?: 'MaterialUISwitch' | 'Android12Switch' | 'IOSSwitch' | 'Switch';
+}
+
+interface IRadioGroupDefinition extends MuiInputFieldOptions, ILayoutOptions {
+    options: IRadioGroupOptions
+    flexDirection?: FlexDirection
+}
+
+interface ICheckBoxDefinition extends MuiInputFieldOptions, ILayoutOptions {
+    icon?: any,
+    checkedIcon?: any
+}
+
+interface ICheckBoxGroupDefinition extends MuiInputFieldOptions, ILayoutOptions {
+    options: Record<any, any> | Record<string, any>
+    flexDirection?: FlexDirection
+}
+
+interface ISliderDefinition extends MuiInputFieldOptions, ILayoutOptions {
+    minDistance?: number,
+    range?: never
 }
 
 interface IEventListeners {
@@ -50,6 +96,10 @@ interface IEventListeners {
     onSearch?: (searchKey: string, limt?: number, offset?: number) => void
 }
 
-export type { ITextFieldDefinition, ISelectDefinition, IDatePickerDefinition, IServerLookupDefinition }
+export type {
+    ITextFieldDefinition, ISelectDefinition, IDatePickerDefinition, IServerLookupDefinition,
+    ISwitchDefinition, IRadioGroupDefinition, ICheckBoxDefinition, ICheckBoxGroupDefinition,
+    ISliderDefinition
+}
 
-export type { MuiInputFieldOptions, IEventListeners }
+export type { MuiInputFieldOptions, IEventListeners, ValueLabel }

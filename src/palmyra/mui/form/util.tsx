@@ -9,17 +9,18 @@ const generateOptions = (p: any, o: IMutateOptions, v?: any) => {
 }
 
 const getFieldLabel = (props: MuiInputFieldOptions) => {
-    if (props.required && props.title)
+    const label = props.labelMode == 'title' ? props.label : ''
+    if (props.required && label)
         return (
             <>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '3px' }}>
-                    {props.title}
+                    {label}
                     <span style={{ color: 'red' }}>*</span>
                 </div>
             </>
         );
     else
-        return props.title;
+        return label;
 }
 
 export { generateOptions, getFieldLabel }

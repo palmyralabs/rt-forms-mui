@@ -10,7 +10,7 @@ interface MuiTextFieldDefn extends ITextFieldDefinition {
     muiProps?: TextFieldProps
 }
 
-const MuiTextField = forwardRef(function MuiTextField(props: MuiTextFieldDefn, ref: MutableRefObject<ITextField>) {
+const MuiTextArea = forwardRef(function MuiTextArea(props: MuiTextFieldDefn, ref: MutableRefObject<ITextField>) {
     // const fieldGroupManager: IFieldGroupManager = useContext(FieldGroupManagerContext);
 
     const fieldManager = useFieldManager(props.attribute, props);
@@ -38,15 +38,18 @@ const MuiTextField = forwardRef(function MuiTextField(props: MuiTextFieldDefn, r
     options.onChange = (d: any) => { if (!props.readOnly) setValue(d.target.value); }
 
     const label = props.labelMode != 'title' ? props.label : ''
-    
+
     return (<>{!mutateOptions.visible &&
         <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass}
             colspan={props.colspan} customFieldClass={props.customFieldClass} customLabelClass={props.customLabelClass}>
             <TextField {...options}
                 {...props.muiProps}
-                label={label}
                 variant={variant}
+                label={label}
+                minRows={2}
+                maxRows={5}
                 fullWidth={true}
+                multiline
                 inputRef={inputRef}
                 error={error.status}
                 helperText={error.message}
@@ -56,4 +59,4 @@ const MuiTextField = forwardRef(function MuiTextField(props: MuiTextFieldDefn, r
     );
 });
 
-export { MuiTextField };
+export { MuiTextArea };

@@ -5,15 +5,18 @@ import { getFieldHandler, IFormFieldError, ISelectField, ITextField, useFieldMan
 import { generateOptions, getFieldLabel } from './util';
 import { ISelectDefinition } from './types';
 
+interface MuiSelectDefn extends ISelectDefinition {
+    muiProps?: SelectProps
+}
 
-const MuiSelect = forwardRef(function MuiSelect(props: SelectProps & ISelectDefinition, ref: MutableRefObject<ISelectField>) {
+const MuiSelect = forwardRef(function MuiSelect(props: MuiSelectDefn, ref: MutableRefObject<ISelectField>) {
     const fieldManager = useFieldManager(props.attribute, props);
     const { getError, getValue, setValue, mutateOptions } = fieldManager;
     const currentRef = ref ? ref : useRef<ITextField>(null);
     const error: IFormFieldError = getError();
 
     const inputRef: any = useRef(null);
-    const variant = props.variant || 'standard';
+    const variant = props.muiProps.variant || 'standard';
 
     useImperativeHandle(currentRef, () => {
         const handler = getFieldHandler(fieldManager);
@@ -55,8 +58,8 @@ const MuiSelect = forwardRef(function MuiSelect(props: SelectProps & ISelectDefi
                             <MenuItem key={index} value={key}>{options[key]}</MenuItem>
                         )
                         )
-                        : props.children
-                            ? props.children : <div>No options provided</div>}
+                        : props.muiProps.children
+                            ? props.muiProps.children : <div>No options provided</div>}
 
                 </Select>
                 <FormHelperText className='form-error-text'>{error.message}</FormHelperText>

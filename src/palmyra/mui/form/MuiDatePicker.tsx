@@ -8,8 +8,11 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import dayjs from "dayjs";
 import { IDateField, IFormFieldError, useFieldManager, getFieldHandler } from '@palmyralabs/rt-forms';
 
+interface MuiDatePickerDefn extends IDatePickerDefinition {
+    muiProps?: DatePickerProps<any>
+}
 
-const MuiDatePicker = forwardRef(function MuiDatePicker(props: DatePickerProps<any> & IDatePickerDefinition,
+const MuiDatePicker = forwardRef(function MuiDatePicker(props: MuiDatePickerDefn,
     ref: MutableRefObject<IDateField>) {
     const serverPattern = props.serverPattern || props.displayPattern || "YYYY-MM-DD";
     const displayFormat: string = props.displayPattern || props.serverPattern || "YYYY-MM-DD";
@@ -50,6 +53,8 @@ const MuiDatePicker = forwardRef(function MuiDatePicker(props: DatePickerProps<a
 
     options.onChange = (d: any) => { if (!props.readOnly) setValue(d); }
 
+    const label = props.labelMode != 'title' ? props.label : ''
+
     return (<>{!mutateOptions.visible &&
         <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass}
             colspan={props.colspan} customFieldClass={props.customFieldClass} customLabelClass={props.customLabelClass}>
@@ -58,12 +63,13 @@ const MuiDatePicker = forwardRef(function MuiDatePicker(props: DatePickerProps<a
                     readOnly={props.readOnly}
                     disableFuture={props.disableFuture}
                     format={displayFormat}
+                    label={label}
                     slotProps={{
                         textField: {
                             error: error.status,
                             helperText: error.message,
                             variant: variant,
-                            fullWidth: false,
+                            fullWidth: true,
                             inputRef
                         },
                     }}

@@ -1,0 +1,93 @@
+import { useRef, useImperativeHandle, forwardRef, useState, useEffect, MutableRefObject } from 'react';
+import { FormControl, FormControlLabel, FormHelperText, Slider, SliderProps } from '@mui/material';
+import FieldDecorator from './FieldDecorator';
+import { IFormFieldError, ISliderField, getFieldHandler, numbers, useFieldManager } from '@palmyralabs/rt-forms';
+import { generateOptions, getFieldLabel } from './util';
+import { ISliderDefinition } from './types';
+
+interface MuiSliderDefn extends ISliderDefinition {
+    muiProps?: SliderProps
+}
+
+const MuiSlider = forwardRef(function MuiSlider(props: MuiSliderDefn, ref: MutableRefObject<ISliderField>) {
+    const fieldManager = useFieldManager(props.attribute, props);
+    const { getError, getValue, setValue, mutateOptions } = fieldManager;
+    const currentRef = ref ? ref : useRef<ISliderField>(null);
+    const error: IFormFieldError = getError();
+    const label = props.label || '';
+    const minDistance = props.minDistance || 5;
+    // const min = props.muiProps.min || 0;
+    // const max = props.muiProps.max || 100;
+    const inputRef = useRef(null);
+
+    useImperativeHandle(currentRef, () => {
+        const handler = getFieldHandler(fieldManager)
+        return {
+            ...handler,
+            focus() {
+                inputRef.current.focus();
+            },
+            getOptions() {
+
+            },
+            setOptions(d) {
+
+            }
+        };
+    }, [fieldManager]);
+
+
+    const getData = (data: numbers): numbers => {
+        if (data)
+            return data;
+        if (props.range) {
+            return (props.range ? [props.muiProps.min, props.muiProps.max] : 0);
+        }
+    }
+
+
+    const onSliderChange = (
+        _event: Event,
+        newValue: number | number[],
+        activeThumb: number,
+    ) => {
+        // if (!Array.isArray(newValue)) {
+        //     eventListeners.onValueChange(newValue);
+        //     return;
+        // }
+        const value = getData(fieldManager.getValue());
+
+        const v = (activeThumb === 0) ?
+            [Math.min(newValue[0], value[1] - minDistance), value[1]] :
+            [value[0], Math.max(newValue[1], value[0] + minDistance)];
+        // eventListeners.onValueChange(v);
+    };
+
+    var options = generateOptions(props, mutateOptions, getValue());
+
+    delete options.muiProps;
+
+    options.onChange = (d: any) => { if (!props.readOnly) setValue(d.target.value); }
+
+
+    return (<>{!mutateOptions.visible &&
+        <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass}
+            colspan={props.colspan}
+            customFieldClass={props.customFieldClass} customLabelClass={props.customLabelClass}>
+            <div style={{ width: '100%', textAlign: 'center' }}>
+                {label}
+                <Slider {...options}
+                    {...props.muiProps}
+                    fullWidth={true}
+                    inputRef={inputRef}
+                    size={props.fieldProps?.size}
+                    error={error.status}
+                    helperText={error.message}
+                />
+            </div>
+        </FieldDecorator>}
+    </>
+    );
+});
+
+export default MuiSlider;
