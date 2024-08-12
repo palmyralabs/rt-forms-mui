@@ -1,9 +1,16 @@
 import { Button } from "@mui/material";
+import { IPageQueryable } from "@palmyralabs/rt-forms";
 import { setValueByKey } from "@palmyralabs/ts-utils";
+import { MutableRefObject } from "react";
 import { TbRefresh } from "react-icons/tb";
 import { TbFilterShare } from "react-icons/tb";
 // import { convertToField } from "./filter/GridFieldConverter";
 
+
+interface FilterOptions {
+    
+    gridRef: MutableRefObject<IPageQueryable>
+}
 
 const Filter = ({ columns, isOpen, onClose, setFilter, defaultFilter = {} }) => {
 
