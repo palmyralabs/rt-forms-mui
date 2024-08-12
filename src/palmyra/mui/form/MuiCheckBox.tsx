@@ -40,7 +40,7 @@ const MuiCheckBox = forwardRef(function MuiCheckBox(props: MuiCheckBoxDefn, ref:
     delete options.muiProps;
 
     options.onChange = (d: any) => { if (!props.readOnly) setValue(d.target.checked); }
-    
+
     return (<>{!mutateOptions.visible &&
         <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass} colspan={props.colspan}
             customFieldClass={props.customFieldClass} customLabelClass={props.customLabelClass}>
@@ -58,4 +58,4 @@ const MuiCheckBox = forwardRef(function MuiCheckBox(props: MuiCheckBoxDefn, ref:
     )
 });
 
-export default MuiCheckBox;
+export { MuiCheckBox };

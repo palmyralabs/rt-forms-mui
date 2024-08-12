@@ -42,6 +42,7 @@ const MuiSwitch = forwardRef(function MuiSwitch(props: MuiSwitchDefn, ref: Mutab
         return {
             ...handler,
             focus() {
+                inputRef.current.checked = true;
                 inputRef.current.focus();
             },
             getOptions() {
@@ -56,6 +57,10 @@ const MuiSwitch = forwardRef(function MuiSwitch(props: MuiSwitchDefn, ref: Mutab
     const toggleStatus = () => {
         setIsOn(!isOn);
     };
+
+    useEffect(() => {
+        options.onChange = () => (getLabel());
+    }, [isOn])
 
     const getLabel = () => {
         var key = isOn ? 'checked' : 'unchecked';
@@ -83,8 +88,7 @@ const MuiSwitch = forwardRef(function MuiSwitch(props: MuiSwitchDefn, ref: Mutab
 
     delete options.muiProps;
 
-    options.onChange = (d: any) => { if (!props.readOnly) setValue(d.target.value); }
-
+    options.onChange = (d: any) => { if (!props.readOnly) setValue(d.target.checked); }
 
     return (<>{!mutateOptions.visible &&
         <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass} colspan={props.colspan}
@@ -103,4 +107,4 @@ const MuiSwitch = forwardRef(function MuiSwitch(props: MuiSwitchDefn, ref: Mutab
     );
 });
 
-export default MuiSwitch;
+export {MuiSwitch};

@@ -7,7 +7,6 @@ import { Autocomplete, CircularProgress, FormControl, FormHelperText, TextField 
 import { delayGenerator } from "@palmyralabs/ts-utils";
 
 
-
 const delay100 = delayGenerator(100);
 
 const MuiServerLookup = forwardRef(function MuiServerLookup(props: IServerLookupDefinition,
@@ -37,7 +36,7 @@ const MuiServerLookup = forwardRef(function MuiServerLookup(props: IServerLookup
             }
         };
     }, [fieldManager]);
-
+    
     useEffect(() => {
         if (open)
             delay100(refreshOptions);
@@ -67,7 +66,7 @@ const MuiServerLookup = forwardRef(function MuiServerLookup(props: IServerLookup
                 isOptionEqualToValue={hasValueInOptions}
                 filterOptions={(x) => x}
                 renderInput={(params) => <TextField {...params} inputRef={(i) => { inputRef.current = i; }}
-                    variant={'standard'} label={props.title}
+                    variant={'standard'} label={props.label}
                     // autoFocus={props.autoFocus}
                     required={props.required}
                     InputProps={{

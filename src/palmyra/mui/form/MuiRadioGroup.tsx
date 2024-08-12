@@ -85,4 +85,4 @@ const MuiRadioGroup = forwardRef(function MuiRadioGroup(props: MuiRadioGroupDefn
     );
 });
 
-export default MuiRadioGroup;
+export { MuiRadioGroup };

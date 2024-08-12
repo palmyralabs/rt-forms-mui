@@ -41,12 +41,21 @@ interface ITextFieldDefinition extends MuiInputFieldOptions, ILayoutOptions {
 interface IDatePickerDefinition extends MuiInputFieldOptions, ILayoutOptions {
     serverPattern?: string,
     displayPattern?: string,
-    disableFuture?: boolean,
-    disablePast?: boolean,
-    disableHighlightToday?: boolean,
-    displayWeekNumber?: boolean,
-    disableOpenPicker?: boolean
+    // disableFuture?: boolean,
+    // disablePast?: boolean,
+    // disableHighlightToday?: boolean,
+    // displayWeekNumber?: boolean,
+    // disableOpenPicker?: boolean
     variant?: 'standard' | 'outlined' | 'filled'
+}
+
+interface IDateTimePickerDefinition extends IDatePickerDefinition, MuiInputFieldOptions, ILayoutOptions {
+    // maxDate?: object,
+    // minDate?: object,
+    // maxDateTime?: object,
+    // minDateTime?: object,
+    // maxTime?: object,
+    // minTime?: object,
 }
 
 interface IServerLookupDefinition extends MuiInputFieldOptions, ILayoutOptions, IServerLookupOptions {
@@ -90,6 +99,11 @@ interface ISliderDefinition extends MuiInputFieldOptions, ILayoutOptions {
     range?: never
 }
 
+interface IRatingDefinition extends MuiInputFieldOptions, ILayoutOptions {
+    variant?: 'standard' | 'outlined' | 'filled'
+}
+
+
 interface IServerCheckboxDefinition extends MuiInputFieldOptions, ILayoutOptions, IServerLookupOptions {
     hideSelectAll?: boolean,
     showSelectedOnly?: boolean,
@@ -106,7 +120,7 @@ interface IEventListeners {
 export type {
     ITextFieldDefinition, ISelectDefinition, IDatePickerDefinition, IServerLookupDefinition,
     ISwitchDefinition, IRadioGroupDefinition, ICheckBoxDefinition, ICheckBoxGroupDefinition,
-    ISliderDefinition, IServerCheckboxDefinition
+    ISliderDefinition, IServerCheckboxDefinition, IRatingDefinition, IDateTimePickerDefinition
 }
 
 export type { MuiInputFieldOptions, IEventListeners, ValueLabel }

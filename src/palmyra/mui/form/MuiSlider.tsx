@@ -90,4 +90,4 @@ const MuiSlider = forwardRef(function MuiSlider(props: MuiSliderDefn, ref: Mutab
     );
 });
 
-export default MuiSlider;
+export { MuiSlider };
