@@ -17,7 +17,7 @@ const MuiCheckBox = forwardRef(function MuiCheckBox(props: MuiCheckBoxDefn, ref:
     // const autoFocus = props.muiProps.autoFocus || false;
     const Icon = props.icon || TbSquareRounded;
     const CheckedIcon = props.checkedIcon || TbSquareRoundedCheckFilled;
-
+    const value: boolean = getValue() == true;
     const inputRef: any = useRef(null);
 
     useImperativeHandle(currentRef, () => {
@@ -39,15 +39,15 @@ const MuiCheckBox = forwardRef(function MuiCheckBox(props: MuiCheckBoxDefn, ref:
 
     delete options.muiProps;
 
-    options.onChange = (d: any) => { if (!props.readOnly) setValue(d.target.value); }
-
+    options.onChange = (d: any) => { if (!props.readOnly) setValue(d.target.checked); }
+    
     return (<>{!mutateOptions.visible &&
         <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass} colspan={props.colspan}
             customFieldClass={props.customFieldClass} customLabelClass={props.customLabelClass}>
             <FormControl {...options} {...props.muiProps}>
                 <FormControlLabel
                     control={<Checkbox className="customCheckbox" icon={<Icon />} checkedIcon={<CheckedIcon />}
-                        checked={getValue()} // autoFocus={autoFocus}
+                        checked={value} // autoFocus={autoFocus}
                         disabled={props.disabled} readOnly={props.readOnly}
                         inputRef={(r) => { inputRef.current = r }}
                     />}

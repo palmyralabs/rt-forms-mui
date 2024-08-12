@@ -15,6 +15,7 @@ interface ILayoutOptions {
     customLabelClass?: string,
     customFieldClass?: string,
     colspan?: number,
+    className?: string,
     fieldProps?: IFieldProps
 }
 
@@ -89,6 +90,12 @@ interface ISliderDefinition extends MuiInputFieldOptions, ILayoutOptions {
     range?: never
 }
 
+interface IServerCheckboxDefinition extends MuiInputFieldOptions, ILayoutOptions, IServerLookupOptions {
+    hideSelectAll?: boolean,
+    showSelectedOnly?: boolean,
+    flexDirection?: FlexDirection
+}
+
 interface IEventListeners {
     onBlur: (data: any) => void,
     onFocus: (data: any) => void,
@@ -99,7 +106,7 @@ interface IEventListeners {
 export type {
     ITextFieldDefinition, ISelectDefinition, IDatePickerDefinition, IServerLookupDefinition,
     ISwitchDefinition, IRadioGroupDefinition, ICheckBoxDefinition, ICheckBoxGroupDefinition,
-    ISliderDefinition
+    ISliderDefinition, IServerCheckboxDefinition
 }
 
 export type { MuiInputFieldOptions, IEventListeners, ValueLabel }
