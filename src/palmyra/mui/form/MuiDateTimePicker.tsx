@@ -1,5 +1,5 @@
 import { useRef, useImperativeHandle, forwardRef, MutableRefObject } from 'react';
-import { DatePicker, DatePickerProps, LocalizationProvider } from '@mui/x-date-pickers';
+import { DatePickerProps, DateTimePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { generateOptions, getFieldLabel } from './util';
 import FieldDecorator from './FieldDecorator';
 import { IDatePickerDefinition } from './types';
@@ -7,11 +7,11 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import dayjs from "dayjs";
 import { IDateField, IFormFieldError, useFieldManager, getFieldHandler } from '@palmyralabs/rt-forms';
 
-interface MuiDatePickerDefn extends IDatePickerDefinition {
+interface MuiDateTimePickerDefn extends IDatePickerDefinition {
     muiProps?: DatePickerProps<any>
 }
 
-const MuiDatePicker = forwardRef(function MuiDatePicker(props: MuiDatePickerDefn,
+const MuiDateTimePicker = forwardRef(function MuiDateTimePicker(props: MuiDateTimePickerDefn,
     ref: MutableRefObject<IDateField>) {
     const serverPattern = props.serverPattern || props.displayPattern || "YYYY-MM-DD";
     const displayFormat: string = props.displayPattern || props.serverPattern || "YYYY-MM-DD";
@@ -58,11 +58,12 @@ const MuiDatePicker = forwardRef(function MuiDatePicker(props: MuiDatePickerDefn
         <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass}
             colspan={props.colspan} customFieldClass={props.customFieldClass} customLabelClass={props.customLabelClass}>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DatePicker {...options}
+                <DateTimePicker {...options}
                     readOnly={props.readOnly}
                     {...props.muiProps}
                     format={displayFormat}
                     label={label}
+                    views={['year', 'day', 'hours', 'minutes', 'seconds']}
                     slotProps={{
                         textField: {
                             error: error.status,
@@ -79,4 +80,4 @@ const MuiDatePicker = forwardRef(function MuiDatePicker(props: MuiDatePickerDefn
     );
 });
 
-export { MuiDatePicker };
+export { MuiDateTimePicker };
