@@ -19,7 +19,7 @@ const MuiTextField = forwardRef(function MuiTextField(props: MuiTextFieldDefn, r
     const error: IFormFieldError = getError();
 
     const inputRef: any = useRef(null);
-    const variant = props.muiProps.variant || 'standard';
+    const variant = props.muiProps?.variant || 'standard';
 
     useImperativeHandle(currentRef, () => {
         const handler = getFieldHandler(fieldManager)
@@ -44,7 +44,7 @@ const MuiTextField = forwardRef(function MuiTextField(props: MuiTextFieldDefn, r
             colspan={props.colspan} customFieldClass={props.customFieldClass} customLabelClass={props.customLabelClass}>
             <TextField {...options}
                 {...props.muiProps}
-                label={label}
+                label={label}                
                 variant={variant}
                 fullWidth={true}
                 inputRef={inputRef}

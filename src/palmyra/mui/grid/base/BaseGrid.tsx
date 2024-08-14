@@ -19,11 +19,10 @@ export default function BaseGrid(props: BaseGridOptions) {
 
   const { rowData, customizer } = props;
   const { onColumnSort, options, EmptyChild, onRowClick } = useBaseGridManager(props);
-  const tableRef: MutableRefObject<IReactTanstackTable> = customizer?.getTableRef() || useRef();
+  const tableRef: MutableRefObject<IReactTanstackTable> = customizer?.getTableRef? customizer?.getTableRef() : useRef();
 
   const table = useReactTable(options);
   tableRef.current = table;
-
 
   return (<>
     <div className={props.className}>

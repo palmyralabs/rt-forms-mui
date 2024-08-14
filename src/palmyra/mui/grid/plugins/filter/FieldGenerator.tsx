@@ -17,7 +17,7 @@ const getReactField = (props: FieldRequest, Input: React.FC) => {
     />;
 }
 
-const getField = (fieldDef: ColumnFieldOptions, fieldRefs: any, title?: any) => {
+const getField = (fieldDef: ColumnFieldOptions, title?: any) => {
     const { type } = fieldDef;
     const props: FieldRequest = { fieldDef, title };
 

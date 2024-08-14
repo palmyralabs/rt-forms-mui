@@ -1,46 +1,68 @@
 import { Button } from "@mui/material";
-import { IPageQueryable } from "@palmyralabs/rt-forms";
+import { IForm, IPageQueryable, PalmyraForm } from "@palmyralabs/rt-forms";
 import { setValueByKey } from "@palmyralabs/ts-utils";
-import { MutableRefObject } from "react";
+import { MutableRefObject, useRef } from "react";
 import { TbRefresh } from "react-icons/tb";
 import { TbFilterShare } from "react-icons/tb";
-// import { convertToField } from "./filter/GridFieldConverter";
+import { ColumnDefinition } from "../../types";
+import { convertToField } from "./GridFieldConverter";
+import getField from "./FieldGenerator";
 
 
 interface FilterOptions {
-    
-    gridRef: MutableRefObject<IPageQueryable>
+    columns: ColumnDefinition[],
+    onClose?: (filter: any) => void,
+    defaultFilter?: Record<string, any>,
+    queryRef: MutableRefObject<IPageQueryable>
 }
 
-const Filter = ({ columns, isOpen, onClose, setFilter, defaultFilter = {} }) => {
-
+const Filter = (o: FilterOptions) => {
     const formattedFilterValue = {};
+    const filterRef: MutableRefObject<IForm> = useRef<IForm>();
+    const defaultFilter = o.defaultFilter || {};
 
-    Object.keys(defaultFilter || {}).map((k)=>{
+    const columns: ColumnDefinition[] = convertToField(o.columns);
+
+    const getFilterColumns = () => {
+        return columns.map((column: ColumnDefinition, idx) => {
+            return getField(column, column.label);
+        });
+    }
+
+    const onClose = o.onClose || ((d) => { });
+
+    Object.keys(defaultFilter || {}).map((k) => {
         const v = defaultFilter[k];
         setValueByKey(k, formattedFilterValue, v);
     })
 
-    // var { getFieldManager, getFilterData } = createFilterData(formattedFilterValue);
+    const setFilter = (d) => {
+        if (o.queryRef.current) {
+            o.queryRef.current.setFilter(d)
+            onClose(d);
+        }
+        else
+            console.warn('Query reference not found');
+    }
 
     const reset = () => {
         setFilter({});
-        onClose();
     }
 
     const assignFilter = () => {
-        var data = {};
+        const filterData = filterRef.current.getData();
         if (setFilter) {
-            setFilter(data);
-        }
-        onClose();
+            setFilter(filterData);
+        };
     };
 
-    // const _fields = convertToField(columns);
 
-    return <div className='grid-filter-container'>        
+
+    return <div className='grid-filter-container'>
         <div className="grid-filter-content">
-            
+            <PalmyraForm formData={formattedFilterValue} mode="new" ref={filterRef}>
+                {getFilterColumns()}
+            </PalmyraForm>
         </div>
         <div className="grid-filter-btn-container">
             <Button className='secondary-filled-button' disableRipple onClick={reset}>

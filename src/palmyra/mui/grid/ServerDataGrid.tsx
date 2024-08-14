@@ -1,45 +1,32 @@
-import React, { MutableRefObject, forwardRef, useImperativeHandle, useRef } from 'react';
-import { default as defaultEmptyChild } from './base/EmptyChildTable';
-import { IPageQueryable, IServerQueryInput, useServerQuery } from "@palmyralabs/rt-forms"
-import { ColumnDefinition, GridCustomizer } from './types';
-import { generateColumns } from './utils/ColumnConverter';
-import { NoopGridCustomizer } from './base/NoopGridCustomizer';
-import BaseGrid from './base/BaseGrid';
-import { IEndPoint } from '@palmyralabs/palmyra-wire';
+import { MutableRefObject, forwardRef, useRef } from 'react';
 
-interface ServerDataGridOptions extends IServerQueryInput {
-  endPoint: IEndPoint,
-  store?: never,
-  columns: ColumnDefinition[],
-  customizer?: GridCustomizer,
-  EmptyChild?: React.FC,
-  onRowClick?: Function,
+import { IPageQueryable } from "@palmyralabs/rt-forms"
+import { ApiGrid, ApiGridOptions } from './base/ApiGrid';
+import { SelectablePagination } from './plugins/pagination/SelectablePagination';
+import { topic } from '@palmyralabs/ts-utils';
+import Filter from './plugins/filter/Filter';
+
+interface ServerDataGridOptions extends ApiGridOptions {
   onNewClick?: Function
 }
 
 const ServerDataGrid = forwardRef(function ServerDataGrid(props: ServerDataGridOptions, ref: MutableRefObject<IPageQueryable>) {
-  const { columns, EmptyChild } = props;
-  const EmptyChildContainer = EmptyChild || defaultEmptyChild;
-  const customizer: GridCustomizer = props.customizer || NoopGridCustomizer;
+  
+  const queryRef = useRef<IPageQueryable>();
 
-  const serverQuery = useServerQuery(props);
+  const pubsubTopic = props.endPoint + 'hello';
 
-  const currentRef = ref ? ref : useRef<IPageQueryable>(null);
-  useImperativeHandle(currentRef, () => serverQuery, [serverQuery]);
+  const onDataChange = (data) => {
+    topic.publish(pubsubTopic, data);
+  }
 
-  const columnDefs = generateColumns(columns, customizer);
+  const filterTopic = props.filterTopic || props.endPoint + 'filter';
 
-  const handleRowClick = props.onNewClick ? (rowData) => {
-    props.onRowClick(rowData);
-  } : () => { };
-
-  const data = serverQuery.getCurrentData();
-  const setSortColumns = serverQuery.setSortColumns;
-
-  return (
-    <BaseGrid columnDefs={columnDefs} EmptyChild={EmptyChildContainer} customizer={customizer}
-      rowData={data} onRowClick={handleRowClick} onColumnSort={setSortColumns}
-    />
+  return (<>
+    <Filter columns={props.columns} onClose={() => { }} queryRef={queryRef}></Filter>
+    <ApiGrid {...props} onDataChange={onDataChange} filterTopic={filterTopic} ref={queryRef} />
+    <SelectablePagination pubsubTopic={pubsubTopic} pageSize={props.pageSize} queryRef={queryRef} />
+  </>
   )
 });
 

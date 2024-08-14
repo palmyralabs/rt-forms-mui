@@ -37,31 +37,31 @@ const MuiSlider = forwardRef(function MuiSlider(props: MuiSliderDefn, ref: Mutab
     }, [fieldManager]);
 
 
-    const getData = (data: numbers): numbers => {
-        if (data)
-            return data;
-        if (props.range) {
-            return (props.range ? [props.muiProps.min, props.muiProps.max] : 0);
-        }
-    }
+    // const getData = (data: numbers): numbers => {
+    //     if (data)
+    //         return data;
+    //     if (props.range) {
+    //         return (props.range ? [props.muiProps.min, props.muiProps.max] : 0);
+    //     }
+    // }
 
 
-    const onSliderChange = (
-        _event: Event,
-        newValue: number | number[],
-        activeThumb: number,
-    ) => {
-        // if (!Array.isArray(newValue)) {
-        //     eventListeners.onValueChange(newValue);
-        //     return;
-        // }
-        const value = getData(fieldManager.getValue());
+    // const onSliderChange = (
+    //     _event: Event,
+    //     newValue: number | number[],
+    //     activeThumb: number,
+    // ) => {
+    //     if (!Array.isArray(newValue)) {
+    //         eventListeners.onValueChange(newValue);
+    //         return;
+    //     }
+    //     const value = getData(fieldManager.getValue());
 
-        const v = (activeThumb === 0) ?
-            [Math.min(newValue[0], value[1] - minDistance), value[1]] :
-            [value[0], Math.max(newValue[1], value[0] + minDistance)];
-        // eventListeners.onValueChange(v);
-    };
+    //     const v = (activeThumb === 0) ?
+    //         [Math.min(newValue[0], value[1] - minDistance), value[1]] :
+    //         [value[0], Math.max(newValue[1], value[0] + minDistance)];
+    //     eventListeners.onValueChange(v);
+    // };
 
     var options = generateOptions(props, mutateOptions, getValue());
 

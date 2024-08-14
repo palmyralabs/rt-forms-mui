@@ -24,6 +24,7 @@ const ServerCardLayout = forwardRef(function MuiSelect(props: ServerCardLayoutIn
     const currentRef: MutableRefObject<IPageQueryable> = ref ? ref : useRef(null);
 
     const serverQuery = useServerQuery(props);
+    const queryRef = useRef(serverQuery);
 
     const listKeyProvider = props.listKeyProvider || ((data, index) => index);
 
@@ -80,7 +81,7 @@ const ServerCardLayout = forwardRef(function MuiSelect(props: ServerCardLayoutIn
                         ></CardLayout>
                     </div>
                     <div className='card-pagination'>
-                        <SelectablePagination pageSize={props.pageSize} pageQuery={serverQuery}></SelectablePagination>
+                        <SelectablePagination pageSize={props.pageSize} queryRef={queryRef}></SelectablePagination>
                     </div>
                 </div>
             </div>

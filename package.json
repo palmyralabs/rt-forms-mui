@@ -57,7 +57,7 @@
     "react-router-dom": "^6.26.0"
   },
   "peerDependencies": {
-    "@palmyralabs/palmyra-wire": "^1.0.1",
+    "@palmyralabs/palmyra-wire": "^1.0.2",
     "@palmyralabs/ts-predicates": "github:palmyralabs/ts-predicates",
     "@palmyralabs/ts-utils": "github:palmyralabs/ts-utils"
   },

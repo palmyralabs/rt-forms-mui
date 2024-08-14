@@ -7,7 +7,7 @@ type IReactTanstackTable = import("@tanstack/table-core").Table<RowData>;
 type IExportOptions = PartialRecord<'csv' | 'excel' | 'pdf' | 'docx', string>
 
 interface ColumnDefinition extends ColumnFieldOptions {
-    attribute: string,    
+    attribute: string,
     label: string,
     name?: string,
     options?: Record<string, any>,
@@ -46,6 +46,11 @@ interface ITableOptions {
     debug: boolean
 }
 
+interface IGridPlugin {
+    onDataChange?: (data:any[]) => void
+}
+
 export type {
-    ColumnDefinition, GridCustomizer, CellGetter, IExportOptions, IReactTanstackTable, ITableOptions
+    ColumnDefinition, GridCustomizer, CellGetter, IExportOptions, IReactTanstackTable, ITableOptions,
+    IGridPlugin
 };
