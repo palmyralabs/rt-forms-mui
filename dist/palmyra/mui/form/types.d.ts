@@ -13,6 +13,11 @@ interface ILayoutOptions {
     className?: string;
     fieldProps?: IFieldProps;
 }
+interface TextViewAttributeDefinition {
+    attribute: string;
+    textAlign?: 'left' | 'right' | 'center';
+    variant?: 'standard' | 'outlined';
+}
 interface MuiInputFieldOptions extends FieldOptions {
     label?: string;
     labelMode?: "label" | "title";
@@ -82,4 +87,4 @@ interface IEventListeners {
     onSearch?: (searchKey: string, limt?: number, offset?: number) => void;
 }
 export type { ITextFieldDefinition, ISelectDefinition, IDatePickerDefinition, IServerLookupDefinition, ISwitchDefinition, IRadioGroupDefinition, ICheckBoxDefinition, ICheckBoxGroupDefinition, ISliderDefinition, IServerCheckboxDefinition, IRatingDefinition, IDateTimePickerDefinition };
-export type { MuiInputFieldOptions, IEventListeners, ValueLabel };
+export type { MuiInputFieldOptions, IEventListeners, ValueLabel, TextViewAttributeDefinition };

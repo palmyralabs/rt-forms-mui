@@ -1,0 +1,58 @@
+import { useRef, useImperativeHandle, forwardRef, MutableRefObject } from 'react';
+
+import { getFieldHandler, ITextField, useFieldManager } from '@palmyralabs/rt-forms';
+import { getFieldLabel } from './util'
+import FieldDecorator from './FieldDecorator';
+import { ITextFieldDefinition } from './types';
+
+
+interface TextViewAttributeDefinition {
+    textAlign?: 'left' | 'right' | 'center',
+    variant?: 'standard' | 'outlined'
+}
+
+const MuiTextView = forwardRef(function MuiTextView(props: ITextFieldDefinition & TextViewAttributeDefinition,
+    ref: MutableRefObject<ITextField>) {
+
+    const fieldManager = useFieldManager(props.attribute, props);
+    const { getValue, setValue, mutateOptions } = fieldManager;
+    const currentRef = ref ? ref : useRef<ITextField>(null);
+
+    const textAlign: any = props.textAlign || 'left';
+
+    const inputRef: any = useRef(null);
+    const variant = props.variant || 'standard';
+
+    useImperativeHandle(currentRef, () => {
+        const handler = getFieldHandler(fieldManager)
+        return {
+            ...handler,
+            focus() {
+                inputRef.current.focus();
+            }
+        };
+    }, [fieldManager]);
+
+
+    var options = fieldManager.getFieldProps();
+
+    options.onChange = (d: any) => { if (!props.readOnly) setValue(d.target.value); }
+
+    return (<>{!mutateOptions.visible &&
+        <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass} colspan={props.colspan}
+            customFieldClass={props.customFieldClass} customLabelClass={props.customLabelClass}>
+            {(props.label) ?
+                <div {...options} className='text-view-field-container'>
+                    <div className="text-view-label">{props.label}</div>
+                    <div className={props.label ? (variant === 'outlined' ? "text-view-value-outlined" : "text-view-value") : ''}>{getValue()}</div>
+                </div> :
+                <div {...options} style={{ textAlign: textAlign }}>
+                    {getValue()}
+                </div>
+            }
+        </FieldDecorator>}
+    </>
+    );
+});
+
+export { MuiTextView };

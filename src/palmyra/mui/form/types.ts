@@ -19,6 +19,12 @@ interface ILayoutOptions {
     fieldProps?: IFieldProps
 }
 
+interface TextViewAttributeDefinition {
+    attribute: string,
+    textAlign?: 'left' | 'right' | 'center',
+    variant?: 'standard' | 'outlined'
+}
+
 interface MuiInputFieldOptions extends FieldOptions {
     label?: string,
     labelMode?: "label" | "title"
@@ -123,4 +129,4 @@ export type {
     ISliderDefinition, IServerCheckboxDefinition, IRatingDefinition, IDateTimePickerDefinition
 }
 
-export type { MuiInputFieldOptions, IEventListeners, ValueLabel }
+export type { MuiInputFieldOptions, IEventListeners, ValueLabel, TextViewAttributeDefinition }
