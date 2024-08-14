@@ -4,7 +4,7 @@ import { FormControl as R, FormControlLabel as k, Checkbox as D, FormHelperText 
 import L from "./FieldDecorator.js";
 import { useFieldManager as M, getFieldHandler as V } from "@palmyralabs/rt-forms";
 import { generateOptions as j, getFieldLabel as y } from "./util.js";
-import { b as H, c as T } from "../../../chunks/index4.js";
+import { b as H, c as T } from "../../../chunks/index3.js";
 const P = v(function(e, c) {
   const o = M(e.attribute, e), { getError: h, getValue: u, setValue: g, mutateOptions: d } = o, C = c || f(null), m = h(), i = f(null);
   O(C, () => ({
@@ -63,5 +63,5 @@ const P = v(function(e, c) {
   ) });
 });
 export {
-  P as default
+  P as MuiCheckBoxGroup
 };

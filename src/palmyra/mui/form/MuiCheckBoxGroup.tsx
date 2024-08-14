@@ -85,4 +85,4 @@ const MuiCheckBoxGroup = forwardRef(function MuiCheckBoxGroup(props: MuiCheckBox
     )
 });
 
-export default MuiCheckBoxGroup;
+export { MuiCheckBoxGroup };

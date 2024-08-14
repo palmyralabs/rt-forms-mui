@@ -6,4 +6,4 @@ interface MuiCheckBoxGroupDefn extends ICheckBoxGroupDefinition {
     muiProps?: CheckboxProps;
 }
 declare const MuiCheckBoxGroup: import('react').ForwardRefExoticComponent<MuiCheckBoxGroupDefn & import('react').RefAttributes<ICheckBoxField>>;
-export default MuiCheckBoxGroup;
+export { MuiCheckBoxGroup };

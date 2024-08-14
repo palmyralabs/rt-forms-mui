@@ -1,8 +1,17 @@
 
 export * from './types'
 
-
 export { MuiTextField } from './MuiTextField'
 export { MuiDatePicker } from './MuiDatePicker'
 export { MuiSelect } from './MuiSelect'
 export { MuiServerLookup } from './MuiServerLookup'
+export { MuiCheckBox } from './MuiCheckBox'
+export { MuiCheckBoxGroup } from './MuiCheckBoxGroup'
+export { MuiDateTimePicker } from './MuiDateTimePicker'
+export { MuiIntegerField } from './MuiIntegerField'
+export { MuiNumberField } from './MuiNumberField'
+export { MuiPassword } from './MuiPassword'
+export { MuiRadioGroup } from './MuiRadioGroup'
+export { MuiRating } from './MuiRating'
+export { MuiSwitch } from './MuiSwitch'
+export { MuiTextArea } from './MuiTextArea'

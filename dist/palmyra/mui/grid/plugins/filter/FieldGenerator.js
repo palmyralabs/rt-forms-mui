@@ -1,47 +1,80 @@
-import { jsxs as c, jsx as o } from "react/jsx-runtime";
-import { MuiTextField as n } from "../../../form/MuiTextField.js";
-import { MuiDatePicker as l } from "../../../form/MuiDatePicker.js";
-import { MuiSelect as a } from "../../../form/MuiSelect.js";
-import { MuiServerLookup as u } from "../../../form/MuiServerLookup.js";
-const d = (e) => {
-  const { fieldDef: r } = e;
-  return /* @__PURE__ */ c("div", { children: [
-    "invalid type " + r.type,
+import { jsxs as u, jsx as a } from "react/jsx-runtime";
+import { MuiTextField as s } from "../../../form/MuiTextField.js";
+import { MuiDatePicker as c } from "../../../form/MuiDatePicker.js";
+import { MuiSelect as m } from "../../../form/MuiSelect.js";
+import { MuiServerLookup as n } from "../../../form/MuiServerLookup.js";
+import { MuiCheckBox as p } from "../../../form/MuiCheckBox.js";
+import "../../../form/MuiCheckBoxGroup.js";
+import "../../../form/MuiDateTimePicker.js";
+import { MuiIntegerField as l } from "../../../form/MuiIntegerField.js";
+import { MuiNumberField as f } from "../../../form/MuiNumberField.js";
+import { MuiPassword as d } from "../../../form/MuiPassword.js";
+import { MuiRadioGroup as M } from "../../../form/MuiRadioGroup.js";
+import { MuiRating as g } from "../../../form/MuiRating.js";
+import { MuiSwitch as x } from "../../../form/MuiSwitch.js";
+import { MuiTextArea as b } from "../../../form/MuiTextArea.js";
+import "../../utils/ColumnConverter.js";
+import "react";
+import "@mui/material";
+/* empty css                             */
+import "@tanstack/react-table";
+import "../../../../../chunks/AsyncTreeMenu.js";
+import "react-router-dom";
+import "../../../menu/AsyncTreeMenuEditor.js";
+import "@mui/icons-material";
+import "../../../widget/InfoTooltip.js";
+const h = (t) => {
+  const { fieldDef: i } = t;
+  return /* @__PURE__ */ u("div", { children: [
+    "invalid type " + i.type,
     " "
   ] });
-}, s = (e, r) => {
-  const i = e.fieldDef;
-  return /* @__PURE__ */ o(
-    r,
+}, e = (t, i) => {
+  const o = t.fieldDef;
+  return /* @__PURE__ */ a(
+    i,
     {
-      ...i,
-      label: e.title
+      ...o,
+      label: t.title
     },
-    i.title + i.attribute
+    o.title + o.attribute
   );
-}, b = (e, r) => {
-  const { type: i } = e, t = { fieldDef: e, title: r };
-  switch (i) {
+}, Q = (t, i) => {
+  const { type: o } = t, r = { fieldDef: t, title: i };
+  switch (o) {
     case "string":
-      return s(t, n);
+      return e(r, s);
+    case "radio":
+      return e(r, M);
     case "select":
-      return s(t, a);
+      return e(r, m);
     case "date":
-      return s(t, l);
+      return e(r, c);
     case "multiSelect":
-      return s(t, a);
+      return e(r, m);
+    case "checkbox":
+      return e(r, p);
     case "serverlookup":
-      return s(t, u);
+      return e(r, n);
+    case "textarea":
+      return e(r, b);
+    case "switch":
+      return e(r, x);
+    case "password":
+      return e(r, d);
+    case "rating":
+      return e(r, g);
     case "float":
     case "number":
     case "numbersOnly":
+      return e(r, f);
     case "integer":
-    case "dateRange":
+      return e(r, l);
     case "autoComplete":
     default:
-      return d(t);
+      return h(r);
   }
 };
 export {
-  b as default
+  Q as default
 };
