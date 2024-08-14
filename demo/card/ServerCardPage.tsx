@@ -1,5 +1,5 @@
 import { PalmyraStoreFactory } from "@palmyralabs/palmyra-wire";
-import ServerCardLayout from "../../src/palmyra/card/ServerCardLayout";
+import { ServerCardLayout } from "@palmyralabs/rt-forms";
 
 const ServerCardPage = () => {
 
@@ -17,7 +17,7 @@ const ServerCardPage = () => {
     }
 
     return <>
-        <ServerCardLayout Child={serverCard} store={store} title={"Server Card Layout"} />
+        <ServerCardLayout Child={serverCard} store={store} />
     </>
 }
 

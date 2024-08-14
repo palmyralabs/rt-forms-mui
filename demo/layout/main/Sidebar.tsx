@@ -1,6 +1,5 @@
 import { Drawer, List, Stack, Toolbar, Typography } from "@mui/material";
 import { FC, useState } from "react";
-import PalmyraLogo from '../../public/palmyra_logo.svg'
 import './Sidebar.css';
 
 interface ISideMenuInput {
@@ -42,7 +41,7 @@ const Sidebar = (props: SidebarInput) => {
           >
             <Typography variant="h6" className={`sidebar-title ${!isMinimized ? 'minimized' : ''}`}>
               <div className="sidebar-logo">
-                <img src={PalmyraLogo} />
+                
               </div>
               <div>
                 {!isMinimized && (

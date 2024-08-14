@@ -1,4 +1,5 @@
-import CardLayout from "../../src/palmyra/card/CardLayout";
+import { CardLayout } from "@palmyralabs/rt-forms";
+
 
 const CardPage = () => {
 
