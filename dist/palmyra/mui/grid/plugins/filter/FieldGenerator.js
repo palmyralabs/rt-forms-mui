@@ -1,7 +1,7 @@
-import { jsxs as u, jsx as a } from "react/jsx-runtime";
-import { MuiTextField as s } from "../../../form/MuiTextField.js";
-import { MuiDatePicker as c } from "../../../form/MuiDatePicker.js";
-import { MuiSelect as m } from "../../../form/MuiSelect.js";
+import { jsxs as a, jsx as s } from "react/jsx-runtime";
+import { MuiTextField as c } from "../../../form/MuiTextField.js";
+import { MuiDatePicker as m } from "../../../form/MuiDatePicker.js";
+import { MuiSelect as u } from "../../../form/MuiSelect.js";
 import { MuiServerLookup as n } from "../../../form/MuiServerLookup.js";
 import { MuiCheckBox as p } from "../../../form/MuiCheckBox.js";
 import "../../../form/MuiCheckBoxGroup.js";
@@ -13,25 +13,17 @@ import { MuiRadioGroup as M } from "../../../form/MuiRadioGroup.js";
 import { MuiRating as g } from "../../../form/MuiRating.js";
 import { MuiSwitch as x } from "../../../form/MuiSwitch.js";
 import { MuiTextArea as b } from "../../../form/MuiTextArea.js";
-import "../../utils/ColumnConverter.js";
-import "react";
-import "@mui/material";
-/* empty css                             */
-import "@tanstack/react-table";
-import "../../../../../chunks/index2.js";
-import "react-router-dom";
-import "../../../menu/AsyncTreeMenuEditor.js";
-import "@mui/icons-material";
-import "../../../widget/InfoTooltip.js";
+import "../../../form/MuiTextView.js";
+import "../../../form/MuiOptionsView.js";
 const h = (t) => {
   const { fieldDef: i } = t;
-  return /* @__PURE__ */ u("div", { children: [
+  return /* @__PURE__ */ a("div", { children: [
     "invalid type " + i.type,
     " "
   ] });
-}, e = (t, i) => {
+}, r = (t, i) => {
   const o = t.fieldDef;
-  return /* @__PURE__ */ a(
+  return /* @__PURE__ */ s(
     i,
     {
       ...o,
@@ -39,42 +31,42 @@ const h = (t) => {
     },
     o.title + o.attribute
   );
-}, Q = (t, i) => {
-  const { type: o } = t, r = { fieldDef: t, title: i };
+}, N = (t, i) => {
+  const { type: o } = t, e = { fieldDef: t, title: i };
   switch (o) {
     case "string":
-      return e(r, s);
+      return r(e, c);
     case "radio":
-      return e(r, M);
+      return r(e, M);
     case "select":
-      return e(r, m);
+      return r(e, u);
     case "date":
-      return e(r, c);
+      return r(e, m);
     case "multiSelect":
-      return e(r, m);
+      return r(e, u);
     case "checkbox":
-      return e(r, p);
+      return r(e, p);
     case "serverlookup":
-      return e(r, n);
+      return r(e, n);
     case "textarea":
-      return e(r, b);
+      return r(e, b);
     case "switch":
-      return e(r, x);
+      return r(e, x);
     case "password":
-      return e(r, d);
+      return r(e, d);
     case "rating":
-      return e(r, g);
+      return r(e, g);
     case "float":
     case "number":
     case "numbersOnly":
-      return e(r, f);
+      return r(e, f);
     case "integer":
-      return e(r, l);
+      return r(e, l);
     case "autoComplete":
     default:
-      return h(r);
+      return h(e);
   }
 };
 export {
-  Q as default
+  N as default
 };

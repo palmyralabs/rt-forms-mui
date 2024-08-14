@@ -13,3 +13,5 @@ export { MuiRadioGroup } from './MuiRadioGroup';
 export { MuiRating } from './MuiRating';
 export { MuiSwitch } from './MuiSwitch';
 export { MuiTextArea } from './MuiTextArea';
+export { MuiTextView } from './MuiTextView';
+export { MuiOptionsView } from './MuiOptionsView';

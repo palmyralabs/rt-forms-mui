@@ -1,4 +1,6 @@
-import { MuiCheckBox, MuiDatePicker, MuiIntegerField, MuiNumberField, MuiPassword, MuiRadioGroup, MuiRating, MuiSelect, MuiServerLookup, MuiSwitch, MuiTextArea, MuiTextField } from "../../../";
+import { MuiCheckBox, MuiDatePicker, MuiIntegerField, MuiNumberField, 
+    MuiPassword, MuiRadioGroup, MuiRating, MuiSelect, 
+    MuiServerLookup, MuiSwitch, MuiTextArea, MuiTextField } from "../../../form";
 
 import { ColumnFieldOptions } from "../../../";
 

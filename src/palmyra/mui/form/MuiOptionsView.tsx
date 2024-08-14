@@ -1,12 +1,12 @@
 import { useRef, useImperativeHandle, forwardRef } from 'react';
-import FieldDecorator from '../form/FieldDecorator';
+import FieldDecorator from './FieldDecorator';
 import './TextView.css';
 import { ISelectField, useFieldManager } from '@palmyralabs/rt-forms';
 import { ISelectDefinition, TextViewAttributeDefinition } from './types';
 import { getFieldLabel } from './util';
 
 
-const OptionsView = forwardRef(function MuiSelect(props: ISelectDefinition & TextViewAttributeDefinition, ref) {
+const MuiOptionsView = forwardRef(function MuiOptionsView(props: ISelectDefinition & TextViewAttributeDefinition, ref) {
     const fieldManager = useFieldManager(props.attribute, props);
     const currentRef = ref ? ref : useRef<ISelectField>(null);
     const textAlign: any = props.textAlign || 'left';
@@ -34,4 +34,4 @@ const OptionsView = forwardRef(function MuiSelect(props: ISelectDefinition & Tex
     );
 });
 
-export default OptionsView;
+export { MuiOptionsView };

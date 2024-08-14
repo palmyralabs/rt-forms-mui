@@ -2,7 +2,7 @@ import { jsx as n, Fragment as N, jsxs as p } from "react/jsx-runtime";
 import { useRef as S, useState as L, useEffect as k } from "react";
 import { f as j, A as B, c as M } from "../../../chunks/index2.js";
 import { useNavigate as U } from "react-router-dom";
-import { I as V } from "../../../chunks/index3.js";
+import { a as V } from "../../../chunks/index3.js";
 const E = "palmyra.rui.sidemenu.expanded", v = "palmyra.rui.sidemenu.expanded.selected";
 function X(h) {
   const o = U(), g = S(null);
@@ -23,15 +23,15 @@ function X(h) {
       }
     };
   }) : [];
-  function I(e) {
+  function x(e) {
     return typeof e == "number" ? e : parseInt(e);
   }
   k(() => {
     A.getRoot().then((e) => {
       var r = C(e.result, -1);
       const a = b(d.data, -1, r), t = (localStorage.getItem(E) || "").split(",");
-      i.current = t.map((c) => I(c)).filter((c) => r.some((m) => m.id == c));
-      const l = (localStorage.getItem(v) || "").split(",").map((c) => I(c)).filter((c) => r.some((m) => m.id == c));
+      i.current = t.map((c) => x(c)).filter((c) => r.some((m) => m.id == c));
+      const l = (localStorage.getItem(v) || "").split(",").map((c) => x(c)).filter((c) => r.some((m) => m.id == c));
       y({ data: a, expandedIds: i.current, selectedId: l });
     });
   }, []);
@@ -96,7 +96,7 @@ function X(h) {
           handleSelect: m,
           handleExpand: _
         }) => {
-          const D = (f, x) => f && x.children.length === 0 ? /* @__PURE__ */ p(N, { children: [
+          const D = (f, I) => f && I.children.length === 0 ? /* @__PURE__ */ p(N, { children: [
             /* @__PURE__ */ p(
               "span",
               {
@@ -105,7 +105,7 @@ function X(h) {
                 className: "visually-hidden",
                 children: [
                   "loading ",
-                  x.name
+                  I.name
                 ]
               }
             ),
