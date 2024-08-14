@@ -1,9 +1,5 @@
-import { SelectProps } from '@mui/material';
 import { ISelectField } from '@palmyralabs/rt-forms';
 import { ISelectDefinition } from './types';
 
-interface MuiSelectDefn extends ISelectDefinition {
-    muiProps?: SelectProps;
-}
-declare const MuiSelect: import('react').ForwardRefExoticComponent<MuiSelectDefn & import('react').RefAttributes<ISelectField>>;
+declare const MuiSelect: import('react').ForwardRefExoticComponent<(Omit<ISelectDefinition & import('@mui/material').FilledSelectProps & import('@mui/material').BaseSelectProps<unknown>, "ref"> | Omit<ISelectDefinition & import('@mui/material').StandardSelectProps & import('@mui/material').BaseSelectProps<unknown>, "ref"> | Omit<ISelectDefinition & import('@mui/material').OutlinedSelectProps & import('@mui/material').BaseSelectProps<unknown>, "ref">) & import('react').RefAttributes<ISelectField>>;
 export { MuiSelect };

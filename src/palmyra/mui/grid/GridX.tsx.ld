@@ -2,7 +2,7 @@ import React, { MutableRefObject, forwardRef, useImperativeHandle, useRef, useSt
 import { TextField, InputAdornment, Button, ClickAwayListener, Pagination, FormControl, Select, MenuItem } from '@mui/material';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { default as defaultEmptyChild } from './base/EmptyChildTable';
-import TableX from "./base/BaseGrid";
+import BaseGrid from "./base/BaseGrid";
 import { Menu, DensitySmall, DensityLarge, Add, KeyboardArrowDown } from '@mui/icons-material';
 import { EXPORT_FORMAT, ExportRequest, IPagination } from "@palmyralabs/palmyra-wire"
 import { IServerQueryInput, usePageableServerQuery } from "@palmyralabs/rt-forms"
@@ -319,9 +319,8 @@ const GridX = forwardRef(function GridX(props: GridXOptions, ref: MutableRefObje
           </div>
         </div>
         <div className='grid-table'>
-          <TableX columnDefs={columnDefs} EmptyChild={EmptyChildContainer} customizer={customizer}
-            rowData={data} onRowClick={handleRowClick} onRowStyle={handleRowDensityChange}
-            onHeaderStyle={handleHeaderDensityChange} onSortColumn={setSortColumns}
+          <BaseGrid columnDefs={columnDefs} EmptyChild={EmptyChildContainer} customizer={customizer}
+            rowData={data} onRowClick={handleRowClick} onColumnSort={setSortColumns}
           />
         </div>
         <div className='grid-footer'>

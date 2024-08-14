@@ -2,7 +2,7 @@ import { useRef, useImperativeHandle, forwardRef, MutableRefObject } from 'react
 import { Checkbox, CheckboxProps, FormControl, FormControlLabel } from '@mui/material';
 import FieldDecorator from './FieldDecorator';
 import { ICheckBoxField, ISwitchField, getFieldHandler, useFieldManager } from '@palmyralabs/rt-forms';
-import { generateOptions, getFieldLabel } from './util';
+import { getFieldLabel } from './util';
 import { ICheckBoxDefinition } from './types';
 import { TbSquareRounded, TbSquareRoundedCheckFilled } from 'react-icons/tb';
 
@@ -35,16 +35,14 @@ const MuiCheckBox = forwardRef(function MuiCheckBox(props: MuiCheckBoxDefn, ref:
         };
     }, [fieldManager]);
 
-    var options = generateOptions(props, mutateOptions, getValue());
-
-    delete options.muiProps;
+    var options = fieldManager.getFieldProps();
 
     options.onChange = (d: any) => { if (!props.readOnly) setValue(d.target.checked); }
 
     return (<>{!mutateOptions.visible &&
         <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass} colspan={props.colspan}
             customFieldClass={props.customFieldClass} customLabelClass={props.customLabelClass}>
-            <FormControl {...options} {...props.muiProps}>
+            <FormControl {...options} value={getValue()} >
                 <FormControlLabel
                     control={<Checkbox className="customCheckbox" icon={<Icon />} checkedIcon={<CheckedIcon />}
                         checked={value} // autoFocus={autoFocus}

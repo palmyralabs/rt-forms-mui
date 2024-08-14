@@ -3,25 +3,22 @@ import { Rating, RatingProps } from '@mui/material';
 import FieldDecorator from './FieldDecorator';
 import { IRatingDefinition } from './types';
 import { IFormFieldError, IRatingField, getFieldHandler, useFieldManager } from '@palmyralabs/rt-forms';
-import { generateOptions, getFieldLabel } from './util';
+import { getFieldLabel } from './util';
 import { Star, StarOutline } from '@mui/icons-material';
 
-interface MuiRatingDefn extends IRatingDefinition {
-    muiProps?: RatingProps
-}
 
-const MuiRating = forwardRef(function MuiRating(props: MuiRatingDefn, ref: MutableRefObject<IRatingField>) {
+const MuiRating = forwardRef(function MuiRating(props: IRatingDefinition & RatingProps, ref: MutableRefObject<IRatingField>) {
     const fieldManager = useFieldManager(props.attribute, props);
     const { getError, getValue, setValue, mutateOptions } = fieldManager;
     const currentRef = ref ? ref : useRef<IRatingField>(null);
     const error: IFormFieldError = getError();
     const inputRef = useRef(null);
     const variant = props.variant || 'standard';
-    const autoFocus = props?.muiProps?.autoFocus || false;
-    const precision = props?.muiProps?.precision || 1;
-    const max = props?.muiProps?.max || 5;
-    const Icon: any = props?.muiProps?.icon || Star;
-    const EmptyIcon: any = props?.muiProps?.emptyIcon || StarOutline;
+    const autoFocus = props?.autoFocus || false;
+    const precision = props?.precision || 1;
+    const max = props?.max || 5;
+    const Icon: any = props?.icon || Star;
+    const EmptyIcon: any = props?.emptyIcon || StarOutline;
 
     useImperativeHandle(currentRef, () => {
         const handler = getFieldHandler(fieldManager)
@@ -41,16 +38,14 @@ const MuiRating = forwardRef(function MuiRating(props: MuiRatingDefn, ref: Mutab
     }, [fieldManager]);
 
 
-    var options = generateOptions(props, mutateOptions, getValue());
-
-    delete options.muiProps;
-
+    var options = fieldManager.getFieldProps();
+    
     options.onChange = (d: any) => { if (!props.readOnly) setValue(d.target.value); }
 
     return (<>{!mutateOptions.visible &&
         <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass} colspan={props.colspan}
             customFieldClass={props.customFieldClass} customLabelClass={props.customLabelClass}>
-            <Rating {...options}
+            <Rating 
                 variant={variant}
                 precision={precision}
                 readOnly={props.readOnly}
@@ -60,7 +55,8 @@ const MuiRating = forwardRef(function MuiRating(props: MuiRatingDefn, ref: Mutab
                 icon={<Icon />}
                 emptyIcon={<EmptyIcon />}
                 max={max}
-                {...props.muiProps}
+                {...options}
+                value={getValue()}
                 error={error.status}
                 helperText={error.message}
                 autoFocus={autoFocus}

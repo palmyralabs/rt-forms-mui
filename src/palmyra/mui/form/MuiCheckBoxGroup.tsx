@@ -2,7 +2,7 @@ import { useRef, useImperativeHandle, forwardRef, MutableRefObject } from 'react
 import { Checkbox, CheckboxProps, FormControl, FormControlLabel, FormHelperText } from '@mui/material';
 import FieldDecorator from './FieldDecorator';
 import { ICheckBoxField, IFormFieldError, ISwitchField, getFieldHandler, useFieldManager } from '@palmyralabs/rt-forms';
-import { generateOptions, getFieldLabel } from './util';
+import { getFieldLabel } from './util';
 import { ICheckBoxGroupDefinition } from './types';
 import { TbSquareRounded, TbSquareRoundedCheckFilled } from 'react-icons/tb';
 
@@ -34,7 +34,7 @@ const MuiCheckBoxGroup = forwardRef(function MuiCheckBoxGroup(props: MuiCheckBox
         };
     }, [fieldManager]);
 
-    var options = generateOptions(props, mutateOptions, getValue());
+    var options = fieldManager.getFieldProps();
 
     delete options.muiProps;
 
@@ -66,7 +66,8 @@ const MuiCheckBoxGroup = forwardRef(function MuiCheckBoxGroup(props: MuiCheckBox
     return (<>{!mutateOptions.visible &&
         <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass} colspan={props.colspan}
             customFieldClass={props.customFieldClass} customLabelClass={props.customLabelClass}>
-            <FormControl fullWidth error={error.status} {...options} style={{ flexDirection: props.flexDirection }}>
+            <FormControl fullWidth style={{ flexDirection: props.flexDirection }} error={error.status} {...options}
+                value={getValue()}>
                 {props.options ?
                     Object.keys(props.options).map((key, i) => (
                         <FormControlLabel key={key} value={key}

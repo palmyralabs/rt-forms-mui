@@ -1,47 +1,46 @@
-import { jsx as t, Fragment as d, jsxs as v } from "react/jsx-runtime";
-import { forwardRef as F, useRef as m, useImperativeHandle as O } from "react";
-import { FormControl as M, InputLabel as x, Select as P, MenuItem as R, FormHelperText as L } from "@mui/material";
+import { jsx as t, Fragment as c, jsxs as v } from "react/jsx-runtime";
+import { forwardRef as C, useRef as u, useImperativeHandle as F } from "react";
+import { FormControl as M, InputLabel as O, Select as x, MenuItem as R, FormHelperText as L } from "@mui/material";
 import j from "./FieldDecorator.js";
 import { useFieldManager as y, getFieldHandler as H } from "@palmyralabs/rt-forms";
-import { generateOptions as I, getFieldLabel as S } from "./util.js";
-const k = F(function(e, o) {
-  const l = y(e.attribute, e), { getError: f, getValue: g, setValue: h, mutateOptions: s } = l, b = o || m(null), u = f(), i = m(null), C = e.muiProps.variant || "standard";
-  O(b, () => ({
-    ...H(l),
+import { getFieldLabel as I } from "./util.js";
+const T = C(function(e, i) {
+  const n = y(e.attribute, e), { getError: d, getValue: m, setValue: f, mutateOptions: g } = n, h = i || u(null), o = d(), a = u(null), b = e.variant || "standard";
+  F(h, () => ({
+    ...H(n),
     focus() {
-      i && i.current.focus();
+      a && a.current.focus();
     },
-    setOptions(c) {
+    setOptions(s) {
     },
     getOptions() {
     }
-  }), [l]);
-  const a = e.options;
-  var n = I(e, s, g());
-  return e.readOnly && (n.inputProps = { readOnly: !0 }), n.onChange = (r) => {
-    e.readOnly || h(r.target.value);
-  }, /* @__PURE__ */ t(d, { children: !s.visible && /* @__PURE__ */ t(
+  }), [n]);
+  var r = n.getFieldProps();
+  return e.readOnly && (r.inputProps = { readOnly: !0 }), r.onChange = (l) => {
+    e.readOnly || f(l.target.value);
+  }, /* @__PURE__ */ t(c, { children: !g.visible && /* @__PURE__ */ t(
     j,
     {
-      label: S(e),
+      label: I(e),
       customContainerClass: e.customContainerClass,
       colspan: e.colspan,
       customFieldClass: e.customFieldClass,
       customLabelClass: e.customLabelClass,
-      children: /* @__PURE__ */ v(M, { variant: C, fullWidth: !0, error: u.status, children: [
-        e.label ? /* @__PURE__ */ t(x, { required: n.required, children: e.label }) : /* @__PURE__ */ t(d, {}),
-        /* @__PURE__ */ t(P, { sx: {
+      children: /* @__PURE__ */ v(M, { variant: b, fullWidth: !0, error: o.status, children: [
+        e.label ? /* @__PURE__ */ t(O, { required: r.required, children: e.label }) : /* @__PURE__ */ t(c, {}),
+        /* @__PURE__ */ t(x, { sx: {
           m: 0
-        }, ...n, inputRef: (r) => {
-          i.current = r;
-        }, children: a ? Object.keys(a).map(
-          (r, c) => /* @__PURE__ */ t(R, { value: r, children: a[r] }, c)
-        ) : e.muiProps.children ? e.muiProps.children : /* @__PURE__ */ t("div", { children: "No options provided" }) }),
-        /* @__PURE__ */ t(L, { className: "form-error-text", children: u.message })
+        }, ...r, value: m(), inputRef: (l) => {
+          a.current = l;
+        }, children: r ? Object.keys(r).map(
+          (l, s) => /* @__PURE__ */ t(R, { value: l, children: r[l] }, s)
+        ) : e.children ? e.children : /* @__PURE__ */ t("div", { children: "No options provided" }) }),
+        /* @__PURE__ */ t(L, { className: "form-error-text", children: o.message })
       ] })
     }
   ) });
 });
 export {
-  k as MuiSelect
+  T as MuiSelect
 };

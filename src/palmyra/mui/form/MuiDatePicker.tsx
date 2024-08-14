@@ -1,6 +1,6 @@
 import { useRef, useImperativeHandle, forwardRef, MutableRefObject } from 'react';
 import { DatePicker, DatePickerProps, LocalizationProvider } from '@mui/x-date-pickers';
-import { generateOptions, getFieldLabel } from './util';
+import { getFieldLabel } from './util';
 import FieldDecorator from './FieldDecorator';
 import { IDatePickerDefinition } from './types';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
@@ -48,7 +48,7 @@ const MuiDatePicker = forwardRef(function MuiDatePicker(props: MuiDatePickerDefn
         };
     }, [fieldManager]);
 
-    var options = generateOptions(props, mutateOptions, getValue());
+    var options = fieldManager.getFieldProps();
 
     options.onChange = (d: any) => { if (!props.readOnly) setValue(d); }
 
@@ -58,7 +58,7 @@ const MuiDatePicker = forwardRef(function MuiDatePicker(props: MuiDatePickerDefn
         <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass}
             colspan={props.colspan} customFieldClass={props.customFieldClass} customLabelClass={props.customLabelClass}>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DatePicker {...options}
+                <DatePicker 
                     readOnly={props.readOnly}
                     {...props.muiProps}
                     format={displayFormat}
@@ -72,6 +72,8 @@ const MuiDatePicker = forwardRef(function MuiDatePicker(props: MuiDatePickerDefn
                             inputRef
                         },
                     }}
+                    {...options}
+                    value={getValue()}
                 />
             </LocalizationProvider>
         </FieldDecorator>}

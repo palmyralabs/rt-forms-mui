@@ -18,7 +18,7 @@ import "react";
 import "@mui/material";
 /* empty css                             */
 import "@tanstack/react-table";
-import "../../../../../chunks/AsyncTreeMenu.js";
+import "../../../../../chunks/index2.js";
 import "react-router-dom";
 import "../../../menu/AsyncTreeMenuEditor.js";
 import "@mui/icons-material";

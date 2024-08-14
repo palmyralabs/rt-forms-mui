@@ -1,38 +1,38 @@
 import { jsx as t, Fragment as C } from "react/jsx-runtime";
-import { forwardRef as b, useRef as s, useImperativeHandle as k } from "react";
-import { FormControl as g, FormControlLabel as F, Checkbox as O } from "@mui/material";
-import R from "./FieldDecorator.js";
-import { useFieldManager as x, getFieldHandler as I } from "@palmyralabs/rt-forms";
-import { generateOptions as v, getFieldLabel as L } from "./util.js";
-import { b as M, c as y } from "../../../chunks/index3.js";
-const D = b(function(e, a) {
-  const o = x(e.attribute, e), { getValue: r, setValue: u, mutateOptions: i } = o, d = a || s(null), m = e.icon || M, f = e.checkedIcon || y, h = r() == !0, c = s(null);
+import { forwardRef as b, useRef as i, useImperativeHandle as k } from "react";
+import { FormControl as F, FormControlLabel as g, Checkbox as R } from "@mui/material";
+import x from "./FieldDecorator.js";
+import { useFieldManager as O, getFieldHandler as v } from "@palmyralabs/rt-forms";
+import { getFieldLabel as I } from "./util.js";
+import { b as L, c as M } from "../../../chunks/index4.js";
+const D = b(function(e, l) {
+  const n = O(e.attribute, e), { getValue: a, setValue: s, mutateOptions: u } = n, d = l || i(null), m = e.icon || L, f = e.checkedIcon || M, h = a() == !0, c = i(null);
   k(d, () => ({
-    ...I(o),
+    ...v(n),
     focus() {
       c.current.checked = !0, c.current.focus();
     },
-    setOptions(B) {
+    setOptions(q) {
     },
     getOptions() {
     }
-  }), [o]);
-  var l = v(e, i, r());
-  return delete l.muiProps, l.onChange = (n) => {
-    e.readOnly || u(n.target.checked);
-  }, /* @__PURE__ */ t(C, { children: !i.visible && /* @__PURE__ */ t(
-    R,
+  }), [n]);
+  var r = n.getFieldProps();
+  return r.onChange = (o) => {
+    e.readOnly || s(o.target.checked);
+  }, /* @__PURE__ */ t(C, { children: !u.visible && /* @__PURE__ */ t(
+    x,
     {
-      label: L(e),
+      label: I(e),
       customContainerClass: e.customContainerClass,
       colspan: e.colspan,
       customFieldClass: e.customFieldClass,
       customLabelClass: e.customLabelClass,
-      children: /* @__PURE__ */ t(g, { ...l, ...e.muiProps, children: /* @__PURE__ */ t(
-        F,
+      children: /* @__PURE__ */ t(F, { ...r, value: a(), children: /* @__PURE__ */ t(
+        g,
         {
           control: /* @__PURE__ */ t(
-            O,
+            R,
             {
               className: "customCheckbox",
               icon: /* @__PURE__ */ t(m, {}),
@@ -40,8 +40,8 @@ const D = b(function(e, a) {
               checked: h,
               disabled: e.disabled,
               readOnly: e.readOnly,
-              inputRef: (n) => {
-                c.current = n;
+              inputRef: (o) => {
+                c.current = o;
               }
             }
           ),

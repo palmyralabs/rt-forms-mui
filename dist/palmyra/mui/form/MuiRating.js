@@ -1,56 +1,56 @@
-import { jsx as t, Fragment as M } from "react/jsx-runtime";
-import { forwardRef as L, useRef as C, useImperativeHandle as z } from "react";
-import { Rating as E } from "@mui/material";
-import H from "./FieldDecorator.js";
-import { useFieldManager as S, getFieldHandler as V } from "@palmyralabs/rt-forms";
-import { generateOptions as j, getFieldLabel as k } from "./util.js";
-import { Star as w, StarOutline as D } from "@mui/icons-material";
-const U = L(function(e, l) {
-  var m, o, r, d, s, f;
-  const n = S(e.attribute, e), { getError: F, getValue: b, setValue: O, mutateOptions: c } = n, P = l || C(null), u = F(), a = C(null), h = e.variant || "standard", R = ((m = e == null ? void 0 : e.muiProps) == null ? void 0 : m.autoFocus) || !1, v = ((o = e == null ? void 0 : e.muiProps) == null ? void 0 : o.precision) || 1, y = ((r = e == null ? void 0 : e.muiProps) == null ? void 0 : r.max) || 5, x = ((d = e == null ? void 0 : e.muiProps) == null ? void 0 : d.icon) || w, I = ((s = e == null ? void 0 : e.muiProps) == null ? void 0 : s.emptyIcon) || D;
-  z(P, () => ({
-    ...V(n),
+import { jsx as t, Fragment as R } from "react/jsx-runtime";
+import { forwardRef as y, useRef as d, useImperativeHandle as x } from "react";
+import { Rating as I } from "@mui/material";
+import M from "./FieldDecorator.js";
+import { useFieldManager as L, getFieldHandler as z } from "@palmyralabs/rt-forms";
+import { getFieldLabel as E } from "./util.js";
+import { Star as H, StarOutline as P } from "@mui/icons-material";
+const B = y(function(e, i) {
+  var u;
+  const n = L(e.attribute, e), { getError: o, getValue: r, setValue: s, mutateOptions: f } = n, g = i || d(null), l = o(), a = d(null), F = e.variant || "standard", C = (e == null ? void 0 : e.autoFocus) || !1, b = (e == null ? void 0 : e.precision) || 1, h = (e == null ? void 0 : e.max) || 5, v = (e == null ? void 0 : e.icon) || H, O = (e == null ? void 0 : e.emptyIcon) || P;
+  x(g, () => ({
+    ...z(n),
     focus() {
       a.current.checked = !0, a.current.focus();
     },
     getOptions() {
     },
-    setOptions(q) {
+    setOptions(V) {
     }
   }), [n]);
-  var i = j(e, c, b());
-  return delete i.muiProps, i.onChange = (g) => {
-    e.readOnly || O(g.target.value);
-  }, /* @__PURE__ */ t(M, { children: !c.visible && /* @__PURE__ */ t(
-    H,
+  var c = n.getFieldProps();
+  return c.onChange = (m) => {
+    e.readOnly || s(m.target.value);
+  }, /* @__PURE__ */ t(R, { children: !f.visible && /* @__PURE__ */ t(
+    M,
     {
-      label: k(e),
+      label: E(e),
       customContainerClass: e.customContainerClass,
       colspan: e.colspan,
       customFieldClass: e.customFieldClass,
       customLabelClass: e.customLabelClass,
       children: /* @__PURE__ */ t(
-        E,
+        I,
         {
-          ...i,
-          variant: h,
-          precision: v,
+          variant: F,
+          precision: b,
           readOnly: e.readOnly,
           disabled: e.disabled,
           inputRef: a,
-          size: (f = e == null ? void 0 : e.fieldProps) == null ? void 0 : f.size,
-          icon: /* @__PURE__ */ t(x, {}),
-          emptyIcon: /* @__PURE__ */ t(I, {}),
-          max: y,
-          ...e.muiProps,
-          error: u.status,
-          helperText: u.message,
-          autoFocus: R
+          size: (u = e == null ? void 0 : e.fieldProps) == null ? void 0 : u.size,
+          icon: /* @__PURE__ */ t(v, {}),
+          emptyIcon: /* @__PURE__ */ t(O, {}),
+          max: h,
+          ...c,
+          value: r(),
+          error: l.status,
+          helperText: l.message,
+          autoFocus: C
         }
       )
     }
   ) });
 });
 export {
-  U as MuiRating
+  B as MuiRating
 };

@@ -3,15 +3,11 @@ import { FormControl, FormControlLabel, FormHelperText, Switch, SwitchProps } fr
 import FieldDecorator from './FieldDecorator';
 import { ISwitchDefinition } from './types';
 import { IFormFieldError, ISwitchField, getFieldHandler, useFieldManager } from '@palmyralabs/rt-forms';
-import { generateOptions, getFieldLabel } from './util';
+import { getFieldLabel } from './util';
 import parseOptions from './options/OptionsParser';
 import { Android12Switch, IOSSwitch, MaterialUISwitch } from './options/SwitchTypes';
 
-interface MuiSwitchDefn extends ISwitchDefinition {
-    muiProps?: SwitchProps
-}
-
-const MuiSwitch = forwardRef(function MuiSwitch(props: MuiSwitchDefn, ref: MutableRefObject<ISwitchField>) {
+const MuiSwitch = forwardRef(function MuiSwitch(props: ISwitchDefinition & SwitchProps, ref: MutableRefObject<ISwitchField>) {
     const fieldManager = useFieldManager(props.attribute, props);
     const { getError, getValue, setValue, mutateOptions } = fieldManager;
     const currentRef = ref ? ref : useRef<ISwitchField>(null);
@@ -84,16 +80,14 @@ const MuiSwitch = forwardRef(function MuiSwitch(props: MuiSwitchDefn, ref: Mutab
         Muiswitch = Switch;
     }
 
-    var options = generateOptions(props, mutateOptions, getValue());
-
-    delete options.muiProps;
+    var options = fieldManager.getFieldProps();
 
     options.onChange = (d: any) => { if (!props.readOnly) setValue(d.target.checked); }
 
     return (<>{!mutateOptions.visible &&
         <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass} colspan={props.colspan}
             customFieldClass={props.customFieldClass} customLabelClass={props.customLabelClass}>
-            <FormControl error={error.status} {...options} {...props.muiProps}>
+            <FormControl error={error.status} {...options} value={getValue()}>
                 <FormControlLabel value={getOptionValue()} inputRef={(i) => { inputRef.current = i; }}
                     control={<Muiswitch sx={{ m: 1 }} checked={isOn} onClick={toggleStatus}
                         disabled={props.readOnly}

@@ -1,12 +1,12 @@
 import { jsx as r, Fragment as F, jsxs as p } from "react/jsx-runtime";
-import { forwardRef as v, useRef as f, useImperativeHandle as O } from "react";
+import { forwardRef as v, useRef as m, useImperativeHandle as O } from "react";
 import { FormControl as R, FormControlLabel as k, Checkbox as D, FormHelperText as S } from "@mui/material";
 import L from "./FieldDecorator.js";
 import { useFieldManager as M, getFieldHandler as V } from "@palmyralabs/rt-forms";
-import { generateOptions as j, getFieldLabel as y } from "./util.js";
-import { b as H, c as T } from "../../../chunks/index3.js";
-const P = v(function(e, c) {
-  const o = M(e.attribute, e), { getError: h, getValue: u, setValue: g, mutateOptions: d } = o, C = c || f(null), m = h(), i = f(null);
+import { getFieldLabel as j } from "./util.js";
+import { b as y, c as H } from "../../../chunks/index4.js";
+const w = v(function(t, c) {
+  const o = M(t.attribute, t), { getError: f, getValue: u, setValue: h, mutateOptions: g } = o, C = c || m(null), d = f(), i = m(null);
   O(C, () => ({
     ...V(o),
     focus() {
@@ -17,51 +17,61 @@ const P = v(function(e, c) {
     getOptions() {
     }
   }), [o]);
-  var a = j(e, d, u());
+  var a = o.getFieldProps();
   delete a.muiProps;
-  function b(t, l) {
+  function b(e, l) {
     const n = o.getValue() ? o.getValue().split(",") : [];
-    var s = n.indexOf(t);
-    l ? s < 0 && n.push(t) : s >= 0 && n.splice(s, 1);
+    var s = n.indexOf(e);
+    l ? s < 0 && n.push(e) : s >= 0 && n.splice(s, 1);
   }
-  a.onChange = (t) => {
-    e.readOnly || (b(t.target.value, t.target.checked), g(t.target.value));
+  a.onChange = (e) => {
+    t.readOnly || (b(e.target.value, e.target.checked), h(e.target.value));
   };
-  const x = (t) => u().includes(t);
-  return /* @__PURE__ */ r(F, { children: !d.visible && /* @__PURE__ */ r(
+  const x = (e) => u().includes(e);
+  return /* @__PURE__ */ r(F, { children: !g.visible && /* @__PURE__ */ r(
     L,
     {
-      label: y(e),
-      customContainerClass: e.customContainerClass,
-      colspan: e.colspan,
-      customFieldClass: e.customFieldClass,
-      customLabelClass: e.customLabelClass,
-      children: /* @__PURE__ */ p(R, { fullWidth: !0, error: m.status, ...a, style: { flexDirection: e.flexDirection }, children: [
-        e.options ? Object.keys(e.options).map((t, l) => /* @__PURE__ */ r(
-          k,
-          {
-            value: t,
-            control: /* @__PURE__ */ r(
-              D,
+      label: j(t),
+      customContainerClass: t.customContainerClass,
+      colspan: t.colspan,
+      customFieldClass: t.customFieldClass,
+      customLabelClass: t.customLabelClass,
+      children: /* @__PURE__ */ p(
+        R,
+        {
+          fullWidth: !0,
+          style: { flexDirection: t.flexDirection },
+          error: d.status,
+          ...a,
+          value: u(),
+          children: [
+            t.options ? Object.keys(t.options).map((e, l) => /* @__PURE__ */ r(
+              k,
               {
-                icon: /* @__PURE__ */ r(H, { style: { fontSize: "20px" } }),
-                checkedIcon: /* @__PURE__ */ r(T, { style: { fontSize: "20px" } }),
-                checked: x(t),
-                disabled: e.readOnly,
-                inputRef: (n) => {
-                  l == 0 && (i.current = n);
-                }
-              }
-            ),
-            label: e.options[t]
-          },
-          t
-        )) : /* @__PURE__ */ r("div", { children: "No options provided" }),
-        /* @__PURE__ */ r(S, { className: "form-error-text", children: m.message })
-      ] })
+                value: e,
+                control: /* @__PURE__ */ r(
+                  D,
+                  {
+                    icon: /* @__PURE__ */ r(y, { style: { fontSize: "20px" } }),
+                    checkedIcon: /* @__PURE__ */ r(H, { style: { fontSize: "20px" } }),
+                    checked: x(e),
+                    disabled: t.readOnly,
+                    inputRef: (n) => {
+                      l == 0 && (i.current = n);
+                    }
+                  }
+                ),
+                label: t.options[e]
+              },
+              e
+            )) : /* @__PURE__ */ r("div", { children: "No options provided" }),
+            /* @__PURE__ */ r(S, { className: "form-error-text", children: d.message })
+          ]
+        }
+      )
     }
   ) });
 });
 export {
-  P as MuiCheckBoxGroup
+  w as MuiCheckBoxGroup
 };

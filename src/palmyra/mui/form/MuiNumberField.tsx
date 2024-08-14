@@ -2,15 +2,11 @@ import { useRef, useImperativeHandle, forwardRef, MutableRefObject } from 'react
 import { TextField, TextFieldProps } from '@mui/material';
 
 import { getFieldHandler, IFormFieldError, ITextField, useFieldManager } from '@palmyralabs/rt-forms';
-import { generateOptions, getFieldLabel } from './util'
+import { getFieldLabel } from './util'
 import FieldDecorator from './FieldDecorator';
 import { ITextFieldDefinition } from './types';
 
-interface MuiNumberFieldDefn extends ITextFieldDefinition {
-    muiProps?: TextFieldProps
-}
-
-const MuiNumberField = forwardRef(function MuiNumberField(props: MuiNumberFieldDefn, ref: MutableRefObject<ITextField>) {
+const MuiNumberField = forwardRef(function MuiNumberField(props: ITextFieldDefinition & TextFieldProps, ref: MutableRefObject<ITextField>) {
     // const fieldGroupManager: IFieldGroupManager = useContext(FieldGroupManagerContext);
 
     const fieldManager = useFieldManager(props.attribute, props);
@@ -19,7 +15,7 @@ const MuiNumberField = forwardRef(function MuiNumberField(props: MuiNumberFieldD
     const error: IFormFieldError = getError();
 
     const inputRef: any = useRef(null);
-    const variant = props?.muiProps?.variant || 'standard';
+    const variant = props?.variant || 'standard';
 
     useImperativeHandle(currentRef, () => {
         const handler = getFieldHandler(fieldManager)
@@ -31,7 +27,7 @@ const MuiNumberField = forwardRef(function MuiNumberField(props: MuiNumberFieldD
         };
     }, [fieldManager]);
 
-    var options = generateOptions(props, mutateOptions, getValue());
+    var options = fieldManager.getFieldProps();
 
     delete options.muiProps;
 
@@ -42,12 +38,13 @@ const MuiNumberField = forwardRef(function MuiNumberField(props: MuiNumberFieldD
     return (<>{!mutateOptions.visible &&
         <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass}
             colspan={props.colspan} customFieldClass={props.customFieldClass} customLabelClass={props.customLabelClass}>
-            <TextField {...options}
-                {...props.muiProps}
+            <TextField 
                 label={label}
                 variant={variant}
                 fullWidth={true}
                 inputRef={inputRef}
+                {...options}
+                value={getValue()}
                 error={error.status}
                 helperText={error.message}
             />

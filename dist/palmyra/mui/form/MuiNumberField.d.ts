@@ -1,9 +1,5 @@
-import { TextFieldProps } from '@mui/material';
 import { ITextField } from '@palmyralabs/rt-forms';
 import { ITextFieldDefinition } from './types';
 
-interface MuiNumberFieldDefn extends ITextFieldDefinition {
-    muiProps?: TextFieldProps;
-}
-declare const MuiNumberField: import('react').ForwardRefExoticComponent<MuiNumberFieldDefn & import('react').RefAttributes<ITextField>>;
+declare const MuiNumberField: import('react').ForwardRefExoticComponent<(Omit<ITextFieldDefinition & import('@mui/material').StandardTextFieldProps, "ref"> | Omit<ITextFieldDefinition & import('@mui/material').OutlinedTextFieldProps, "ref"> | Omit<ITextFieldDefinition & import('@mui/material').FilledTextFieldProps, "ref">) & import('react').RefAttributes<ITextField>>;
 export { MuiNumberField };

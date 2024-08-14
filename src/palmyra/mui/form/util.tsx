@@ -1,12 +1,5 @@
-import { IMutateOptions } from "@palmyralabs/rt-forms";
 import { MuiInputFieldOptions } from "./types";
 
-
-const generateOptions = (p: any, o: IMutateOptions, v?: any) => {
-    var result: any = { ...p, ...o };
-    result.value = v;
-    return result;
-}
 
 const getFieldLabel = (props: MuiInputFieldOptions) => {
     const label = props.labelMode == 'title' ? props.label : ''
@@ -23,4 +16,4 @@ const getFieldLabel = (props: MuiInputFieldOptions) => {
         return label;
 }
 
-export { generateOptions, getFieldLabel }
+export { getFieldLabel }

@@ -1,44 +1,44 @@
-import { jsx as l, Fragment as C } from "react/jsx-runtime";
-import { forwardRef as F, useRef as u, useImperativeHandle as h } from "react";
-import { TextField as x } from "@mui/material";
-import { useFieldManager as v, getFieldHandler as R } from "@palmyralabs/rt-forms";
-import { generateOptions as M, getFieldLabel as T } from "./util.js";
-import w from "./FieldDecorator.js";
-const y = F(function(e, r) {
-  const t = v(e.attribute, e), { getError: m, getValue: c, setValue: d, mutateOptions: n } = t, f = r || u(null), i = m(), o = u(null), g = e.muiProps.variant || "standard";
+import { jsx as a, Fragment as C } from "react/jsx-runtime";
+import { forwardRef as F, useRef as s, useImperativeHandle as h } from "react";
+import { TextField as v } from "@mui/material";
+import { useFieldManager as x, getFieldHandler as R } from "@palmyralabs/rt-forms";
+import { getFieldLabel as M } from "./util.js";
+import T from "./FieldDecorator.js";
+const y = F(function(e, l) {
+  const t = x(e.attribute, e), { getError: u, getValue: c, setValue: m, mutateOptions: d } = t, f = l || s(null), r = u(), n = s(null), g = e.variant || "standard";
   h(f, () => ({
     ...R(t),
     focus() {
-      o.current.focus();
+      n.current.focus();
     }
   }), [t]);
-  var a = M(e, n, c());
-  delete a.muiProps, a.onChange = (s) => {
-    e.readOnly || d(s.target.value);
+  var o = t.getFieldProps();
+  o.onChange = (i) => {
+    e.readOnly || m(i.target.value);
   };
   const b = e.labelMode != "title" ? e.label : "";
-  return /* @__PURE__ */ l(C, { children: !n.visible && /* @__PURE__ */ l(
-    w,
+  return /* @__PURE__ */ a(C, { children: !d.visible && /* @__PURE__ */ a(
+    T,
     {
-      label: T(e),
+      label: M(e),
       customContainerClass: e.customContainerClass,
       colspan: e.colspan,
       customFieldClass: e.customFieldClass,
       customLabelClass: e.customLabelClass,
-      children: /* @__PURE__ */ l(
-        x,
+      children: /* @__PURE__ */ a(
+        v,
         {
-          ...a,
-          ...e.muiProps,
           variant: g,
           label: b,
           minRows: 2,
           maxRows: 5,
           fullWidth: !0,
           multiline: !0,
-          inputRef: o,
-          error: i.status,
-          helperText: i.message
+          inputRef: n,
+          ...o,
+          value: c(),
+          error: r.status,
+          helperText: r.message
         }
       )
     }

@@ -2,16 +2,13 @@ import { useRef, useImperativeHandle, forwardRef, MutableRefObject } from 'react
 import { FormControl, FormControlLabel, FormHelperText, Radio, RadioGroup, RadioProps } from '@mui/material';
 import FieldDecorator from './FieldDecorator';
 import { IFormFieldError, IRadioGroupField, ISwitchField, getFieldHandler, useFieldManager } from '@palmyralabs/rt-forms';
-import { generateOptions, getFieldLabel } from './util';
+import { getFieldLabel } from './util';
 import { IoMdRadioButtonOff } from 'react-icons/io';
 import { RiRadioButtonFill } from 'react-icons/ri';
 import { IRadioGroupDefinition } from './types';
 
-interface MuiRadioGroupDefn extends IRadioGroupDefinition {
-    muiProps?: RadioProps
-}
 
-const MuiRadioGroup = forwardRef(function MuiRadioGroup(props: MuiRadioGroupDefn, ref: MutableRefObject<IRadioGroupField>) {
+const MuiRadioGroup = forwardRef(function MuiRadioGroup(props: IRadioGroupDefinition & RadioProps, ref: MutableRefObject<IRadioGroupField>) {
     const fieldManager = useFieldManager(props.attribute, props);
     const { getError, getValue, setValue, mutateOptions } = fieldManager;
     const currentRef = ref ? ref : useRef<ISwitchField>(null);
@@ -35,11 +32,9 @@ const MuiRadioGroup = forwardRef(function MuiRadioGroup(props: MuiRadioGroupDefn
     }, [fieldManager]);
 
 
-    var options = generateOptions(props, mutateOptions, getValue());
+    var fieldOptions = fieldManager.getFieldProps();
 
-    delete options.muiProps;
-
-    options.onChange = (d: any) => { if (!props.readOnly) setValue(d.target.value); }
+    fieldOptions.onChange = (d: any) => { if (!props.readOnly) setValue(d.target.value); }
 
     const getOptions = (options: any) => {
         if (options) {
@@ -49,7 +44,7 @@ const MuiRadioGroup = forwardRef(function MuiRadioGroup(props: MuiRadioGroupDefn
                     <FormControlLabel key={v.value} value={v.value}
                         control={<Radio
                             icon={<IoMdRadioButtonOff size={24} />} checkedIcon={<RiRadioButtonFill size={24} />}
-                            inputRef={inputRef} />} label={v.label} //autoFocus={autoFocus}
+                            inputRef={inputRef} />} label={v.label} 
                     />
                 ))
                 return result;
@@ -60,7 +55,7 @@ const MuiRadioGroup = forwardRef(function MuiRadioGroup(props: MuiRadioGroupDefn
                     <FormControlLabel key={index} value={key}
                         control={<Radio
                             icon={<IoMdRadioButtonOff size={24} />} checkedIcon={<RiRadioButtonFill size={24} />}
-                            inputRef={inputRef} />} label={options[key]} //autoFocus={autoFocus} 
+                            inputRef={inputRef} />} label={options[key]} 
                     />
                 ))
             }
@@ -75,7 +70,7 @@ const MuiRadioGroup = forwardRef(function MuiRadioGroup(props: MuiRadioGroupDefn
             customFieldClass={props.customFieldClass} customLabelClass={props.customLabelClass}>
             <FormControl fullWidth error={error.status} >
                 <div>{props.label}</div>
-                <RadioGroup icon row={row} {...props.muiProps} {...options}>
+                <RadioGroup icon row={row} {...fieldOptions} value={getValue()}>
                     {getOptions(props.options)}
                 </RadioGroup>
                 <FormHelperText className='form-error-text'>{error.message}</FormHelperText>

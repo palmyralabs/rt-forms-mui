@@ -2,15 +2,12 @@ import { useRef, useImperativeHandle, forwardRef, MutableRefObject } from 'react
 import { TextField, TextFieldProps } from '@mui/material';
 
 import { getFieldHandler, IFormFieldError, ITextField, useFieldManager } from '@palmyralabs/rt-forms';
-import { generateOptions, getFieldLabel } from './util'
+import { getFieldLabel } from './util'
 import FieldDecorator from './FieldDecorator';
 import { ITextFieldDefinition } from './types';
 
-interface MuiTextFieldDefn extends ITextFieldDefinition {
-    muiProps?: TextFieldProps
-}
 
-const MuiTextArea = forwardRef(function MuiTextArea(props: MuiTextFieldDefn, ref: MutableRefObject<ITextField>) {
+const MuiTextArea = forwardRef(function MuiTextArea(props: ITextFieldDefinition & TextFieldProps, ref: MutableRefObject<ITextField>) {
     // const fieldGroupManager: IFieldGroupManager = useContext(FieldGroupManagerContext);
 
     const fieldManager = useFieldManager(props.attribute, props);
@@ -19,7 +16,7 @@ const MuiTextArea = forwardRef(function MuiTextArea(props: MuiTextFieldDefn, ref
     const error: IFormFieldError = getError();
 
     const inputRef: any = useRef(null);
-    const variant = props.muiProps.variant || 'standard';
+    const variant = props.variant || 'standard';
 
     useImperativeHandle(currentRef, () => {
         const handler = getFieldHandler(fieldManager)
@@ -31,9 +28,7 @@ const MuiTextArea = forwardRef(function MuiTextArea(props: MuiTextFieldDefn, ref
         };
     }, [fieldManager]);
 
-    var options = generateOptions(props, mutateOptions, getValue());
-
-    delete options.muiProps;
+    var options = fieldManager.getFieldProps();
 
     options.onChange = (d: any) => { if (!props.readOnly) setValue(d.target.value); }
 
@@ -42,8 +37,7 @@ const MuiTextArea = forwardRef(function MuiTextArea(props: MuiTextFieldDefn, ref
     return (<>{!mutateOptions.visible &&
         <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass}
             colspan={props.colspan} customFieldClass={props.customFieldClass} customLabelClass={props.customLabelClass}>
-            <TextField {...options}
-                {...props.muiProps}
+            <TextField 
                 variant={variant}
                 label={label}
                 minRows={2}
@@ -51,6 +45,8 @@ const MuiTextArea = forwardRef(function MuiTextArea(props: MuiTextFieldDefn, ref
                 fullWidth={true}
                 multiline
                 inputRef={inputRef}
+                {...options}
+                value={getValue()}
                 error={error.status}
                 helperText={error.message}
             />

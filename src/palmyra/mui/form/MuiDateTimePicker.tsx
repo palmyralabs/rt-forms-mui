@@ -1,17 +1,13 @@
 import { useRef, useImperativeHandle, forwardRef, MutableRefObject } from 'react';
 import { DatePickerProps, DateTimePicker, LocalizationProvider } from '@mui/x-date-pickers';
-import { generateOptions, getFieldLabel } from './util';
+import { getFieldLabel } from './util';
 import FieldDecorator from './FieldDecorator';
 import { IDatePickerDefinition } from './types';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import dayjs from "dayjs";
 import { IDateField, IFormFieldError, useFieldManager, getFieldHandler } from '@palmyralabs/rt-forms';
 
-interface MuiDateTimePickerDefn extends IDatePickerDefinition {
-    muiProps?: DatePickerProps<any>
-}
-
-const MuiDateTimePicker = forwardRef(function MuiDateTimePicker(props: MuiDateTimePickerDefn,
+const MuiDateTimePicker = forwardRef(function MuiDateTimePicker(props: IDatePickerDefinition & DatePickerProps<any>,
     ref: MutableRefObject<IDateField>) {
     const serverPattern = props.serverPattern || props.displayPattern || "YYYY-MM-DD";
     const displayFormat: string = props.displayPattern || props.serverPattern || "YYYY-MM-DD";
@@ -48,7 +44,7 @@ const MuiDateTimePicker = forwardRef(function MuiDateTimePicker(props: MuiDateTi
         };
     }, [fieldManager]);
 
-    var options = generateOptions(props, mutateOptions, getValue());
+    var options = fieldManager.getFieldProps();
 
     options.onChange = (d: any) => { if (!props.readOnly) setValue(d); }
 
@@ -58,9 +54,8 @@ const MuiDateTimePicker = forwardRef(function MuiDateTimePicker(props: MuiDateTi
         <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass}
             colspan={props.colspan} customFieldClass={props.customFieldClass} customLabelClass={props.customLabelClass}>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DateTimePicker {...options}
+                <DateTimePicker
                     readOnly={props.readOnly}
-                    {...props.muiProps}
                     format={displayFormat}
                     label={label}
                     views={['year', 'day', 'hours', 'minutes', 'seconds']}
@@ -73,6 +68,8 @@ const MuiDateTimePicker = forwardRef(function MuiDateTimePicker(props: MuiDateTi
                             inputRef
                         },
                     }}
+                    {...options}
+                    value={getValue()}
                 />
             </LocalizationProvider>
         </FieldDecorator>}

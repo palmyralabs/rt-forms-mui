@@ -1,47 +1,46 @@
-import { jsx as a, Fragment as C } from "react/jsx-runtime";
-import { forwardRef as h, useRef as c, useImperativeHandle as v } from "react";
-import { TextField as x } from "@mui/material";
-import { useFieldManager as M, getFieldHandler as R } from "@palmyralabs/rt-forms";
-import { generateOptions as T, getFieldLabel as L } from "./util.js";
-import O from "./FieldDecorator.js";
-const E = h(function(e, r) {
-  var s;
-  const t = M(e.attribute, e), { getError: m, getValue: d, setValue: f, mutateOptions: n } = t, g = r || c(null), i = m(), o = c(null), F = ((s = e.muiProps) == null ? void 0 : s.variant) || "standard";
-  v(g, () => ({
-    ...R(t),
+import { jsx as l, Fragment as b } from "react/jsx-runtime";
+import { forwardRef as C, useRef as s, useImperativeHandle as h } from "react";
+import { TextField as v } from "@mui/material";
+import { useFieldManager as x, getFieldHandler as M } from "@palmyralabs/rt-forms";
+import { getFieldLabel as R } from "./util.js";
+import T from "./FieldDecorator.js";
+const D = C(function(e, a) {
+  const t = x(e.attribute, e), { getError: u, getValue: c, setValue: d, mutateOptions: m } = t, f = a || s(null), r = u(), n = s(null), g = e.variant || "standard";
+  h(f, () => ({
+    ...M(t),
     focus() {
-      o.current.focus();
+      n.current.focus();
     }
   }), [t]);
-  var l = T(e, n, d());
-  delete l.muiProps, l.onChange = (u) => {
-    e.readOnly || f(u.target.value);
+  var o = t.getFieldProps();
+  o.onChange = (i) => {
+    e.readOnly || d(i.target.value);
   };
-  const b = e.labelMode != "title" ? e.label : "";
-  return /* @__PURE__ */ a(C, { children: !n.visible && /* @__PURE__ */ a(
-    O,
+  const F = e.labelMode != "title" ? e.label : "";
+  return /* @__PURE__ */ l(b, { children: !m.visible && /* @__PURE__ */ l(
+    T,
     {
-      label: L(e),
+      label: R(e),
       customContainerClass: e.customContainerClass,
       colspan: e.colspan,
       customFieldClass: e.customFieldClass,
       customLabelClass: e.customLabelClass,
-      children: /* @__PURE__ */ a(
-        x,
+      children: /* @__PURE__ */ l(
+        v,
         {
-          ...l,
-          ...e.muiProps,
-          label: b,
-          variant: F,
+          label: F,
+          variant: g,
           fullWidth: !0,
-          inputRef: o,
-          error: i.status,
-          helperText: i.message
+          inputRef: n,
+          ...o,
+          value: c(),
+          error: r.status,
+          helperText: r.message
         }
       )
     }
   ) });
 });
 export {
-  E as MuiTextField
+  D as MuiTextField
 };

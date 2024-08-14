@@ -1,47 +1,46 @@
-import { jsx as a, Fragment as C } from "react/jsx-runtime";
-import { forwardRef as h, useRef as c, useImperativeHandle as v } from "react";
-import { TextField as M } from "@mui/material";
-import { useFieldManager as x, getFieldHandler as R } from "@palmyralabs/rt-forms";
-import { generateOptions as I, getFieldLabel as L } from "./util.js";
-import O from "./FieldDecorator.js";
-const y = h(function(e, n) {
-  var s;
-  const t = x(e.attribute, e), { getError: m, getValue: d, setValue: f, mutateOptions: r } = t, g = n || c(null), i = m(), o = c(null), F = ((s = e == null ? void 0 : e.muiProps) == null ? void 0 : s.variant) || "standard";
-  v(g, () => ({
-    ...R(t),
+import { jsx as l, Fragment as b } from "react/jsx-runtime";
+import { forwardRef as C, useRef as s, useImperativeHandle as h } from "react";
+import { TextField as v } from "@mui/material";
+import { useFieldManager as M, getFieldHandler as x } from "@palmyralabs/rt-forms";
+import { getFieldLabel as R } from "./util.js";
+import I from "./FieldDecorator.js";
+const w = C(function(e, a) {
+  const t = M(e.attribute, e), { getError: u, getValue: c, setValue: d, mutateOptions: m } = t, f = a || s(null), n = u(), r = s(null), g = (e == null ? void 0 : e.variant) || "standard";
+  h(f, () => ({
+    ...x(t),
     focus() {
-      o.current.focus();
+      r.current.focus();
     }
   }), [t]);
-  var l = I(e, r, d());
-  delete l.muiProps, l.onChange = (u) => {
-    e.readOnly || f(u.target.value.replace(/\D/g, ""));
+  var i = t.getFieldProps();
+  i.onChange = (o) => {
+    e.readOnly || d(o.target.value.replace(/\D/g, ""));
   };
-  const b = e.labelMode != "title" ? e.label : "";
-  return /* @__PURE__ */ a(C, { children: !r.visible && /* @__PURE__ */ a(
-    O,
+  const F = e.labelMode != "title" ? e.label : "";
+  return /* @__PURE__ */ l(b, { children: !m.visible && /* @__PURE__ */ l(
+    I,
     {
-      label: L(e),
+      label: R(e),
       customContainerClass: e.customContainerClass,
       colspan: e.colspan,
       customFieldClass: e.customFieldClass,
       customLabelClass: e.customLabelClass,
-      children: /* @__PURE__ */ a(
-        M,
+      children: /* @__PURE__ */ l(
+        v,
         {
-          ...l,
-          ...e.muiProps,
-          label: b,
-          variant: F,
+          label: F,
+          variant: g,
           fullWidth: !0,
-          inputRef: o,
-          error: i.status,
-          helperText: i.message
+          inputRef: r,
+          ...i,
+          value: c(),
+          error: n.status,
+          helperText: n.message
         }
       )
     }
   ) });
 });
 export {
-  y as MuiIntegerField
+  w as MuiIntegerField
 };
