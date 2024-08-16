@@ -1,11 +1,8 @@
-import { jsx as r, Fragment as t, jsxs as i } from "react/jsx-runtime";
-const a = (e) => {
-  const l = e.labelMode == "title" ? e.label : "";
-  return e.required && l ? /* @__PURE__ */ r(t, { children: /* @__PURE__ */ i("div", { style: { display: "flex", alignItems: "center", gap: "3px" }, children: [
-    l,
-    /* @__PURE__ */ r("span", { style: { color: "red" }, children: "*" })
-  ] }) }) : l;
-};
+import { jsx as t, Fragment as l, jsxs as i } from "react/jsx-runtime";
+const n = (e) => e.required && e.title ? /* @__PURE__ */ t(l, { children: /* @__PURE__ */ i("div", { style: { display: "flex", alignItems: "center", gap: "3px" }, children: [
+  e.title,
+  /* @__PURE__ */ t("span", { style: { color: "red" }, children: "*" })
+] }) }) : e.title;
 export {
-  a as getFieldLabel
+  n as getFieldLabel
 };

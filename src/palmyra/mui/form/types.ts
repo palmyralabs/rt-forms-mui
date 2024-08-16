@@ -27,7 +27,7 @@ interface TextViewAttributeDefinition {
 
 interface MuiInputFieldOptions extends FieldOptions {
     label?: string,
-    labelMode?: "label" | "title"
+    title?: string,
     attribute: string
 }
 

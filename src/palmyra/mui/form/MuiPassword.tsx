@@ -45,7 +45,6 @@ const MuiPassword = forwardRef(function MuiPassword(props: MuiPasswordDefn, ref:
         ),
     }
 
-    const label = props.labelMode != 'title' ? props.label : ''
 
     return (<>{!mutateOptions.visible &&
         <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass}
@@ -53,7 +52,7 @@ const MuiPassword = forwardRef(function MuiPassword(props: MuiPasswordDefn, ref:
             <TextField
                 InputProps={inputProps}                
                 type={showPassword ? 'text' : 'password'}
-                label={label}
+                label={props.label}
                 variant={variant}
                 fullWidth={true}
                 inputRef={inputRef}

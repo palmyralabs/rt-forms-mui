@@ -48,7 +48,6 @@ const MuiDateTimePicker = forwardRef(function MuiDateTimePicker(props: IDatePick
 
     options.onChange = (d: any) => { if (!props.readOnly) setValue(d); }
 
-    const label = props.labelMode != 'title' ? props.label : ''
 
     return (<>{!mutateOptions.visible &&
         <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass}
@@ -57,7 +56,7 @@ const MuiDateTimePicker = forwardRef(function MuiDateTimePicker(props: IDatePick
                 <DateTimePicker
                     readOnly={props.readOnly}
                     format={displayFormat}
-                    label={label}
+                    label={props.label}
                     views={['year', 'day', 'hours', 'minutes', 'seconds']}
                     slotProps={{
                         textField: {

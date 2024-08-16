@@ -32,13 +32,12 @@ const MuiTextField = forwardRef(function MuiTextField(props: ITextFieldDefinitio
 
     options.onChange = (d: any) => { if (!props.readOnly) setValue(d.target.value); }
 
-    const label = props.labelMode != 'title' ? props.label : ''
 
     return (<>{!mutateOptions.visible &&
         <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass}
             colspan={props.colspan} customFieldClass={props.customFieldClass} customLabelClass={props.customLabelClass}>
             <TextField
-                label={label}
+                label={props.label}
                 variant={variant}
                 fullWidth={true}
                 inputRef={inputRef}

@@ -2,18 +2,17 @@ import { MuiInputFieldOptions } from "./types";
 
 
 const getFieldLabel = (props: MuiInputFieldOptions) => {
-    const label = props.labelMode == 'title' ? props.label : ''
-    if (props.required && label)
+    if (props.required && props.title)
         return (
             <>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '3px' }}>
-                    {label}
+                    {props.title}
                     <span style={{ color: 'red' }}>*</span>
                 </div>
             </>
         );
     else
-        return label;
+        return props.title;
 }
 
 export { getFieldLabel }

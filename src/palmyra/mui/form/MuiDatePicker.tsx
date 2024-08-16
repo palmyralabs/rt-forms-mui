@@ -52,8 +52,6 @@ const MuiDatePicker = forwardRef(function MuiDatePicker(props: MuiDatePickerDefn
 
     options.onChange = (d: any) => { if (!props.readOnly) setValue(d); }
 
-    const label = props.labelMode != 'title' ? props.label : ''
-
     return (<>{!mutateOptions.visible &&
         <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass}
             colspan={props.colspan} customFieldClass={props.customFieldClass} customLabelClass={props.customLabelClass}>
@@ -62,7 +60,7 @@ const MuiDatePicker = forwardRef(function MuiDatePicker(props: MuiDatePickerDefn
                     readOnly={props.readOnly}
                     {...props.muiProps}
                     format={displayFormat}
-                    label={label}
+                    label={props.label}
                     slotProps={{
                         textField: {
                             error: error.status,

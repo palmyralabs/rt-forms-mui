@@ -1,18 +1,18 @@
 import { jsx as a, Fragment as h } from "react/jsx-runtime";
-import { forwardRef as v, useRef as d, useImperativeHandle as y } from "react";
-import { LocalizationProvider as Y, DatePicker as x } from "@mui/x-date-pickers";
-import { getFieldLabel as L } from "./util.js";
-import O from "./FieldDecorator.js";
-import u from "dayjs";
-import { useFieldManager as R, getFieldHandler as V } from "@palmyralabs/rt-forms";
-import { A as j } from "../../../chunks/AdapterDayjs.js";
-const w = v(function(e, l) {
-  const n = e.serverPattern || e.displayPattern || "YYYY-MM-DD", c = e.displayPattern || e.serverPattern || "YYYY-MM-DD", m = (t) => t ? u(t, n) : u(void 0), f = (t) => {
+import { forwardRef as v, useRef as u, useImperativeHandle as y } from "react";
+import { LocalizationProvider as M, DatePicker as Y } from "@mui/x-date-pickers";
+import { getFieldLabel as x } from "./util.js";
+import L from "./FieldDecorator.js";
+import d from "dayjs";
+import { useFieldManager as O, getFieldHandler as R } from "@palmyralabs/rt-forms";
+import { A as V } from "../../../chunks/AdapterDayjs.js";
+const q = v(function(e, n) {
+  const l = e.serverPattern || e.displayPattern || "YYYY-MM-DD", c = e.displayPattern || e.serverPattern || "YYYY-MM-DD", m = (t) => t ? d(t, l) : d(void 0), f = (t) => {
     if (t && t.isValid && t.isValid())
-      return t.format(n);
-  }, r = R(e.attribute, e, { format: f, parse: m }), { getError: P, getValue: g, setValue: C, mutateOptions: F } = r, b = l || d(null), i = P(), o = d(null), D = e.variant || "standard";
-  y(b, () => ({
-    ...V(r),
+      return t.format(l);
+  }, r = O(e.attribute, e, { format: f, parse: m }), { getError: P, getValue: g, setValue: C, mutateOptions: F } = r, D = n || u(null), i = P(), o = u(null), b = e.variant || "standard";
+  y(D, () => ({
+    ...R(r),
     focus() {
       o.current.focus();
     },
@@ -20,30 +20,28 @@ const w = v(function(e, l) {
     }
   }), [r]);
   var s = r.getFieldProps();
-  s.onChange = (t) => {
+  return s.onChange = (t) => {
     e.readOnly || C(t);
-  };
-  const M = e.labelMode != "title" ? e.label : "";
-  return /* @__PURE__ */ a(h, { children: !F.visible && /* @__PURE__ */ a(
-    O,
+  }, /* @__PURE__ */ a(h, { children: !F.visible && /* @__PURE__ */ a(
+    L,
     {
-      label: L(e),
+      label: x(e),
       customContainerClass: e.customContainerClass,
       colspan: e.colspan,
       customFieldClass: e.customFieldClass,
       customLabelClass: e.customLabelClass,
-      children: /* @__PURE__ */ a(Y, { dateAdapter: j, children: /* @__PURE__ */ a(
-        x,
+      children: /* @__PURE__ */ a(M, { dateAdapter: V, children: /* @__PURE__ */ a(
+        Y,
         {
           readOnly: e.readOnly,
           ...e.muiProps,
           format: c,
-          label: M,
+          label: e.label,
           slotProps: {
             textField: {
               error: i.status,
               helperText: i.message,
-              variant: D,
+              variant: b,
               fullWidth: !0,
               inputRef: o
             }
@@ -56,5 +54,5 @@ const w = v(function(e, l) {
   ) });
 });
 export {
-  w as MuiDatePicker
+  q as MuiDatePicker
 };
