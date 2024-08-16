@@ -1,22 +1,13 @@
-import React, { MutableRefObject, forwardRef, useImperativeHandle, useRef } from 'react';
+import { MutableRefObject, forwardRef, useImperativeHandle, useRef } from 'react';
 import { default as defaultEmptyChild } from './EmptyChildTable';
-import { IPageQueryable, IServerQueryInput, useServerQuery } from "@palmyralabs/rt-forms"
-import { ColumnDefinition, GridCustomizer } from '../types';
+import { IPageQueryable, useServerQuery } from "@palmyralabs/rt-forms"
+import { GridCustomizer } from '../types';
 import { generateColumns } from '../utils/ColumnConverter';
 import { NoopGridCustomizer } from './NoopGridCustomizer';
-import BaseGrid from './BaseGrid';
-import { IEndPoint } from '@palmyralabs/palmyra-wire';
+import BaseTable from './BaseTable';
+import { ApiDataTableOptions } from './typesInternal';
 
-interface ApiGridOptions extends IServerQueryInput {
-  endPoint: IEndPoint,
-  store?: never,
-  columns: ColumnDefinition[],
-  customizer?: GridCustomizer,
-  EmptyChild?: React.FC,
-  onRowClick?: Function
-}
-
-const ApiGrid = forwardRef(function ApiGrid(props: ApiGridOptions, ref: MutableRefObject<IPageQueryable>) {
+const ApiDataTable = forwardRef(function ApiDataTable(props: ApiDataTableOptions, ref: MutableRefObject<IPageQueryable>) {
   const { columns, EmptyChild } = props;
   const EmptyChildContainer = EmptyChild || defaultEmptyChild;
   const customizer: GridCustomizer = props.customizer || NoopGridCustomizer;
@@ -36,12 +27,10 @@ const ApiGrid = forwardRef(function ApiGrid(props: ApiGridOptions, ref: MutableR
   const setSortColumns = serverQuery.setSortColumns;
 
   return (
-    <BaseGrid columnDefs={columnDefs} EmptyChild={EmptyChildContainer} customizer={customizer}
+    <BaseTable columnDefs={columnDefs} EmptyChild={EmptyChildContainer} customizer={customizer}
       rowData={data} onRowClick={handleRowClick} onColumnSort={setSortColumns}
     />
   )
 });
 
-export { ApiGrid };
-
-export type { ApiGridOptions }
+export { ApiDataTable };

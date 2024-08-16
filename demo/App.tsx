@@ -6,6 +6,7 @@ import { SimplGrid } from "./pages/grid/SimpleGrid";
 import ServerCardPage from "./card/ServerCardPage";
 import SideMenu from "./treeMenu/SideMenu";
 import TextFieldPage from "./pages/form/TextFieldPage";
+import { ServerGrid } from "./pages/grid/ServerGrid";
 
 const App = () => {
     return <>
@@ -18,6 +19,7 @@ const App = () => {
                     <Route path="/palmyra-ui/layout/card" element={<CardPage />} />
                     <Route path="/palmyra-ui/layout/serverCard" element={<ServerCardPage />} />
                     <Route path="dataGrid/simple" element={<SimplGrid />} />
+                    <Route path="dataGrid/apiGrid" element={<ServerGrid />} />
                     <Route path="*" element={<h1>Under Construction</h1>} />
                 </Route>
             </Routes>

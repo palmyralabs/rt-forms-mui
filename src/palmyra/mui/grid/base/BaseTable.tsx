@@ -3,7 +3,7 @@
  */
 import { MutableRefObject, useRef } from 'react'
 import { Table, TableBody, TableCell, TableFooter, TableHead, TableRow } from '@mui/material'
-import './BaseGrid.css';
+import './BaseTable.css';
 import ColumnHeader from './ColumnHeader'
 
 import {
@@ -12,10 +12,10 @@ import {
 } from '@tanstack/react-table'
 import LoadingChild from './LoadingChild';
 import { IReactTanstackTable } from '..';
-import { BaseGridOptions } from './typesInternal';
+import { BaseTableOptions } from './typesInternal';
 import { useBaseGridManager } from './useBaseGridManager';
 
-export default function BaseGrid(props: BaseGridOptions) {
+export default function BaseTable(props: BaseTableOptions) {
 
   const { rowData, customizer } = props;
   const { onColumnSort, options, EmptyChild, onRowClick } = useBaseGridManager(props);
@@ -27,9 +27,9 @@ export default function BaseGrid(props: BaseGridOptions) {
   return (<>
     <div className={props.className}>
       <Table aria-label={props['aria-label']} className='plr-baseGrid'>
-        <TableHead className='plr-baseGrid-header'>
+        <TableHead className='plr-grid-header'>
           {table.getHeaderGroups().map(headerGroup => (
-            <TableRow key={headerGroup.id} className='plr-baseGrid-header-row'>
+            <TableRow key={headerGroup.id} className='plr-grid-header-row'>
               {headerGroup.headers.map(header => {
                 return (
                   header.isPlaceholder ? null : (
@@ -54,14 +54,14 @@ export default function BaseGrid(props: BaseGridOptions) {
             {
               table.getRowModel().rows
                 .map((row, index) => {
-                  const rowClassName = 'plr-baseGrid-data-row plr-baseGrid-data-row-' + ((1 == index % 2) ? 'even' : 'odd');
+                  const rowClassName = 'plr-grid-data-row plr-grid-data-row-' + ((1 == index % 2) ? 'even' : 'odd');
                   return (
                     <TableRow key={row.id} className={rowClassName} >
                       {row.getVisibleCells().map(cell => {
                         const meta: any = cell.column.columnDef.meta;
                         return (
                           <TableCell key={cell.id}
-                            className='plr-baseGrid-data-cell'
+                            className='plr-grid-data-cell'
                             style={{
                               ...(meta?.columnDef?.type === 'number' ? { textAlign: 'end' } : {})
                             }}
@@ -79,11 +79,11 @@ export default function BaseGrid(props: BaseGridOptions) {
                 })}
           </TableBody>)}
         {(!props.showFooter || null == rowData || undefined == rowData || 0 == rowData.length) ? (<></>) : (
-          <TableFooter className='plr-baseGrid-footer'>
+          <TableFooter className='plr-grid-footer'>
             {table.getFooterGroups().map(footerGroup => (
-              <TableRow key={footerGroup.id} style={{ textAlign: 'end' }} className='plr-baseGrid-footer-row'>
+              <TableRow key={footerGroup.id} style={{ textAlign: 'end' }} className='plr-grid-footer-row'>
                 {footerGroup.headers.map(header => (
-                  <TableCell key={header.id} className='plr-baseGrid-footer-cell'>
+                  <TableCell key={header.id} className='plr-grid-footer-cell'>
                     {header.isPlaceholder
                       ? null
                       : flexRender(

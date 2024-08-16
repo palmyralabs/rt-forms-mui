@@ -1,1 +1,1 @@
-export * from './BaseGrid';
+export * from './BaseTable';

@@ -6,8 +6,8 @@ interface FormFieldContainerInput {
 
 const FieldGroupContainer = (props: FormFieldContainerInput) => {
     const containerClass = props.columns ?
-        "palmyra-field-group-container palmyra-field-group-container-" + props.columns + "columns"
-        : "palmyra-field-group-container";
+        "py-field-group-container py-field-group-container-" + props.columns + "columns"
+        : "py-field-group-container";
 
     return (<>
         <div className={containerClass}>

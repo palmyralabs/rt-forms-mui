@@ -1,10 +1,4 @@
-import { IPageQueryable } from '@palmyralabs/rt-forms';
-import { MutableRefObject } from 'react';
+import { DataGridPluginOptions } from '../../types';
 
-interface PaginationOptions {
-    pageSize: number | number[];
-    queryRef: MutableRefObject<IPageQueryable>;
-    pubsubTopic?: string;
-}
-declare const SelectablePagination: (o: PaginationOptions) => import("react/jsx-runtime").JSX.Element;
+declare const SelectablePagination: (o: DataGridPluginOptions) => import("react/jsx-runtime").JSX.Element;
 export { SelectablePagination };

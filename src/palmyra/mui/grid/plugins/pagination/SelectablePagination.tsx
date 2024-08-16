@@ -1,30 +1,24 @@
 import { FormControl, MenuItem, Pagination, Select } from "@mui/material"
-import { IPageQueryable } from "@palmyralabs/rt-forms"
 import { delayGenerator, topic } from "@palmyralabs/ts-utils";
-import { MutableRefObject, useEffect, useState } from "react";
-
-interface PaginationOptions {
-    pageSize: number | number[],
-    queryRef: MutableRefObject<IPageQueryable>,
-    pubsubTopic?: string
-}
+import { useEffect, useState } from "react";
+import { DataGridPluginOptions } from "../../types";
 
 const delay = delayGenerator(10)
 
-const SelectablePagination = (o: PaginationOptions) => {
+const SelectablePagination = (o: DataGridPluginOptions) => {
 
     const pageQuery = o.queryRef?.current;
     const [_count, setCount] = useState<number>(0); // Counter used to refresh the state of pagination
 
     useEffect(() => {
-        if (o.pubsubTopic) {
-            const handler = topic.subscribe(o.pubsubTopic, () => {
+        if (o.topic) {
+            const handler = topic.subscribe(o.topic + "/data", () => {
                 delay(() => setCount((d: number) => d + 1));
             });
 
             return () => { topic.unsubscribe(handler) };
         }
-    }, [o.pubsubTopic])
+    }, [o.topic])
 
     if (!pageQuery)
         return (<></>);

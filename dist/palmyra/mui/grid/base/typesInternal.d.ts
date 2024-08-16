@@ -1,7 +1,9 @@
 import { RowData, ColumnDef } from '@tanstack/react-table';
-import { GridCustomizer } from '../types';
+import { ColumnDefinition, GridCustomizer, IGridPlugin } from '../types';
+import { IServerQueryInput } from '@palmyralabs/rt-forms';
+import { IEndPoint } from '@palmyralabs/palmyra-wire';
 
-interface BaseGridOptions {
+interface BaseTableOptions {
     'aria-label'?: string;
     showFooter?: boolean;
     className?: string;
@@ -12,4 +14,12 @@ interface BaseGridOptions {
     EmptyChild?: React.FC;
     customizer?: GridCustomizer;
 }
-export type { BaseGridOptions };
+interface ApiDataTableOptions extends IServerQueryInput, IGridPlugin {
+    endPoint: IEndPoint;
+    store?: never;
+    columns: ColumnDefinition[];
+    customizer?: GridCustomizer;
+    EmptyChild?: React.FC;
+    onRowClick?: Function;
+}
+export type { BaseTableOptions, ApiDataTableOptions };

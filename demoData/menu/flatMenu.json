@@ -15,12 +15,18 @@
             "id": 200,
             "name": "DataGrid",
             "code": "dataGrid",
-            "children":"201"
+            "children":"201,202"
         },
         {
             "id": 201,
             "name": "Simple Grid",
             "code": "dataGrid/Simple",
+            "parent": 200
+        },
+        {
+            "id": 202,
+            "name": "API Grid",
+            "code": "dataGrid/apiGrid",
             "parent": 200
         },
         {

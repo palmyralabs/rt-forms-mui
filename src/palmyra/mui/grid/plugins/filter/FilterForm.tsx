@@ -1,22 +1,21 @@
 import { Button } from "@mui/material";
-import { IForm, IPageQueryable, PalmyraForm } from "@palmyralabs/rt-forms";
+import { IForm, PalmyraForm } from "@palmyralabs/rt-forms";
 import { setValueByKey } from "@palmyralabs/ts-utils";
 import { MutableRefObject, useRef } from "react";
 import { TbRefresh } from "react-icons/tb";
 import { TbFilterShare } from "react-icons/tb";
-import { ColumnDefinition } from "../../types";
+import { ColumnDefinition, DataGridPluginOptions } from "../../types";
 import { convertToField } from "./GridFieldConverter";
 import getField from "./FieldGenerator";
+import FieldGroupContainer from "../../../form/FieldGroupContainer";
 
 
-interface FilterOptions {
-    columns: ColumnDefinition[],
+interface FilterOptions extends DataGridPluginOptions{    
     onClose?: (filter: any) => void,
-    defaultFilter?: Record<string, any>,
-    queryRef: MutableRefObject<IPageQueryable>
+    defaultFilter?: Record<string, any>
 }
 
-const Filter = (o: FilterOptions) => {
+const FilterForm = (o: FilterOptions) => {
     const formattedFilterValue = {};
     const filterRef: MutableRefObject<IForm> = useRef<IForm>();
     const defaultFilter = o.defaultFilter || {};
@@ -50,7 +49,15 @@ const Filter = (o: FilterOptions) => {
     }
 
     const assignFilter = () => {
-        const filterData = filterRef.current.getData();
+        const formData = filterRef.current.getData();
+        var filterData = {};
+
+        Object.entries(formData).map(([key, value]) => {
+            if(value && value != ''){
+                filterData[key] = value;
+            }
+        })
+
         if (setFilter) {
             setFilter(filterData);
         };
@@ -61,7 +68,9 @@ const Filter = (o: FilterOptions) => {
     return <div className='grid-filter-container'>
         <div className="grid-filter-content">
             <PalmyraForm formData={formattedFilterValue} mode="new" ref={filterRef}>
-                {getFilterColumns()}
+                <FieldGroupContainer columns={2}>
+                    {getFilterColumns()}
+                </FieldGroupContainer>
             </PalmyraForm>
         </div>
         <div className="grid-filter-btn-container">
@@ -77,4 +86,4 @@ const Filter = (o: FilterOptions) => {
     </div>
 }
 
-export default Filter;
+export { FilterForm };

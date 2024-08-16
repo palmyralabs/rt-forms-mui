@@ -1,6 +1,6 @@
-import { BaseGridOptions } from './typesInternal';
+import { BaseTableOptions } from './typesInternal';
 
-declare const useBaseGridManager: (o: BaseGridOptions) => {
+declare const useBaseGridManager: (o: BaseTableOptions) => {
     onColumnSort: (column: any, sortOrder: any) => void;
     onRowClick: Function;
     options: {

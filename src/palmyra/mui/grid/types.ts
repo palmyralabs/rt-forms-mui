@@ -1,6 +1,8 @@
 import { CellContext, ColumnDef, OnChangeFn, Row, RowData, RowModel, RowSelectionState, Table } from "@tanstack/react-table";
 import { MutableRefObject } from "react";
-import { ColumnFieldOptions } from "../types";
+import { ColumnFieldOptions, ITitle } from "../types";
+import { ApiDataTableOptions } from "./base/typesInternal";
+import { IPageQueryable } from "@palmyralabs/rt-forms";
 
 type IReactTanstackTable = import("@tanstack/table-core").Table<RowData>;
 
@@ -47,10 +49,28 @@ interface ITableOptions {
 }
 
 interface IGridPlugin {
-    onDataChange?: (data:any[]) => void
+    onDataChange?: (newData: any[], oldData?: any[]) => void
+}
+
+interface DataGridOptions extends ApiDataTableOptions {
+    onNewClick?: Function,
+    topic?: string
+}
+
+interface DataGridPluginOptions {
+    topic: string,
+    queryRef: MutableRefObject<IPageQueryable>,
+    pageSize?: number | number[],
+    columns: ColumnDefinition[]
+}
+
+interface GridXOptions extends DataGridOptions {
+    title?: ITitle,
+    DataGridControls?: (props: DataGridPluginOptions) => JSX.Element
+    DataGridPagination?: (props: DataGridPluginOptions) => JSX.Element
 }
 
 export type {
     ColumnDefinition, GridCustomizer, CellGetter, IExportOptions, IReactTanstackTable, ITableOptions,
-    IGridPlugin
+    IGridPlugin, DataGridOptions, DataGridPluginOptions, GridXOptions
 };
