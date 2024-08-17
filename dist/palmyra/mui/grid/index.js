@@ -5,7 +5,7 @@ import { SelectablePagination as G } from "./plugins/pagination/SelectablePagina
 import "react/jsx-runtime";
 import "react";
 import "@mui/material";
-/* empty css                        */
+import '../../../assets/BaseTable.css';/* empty css                        */
 import "@tanstack/react-table";
 import { GridX as F } from "./GridX.js";
 import { PalmyraGrid as b } from "./PalmyraGrid.js";

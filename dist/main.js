@@ -22,7 +22,7 @@ import { SelectablePagination as Q } from "./palmyra/mui/grid/plugins/pagination
 import "react/jsx-runtime";
 import "react";
 import "@mui/material";
-/* empty css                 */
+import './assets/BaseTable.css';/* empty css                 */
 import "@tanstack/react-table";
 import { GridX as W } from "./palmyra/mui/grid/GridX.js";
 import { PalmyraGrid as Z } from "./palmyra/mui/grid/PalmyraGrid.js";

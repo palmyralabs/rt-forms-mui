@@ -3,7 +3,7 @@ import { forwardRef as m, useRef as u, useImperativeHandle as d } from "react";
 import v from "./FieldDecorator.js";
 import { useFieldManager as f } from "@palmyralabs/rt-forms";
 import { getFieldLabel as b } from "./util.js";
-const M = m(function(e, i) {
+import '../../../assets/MuiOptionsView.css';const M = m(function(e, i) {
   const l = f(e.attribute, e), n = i || u(null), s = e.textAlign || "left", o = e.variant || "standard", { getValue: a } = l;
   return d(n, () => ({
     getValue: a

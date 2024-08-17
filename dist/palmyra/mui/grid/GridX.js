@@ -5,7 +5,7 @@ import { a as p } from "../../../chunks/index4.js";
 import { FilterForm as u } from "./plugins/filter/FilterForm.js";
 import { DataGrid as y } from "./DataGrid.js";
 import { SelectablePagination as F } from "./plugins/pagination/SelectablePagination.js";
-const M = s(function(r, d) {
+import '../../../assets/GridX.css';const M = s(function(r, d) {
   const t = d || f(), e = r.topic || h(() => "id" + Math.random(), []), a = {
     queryRef: t,
     columns: r.columns,

@@ -1,7 +1,7 @@
 import { jsx as e, Fragment as d, jsxs as u } from "react/jsx-runtime";
 import { useRef as T } from "react";
 import { Table as x, TableHead as R, TableRow as c, TableBody as v, TableCell as f, TableFooter as D } from "@mui/material";
-/* empty css                           */
+import '../../../../assets/BaseTable.css';/* empty css                           */
 import y from "./ColumnHeader.js";
 import { useReactTable as F, flexRender as m } from "@tanstack/react-table";
 import B from "./LoadingChild.js";
