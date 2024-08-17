@@ -1,5 +1,5 @@
 
-import { MuiTextField } from "../../../src/palmyra";
+import { FieldGroupContainer, MuiTextField } from "../../../src/palmyra";
 import FormX from "../wire/FormX";
 
 
@@ -11,22 +11,24 @@ const BasicSetup = `<MuiTextField attribute="name" placeholder="Enter Name" vari
 const BasicTextField = () => {
     return (
         <FormX>
-            <MuiTextField attribute="name"
-                placeholder="Enter Name"
-                variant="outlined"
-                autoFocus={true}
-                label="Name"
-            />
-            <MuiTextField attribute="name"
-                placeholder="Enter Name"
-                variant="filled"
-                label="Name"
-            />
-            <MuiTextField attribute="name"
-                placeholder="Enter Name"
-                variant="standard"
-                label="Name"
-            />
+            <FieldGroupContainer columns={3}>
+                <MuiTextField attribute="name"
+                    placeholder="Enter Name"
+                    variant="outlined"
+                    autoFocus={true}
+                    label="Name"
+                />
+                <MuiTextField attribute="name"
+                    placeholder="Enter Name"
+                    variant="filled"
+                    label="Name"
+                />
+                <MuiTextField attribute="name"
+                    placeholder="Enter Name"
+                    variant="standard"
+                    label="Name"
+                />
+            </FieldGroupContainer>
         </FormX>
     )
 }
@@ -46,7 +48,7 @@ const TypeValidationTextField = () => {
                 attribute="email"
                 placeholder="example@email.com"
                 required={true}
-                validRule={{ rule:"email", errorMessage:'Invalid Email'}}
+                validRule={{ rule: "email", errorMessage: 'Invalid Email' }}
                 label="Email"
             />
         </FormX>

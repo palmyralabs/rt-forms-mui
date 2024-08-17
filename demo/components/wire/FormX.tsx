@@ -1,7 +1,7 @@
 import { PalmyraStoreFactory, StoreFactory } from "@palmyralabs/palmyra-wire";
 import { PalmyraForm } from "@palmyralabs/rt-forms";
 import { useState } from "react";
-import FieldGroupContainer from "../../../src/palmyra/mui/form/FieldGroupContainer";
+import { FieldGroupContainer } from "../../../src/palmyra";
 
 
 interface IFormInput {
@@ -15,7 +15,7 @@ const FormX = (props: IFormInput) => {
 
 
     return (
-        <PalmyraForm formData={{}} mode="new" onValidChange={setValid}
+        <PalmyraForm formData={{}} onValidChange={setValid}
             storeFactory={storeFactory}>
             <FieldGroupContainer>
                 <div className="formx-children-container">

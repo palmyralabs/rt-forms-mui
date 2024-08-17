@@ -7,7 +7,7 @@ import { TbFilterShare } from "react-icons/tb";
 import { ColumnDefinition, DataGridPluginOptions } from "../../types";
 import { convertToField } from "./GridFieldConverter";
 import getField from "./FieldGenerator";
-import FieldGroupContainer from "../../../form/FieldGroupContainer";
+import { FieldGroupContainer } from "../../../form";
 
 
 interface FilterOptions extends DataGridPluginOptions{    
@@ -67,7 +67,7 @@ const FilterForm = (o: FilterOptions) => {
 
     return <div className='grid-filter-container'>
         <div className="grid-filter-content">
-            <PalmyraForm formData={formattedFilterValue} mode="new" ref={filterRef}>
+            <PalmyraForm formData={formattedFilterValue} ref={filterRef}>
                 <FieldGroupContainer columns={2}>
                     {getFilterColumns()}
                 </FieldGroupContainer>

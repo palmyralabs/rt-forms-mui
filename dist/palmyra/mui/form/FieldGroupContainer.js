@@ -1,8 +1,9 @@
-import { jsx as e, Fragment as o } from "react/jsx-runtime";
-const c = (n) => {
-  const r = n.columns ? "py-field-group-container py-field-group-container-" + n.columns + "columns" : "py-field-group-container";
-  return /* @__PURE__ */ e(o, { children: /* @__PURE__ */ e("div", { className: r, children: n.children }) });
+import { jsx as r, Fragment as o } from "react/jsx-runtime";
+/* empty css                                  */
+const l = (n) => {
+  const e = n.columns ? "py-field-group-container py-field-group-container-" + n.columns + "columns" : "py-field-group-container";
+  return /* @__PURE__ */ r(o, { children: /* @__PURE__ */ r("div", { className: e, children: n.children }) });
 };
 export {
-  c as default
+  l as FieldGroupContainer
 };

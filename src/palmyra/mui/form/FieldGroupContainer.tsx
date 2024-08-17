@@ -1,4 +1,6 @@
 
+import './FieldGroupContainer.css'
+
 interface FormFieldContainerInput {
     columns?: 2 | 3 | 4 | number,
     children: any
@@ -16,4 +18,4 @@ const FieldGroupContainer = (props: FormFieldContainerInput) => {
     </>)
 }
 
-export default FieldGroupContainer;
+export { FieldGroupContainer }

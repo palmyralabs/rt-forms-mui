@@ -15,3 +15,4 @@ export { MuiSwitch } from './MuiSwitch';
 export { MuiTextArea } from './MuiTextArea';
 export { MuiTextView } from './MuiTextView';
 export { MuiOptionsView } from './MuiOptionsView';
+export { FieldGroupContainer } from './FieldGroupContainer';
