@@ -7,11 +7,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import dayjs from "dayjs";
 import { IDateField, IFormFieldError, useFieldManager, getFieldHandler } from '@palmyralabs/rt-forms';
 
-interface MuiDatePickerDefn extends IDatePickerDefinition {
-    muiProps?: DatePickerProps<any>
-}
-
-const MuiDatePicker = forwardRef(function MuiDatePicker(props: MuiDatePickerDefn,
+const MuiDatePicker = forwardRef(function MuiDatePicker(props: IDatePickerDefinition & DatePickerProps<any>,
     ref: MutableRefObject<IDateField>) {
     const serverPattern = props.serverPattern || props.displayPattern || "YYYY-MM-DD";
     const displayFormat: string = props.displayPattern || props.serverPattern || "YYYY-MM-DD";
@@ -33,7 +29,6 @@ const MuiDatePicker = forwardRef(function MuiDatePicker(props: MuiDatePickerDefn
     const error: IFormFieldError = getError();
 
     const inputRef: any = useRef(null);
-    const variant = props.variant || 'standard';
 
     useImperativeHandle(currentRef, () => {
         const handler = getFieldHandler(fieldManager)
@@ -48,24 +43,24 @@ const MuiDatePicker = forwardRef(function MuiDatePicker(props: MuiDatePickerDefn
         };
     }, [fieldManager]);
 
-    var options = fieldManager.getFieldProps();
-
+    var options = fieldManager.getFieldProps();   
+    if (options.defaultValue) {
+        options.defaultValue = parse(options.defaultValue);
+    }
     options.onChange = (d: any) => { if (!props.readOnly) setValue(d); }
 
     return (<>{!mutateOptions.visible &&
         <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass}
             colspan={props.colspan} customFieldClass={props.customFieldClass} customLabelClass={props.customLabelClass}>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DatePicker 
-                    readOnly={props.readOnly}
-                    {...props.muiProps}
+                <DatePicker
                     format={displayFormat}
                     label={props.label}
                     slotProps={{
                         textField: {
                             error: error.status,
                             helperText: error.message,
-                            variant: variant,
+                            variant: options.variant || 'standard',
                             fullWidth: true,
                             inputRef
                         },

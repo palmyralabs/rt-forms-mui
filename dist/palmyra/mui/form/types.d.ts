@@ -37,7 +37,6 @@ interface ITextFieldDefinition extends MuiInputFieldOptions, ILayoutOptions {
 interface IDatePickerDefinition extends MuiInputFieldOptions, ILayoutOptions {
     serverPattern?: string;
     displayPattern?: string;
-    variant?: 'standard' | 'outlined' | 'filled';
 }
 interface IDateTimePickerDefinition extends IDatePickerDefinition, MuiInputFieldOptions, ILayoutOptions {
 }

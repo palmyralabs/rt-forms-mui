@@ -1,52 +1,50 @@
-import { jsx as a, Fragment as h } from "react/jsx-runtime";
-import { forwardRef as v, useRef as u, useImperativeHandle as y } from "react";
+import { jsx as l, Fragment as b } from "react/jsx-runtime";
+import { forwardRef as h, useRef as d, useImperativeHandle as v } from "react";
 import { LocalizationProvider as M, DatePicker as Y } from "@mui/x-date-pickers";
-import { getFieldLabel as x } from "./util.js";
-import L from "./FieldDecorator.js";
-import d from "dayjs";
-import { useFieldManager as O, getFieldHandler as R } from "@palmyralabs/rt-forms";
-import { A as V } from "../../../chunks/AdapterDayjs.js";
-const q = v(function(e, n) {
-  const l = e.serverPattern || e.displayPattern || "YYYY-MM-DD", c = e.displayPattern || e.serverPattern || "YYYY-MM-DD", m = (t) => t ? d(t, l) : d(void 0), f = (t) => {
+import { getFieldLabel as V } from "./util.js";
+import y from "./FieldDecorator.js";
+import c from "dayjs";
+import { useFieldManager as x, getFieldHandler as L } from "@palmyralabs/rt-forms";
+import { A as R } from "../../../chunks/AdapterDayjs.js";
+const W = h(function(e, n) {
+  const i = e.serverPattern || e.displayPattern || "YYYY-MM-DD", m = e.displayPattern || e.serverPattern || "YYYY-MM-DD", o = (t) => t ? c(t, i) : c(void 0), f = (t) => {
     if (t && t.isValid && t.isValid())
-      return t.format(l);
-  }, r = O(e.attribute, e, { format: f, parse: m }), { getError: P, getValue: g, setValue: C, mutateOptions: F } = r, D = n || u(null), i = P(), o = u(null), b = e.variant || "standard";
-  y(D, () => ({
-    ...R(r),
+      return t.format(i);
+  }, a = x(e.attribute, e, { format: f, parse: o }), { getError: P, getValue: g, setValue: C, mutateOptions: F } = a, D = n || d(null), s = P(), u = d(null);
+  v(D, () => ({
+    ...L(a),
     focus() {
-      o.current.focus();
+      u.current.focus();
     },
     setCurrent() {
     }
-  }), [r]);
-  var s = r.getFieldProps();
-  return s.onChange = (t) => {
+  }), [a]);
+  var r = a.getFieldProps();
+  return r.defaultValue && (r.defaultValue = o(r.defaultValue)), r.onChange = (t) => {
     e.readOnly || C(t);
-  }, /* @__PURE__ */ a(h, { children: !F.visible && /* @__PURE__ */ a(
-    L,
+  }, /* @__PURE__ */ l(b, { children: !F.visible && /* @__PURE__ */ l(
+    y,
     {
-      label: x(e),
+      label: V(e),
       customContainerClass: e.customContainerClass,
       colspan: e.colspan,
       customFieldClass: e.customFieldClass,
       customLabelClass: e.customLabelClass,
-      children: /* @__PURE__ */ a(M, { dateAdapter: V, children: /* @__PURE__ */ a(
+      children: /* @__PURE__ */ l(M, { dateAdapter: R, children: /* @__PURE__ */ l(
         Y,
         {
-          readOnly: e.readOnly,
-          ...e.muiProps,
-          format: c,
+          format: m,
           label: e.label,
           slotProps: {
             textField: {
-              error: i.status,
-              helperText: i.message,
-              variant: b,
+              error: s.status,
+              helperText: s.message,
+              variant: r.variant || "standard",
               fullWidth: !0,
-              inputRef: o
+              inputRef: u
             }
           },
-          ...s,
+          ...r,
           value: g()
         }
       ) })
@@ -54,5 +52,5 @@ const q = v(function(e, n) {
   ) });
 });
 export {
-  q as MuiDatePicker
+  W as MuiDatePicker
 };

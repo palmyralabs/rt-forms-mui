@@ -46,22 +46,11 @@ interface ITextFieldDefinition extends MuiInputFieldOptions, ILayoutOptions {
 
 interface IDatePickerDefinition extends MuiInputFieldOptions, ILayoutOptions {
     serverPattern?: string,
-    displayPattern?: string,
-    // disableFuture?: boolean,
-    // disablePast?: boolean,
-    // disableHighlightToday?: boolean,
-    // displayWeekNumber?: boolean,
-    // disableOpenPicker?: boolean
-    variant?: 'standard' | 'outlined' | 'filled'
+    displayPattern?: string
 }
 
 interface IDateTimePickerDefinition extends IDatePickerDefinition, MuiInputFieldOptions, ILayoutOptions {
-    // maxDate?: object,
-    // minDate?: object,
-    // maxDateTime?: object,
-    // minDateTime?: object,
-    // maxTime?: object,
-    // minTime?: object,
+
 }
 
 interface IServerLookupDefinition extends MuiInputFieldOptions, ILayoutOptions, IServerLookupOptions {
