@@ -9,3 +9,4 @@ export * from './types'
 export * from './base'
 
 export * from './GridX'
+export * from './PalmyraGrid'

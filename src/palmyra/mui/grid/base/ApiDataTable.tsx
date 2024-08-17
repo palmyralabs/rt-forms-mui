@@ -14,7 +14,7 @@ const ApiDataTable = forwardRef(function ApiDataTable(props: ApiDataTableOptions
 
   const serverQuery = useServerQuery(props);
 
-  const currentRef = ref ? ref : useRef<IPageQueryable>(null);
+  const currentRef = ref || useRef<IPageQueryable>();
   useImperativeHandle(currentRef, () => serverQuery, [serverQuery]);
 
   const columnDefs = generateColumns(columns, customizer);

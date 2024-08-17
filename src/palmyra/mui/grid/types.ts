@@ -70,7 +70,15 @@ interface GridXOptions extends DataGridOptions {
     DataGridPagination?: (props: DataGridPluginOptions) => JSX.Element
 }
 
+interface PalmyraGridOptions extends GridXOptions {
+
+}
+
+interface IPalmyraGrid extends IPageQueryable{
+
+}
+
 export type {
     ColumnDefinition, GridCustomizer, CellGetter, IExportOptions, IReactTanstackTable, ITableOptions,
-    IGridPlugin, DataGridOptions, DataGridPluginOptions, GridXOptions
+    IGridPlugin, DataGridOptions, DataGridPluginOptions, GridXOptions, PalmyraGridOptions, IPalmyraGrid
 };

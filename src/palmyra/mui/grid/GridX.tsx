@@ -1,5 +1,5 @@
 import { IPageQueryable } from "@palmyralabs/rt-forms";
-import { useMemo, useRef } from "react";
+import { forwardRef, MutableRefObject, useMemo, useRef } from "react";
 import { DropdownButton } from "../widget/DropdownButton";
 import { TbFilterShare } from "react-icons/tb";
 import { FilterForm } from "./plugins/filter/FilterForm";
@@ -8,8 +8,8 @@ import { SelectablePagination } from "./plugins/pagination/SelectablePagination"
 import { DataGridPluginOptions, GridXOptions } from "./types";
 import './DataGrid.css'
 
-const GridX = (props: GridXOptions) => {
-    const queryRef = useRef<IPageQueryable>();
+const GridX = forwardRef(function GridX(props: GridXOptions, ref: MutableRefObject<IPageQueryable>){
+    const queryRef = ref || useRef<IPageQueryable>();
     
     const topic:string = props.topic || useMemo(() =>'id' + Math.random(), []);
     
@@ -36,6 +36,6 @@ const GridX = (props: GridXOptions) => {
         <DataGrid {...props} topic={topic} ref={queryRef} />
         <Pagination {...pluginOptions} />
     </>
-}
+});
 
 export { GridX }

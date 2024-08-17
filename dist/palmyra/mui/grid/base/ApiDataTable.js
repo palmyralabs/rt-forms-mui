@@ -5,21 +5,21 @@ import { useServerQuery as h } from "@palmyralabs/rt-forms";
 import { generateColumns as w } from "../utils/ColumnConverter.js";
 import { NoopGridCustomizer as D } from "./NoopGridCustomizer.js";
 import E from "./BaseTable.js";
-const A = d(function(o, r) {
-  const { columns: n, EmptyChild: m } = o, i = m || R, e = o.customizer || D, t = h(o), l = r || p(null);
-  y(l, () => t, [t]);
-  const s = w(n, e), a = o.onRowClick ? (C) => {
+const A = d(function(o, e) {
+  const { columns: n, EmptyChild: m } = o, i = m || R, r = o.customizer || D, t = h(o), s = e || p();
+  y(s, () => t, [t]);
+  const a = w(n, r), c = o.onRowClick ? (C) => {
     o.onRowClick(C);
   } : () => {
-  }, c = t.getCurrentData(), u = t.setSortColumns;
+  }, l = t.getCurrentData(), u = t.setSortColumns;
   return /* @__PURE__ */ f(
     E,
     {
-      columnDefs: s,
+      columnDefs: a,
       EmptyChild: i,
-      customizer: e,
-      rowData: c,
-      onRowClick: a,
+      customizer: r,
+      rowData: l,
+      onRowClick: c,
       onColumnSort: u
     }
   );

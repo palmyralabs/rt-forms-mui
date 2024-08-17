@@ -1,4 +1,5 @@
+import { IPageQueryable } from '@palmyralabs/rt-forms';
 import { GridXOptions } from './types';
 
-declare const GridX: (props: GridXOptions) => import("react/jsx-runtime").JSX.Element;
+declare const GridX: import('react').ForwardRefExoticComponent<GridXOptions & import('react').RefAttributes<IPageQueryable>>;
 export { GridX };
