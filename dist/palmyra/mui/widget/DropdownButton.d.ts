@@ -7,5 +7,10 @@ interface IDropdownButtonOptions {
     arrowStyle?: React.CSSProperties;
     children?: any;
 }
-declare const DropdownButton: (props: IDropdownButtonOptions) => import("react/jsx-runtime").JSX.Element;
+interface IDropdown {
+    open: () => void;
+    close: () => void;
+}
+declare const DropdownButton: import('react').ForwardRefExoticComponent<IDropdownButtonOptions & import('react').RefAttributes<IDropdown>>;
 export { DropdownButton };
+export type { IDropdownButtonOptions, IDropdown };

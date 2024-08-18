@@ -1,6 +1,6 @@
 import { KeyboardArrowDown } from "@mui/icons-material"
 import { Button, ClickAwayListener } from "@mui/material"
-import { useState } from "react"
+import { forwardRef, MutableRefObject, useImperativeHandle, useRef, useState } from "react"
 
 import './DropDownButton.css'
 
@@ -13,8 +13,25 @@ interface IDropdownButtonOptions {
     children?: any
 }
 
-const DropdownButton = (props: IDropdownButtonOptions) => {
+interface IDropdown {
+    open: () => void
+    close: () => void
+}
+
+const DropdownButton = forwardRef(function DropDownButton(props: IDropdownButtonOptions, ref: MutableRefObject<IDropdown>) {
     const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
+    const currentRef = ref || useRef<IDropdown>();
+
+    useImperativeHandle(currentRef, () => {
+        return {
+            open() {
+                setDropdownOpen(true);
+            },
+            close() {
+                setDropdownOpen(false);
+            }
+        }
+    }, [])
 
     const arrowStyle = props.arrowStyle || {
         transform: dropdownOpen ? 'rotate(-180deg)' : 'rotate(0deg)',
@@ -29,7 +46,7 @@ const DropdownButton = (props: IDropdownButtonOptions) => {
             <div style={{ position: "relative" }}>
                 <Button className={props.className} disableRipple
                     disabled={props.disabled}
-                    style={{display:"flex", alignItems:"center", gap:"5px"}}
+                    style={{ display: "flex", alignItems: "center", gap: "5px" }}
                     fullWidth={false}
                     onClick={() => setDropdownOpen(!dropdownOpen)}>
                     {PrefixAdornment}
@@ -45,6 +62,7 @@ const DropdownButton = (props: IDropdownButtonOptions) => {
             </div>
         </div>
     </ClickAwayListener></>
-}
+});
 
 export { DropdownButton }
+export type { IDropdownButtonOptions, IDropdown }
