@@ -1,5 +1,5 @@
 import { StoreFactoryContext } from "@palmyralabs/rt-forms";
-import { ColumnDefinition, ExportDataButton, GridX } from "../../../src/palmyra"
+import { ColumnDefinition, DataGridDefaultControls, ExportDataButton, GridX, IDataGridDefaultControlConfig } from "../../../src/palmyra"
 import { PalmyraStoreFactory, StoreFactory } from "@palmyralabs/palmyra-wire";
 
 import './ServerGrid.css'
@@ -28,10 +28,16 @@ const storeFactory: StoreFactory<any> = new PalmyraStoreFactory({ baseUrl: '/api
 const ServerGrid = () => {
     const endPoint = 'masterdata/category'; //'grid/simpleGridData.json'
 
+    const getOptions = (): IDataGridDefaultControlConfig => {
+        return { export: { disabled: true } }
+    }
+
     return <>
         <StoreFactoryContext.Provider value={storeFactory}>
             <GridX columns={columns} endPoint={endPoint}
-                DataGridControls={(o) => <ExportDataButton exportOption={{ csv: 'CSV' }} queryRef={o.queryRef} />}
+                quickSearch="key"
+                getPluginOptions={getOptions}
+                DataGridControls={DataGridDefaultControls}
                 pageSize={[10, 20]} />
         </StoreFactoryContext.Provider>
     </>

@@ -5,13 +5,16 @@ import { DataGridPluginOptions } from "../types";
 import { EXPORT_FORMAT, ExportRequest } from "@palmyralabs/palmyra-wire";
 import { IPageQueryable } from "@palmyralabs/rt-forms";
 import { useRef } from "react";
+import { IPluginBtnControl } from "./types";
 
-interface IExportDataOptions extends Pick<DataGridPluginOptions, 'queryRef'> {
+interface IExportDataOptions extends Pick<DataGridPluginOptions, 'queryRef'>, IPluginBtnControl {
     exportOption: Partial<Record<EXPORT_FORMAT, string>>
 }
 const ExportDataButton = (props: IExportDataOptions) => {
     const { exportOption } = props;
     const dropDownRef = useRef<IDropdown>();
+    const visible = props.visible != false;
+
 
     const exportData = (format: EXPORT_FORMAT) => {
         const queryRef: IPageQueryable = props.queryRef.current;
@@ -33,8 +36,8 @@ const ExportDataButton = (props: IExportDataOptions) => {
         excel: <PiFileXls className='density-icon grid-button-icon' />,
         doc: <PiFileDoc className='density-icon grid-button-icon' />
     };
-    return (
-        <DropdownButton title='Export' ref={dropDownRef}
+    return (<>{visible &&
+        <DropdownButton title='Export' ref={dropDownRef} disabled={props.disabled}
             PrefixAdornment={<TbTableExport className='grid-button-icon' />}>
             <div onClick={(e) => e.stopPropagation()}>
                 <ul>
@@ -47,6 +50,7 @@ const ExportDataButton = (props: IExportDataOptions) => {
                 </ul>
             </div>
         </DropdownButton>
+    }</>
     )
 }
 

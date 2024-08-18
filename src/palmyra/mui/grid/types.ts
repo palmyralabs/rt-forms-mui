@@ -59,6 +59,8 @@ interface DataGridOptions extends ApiDataTableOptions {
 
 interface DataGridPluginOptions {
     topic: string,
+    getPluginOptions?: () => any
+    quickSearch?: string
     queryRef: MutableRefObject<IPageQueryable>,
     pageSize?: number | number[],
     columns: ColumnDefinition[]
@@ -66,6 +68,7 @@ interface DataGridPluginOptions {
 
 interface GridXOptions extends DataGridOptions {
     title?: ITitle,
+    getPluginOptions?: any,
     DataGridControls?: (props: DataGridPluginOptions) => JSX.Element
     DataGridPagination?: (props: DataGridPluginOptions) => JSX.Element
 }
@@ -74,7 +77,7 @@ interface PalmyraGridOptions extends GridXOptions {
 
 }
 
-interface IPalmyraGrid extends IPageQueryable{
+interface IPalmyraGrid extends IPageQueryable {
 
 }
 

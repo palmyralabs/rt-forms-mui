@@ -1,7 +1,8 @@
 import { DataGridPluginOptions } from '../types';
 import { EXPORT_FORMAT } from '@palmyralabs/palmyra-wire';
+import { IPluginBtnControl } from './types';
 
-interface IExportDataOptions extends Pick<DataGridPluginOptions, 'queryRef'> {
+interface IExportDataOptions extends Pick<DataGridPluginOptions, 'queryRef'>, IPluginBtnControl {
     exportOption: Partial<Record<EXPORT_FORMAT, string>>;
 }
 declare const ExportDataButton: (props: IExportDataOptions) => import("react/jsx-runtime").JSX.Element;

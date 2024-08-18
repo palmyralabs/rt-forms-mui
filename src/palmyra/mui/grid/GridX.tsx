@@ -15,8 +15,8 @@ const GridX = forwardRef(function GridX(props: GridXOptions, ref: MutableRefObje
     const topic: string = props.topic || useMemo(() => 'id' + Math.random(), []);
 
     const pluginOptions: DataGridPluginOptions = {
-        queryRef, columns: props.columns,
-        pageSize: props.pageSize, topic
+        queryRef, columns: props.columns, getPluginOptions: props.getPluginOptions,
+        pageSize: props.pageSize, topic, quickSearch: props.quickSearch
     }
 
     const Controls = props.DataGridControls ||

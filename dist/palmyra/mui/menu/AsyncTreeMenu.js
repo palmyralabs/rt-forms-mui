@@ -1,11 +1,12 @@
 import { jsx as n, Fragment as N, jsxs as p } from "react/jsx-runtime";
 import { useRef as S, useState as L, useEffect as k } from "react";
-import { f as j, A as B, c as M } from "../../../chunks/index.js";
-import { useNavigate as U } from "react-router-dom";
+import { f as j, c as B } from "../../../chunks/AsyncTreeMenu.js";
+import { useNavigate as M } from "react-router-dom";
+import { A as U } from "../../../chunks/index.js";
 import { a as V } from "../../../chunks/index2.js";
 const E = "palmyra.rui.sidemenu.expanded", v = "palmyra.rui.sidemenu.expanded.selected";
-function X(h) {
-  const o = U(), g = S(null);
+function q(h) {
+  const o = M(), g = S(null);
   let u = { name: "", id: -1, parent: null, children: [], isBranch: !0 };
   const [d, y] = L({ data: [u], expandedIds: [], selectedId: [] }), A = h.store, i = S([]), b = (e, r, a) => e.map((s) => (s.id === r && !s.loaded && (s.loaded = !0, s.children = a.filter((l) => r == l.parent).map((l) => l.id)), s)).concat(a), w = (e) => e.split(",").map((a) => parseInt(a)), C = (e, r) => e && Array.isArray(e) ? e.map((t) => {
     const s = t.children || "";
@@ -110,7 +111,7 @@ function X(h) {
               }
             ),
             /* @__PURE__ */ n(
-              B,
+              U,
               {
                 "aria-hidden": !0,
                 className: "loading-icon"
@@ -146,7 +147,7 @@ function X(h) {
   ] }) });
 }
 const F = (h) => {
-  const { isOpen: o, className: g } = h, u = "arrow", d = M(
+  const { isOpen: o, className: g } = h, u = "arrow", d = B(
     u,
     { [`${u}--closed`]: !o },
     { [`${u}--open`]: o },
@@ -155,5 +156,5 @@ const F = (h) => {
   return /* @__PURE__ */ n(V, { className: d });
 };
 export {
-  X as default
+  q as default
 };

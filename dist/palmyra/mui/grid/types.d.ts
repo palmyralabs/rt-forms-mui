@@ -50,12 +50,15 @@ interface DataGridOptions extends ApiDataTableOptions {
 }
 interface DataGridPluginOptions {
     topic: string;
+    getPluginOptions?: () => any;
+    quickSearch?: string;
     queryRef: MutableRefObject<IPageQueryable>;
     pageSize?: number | number[];
     columns: ColumnDefinition[];
 }
 interface GridXOptions extends DataGridOptions {
     title?: ITitle;
+    getPluginOptions?: any;
     DataGridControls?: (props: DataGridPluginOptions) => JSX.Element;
     DataGridPagination?: (props: DataGridPluginOptions) => JSX.Element;
 }
