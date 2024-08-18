@@ -2,7 +2,7 @@ import { forwardRef, MutableRefObject, useEffect, useRef } from "react";
 import { IPalmyraGrid, PalmyraGridOptions } from "./types";
 import { GridX } from "./GridX";
 import { topic } from "@palmyralabs/ts-utils";
-import { IPageQueryable, StoreFactoryContext } from "@palmyralabs/rt-forms";
+import { IPageQueryable } from "@palmyralabs/rt-forms";
 /**
  * 
  * Emitters 
@@ -41,9 +41,7 @@ const PalmyraGrid = forwardRef(function PalmyraGrid(props: PalmyraGridOptions, r
 
 
     return <>
-        <StoreFactoryContext.Provider value={props.store}>
-            <GridX {...props} ref={queryRef} />
-        </StoreFactoryContext.Provider>
+        <GridX {...props} ref={queryRef} />
     </>
 })
 

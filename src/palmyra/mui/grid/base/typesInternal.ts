@@ -16,9 +16,8 @@ interface BaseTableOptions {
 }
 
 
-interface ApiDataTableOptions extends IServerQueryInput, IGridPlugin {
+interface ApiDataTableOptions extends Omit<IServerQueryInput, 'store'>, IGridPlugin {
     endPoint: IEndPoint,
-    store?: never,
     columns: ColumnDefinition[],
     customizer?: GridCustomizer,
     EmptyChild?: React.FC,
