@@ -4,7 +4,7 @@ import { FormControl as F, FormControlLabel as g, Checkbox as R } from "@mui/mat
 import x from "./FieldDecorator.js";
 import { useFieldManager as O, getFieldHandler as v } from "@palmyralabs/rt-forms";
 import { getFieldLabel as I } from "./util.js";
-import { b as L, c as M } from "../../../chunks/index4.js";
+import { b as L, c as M } from "../../../chunks/index3.js";
 const D = b(function(e, l) {
   const n = O(e.attribute, e), { getValue: a, setValue: s, mutateOptions: u } = n, d = l || i(null), m = e.icon || L, f = e.checkedIcon || M, h = a() == !0, c = i(null);
   k(d, () => ({

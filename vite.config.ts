@@ -15,7 +15,7 @@ export default defineConfig({
   server: {
     proxy: { "/api": "http://localhost:6060/" },
     open: true,
-    port: 4000
+    port: 3000
   },
   build: {
     target: 'modules',
@@ -37,6 +37,7 @@ export default defineConfig({
         'dayjs',
         '@palmyralabs/palmyra-wire',
         '@palmyralabs/rt-forms',
+        '@palmyralabs/ts-predicates',
         'jspdf',
         'react',
         'html2canvas',

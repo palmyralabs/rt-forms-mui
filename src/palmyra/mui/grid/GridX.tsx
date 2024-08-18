@@ -7,12 +7,13 @@ import { DataGrid } from "./DataGrid";
 import { SelectablePagination } from "./plugins/pagination/SelectablePagination";
 import { DataGridPluginOptions, GridXOptions } from "./types";
 import './DataGrid.css'
+import { renderTitle } from "../widget";
 
-const GridX = forwardRef(function GridX(props: GridXOptions, ref: MutableRefObject<IPageQueryable>){
+const GridX = forwardRef(function GridX(props: GridXOptions, ref: MutableRefObject<IPageQueryable>) {
     const queryRef = ref || useRef<IPageQueryable>();
-    
-    const topic:string = props.topic || useMemo(() =>'id' + Math.random(), []);
-    
+
+    const topic: string = props.topic || useMemo(() => 'id' + Math.random(), []);
+
     const pluginOptions: DataGridPluginOptions = {
         queryRef, columns: props.columns,
         pageSize: props.pageSize, topic
@@ -27,7 +28,7 @@ const GridX = forwardRef(function GridX(props: GridXOptions, ref: MutableRefObje
     return <>
         <div className='py-datagrid-header'>
             <div className='py-datagrid-header-right-container'>
-                <div className="py-datagrid-title">My Table </div>
+                <div className="py-datagrid-title">{renderTitle(props.title)}</div>
             </div>
             <div className='py-datagrid-header-left-container'>
                 <Controls {...pluginOptions} />

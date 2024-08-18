@@ -4,7 +4,7 @@ import { FormControl as R, FormControlLabel as k, Checkbox as D, FormHelperText 
 import L from "./FieldDecorator.js";
 import { useFieldManager as M, getFieldHandler as V } from "@palmyralabs/rt-forms";
 import { getFieldLabel as j } from "./util.js";
-import { b as y, c as H } from "../../../chunks/index4.js";
+import { b as y, c as H } from "../../../chunks/index3.js";
 const w = v(function(t, c) {
   const o = M(t.attribute, t), { getError: f, getValue: u, setValue: h, mutateOptions: g } = o, C = c || m(null), d = f(), i = m(null);
   O(C, () => ({

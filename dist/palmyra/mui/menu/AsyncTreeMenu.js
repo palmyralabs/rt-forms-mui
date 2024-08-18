@@ -1,8 +1,8 @@
 import { jsx as n, Fragment as N, jsxs as p } from "react/jsx-runtime";
 import { useRef as S, useState as L, useEffect as k } from "react";
-import { f as j, A as B, c as M } from "../../../chunks/index2.js";
+import { f as j, A as B, c as M } from "../../../chunks/index.js";
 import { useNavigate as U } from "react-router-dom";
-import { a as V } from "../../../chunks/index3.js";
+import { a as V } from "../../../chunks/index2.js";
 const E = "palmyra.rui.sidemenu.expanded", v = "palmyra.rui.sidemenu.expanded.selected";
 function X(h) {
   const o = U(), g = S(null);

@@ -1,2 +1,2 @@
-export { InfoTooltip } from "./InfoTooltip";
+export * from "./InfoTooltip";
 export * from './DropdownButton'
