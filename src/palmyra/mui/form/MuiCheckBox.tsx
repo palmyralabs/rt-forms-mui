@@ -1,18 +1,14 @@
 import { useRef, useImperativeHandle, forwardRef, MutableRefObject } from 'react';
-import { Checkbox, CheckboxProps, FormControl, FormControlLabel } from '@mui/material';
+import { Checkbox, CheckboxProps, FormControlLabel } from '@mui/material';
 import FieldDecorator from './FieldDecorator';
 import { ICheckBoxField, ISwitchField, getFieldHandler, useFieldManager } from '@palmyralabs/rt-forms';
 import { getFieldLabel } from './util';
 import { ICheckBoxDefinition } from './types';
-import { TbSquareRounded, TbSquareRoundedCheckFilled } from 'react-icons/tb';
 
 const MuiCheckBox = forwardRef(function MuiCheckBox(props: CheckboxProps & ICheckBoxDefinition, ref: MutableRefObject<ICheckBoxField>) {
     const fieldManager = useFieldManager(props.attribute, props);
     const { getValue, setValue, mutateOptions } = fieldManager;
     const currentRef = ref ? ref : useRef<ISwitchField>(null);
-    // const autoFocus = props.muiProps.autoFocus || false;
-    const Icon = props.icon || TbSquareRounded;
-    const CheckedIcon = props.checkedIcon || TbSquareRoundedCheckFilled;
     const value: boolean = getValue() == true;
     const inputRef: any = useRef(null);
 
@@ -33,27 +29,26 @@ const MuiCheckBox = forwardRef(function MuiCheckBox(props: CheckboxProps & IChec
 
     var options = fieldManager.getFieldProps();
 
-    options.onChange = (d: any, checked:boolean) => {
-        if (!props.readOnly){
+    options.onChange = (d: any, checked: boolean) => {
+        if (!props.readOnly) {
             setValue(d.target.checked);
-            if(props.onChange){
+            if (props.onChange) {
                 props.onChange(d, checked)
             }
-        }        
+        }
     }
 
     return (<>{!mutateOptions.visible &&
         <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass} colspan={props.colspan}
             customFieldClass={props.customFieldClass} customLabelClass={props.customLabelClass}>
-            <FormControl {...options} value={getValue()} >
-                <FormControlLabel
-                    control={<Checkbox className="customCheckbox" icon={<Icon />} checkedIcon={<CheckedIcon />}
-                        checked={value} // autoFocus={autoFocus}
-                        disabled={props.disabled} readOnly={props.readOnly}
-                        inputRef={(r) => { inputRef.current = r }}
-                    />}
-                    label={props.label} />
-            </FormControl>
+            <FormControlLabel
+                control={<Checkbox
+                    {...options}
+                    checked={value}
+                    disabled={props.disabled} readOnly={props.readOnly}
+                    inputRef={(r) => { inputRef.current = r }}
+                />}
+                label={props.label} />
         </FieldDecorator>}
     </>
     )
