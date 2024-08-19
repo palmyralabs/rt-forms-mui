@@ -45,7 +45,6 @@ const MuiTextField = forwardRef(function MuiTextField(props: ITextFieldDefinitio
                 fullWidth={true}
                 inputRef={inputRef}
                 {...options}
-                onChange={props.onChange}
                 value={getValue()}
                 error={error.status}
                 helperText={error.message}
