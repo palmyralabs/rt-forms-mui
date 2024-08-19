@@ -6,11 +6,7 @@ import { getFieldLabel } from './util';
 import { ICheckBoxDefinition } from './types';
 import { TbSquareRounded, TbSquareRoundedCheckFilled } from 'react-icons/tb';
 
-interface MuiCheckBoxDefn extends ICheckBoxDefinition {
-    muiProps?: CheckboxProps
-}
-
-const MuiCheckBox = forwardRef(function MuiCheckBox(props: MuiCheckBoxDefn, ref: MutableRefObject<ICheckBoxField>) {
+const MuiCheckBox = forwardRef(function MuiCheckBox(props: CheckboxProps & ICheckBoxDefinition, ref: MutableRefObject<ICheckBoxField>) {
     const fieldManager = useFieldManager(props.attribute, props);
     const { getValue, setValue, mutateOptions } = fieldManager;
     const currentRef = ref ? ref : useRef<ISwitchField>(null);
@@ -37,9 +33,12 @@ const MuiCheckBox = forwardRef(function MuiCheckBox(props: MuiCheckBoxDefn, ref:
 
     var options = fieldManager.getFieldProps();
 
-    options.onChange = (d: any) => {
+    options.onChange = (d: any, checked:boolean) => {
         if (!props.readOnly){
             setValue(d.target.checked);
+            if(props.onChange){
+                props.onChange(d, checked)
+            }
         }        
     }
 
