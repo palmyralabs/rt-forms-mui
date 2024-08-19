@@ -6,8 +6,8 @@ import { useFieldManager as H, getFieldHandler as k } from "@palmyralabs/rt-form
 import { getFieldLabel as D } from "./util.js";
 import { b as g } from "../../../chunks/index2.js";
 import { G as N } from "../../../chunks/iconBase.js";
-function h(a) {
-  return N({ tag: "svg", attr: { viewBox: "0 0 24 24", fill: "currentColor" }, child: [{ tag: "path", attr: { d: "M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" }, child: [] }] })(a);
+function h(i) {
+  return N({ tag: "svg", attr: { viewBox: "0 0 24 24", fill: "currentColor" }, child: [{ tag: "path", attr: { d: "M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" }, child: [] }] })(i);
 }
 const J = j(function(t, c) {
   const l = H(t.attribute, t), { getError: b, getValue: F, setValue: v, mutateOptions: R } = l, x = c || m(null), s = b(), O = t.flexDirection != "column", n = m(null);
@@ -28,10 +28,10 @@ const J = j(function(t, c) {
   const M = (o) => {
     if (o) {
       if (o instanceof Array)
-        return o.map((i, V) => /* @__PURE__ */ e(
+        return o.map((a, V) => /* @__PURE__ */ e(
           f,
           {
-            value: i.value,
+            value: a.value,
             control: /* @__PURE__ */ e(
               C,
               {
@@ -40,9 +40,9 @@ const J = j(function(t, c) {
                 inputRef: n
               }
             ),
-            label: i.label
+            label: a.label
           },
-          i.value
+          a.value
         ));
       if (typeof o == "object")
         return Object.keys(o).map((r, d) => /* @__PURE__ */ e(
@@ -74,7 +74,7 @@ const J = j(function(t, c) {
       customLabelClass: t.customLabelClass,
       children: /* @__PURE__ */ I(L, { fullWidth: !0, error: s.status, children: [
         /* @__PURE__ */ e("div", { children: t.label }),
-        /* @__PURE__ */ e(w, { icon: !0, row: O, ...u, value: F(), children: M(t.options) }),
+        /* @__PURE__ */ e(w, { row: O, ...u, value: F(), children: M(t.options) }),
         /* @__PURE__ */ e(y, { className: "form-error-text", children: s.message })
       ] })
     }
