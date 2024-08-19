@@ -33,8 +33,8 @@ const MuiIntegerField = forwardRef(function MuiIntegerField(props: ITextFieldDef
     options.onChange = (event: any) => {
         if (!props.readOnly) {
             const value = event.target.value;
-            const v = event.target.value.replace(/\D/g, '');
-            if (value != v) {
+            const v = event.target.value.replace(/\D/g, '');            
+            if (value == v) {
                 setValue(v);
                 if (props.onChange)
                     props.onChange(event);

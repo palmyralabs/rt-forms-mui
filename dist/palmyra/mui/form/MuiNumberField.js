@@ -16,7 +16,7 @@ const y = h(function(e, r) {
   return delete l.muiProps, l.onChange = (a) => {
     if (!e.readOnly) {
       const F = a.target.value, u = a.target.value.replace(/[^\d\.\+\-]/g, "");
-      F != u && (d(u), e.onChange && e.onChange(a));
+      F == u && (d(u), e.onChange && e.onChange(a));
     }
   }, /* @__PURE__ */ n(b, { children: !f.visible && /* @__PURE__ */ n(
     H,

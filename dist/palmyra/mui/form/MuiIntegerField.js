@@ -16,7 +16,7 @@ const y = b(function(e, n) {
   return o.onChange = (a) => {
     if (!e.readOnly) {
       const F = a.target.value, u = a.target.value.replace(/\D/g, "");
-      F != u && (m(u), e.onChange && e.onChange(a));
+      F == u && (m(u), e.onChange && e.onChange(a));
     }
   }, /* @__PURE__ */ l(h, { children: !f.visible && /* @__PURE__ */ l(
     L,

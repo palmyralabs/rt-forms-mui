@@ -37,7 +37,7 @@ const MuiNumberField = forwardRef(function MuiNumberField(props: ITextFieldDefin
         if (!props.readOnly) {
             const value = event.target.value;
             const v = event.target.value.replace(/[^\d\.\+\-]/g, '');
-            if (value != v) {
+            if (value == v) {
                 setValue(v);
                 if (props.onChange)
                     props.onChange(event);
