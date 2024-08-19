@@ -56,13 +56,14 @@ interface DataGridPluginOptions {
     pageSize?: number | number[];
     columns: ColumnDefinition[];
 }
-interface GridXOptions extends DataGridOptions {
+interface GridXOptions<ControlPropsType> extends DataGridOptions {
     title?: ITitle;
     getPluginOptions?: any;
-    DataGridControls?: (props: DataGridPluginOptions) => JSX.Element;
+    DataGridControlProps?: ControlPropsType;
+    DataGridControls?: (props: DataGridPluginOptions & ControlPropsType) => JSX.Element;
     DataGridPagination?: (props: DataGridPluginOptions) => JSX.Element;
 }
-interface PalmyraGridOptions extends GridXOptions {
+interface PalmyraGridOptions<T> extends GridXOptions<T> {
 }
 interface IPalmyraGrid extends IPageQueryable {
 }

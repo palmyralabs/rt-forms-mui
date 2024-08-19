@@ -10,5 +10,5 @@ import { IPalmyraGrid, PalmyraGridOptions } from './types';
  * ${topic}/filter - apply filter based on the incoming data
  *
  */
-declare const PalmyraGrid: import('react').ForwardRefExoticComponent<PalmyraGridOptions & import('react').RefAttributes<IPalmyraGrid>>;
+declare const PalmyraGrid: import('react').ForwardRefExoticComponent<PalmyraGridOptions<unknown> & import('react').RefAttributes<IPalmyraGrid>>;
 export { PalmyraGrid };

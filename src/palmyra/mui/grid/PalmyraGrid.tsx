@@ -13,7 +13,7 @@ import { IPageQueryable } from "@palmyralabs/rt-forms";
  * ${topic}/filter - apply filter based on the incoming data
  * 
  */
-const PalmyraGrid = forwardRef(function PalmyraGrid(props: PalmyraGridOptions, ref: MutableRefObject<IPalmyraGrid>) {
+const PalmyraGrid = forwardRef(function PalmyraGrid<ControlPropsType>(props: PalmyraGridOptions<ControlPropsType>, ref: MutableRefObject<IPalmyraGrid>) {
 
     const gridTopic = props.topic;
     const queryRef = ref || useRef<IPageQueryable>();

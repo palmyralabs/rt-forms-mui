@@ -9,17 +9,17 @@ import { DataGridPluginOptions, GridXOptions } from "./types";
 import './DataGrid.css'
 import { renderTitle } from "../widget";
 
-const GridX = forwardRef(function GridX(props: GridXOptions, ref: MutableRefObject<IPageQueryable>) {
+const GridX = forwardRef(function GridX<ControlPropsType>(props: GridXOptions<ControlPropsType>, ref: MutableRefObject<IPageQueryable>) {
     const queryRef = ref || useRef<IPageQueryable>();
 
     const topic: string = props.topic || useMemo(() => 'id' + Math.random(), []);
 
     const pluginOptions: DataGridPluginOptions = {
-        queryRef, columns: props.columns, getPluginOptions: props.getPluginOptions,
-        pageSize: props.pageSize, topic, quickSearch: props.quickSearch
+        ...props.DataGridControlProps, queryRef, columns: props.columns, getPluginOptions: props.getPluginOptions,
+        pageSize: props.pageSize, topic, quickSearch: props.quickSearch,
     }
 
-    const Controls = props.DataGridControls ||
+    const Controls: (props: any) => JSX.Element = props.DataGridControls ||
         ((o: DataGridPluginOptions) => <><DropdownButton title="Filter" PrefixAdornment={<TbFilterShare />}>
             <FilterForm {...o} />
         </DropdownButton></>)
