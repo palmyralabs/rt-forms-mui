@@ -4,6 +4,11 @@
     flex-wrap: wrap;
 }
 
+.py-field-group-container-1columns .py-form-field-container {
+    width: calc(100%);
+    display: flex;
+}
+
 .py-field-group-container-2columns .py-form-field-container {
     width: calc(50%);
 }

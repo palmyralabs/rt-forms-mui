@@ -3,7 +3,7 @@
     --form-field-data-font-size: 1.01em;
 }
 
-.palmyra-form-field-container {
+.py-form-field-container {
     width: 100%;
     display: flex;
     text-align: left;
@@ -12,187 +12,187 @@
     padding: 10px 10px 10px 20px;
 }
 
-.palmyra-form-field-label {
+.py-form-field-label {
     margin: auto;
     font-size: var(--form-field-label-font-size);
 }
 
-.palmyra-form-field-data {
+.py-form-field-data {
     font-size: var(--form-field-data-font-size);
 }
 
-.palmyra-form-field-container .palmyra-form-field-label {
+.py-form-field-container .py-form-field-label {
     width: 40%;
     word-break: break-word;
 }
 
-.palmyra-form-field-container .palmyra-form-field-data {
+.py-form-field-container .py-form-field-data {
     width: 60%;
 }
 
-.palmyra-form-field-container-wrapper {
+.py-form-field-container-wrapper {
     width: 100% !important;
     display: flex;
     flex-wrap: wrap;
 }
 
 /* -- Palmyra Form Field Group Columns & Colspan Alignment -- */
-.palmyra-field-group-container {
+.py-field-group-container {
     width: 100% !important;
     display: flex;
     flex-wrap: wrap;
 }
 
-.palmyra-field-group-container-2columns .palmyra-form-field-container {
+.py-field-group-container-2columns .py-form-field-container {
     width: calc(50%);
 }
 
-.palmyra-field-group-container-2columns .palmyra-form-field-container-2colspan {
+.py-field-group-container-2columns .py-form-field-container-2colspan {
     width: 100%;
     padding: 10px 10px 10px 20px;
 }
 
-.palmyra-field-group-container-2columns .palmyra-form-field-container-2colspan .palmyra-form-field-label {
+.py-field-group-container-2columns .py-form-field-container-2colspan .py-form-field-label {
     width: 20%;
 }
 
-.palmyra-field-group-container-2columns .palmyra-form-field-container-2colspan .palmyra-form-field-data {
+.py-field-group-container-2columns .py-form-field-container-2colspan .py-form-field-data {
     width: 80%;
 }
 
-.palmyra-field-group-container-3columns .palmyra-form-field-container {
+.py-field-group-container-3columns .py-form-field-container {
     width: calc(33% - 0px);
 }
 
-.palmyra-field-group-container-3columns .palmyra-form-field-container-2colspan {
+.py-field-group-container-3columns .py-form-field-container-2colspan {
     width: 67%;
     padding: 10px 20px 10px 20px;
 }
 
-.palmyra-field-group-container-3columns .palmyra-form-field-container-2colspan .palmyra-form-field-label {
+.py-field-group-container-3columns .py-form-field-container-2colspan .py-form-field-label {
     width: 19%;
 }
 
-.palmyra-field-group-container-3columns .palmyra-form-field-container-2colspan .palmyra-form-field-data {
+.py-field-group-container-3columns .py-form-field-container-2colspan .py-form-field-data {
     width: 81%;
 }
 
-.palmyra-field-group-container-3columns .palmyra-form-field-container-3colspan {
+.py-field-group-container-3columns .py-form-field-container-3colspan {
     width: 100%;
     padding: 10px 25px 10px 20px;
 }
 
-.palmyra-field-group-container-3columns .palmyra-form-field-container-3colspan .palmyra-form-field-label {
+.py-field-group-container-3columns .py-form-field-container-3colspan .py-form-field-label {
     width: 13%;
 }
 
-.palmyra-field-group-container-3columns .palmyra-form-field-container-3colspan .palmyra-form-field-data {
+.py-field-group-container-3columns .py-form-field-container-3colspan .py-form-field-data {
     width: 90%;
 }
 
-.palmyra-field-group-container-4columns .palmyra-form-field-container {
+.py-field-group-container-4columns .py-form-field-container {
     width: calc(25% - 5px);
 }
 
-.palmyra-field-group-container-4columns .palmyra-form-field-container-2colspan {
+.py-field-group-container-4columns .py-form-field-container-2colspan {
     width: 50%;
     padding: 10px 20px 10px 20px;
 }
 
-.palmyra-field-group-container-4columns .palmyra-form-field-container-2colspan .palmyra-form-field-label {
+.py-field-group-container-4columns .py-form-field-container-2colspan .py-form-field-label {
     width: 19%;
 }
 
-.palmyra-field-group-container-4columns .palmyra-form-field-container-2colspan .palmyra-form-field-data {
+.py-field-group-container-4columns .py-form-field-container-2colspan .py-form-field-data {
     width: 81%;
 }
 
-.palmyra-field-group-container-4columns .palmyra-form-field-container-3colspan {
+.py-field-group-container-4columns .py-form-field-container-3colspan {
     width: 80%;
     padding: 10px 95px 10px 20px;
 }
 
-.palmyra-field-group-container-4columns .palmyra-form-field-container-3colspan .palmyra-form-field-label {
+.py-field-group-container-4columns .py-form-field-container-3colspan .py-form-field-label {
     width: 13%;
 }
 
-.palmyra-field-group-container-4columns .palmyra-form-field-container-3colspan .palmyra-form-field-data {
+.py-field-group-container-4columns .py-form-field-container-3colspan .py-form-field-data {
     width: 90%;
 }
 
-.palmyra-field-group-container-4columns .palmyra-form-field-container-4colspan {
+.py-field-group-container-4columns .py-form-field-container-4colspan {
     width: 100%;
     padding: 10px 30px 10px 20px;
 }
 
-.palmyra-field-group-container-4columns .palmyra-form-field-container-4colspan .palmyra-form-field-label {
+.py-field-group-container-4columns .py-form-field-container-4colspan .py-form-field-label {
     width: 10%;
 }
 
-.palmyra-field-group-container-4columns .palmyra-form-field-container-4colspan .palmyra-form-field-data {
+.py-field-group-container-4columns .py-form-field-container-4colspan .py-form-field-data {
     width: 95%;
 }
 
 
 jhfytfvjb 
 
-.palmyra-field-group-container-5columns .palmyra-form-field-container {
+.py-field-group-container-5columns .py-form-field-container {
     width: calc(20% - 5px);
 }
 
-.palmyra-field-group-container-5columns .palmyra-form-field-container-2colspan {
+.py-field-group-container-5columns .py-form-field-container-2colspan {
     width: 50%;
     padding: 10px 20px 10px 20px;
 }
 
-.palmyra-field-group-container-5columns .palmyra-form-field-container-2colspan .palmyra-form-field-label {
+.py-field-group-container-5columns .py-form-field-container-2colspan .py-form-field-label {
     width: 19%;
 }
 
-.palmyra-field-group-container-5columns .palmyra-form-field-container-2colspan .palmyra-form-field-data {
+.py-field-group-container-5columns .py-form-field-container-2colspan .py-form-field-data {
     width: 81%;
 }
 
-.palmyra-field-group-container-5columns .palmyra-form-field-container-3colspan {
+.py-field-group-container-5columns .py-form-field-container-3colspan {
     width: 80%;
     padding: 10px 95px 10px 20px;
 }
 
-.palmyra-field-group-container-5columns .palmyra-form-field-container-3colspan .palmyra-form-field-label {
+.py-field-group-container-5columns .py-form-field-container-3colspan .py-form-field-label {
     width: 13%;
 }
 
-.palmyra-field-group-container-5columns .palmyra-form-field-container-3colspan .palmyra-form-field-data {
+.py-field-group-container-5columns .py-form-field-container-3colspan .py-form-field-data {
     width: 90%;
 }
 
-.palmyra-field-group-container-5columns .palmyra-form-field-container-4colspan {
+.py-field-group-container-5columns .py-form-field-container-4colspan {
     width: 100%;
     padding: 10px 30px 10px 20px;
 }
 
-.palmyra-field-group-container-5columns .palmyra-form-field-container-4colspan .palmyra-form-field-label {
+.py-field-group-container-5columns .py-form-field-container-4colspan .py-form-field-label {
     width: 10%;
 }
 
-.palmyra-field-group-container-5columns .palmyra-form-field-container-4colspan .palmyra-form-field-data {
+.py-field-group-container-5columns .py-form-field-container-4colspan .py-form-field-data {
     width: 95%;
 }
 /* -- Palmyra Form Field Group Columns & Colspan Alignment -- */
 
-.palmyra-form-field-container-2column {
+.py-form-field-container-2column {
     width: calc(50% - 30px) !important;
 }
 
-.palmyra-form-field-container-3column {
+.py-form-field-container-3column {
     width: calc(33% - 30px) !important;
 }
 
-.palmyra-form-field-container-4column {
+.py-form-field-container-4column {
     width: calc(25% - 30px) !important;
 }
 
-.palmyra-form-field-container-5column {
+.py-form-field-container-5column {
     width: calc(20% - 30px) !important;
 }
 
@@ -204,6 +204,6 @@ jhfytfvjb
     margin-left: 0 !important;
 }
 
-.branchBox .palmyra-form-field-data {
+.branchBox .py-form-field-data {
     display: inline-block;
 }
