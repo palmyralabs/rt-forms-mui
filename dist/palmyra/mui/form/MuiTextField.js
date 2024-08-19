@@ -1,21 +1,21 @@
-import { jsx as l, Fragment as F } from "react/jsx-runtime";
-import { forwardRef as C, useRef as s, useImperativeHandle as b } from "react";
-import { TextField as h } from "@mui/material";
+import { jsx as l, Fragment as C } from "react/jsx-runtime";
+import { forwardRef as h, useRef as s, useImperativeHandle as F } from "react";
+import { TextField as b } from "@mui/material";
 import { useFieldManager as v, getFieldHandler as x } from "@palmyralabs/rt-forms";
 import { getFieldLabel as M } from "./util.js";
 import R from "./FieldDecorator.js";
-const y = C(function(e, a) {
-  const t = v(e.attribute, e), { getError: u, getValue: c, setValue: d, mutateOptions: m } = t, f = a || s(null), r = u(), n = s(null), g = e.variant || "standard";
-  b(f, () => ({
+const y = h(function(e, n) {
+  const t = v(e.attribute, e), { getError: u, getValue: c, setValue: d, mutateOptions: m } = t, f = n || s(null), r = u(), o = s(null), g = e.variant || "standard";
+  F(f, () => ({
     ...x(t),
     focus() {
-      n.current.focus();
+      o.current.focus();
     }
   }), [t]);
-  var o = t.getFieldProps();
-  return o.onChange = (i) => {
-    e.readOnly || d(i.target.value);
-  }, /* @__PURE__ */ l(F, { children: !m.visible && /* @__PURE__ */ l(
+  var i = t.getFieldProps();
+  return i.onChange = (a) => {
+    e.readOnly || (d(a.target.value), e.onChange && e.onChange(a));
+  }, /* @__PURE__ */ l(C, { children: !m.visible && /* @__PURE__ */ l(
     R,
     {
       label: M(e),
@@ -24,13 +24,14 @@ const y = C(function(e, a) {
       customFieldClass: e.customFieldClass,
       customLabelClass: e.customLabelClass,
       children: /* @__PURE__ */ l(
-        h,
+        b,
         {
           label: e.label,
           variant: g,
           fullWidth: !0,
-          inputRef: n,
-          ...o,
+          inputRef: o,
+          ...i,
+          onChange: e.onChange,
           value: c(),
           error: r.status,
           helperText: r.message

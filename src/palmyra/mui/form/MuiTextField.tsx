@@ -7,8 +7,6 @@ import FieldDecorator from './FieldDecorator';
 import { ITextFieldDefinition } from './types';
 
 const MuiTextField = forwardRef(function MuiTextField(props: ITextFieldDefinition & TextFieldProps, ref: MutableRefObject<ITextField>) {
-    // const fieldGroupManager: IFieldGroupManager = useContext(FieldGroupManagerContext);
-
     const fieldManager = useFieldManager(props.attribute, props);
     const { getError, getValue, setValue, mutateOptions } = fieldManager;
     const currentRef = ref ? ref : useRef<ITextField>(null);
@@ -30,8 +28,13 @@ const MuiTextField = forwardRef(function MuiTextField(props: ITextFieldDefinitio
 
     var options = fieldManager.getFieldProps();
 
-    options.onChange = (d: any) => { if (!props.readOnly) setValue(d.target.value); }
-
+    options.onChange = (event: any) => {
+        if (!props.readOnly) {
+            setValue(event.target.value);
+            if (props.onChange)
+                props.onChange(event);
+        }
+    }
 
     return (<>{!mutateOptions.visible &&
         <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass}
@@ -42,6 +45,7 @@ const MuiTextField = forwardRef(function MuiTextField(props: ITextFieldDefinitio
                 fullWidth={true}
                 inputRef={inputRef}
                 {...options}
+                onChange={props.onChange}
                 value={getValue()}
                 error={error.status}
                 helperText={error.message}

@@ -3,13 +3,13 @@ import { IServerLookupDefinition } from "./types";
 import { getFieldHandler, IFormFieldError, IServerLookupField, useServerLookupFieldManager } from '@palmyralabs/rt-forms';
 import FieldDecorator from "./FieldDecorator";
 import { getFieldLabel } from "./util";
-import { Autocomplete, CircularProgress, FormControl, FormHelperText, TextField } from "@mui/material";
+import { Autocomplete, AutocompleteChangeDetails, AutocompleteChangeReason, AutocompleteProps, CircularProgress, FormControl, FormHelperText, TextField } from "@mui/material";
 import { delayGenerator } from "@palmyralabs/ts-utils";
 
 
 const delay100 = delayGenerator(100);
 
-const MuiServerLookup = forwardRef(function MuiServerLookup(props: IServerLookupDefinition,
+const MuiServerLookup = forwardRef(function MuiServerLookup(props: IServerLookupDefinition & AutocompleteProps<any, any, any, any>,
     ref: MutableRefObject<IServerLookupField>) {
 
     const [open, setOpen] = useState(false);
@@ -36,15 +36,19 @@ const MuiServerLookup = forwardRef(function MuiServerLookup(props: IServerLookup
             }
         };
     }, [fieldManager]);
-    
+
     useEffect(() => {
         if (open)
             delay100(refreshOptions);
     }, [open]);
 
     const callbacks = {
-        onChange: (d: any, value: any) => {
+        onChange: (event: React.SyntheticEvent, value: any, 
+            reason: AutocompleteChangeReason, details?: AutocompleteChangeDetails<any>,
+        ) => {
             setValue(value);
+            if (props.onChange)
+                props.onChange(event, value, reason, details);
         },
         onInputChange: (d: any, inputValue: any) => {
             if (open) {

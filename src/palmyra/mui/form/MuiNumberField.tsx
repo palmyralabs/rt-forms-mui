@@ -31,13 +31,25 @@ const MuiNumberField = forwardRef(function MuiNumberField(props: ITextFieldDefin
 
     delete options.muiProps;
 
-    options.onChange = (d: any) => { if (!props.readOnly) setValue(d.target.value.replace(/[^\d\.\+\-]/g, '')); }
+    // options.onChange = (d: any) => { if (!props.readOnly) setValue(d.target.value.replace(/[^\d\.\+\-]/g, '')); }
 
-    
+    options.onChange = (event: any) => {
+        if (!props.readOnly) {
+            const value = event.target.value;
+            const v = event.target.value.replace(/[^\d\.\+\-]/g, '');
+            if (value != v) {
+                setValue(v);
+                if (props.onChange)
+                    props.onChange(event);
+            }
+        }
+    }
+
+
     return (<>{!mutateOptions.visible &&
         <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass}
             colspan={props.colspan} customFieldClass={props.customFieldClass} customLabelClass={props.customLabelClass}>
-            <TextField 
+            <TextField
                 label={props.label}
                 variant={variant}
                 fullWidth={true}

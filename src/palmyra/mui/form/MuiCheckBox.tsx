@@ -37,7 +37,11 @@ const MuiCheckBox = forwardRef(function MuiCheckBox(props: MuiCheckBoxDefn, ref:
 
     var options = fieldManager.getFieldProps();
 
-    options.onChange = (d: any) => { if (!props.readOnly) setValue(d.target.checked); }
+    options.onChange = (d: any) => {
+        if (!props.readOnly){
+            setValue(d.target.checked);
+        }        
+    }
 
     return (<>{!mutateOptions.visible &&
         <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass} colspan={props.colspan}

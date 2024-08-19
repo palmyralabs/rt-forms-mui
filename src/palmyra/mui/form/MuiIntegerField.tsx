@@ -28,8 +28,19 @@ const MuiIntegerField = forwardRef(function MuiIntegerField(props: ITextFieldDef
 
     var options = fieldManager.getFieldProps();
 
-    options.onChange = (d: any) => { if (!props.readOnly) setValue(d.target.value.replace(/\D/g, '')); }
+    // options.onChange = (d: any) => { if (!props.readOnly) setValue(d.target.value.replace(/\D/g, '')); }
 
+    options.onChange = (event: any) => {
+        if (!props.readOnly) {
+            const value = event.target.value;
+            const v = event.target.value.replace(/\D/g, '');
+            if (value != v) {
+                setValue(v);
+                if (props.onChange)
+                    props.onChange(event);
+            }
+        }
+    }
     
     return (<>{!mutateOptions.visible &&
         <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass}

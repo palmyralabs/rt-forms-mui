@@ -1,25 +1,25 @@
-import { jsx as t, Fragment as c, jsxs as v } from "react/jsx-runtime";
-import { forwardRef as C, useRef as u, useImperativeHandle as F } from "react";
+import { jsx as r, Fragment as c, jsxs as b } from "react/jsx-runtime";
+import { forwardRef as F, useRef as u, useImperativeHandle as v } from "react";
 import { FormControl as M, InputLabel as O, Select as x, MenuItem as R, FormHelperText as L } from "@mui/material";
 import j from "./FieldDecorator.js";
 import { useFieldManager as y, getFieldHandler as H } from "@palmyralabs/rt-forms";
 import { getFieldLabel as I } from "./util.js";
-const T = C(function(e, i) {
-  const n = y(e.attribute, e), { getError: d, getValue: m, setValue: f, mutateOptions: g } = n, h = i || u(null), o = d(), a = u(null), b = e.variant || "standard";
-  F(h, () => ({
-    ...H(n),
+const T = F(function(e, o) {
+  const l = y(e.attribute, e), { getError: d, getValue: m, setValue: f, mutateOptions: g } = l, h = o || u(null), s = d(), i = u(null), C = e.variant || "standard";
+  v(h, () => ({
+    ...H(l),
     focus() {
-      a && a.current.focus();
+      i && i.current.focus();
     },
-    setOptions(s) {
+    setOptions(a) {
     },
     getOptions() {
     }
-  }), [n]);
-  var r = n.getFieldProps();
-  return e.readOnly && (r.inputProps = { readOnly: !0 }), r.onChange = (l) => {
-    e.readOnly || f(l.target.value);
-  }, /* @__PURE__ */ t(c, { children: !g.visible && /* @__PURE__ */ t(
+  }), [l]);
+  var n = l.getFieldProps();
+  return e.readOnly && (n.inputProps = { readOnly: !0 }), n.onChange = (t, a) => {
+    e.readOnly || (f(t.target.value), e.onChange && e.onChange(t, a));
+  }, /* @__PURE__ */ r(c, { children: !g.visible && /* @__PURE__ */ r(
     j,
     {
       label: I(e),
@@ -27,16 +27,16 @@ const T = C(function(e, i) {
       colspan: e.colspan,
       customFieldClass: e.customFieldClass,
       customLabelClass: e.customLabelClass,
-      children: /* @__PURE__ */ v(M, { variant: b, fullWidth: !0, error: o.status, children: [
-        e.label ? /* @__PURE__ */ t(O, { required: r.required, children: e.label }) : /* @__PURE__ */ t(c, {}),
-        /* @__PURE__ */ t(x, { sx: {
+      children: /* @__PURE__ */ b(M, { variant: C, fullWidth: !0, error: s.status, children: [
+        e.label ? /* @__PURE__ */ r(O, { required: n.required, children: e.label }) : /* @__PURE__ */ r(c, {}),
+        /* @__PURE__ */ r(x, { sx: {
           m: 0
-        }, ...r, value: m(), inputRef: (l) => {
-          a.current = l;
-        }, children: r ? Object.keys(r).map(
-          (l, s) => /* @__PURE__ */ t(R, { value: l, children: r[l] }, s)
-        ) : e.children ? e.children : /* @__PURE__ */ t("div", { children: "No options provided" }) }),
-        /* @__PURE__ */ t(L, { className: "form-error-text", children: o.message })
+        }, ...n, value: m(), inputRef: (t) => {
+          i.current = t;
+        }, children: n ? Object.keys(n).map(
+          (t, a) => /* @__PURE__ */ r(R, { value: t, children: n[t] }, a)
+        ) : e.children ? e.children : /* @__PURE__ */ r("div", { children: "No options provided" }) }),
+        /* @__PURE__ */ r(L, { className: "form-error-text", children: s.message })
       ] })
     }
   ) });

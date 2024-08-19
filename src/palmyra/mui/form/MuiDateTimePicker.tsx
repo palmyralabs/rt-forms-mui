@@ -1,5 +1,5 @@
 import { useRef, useImperativeHandle, forwardRef, MutableRefObject } from 'react';
-import { DatePickerProps, DateTimePicker, LocalizationProvider } from '@mui/x-date-pickers';
+import { DatePickerProps, DateTimePicker, LocalizationProvider, PickerChangeHandlerContext } from '@mui/x-date-pickers';
 import { getFieldLabel } from './util';
 import FieldDecorator from './FieldDecorator';
 import { IDatePickerDefinition } from './types';
@@ -46,8 +46,15 @@ const MuiDateTimePicker = forwardRef(function MuiDateTimePicker(props: IDatePick
     if (options.defaultValue) {
         options.defaultValue = parse(options.defaultValue);
     }
-    options.onChange = (d: any) => { if (!props.readOnly) setValue(d); }
+    // options.onChange = (d: any) => { if (!props.readOnly) setValue(d); }
 
+    options.onChange = (d: any, context: PickerChangeHandlerContext<any>) => {
+        if (!props.readOnly) {
+            setValue(d);
+            if (props.onChange)
+                props.onChange(d, context);
+        }
+    }
 
     return (<>{!mutateOptions.visible &&
         <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass}

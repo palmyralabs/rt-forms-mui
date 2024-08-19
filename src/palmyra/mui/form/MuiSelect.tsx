@@ -1,5 +1,5 @@
 import { useRef, useImperativeHandle, forwardRef, MutableRefObject } from 'react';
-import { FormControl, FormHelperText, InputLabel, MenuItem, Select, SelectProps } from '@mui/material';
+import { FormControl, FormHelperText, InputLabel, MenuItem, Select, SelectChangeEvent, SelectProps } from '@mui/material';
 import FieldDecorator from './FieldDecorator';
 import { getFieldHandler, IFormFieldError, ISelectField, ITextField, useFieldManager } from '@palmyralabs/rt-forms';
 import { getFieldLabel } from './util';
@@ -35,7 +35,15 @@ const MuiSelect = forwardRef(function MuiSelect(props: ISelectDefinition & Selec
         options.inputProps = { readOnly: true };
     }
 
-    options.onChange = (d: any) => { if (!props.readOnly) setValue(d.target.value); }
+   // options.onChange = (d: any) => { if (!props.readOnly) setValue(d.target.value); }
+    options.onChange = (event: SelectChangeEvent<any>, child: React.ReactNode) => {
+        if (!props.readOnly) {
+            setValue(event.target.value);
+            if (props.onChange)
+                props.onChange(event, child);
+        }
+    }
+
 
     const fieldMargin: any = 0; //props?.fieldProps?.size == 'small' ? 1 : 0;
     return (<>{!mutateOptions.visible &&

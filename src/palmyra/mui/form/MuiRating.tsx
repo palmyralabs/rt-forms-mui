@@ -40,7 +40,15 @@ const MuiRating = forwardRef(function MuiRating(props: IRatingDefinition & Ratin
 
     var options = fieldManager.getFieldProps();
     
-    options.onChange = (d: any) => { if (!props.readOnly) setValue(d.target.value); }
+    // options.onChange = (d: any) => { if (!props.readOnly) setValue(d.target.value); }
+
+    options.onChange = (event: any, v:any) => {
+        if (!props.readOnly) {
+            setValue(event.target.value);
+            if (props.onChange)
+                props.onChange(event, v);
+        }
+    }
 
     return (<>{!mutateOptions.visible &&
         <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass} colspan={props.colspan}

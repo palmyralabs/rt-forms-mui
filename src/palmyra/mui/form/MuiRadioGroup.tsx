@@ -34,7 +34,15 @@ const MuiRadioGroup = forwardRef(function MuiRadioGroup(props: IRadioGroupDefini
 
     var fieldOptions = fieldManager.getFieldProps();
 
-    fieldOptions.onChange = (d: any) => { if (!props.readOnly) setValue(d.target.value); }
+    // fieldOptions.onChange = (d: any) => { if (!props.readOnly) setValue(d.target.value); }
+
+    fieldOptions.onChange = (event: any, v:boolean) => {
+        if (!props.readOnly) {
+            setValue(event.target.value);
+            if (props.onChange)
+                props.onChange(event, v);
+        }
+    }
 
     const getOptions = (options: any) => {
         if (options) {

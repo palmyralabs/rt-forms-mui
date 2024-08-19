@@ -1,49 +1,49 @@
 import { jsx as r, Fragment as d, jsxs as m } from "react/jsx-runtime";
-import { forwardRef as S, useState as V, useRef as f, useImperativeHandle as k, useEffect as H } from "react";
-import { useServerLookupFieldManager as M, getFieldHandler as T } from "@palmyralabs/rt-forms";
-import q from "./FieldDecorator.js";
-import { getFieldLabel as y } from "./util.js";
-import { FormControl as A, Autocomplete as E, TextField as j, CircularProgress as w, FormHelperText as z } from "@mui/material";
+import { forwardRef as k, useState as H, useRef as f, useImperativeHandle as M, useEffect as T } from "react";
+import { useServerLookupFieldManager as q, getFieldHandler as y } from "@palmyralabs/rt-forms";
+import A from "./FieldDecorator.js";
+import { getFieldLabel as E } from "./util.js";
+import { FormControl as j, Autocomplete as w, TextField as z, CircularProgress as D, FormHelperText as N } from "@mui/material";
 import "../../../chunks/NoopConverter.js";
 import "dayjs";
-import { t as D } from "../../../chunks/delayGenerator.js";
-const p = D(100), Z = S(function(e, i) {
-  const [n, u] = V(!1), s = f(null), l = M(e.attribute, e), {
-    getError: g,
-    getValue: h,
+import { t as W } from "../../../chunks/delayGenerator.js";
+const g = W(100), $ = k(function(e, i) {
+  const [o, u] = H(!1), a = f(null), l = q(e.attribute, e), {
+    getError: h,
+    getValue: p,
     setValue: C,
     hasValueInOptions: O,
     getOptionValue: F,
     setSearchText: b,
     refreshOptions: I,
-    options: a,
+    options: s,
     getFieldProps: L
-  } = l, x = n && a.length < 1, v = h(), c = g(), P = i || f(null);
-  k(P, () => ({
-    ...T(l),
+  } = l, x = o && s.length < 1, v = p(), c = h(), P = i || f(null);
+  M(P, () => ({
+    ...y(l),
     focus() {
-      s.current.focus();
+      a.current.focus();
     }
-  }), [l]), H(() => {
-    n && p(I);
-  }, [n]);
+  }), [l]), T(() => {
+    o && g(I);
+  }, [o]);
   const R = {
-    onChange: (t, o) => {
-      C(o);
+    onChange: (t, n, S, V) => {
+      C(n), e.onChange && e.onChange(t, n, S, V);
     },
-    onInputChange: (t, o) => (n && p(b, o), !0)
+    onInputChange: (t, n) => (o && g(b, n), !0)
   };
   return /* @__PURE__ */ r(d, { children: /* @__PURE__ */ r(
-    q,
+    A,
     {
-      label: y(e),
+      label: E(e),
       customContainerClass: e.customContainerClass,
       colspan: e.colspan,
       customFieldClass: e.customFieldClass,
       customLabelClass: e.customLabelClass,
-      children: /* @__PURE__ */ m(A, { fullWidth: !0, error: c.status, children: [
+      children: /* @__PURE__ */ m(j, { fullWidth: !0, error: c.status, children: [
         /* @__PURE__ */ r(
-          E,
+          w,
           {
             includeInputInList: !0,
             autoHighlight: !0,
@@ -53,11 +53,11 @@ const p = D(100), Z = S(function(e, i) {
             isOptionEqualToValue: O,
             filterOptions: (t) => t,
             renderInput: (t) => /* @__PURE__ */ r(
-              j,
+              z,
               {
                 ...t,
-                inputRef: (o) => {
-                  s.current = o;
+                inputRef: (n) => {
+                  a.current = n;
                 },
                 variant: "standard",
                 label: e.label,
@@ -65,7 +65,7 @@ const p = D(100), Z = S(function(e, i) {
                 InputProps: {
                   ...t.InputProps,
                   endAdornment: /* @__PURE__ */ m(d, { children: [
-                    x ? /* @__PURE__ */ r(w, { color: "inherit", size: 18 }) : null,
+                    x ? /* @__PURE__ */ r(D, { color: "inherit", size: 18 }) : null,
                     t.InputProps.endAdornment
                   ] })
                 }
@@ -74,8 +74,8 @@ const p = D(100), Z = S(function(e, i) {
             getOptionLabel: (t) => F(t) + "",
             ...L(),
             value: v,
-            options: a,
-            open: n,
+            options: s,
+            open: o,
             onClose: () => {
               u(!1);
             },
@@ -85,11 +85,11 @@ const p = D(100), Z = S(function(e, i) {
             ...R
           }
         ),
-        /* @__PURE__ */ r(z, { className: "form-error-text", children: c.message })
+        /* @__PURE__ */ r(N, { className: "form-error-text", children: c.message })
       ] })
     }
   ) });
 });
 export {
-  Z as MuiServerLookup
+  $ as MuiServerLookup
 };

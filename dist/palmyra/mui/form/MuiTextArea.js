@@ -1,21 +1,21 @@
-import { jsx as a, Fragment as C } from "react/jsx-runtime";
-import { forwardRef as F, useRef as i, useImperativeHandle as b } from "react";
-import { TextField as h } from "@mui/material";
-import { useFieldManager as v, getFieldHandler as x } from "@palmyralabs/rt-forms";
+import { jsx as l, Fragment as C } from "react/jsx-runtime";
+import { forwardRef as h, useRef as s, useImperativeHandle as F } from "react";
+import { TextField as b } from "@mui/material";
+import { useFieldManager as x, getFieldHandler as v } from "@palmyralabs/rt-forms";
 import { getFieldLabel as R } from "./util.js";
 import M from "./FieldDecorator.js";
-const j = F(function(e, r) {
-  const t = v(e.attribute, e), { getError: u, getValue: m, setValue: c, mutateOptions: d } = t, f = r || i(null), l = u(), n = i(null), g = e.variant || "standard";
-  b(f, () => ({
-    ...x(t),
+const j = h(function(e, r) {
+  const t = x(e.attribute, e), { getError: u, getValue: m, setValue: c, mutateOptions: d } = t, f = r || s(null), n = u(), o = s(null), g = e.variant || "standard";
+  F(f, () => ({
+    ...v(t),
     focus() {
-      n.current.focus();
+      o.current.focus();
     }
   }), [t]);
-  var o = t.getFieldProps();
-  return o.onChange = (s) => {
-    e.readOnly || c(s.target.value);
-  }, /* @__PURE__ */ a(C, { children: !d.visible && /* @__PURE__ */ a(
+  var i = t.getFieldProps();
+  return i.onChange = (a) => {
+    e.readOnly || (c(a.target.value), e.onChange && e.onChange(a));
+  }, /* @__PURE__ */ l(C, { children: !d.visible && /* @__PURE__ */ l(
     M,
     {
       label: R(e),
@@ -23,8 +23,8 @@ const j = F(function(e, r) {
       colspan: e.colspan,
       customFieldClass: e.customFieldClass,
       customLabelClass: e.customLabelClass,
-      children: /* @__PURE__ */ a(
-        h,
+      children: /* @__PURE__ */ l(
+        b,
         {
           variant: g,
           label: e.label,
@@ -32,11 +32,11 @@ const j = F(function(e, r) {
           maxRows: 5,
           fullWidth: !0,
           multiline: !0,
-          inputRef: n,
-          ...o,
+          inputRef: o,
+          ...i,
           value: m(),
-          error: l.status,
-          helperText: l.message
+          error: n.status,
+          helperText: n.message
         }
       )
     }

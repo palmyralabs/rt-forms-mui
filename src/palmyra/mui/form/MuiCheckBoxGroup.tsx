@@ -6,11 +6,7 @@ import { getFieldLabel } from './util';
 import { ICheckBoxGroupDefinition } from './types';
 import { TbSquareRounded, TbSquareRoundedCheckFilled } from 'react-icons/tb';
 
-interface MuiCheckBoxGroupDefn extends ICheckBoxGroupDefinition {
-    muiProps?: CheckboxProps
-}
-
-const MuiCheckBoxGroup = forwardRef(function MuiCheckBoxGroup(props: MuiCheckBoxGroupDefn, ref: MutableRefObject<ICheckBoxField>) {
+const MuiCheckBoxGroup = forwardRef(function MuiCheckBoxGroup(props: CheckboxProps & ICheckBoxGroupDefinition, ref: MutableRefObject<ICheckBoxField>) {
     const fieldManager = useFieldManager(props.attribute, props);
     const { getError, getValue, setValue, mutateOptions } = fieldManager;
     const currentRef = ref ? ref : useRef<ISwitchField>(null);
@@ -50,12 +46,16 @@ const MuiCheckBoxGroup = forwardRef(function MuiCheckBoxGroup(props: MuiCheckBox
                 currentData.splice(index, 1);
             }
         }
-        // eventListeners.onValueChange(currentData.toString())
     }
 
 
-    options.onChange = (d: any) => {
-        if (!props.readOnly) { _updateData(d.target.value, d.target.checked), setValue(d.target.value) };
+    options.onChange = (d: React.ChangeEvent<HTMLInputElement>, checked: boolean) => {
+        if (!props.readOnly) {
+            _updateData(d.target.value, d.target.checked);
+            setValue(d.target.value)
+            if (props.onChange)
+                props.onChange(d, checked);
+        };
     }
 
 

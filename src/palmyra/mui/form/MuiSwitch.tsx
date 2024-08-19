@@ -82,7 +82,15 @@ const MuiSwitch = forwardRef(function MuiSwitch(props: ISwitchDefinition & Switc
 
     var options = fieldManager.getFieldProps();
 
-    options.onChange = (d: any) => { if (!props.readOnly) setValue(d.target.checked); }
+    options.onChange = (event: any, checked:boolean) => {
+        if (!props.readOnly) {
+            setValue(event.target.checked);
+            if (props.onChange)
+                props.onChange(event, event.target.checked);
+        }
+    }
+
+    // options.onChange = (d: any) => { if (!props.readOnly) setValue(d.target.checked); }
 
     return (<>{!mutateOptions.visible &&
         <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass} colspan={props.colspan}

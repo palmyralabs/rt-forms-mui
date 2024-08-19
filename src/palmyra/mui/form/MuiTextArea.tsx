@@ -30,8 +30,13 @@ const MuiTextArea = forwardRef(function MuiTextArea(props: ITextFieldDefinition 
 
     var options = fieldManager.getFieldProps();
 
-    options.onChange = (d: any) => { if (!props.readOnly) setValue(d.target.value); }
-
+    options.onChange = (event: any) => {
+        if (!props.readOnly) {
+            setValue(event.target.value);
+            if (props.onChange)
+                props.onChange(event);
+        }
+    }
     
     return (<>{!mutateOptions.visible &&
         <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass}

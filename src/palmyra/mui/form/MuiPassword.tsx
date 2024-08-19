@@ -7,11 +7,7 @@ import FieldDecorator from './FieldDecorator';
 import { ITextFieldDefinition } from './types';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 
-interface MuiPasswordDefn extends ITextFieldDefinition {
-    muiProps?: TextFieldProps
-}
-
-const MuiPassword = forwardRef(function MuiPassword(props: MuiPasswordDefn, ref: MutableRefObject<ITextField>) {
+const MuiPassword = forwardRef(function MuiPassword(props: ITextFieldDefinition & TextFieldProps, ref: MutableRefObject<ITextField>) {
     // const fieldGroupManager: IFieldGroupManager = useContext(FieldGroupManagerContext);
 
     const fieldManager = useFieldManager(props.attribute, props);
@@ -20,7 +16,7 @@ const MuiPassword = forwardRef(function MuiPassword(props: MuiPasswordDefn, ref:
     const error: IFormFieldError = getError();
     const [showPassword, setShowPassword] = useState(false);
     const inputRef: any = useRef(null);
-    const variant = props?.muiProps?.variant || 'standard';
+    const variant = props?.variant || 'standard';
 
     useImperativeHandle(currentRef, () => {
         const handler = getFieldHandler(fieldManager)
@@ -35,7 +31,15 @@ const MuiPassword = forwardRef(function MuiPassword(props: MuiPasswordDefn, ref:
 
     var options = fieldManager.getFieldProps();
 
-    options.onChange = (d: any) => { if (!props.readOnly) setValue(d.target.value); }
+    // options.onChange = (d: any) => { if (!props.readOnly) setValue(d.target.value); }
+
+    options.onChange = (event: any) => {
+        if (!props.readOnly) {
+            setValue(event.target.value);
+            if (props.onChange)
+                props.onChange(event);
+        }
+    }
 
     const inputProps = {
         endAdornment: (
@@ -50,7 +54,7 @@ const MuiPassword = forwardRef(function MuiPassword(props: MuiPasswordDefn, ref:
         <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass}
             colspan={props.colspan} customFieldClass={props.customFieldClass} customLabelClass={props.customLabelClass}>
             <TextField
-                InputProps={inputProps}                
+                InputProps={inputProps}
                 type={showPassword ? 'text' : 'password'}
                 label={props.label}
                 variant={variant}

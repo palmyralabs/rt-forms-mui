@@ -1,71 +1,71 @@
-import { jsx as r, Fragment as F, jsxs as p } from "react/jsx-runtime";
-import { forwardRef as v, useRef as m, useImperativeHandle as O } from "react";
-import { FormControl as R, FormControlLabel as k, Checkbox as D, FormHelperText as S } from "@mui/material";
+import { jsx as o, Fragment as F, jsxs as v } from "react/jsx-runtime";
+import { forwardRef as O, useRef as m, useImperativeHandle as R } from "react";
+import { FormControl as k, FormControlLabel as p, Checkbox as D, FormHelperText as S } from "@mui/material";
 import L from "./FieldDecorator.js";
 import { useFieldManager as M, getFieldHandler as T } from "@palmyralabs/rt-forms";
 import { getFieldLabel as V } from "./util.js";
 import { T as j, a as y } from "../../../chunks/index3.js";
-const w = v(function(t, c) {
-  const o = M(t.attribute, t), { getError: f, getValue: u, setValue: h, mutateOptions: g } = o, C = c || m(null), d = f(), i = m(null);
-  O(C, () => ({
-    ...T(o),
+const w = O(function(e, c) {
+  const n = M(e.attribute, e), { getError: f, getValue: u, setValue: h, mutateOptions: g } = n, C = c || m(null), d = f(), i = m(null);
+  R(C, () => ({
+    ...T(n),
     focus() {
       i.current.checked = !0, i.current.focus();
     },
-    setOptions(l) {
+    setOptions(r) {
     },
     getOptions() {
     }
-  }), [o]);
-  var a = o.getFieldProps();
+  }), [n]);
+  var a = n.getFieldProps();
   delete a.muiProps;
-  function x(e, l) {
-    const n = o.getValue() ? o.getValue().split(",") : [];
-    var s = n.indexOf(e);
-    l ? s < 0 && n.push(e) : s >= 0 && n.splice(s, 1);
+  function x(t, r) {
+    const l = n.getValue() ? n.getValue().split(",") : [];
+    var s = l.indexOf(t);
+    r ? s < 0 && l.push(t) : s >= 0 && l.splice(s, 1);
   }
-  a.onChange = (e) => {
-    t.readOnly || (x(e.target.value, e.target.checked), h(e.target.value));
+  a.onChange = (t, r) => {
+    e.readOnly || (x(t.target.value, t.target.checked), h(t.target.value), e.onChange && e.onChange(t, r));
   };
-  const b = (e) => u().includes(e);
-  return /* @__PURE__ */ r(F, { children: !g.visible && /* @__PURE__ */ r(
+  const b = (t) => u().includes(t);
+  return /* @__PURE__ */ o(F, { children: !g.visible && /* @__PURE__ */ o(
     L,
     {
-      label: V(t),
-      customContainerClass: t.customContainerClass,
-      colspan: t.colspan,
-      customFieldClass: t.customFieldClass,
-      customLabelClass: t.customLabelClass,
-      children: /* @__PURE__ */ p(
-        R,
+      label: V(e),
+      customContainerClass: e.customContainerClass,
+      colspan: e.colspan,
+      customFieldClass: e.customFieldClass,
+      customLabelClass: e.customLabelClass,
+      children: /* @__PURE__ */ v(
+        k,
         {
           fullWidth: !0,
-          style: { flexDirection: t.flexDirection },
+          style: { flexDirection: e.flexDirection },
           error: d.status,
           ...a,
           value: u(),
           children: [
-            t.options ? Object.keys(t.options).map((e, l) => /* @__PURE__ */ r(
-              k,
+            e.options ? Object.keys(e.options).map((t, r) => /* @__PURE__ */ o(
+              p,
               {
-                value: e,
-                control: /* @__PURE__ */ r(
+                value: t,
+                control: /* @__PURE__ */ o(
                   D,
                   {
-                    icon: /* @__PURE__ */ r(j, { style: { fontSize: "20px" } }),
-                    checkedIcon: /* @__PURE__ */ r(y, { style: { fontSize: "20px" } }),
-                    checked: b(e),
-                    disabled: t.readOnly,
-                    inputRef: (n) => {
-                      l == 0 && (i.current = n);
+                    icon: /* @__PURE__ */ o(j, { style: { fontSize: "20px" } }),
+                    checkedIcon: /* @__PURE__ */ o(y, { style: { fontSize: "20px" } }),
+                    checked: b(t),
+                    disabled: e.readOnly,
+                    inputRef: (l) => {
+                      r == 0 && (i.current = l);
                     }
                   }
                 ),
-                label: t.options[e]
+                label: e.options[t]
               },
-              e
-            )) : /* @__PURE__ */ r("div", { children: "No options provided" }),
-            /* @__PURE__ */ r(S, { className: "form-error-text", children: d.message })
+              t
+            )) : /* @__PURE__ */ o("div", { children: "No options provided" }),
+            /* @__PURE__ */ o(S, { className: "form-error-text", children: d.message })
           ]
         }
       )
