@@ -8,13 +8,14 @@ import SideMenu from "./treeMenu/SideMenu";
 import TextFieldPage from "./pages/form/TextFieldPage";
 import { ServerGrid } from "./pages/grid/ServerGrid";
 import DatePickerPage from "./pages/form/DatePickerPage";
+import {ErrorBoundary as E} from './widgets/ErrorBoundary'
 
 const App = () => {
     return <>
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<MainLayout appTitle='Palmyra UI' />} >
-                    <Route path="/palmyra-ui/textField" element={<TextFieldPage />} />
+                    <Route path="/palmyra-ui/textField" element={<E><TextFieldPage /></E>} />
                     <Route path="/palmyra-ui/datePicker" element={<DatePickerPage />} />
                     <Route path="/palmyra-ui/layout/treeMenu" element={<TreeMenu />} />
                     <Route path="/palmyra-ui/layout/sideMenu" element={<SideMenu />} />
