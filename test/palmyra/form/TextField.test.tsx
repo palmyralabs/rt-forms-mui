@@ -3,6 +3,7 @@ import { act, fireEvent, queryByAttribute, render, renderHook, screen } from '@t
 import { MuiTextField } from "../../../src/palmyra";
 import { IForm, IInputField, PalmyraForm } from "@palmyralabs/rt-forms";
 import { useRef } from "react";
+import { testMandatory2Optional, testOptional2Mandatory } from "./commons/util";
 
 
 describe('Textfield', () => {
@@ -87,18 +88,7 @@ describe('Textfield', () => {
         const dom = render(textFieldDefn);
 
         const textField = getById(dom.container, 'emailAddress');
-        expect(textField).toHaveProperty('required', false)
-        expect(fieldRef.current.isValid()).toBeTruthy();
-        expect(() => screen.getByText("Blank not allowed")).toThrow();
-        act(() => {
-            fieldRef.current.setRequired(true);
-        });
-        expect(textField).toHaveProperty('required', true)
-        act(() => {
-            fireEvent.change(textField, { target: { value: '' } });
-        });
-        expect(fieldRef.current.isValid()).toBeFalsy();
-        expect(screen.getByText("Blank not allowed")).toBeDefined();
+        testOptional2Mandatory(textField, fieldRef, "Blank not allowed");
     })
 
     test('Mandatory -> Optional', () => {
@@ -111,20 +101,7 @@ describe('Textfield', () => {
         const dom = render(textFieldDefn);
 
         const textField = getById(dom.container, 'emailAddress');
-        expect(textField).toHaveProperty('required', true)
-        expect(fieldRef.current.isValid()).toBeTruthy();
-        expect(() => screen.getByText("Blank not allowed")).toThrow();
-        act(() => {
-            fireEvent.change(textField, { target: { value: '' } });
-        });
-        expect(fieldRef.current.isValid()).toBeFalsy();
-        expect(screen.getByText("Blank not allowed")).toBeDefined()
-        act(() => {
-            fieldRef.current.setRequired(false);
-        });
-        expect(textField).toHaveProperty('required', false)
-        expect(fieldRef.current.isValid()).toBeTruthy();
-        expect(() => screen.getByText("Blank not allowed")).toThrow();
+        testMandatory2Optional(textField, fieldRef, "Blank not allowed")
     })
 
 });
