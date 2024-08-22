@@ -34,7 +34,6 @@ interface ActionBtnProps {
 }
 
 const ActionBtn = (o: ActionBtnProps) => {
-    console.log(o);
     const visible = o.props.visible != false;
     return <>{visible &&
         <Button  {...o.props} onClick={() => publish(o.props.topic, o.name)}>

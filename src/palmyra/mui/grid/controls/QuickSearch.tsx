@@ -12,8 +12,8 @@ export type TextFieldVariants = 'outlined' | 'standard' | 'filled';
 
 type TextFieldProps = React.ComponentProps<typeof TextField>
 
-const QuickSearch = (o: IQuickSearchOptions & TextFieldProps) => {
-    const { width, queryRef } = o;
+const QuickSearch = (options: IQuickSearchOptions & TextFieldProps) => {
+    const { width, queryRef, ...o } = options;
     const [searchText, setSearchText] = useState<string>('');
     const visible = o.visible != false;
 

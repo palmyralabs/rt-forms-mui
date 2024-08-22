@@ -20,29 +20,26 @@ const SelectablePagination = (o: DataGridPluginOptions) => {
         }
     }, [o.topic])
 
-    if (!pageQuery)
-        return (<></>);
-
-    const totalRecords = pageQuery.getTotalRecords();
-    const queryLimit = pageQuery.getQueryLimit();
+    const totalRecords = pageQuery?.getTotalRecords() || 0;
+    const queryLimit = pageQuery?.getQueryLimit() || { limit: 15 };
 
     const pageSizeOptions = Array.isArray(o.pageSize) ? o.pageSize : [o.pageSize];
 
-    const { gotoPage, getPageNo, setPageSize } = pageQuery;
+    // const { gotoPage, getPageNo, setPageSize } = pageQuery;
 
-    const currentPage = getPageNo();
+    const currentPage = pageQuery?.getPageNo() || 0;
     const rowsPerPage = queryLimit.limit || 25;
     const totalPages = Math.ceil(totalRecords / rowsPerPage);
     const startRecord = currentPage * rowsPerPage + 1;
     const endRecord = Math.min((currentPage + 1) * rowsPerPage, totalRecords);
 
     const nextPage = (_event: any, newPage: number) => {
-        gotoPage(newPage - 1);
+        pageQuery.gotoPage(newPage - 1);
     };
 
     const handleRowsPerPageChange = (event) => {
         const limit = parseInt(event.target.value, 10);
-        setPageSize(limit);
+        pageQuery.setPageSize(limit);
     }
 
     return <div className='grid-filter'>
@@ -88,7 +85,7 @@ const SelectablePagination = (o: DataGridPluginOptions) => {
                     </div>
                     <div style={{}}>
                         <Pagination count={totalPages} shape="rounded"
-                            onChange={nextPage} page={getPageNo() + 1}
+                            onChange={nextPage} page={currentPage + 1}
                         />
                     </div>
                 </div>
