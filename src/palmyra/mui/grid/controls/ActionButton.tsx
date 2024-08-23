@@ -36,7 +36,8 @@ interface ActionBtnProps {
 const ActionBtn = (o: ActionBtnProps) => {
     const visible = o.props.visible != false;
     return <>{visible &&
-        <Button  {...o.props} onClick={() => publish(o.props.topic, o.name)}>
+        <Button  {...o.props} onClick={() => publish(o.props.topic, o.name)} className="py-action-button"
+            disableRipple>
             <span>{o.props.label}</span>
         </Button>
     }</>

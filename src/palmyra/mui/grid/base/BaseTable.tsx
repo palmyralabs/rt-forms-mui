@@ -60,7 +60,7 @@ export default function BaseTable(props: BaseTableOptions) {
                       {row.getVisibleCells().map(cell => {
                         const meta: any = cell.column.columnDef.meta;
                         const isTypeNumber = meta?.columnDef?.type === 'number';
-                        const cellClassName = 'py-grid-data-cell' + (isTypeNumber ? 'py-grid-data-cell-type-number' : '')
+                        const cellClassName = 'py-grid-data-cell' + (isTypeNumber ? ' py-grid-data-cell-type-number' : '')
                         return (
                           <TableCell key={cell.id}
                             className={cellClassName}

@@ -32,7 +32,7 @@ const ColumnHeader = ({ header, children, onSortChange }) => {
 
     const meta: any = header.column.columnDef.meta;
     const isTypeNumber = meta?.columnDef?.type === 'number';
-    const cellClassName = 'py-dataGrid-header-text' + (isTypeNumber ? 'py-dataGrid-header-text-type-number' : '')
+    const cellClassName = 'py-dataGrid-header-text' + (isTypeNumber ? ' py-dataGrid-header-text-type-number' : '')
     if (header.column.columnDef.columns) {
         // Render Grouped Columns
         return (

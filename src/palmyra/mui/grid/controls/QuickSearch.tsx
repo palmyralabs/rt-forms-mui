@@ -35,13 +35,13 @@ const QuickSearch = (options: IQuickSearchOptions & TextFieldProps) => {
             type="text"
             value={searchText}
             onChange={onSearchTextChange}
-            style={{ border: "0px" }}
+            className="py-dataGrid-search-field"
             size="small"
             placeholder="Quick Search"
             InputProps={{
                 endAdornment: (
                     <InputAdornment position="end">
-                        <AiOutlineSearch className="card-filter-icon" />
+                        <AiOutlineSearch className="py-dataGrid-search-icon" />
                     </InputAdornment>
                 ),
             }}

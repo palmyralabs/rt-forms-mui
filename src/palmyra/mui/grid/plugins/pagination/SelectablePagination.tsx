@@ -2,6 +2,7 @@ import { FormControl, MenuItem, Pagination, Select } from "@mui/material"
 import { delayGenerator, topic } from "@palmyralabs/ts-utils";
 import { useEffect, useState } from "react";
 import { DataGridPluginOptions } from "../../types";
+import './SelectablePagination.css';
 
 const delay = delayGenerator(10)
 
@@ -42,7 +43,7 @@ const SelectablePagination = (o: DataGridPluginOptions) => {
         pageQuery.setPageSize(limit);
     }
 
-    return <div className='grid-filter'>
+    return <div>
         {(!isNaN(totalPages)) && (
             <div>
                 {/* <TablePagination
@@ -54,14 +55,14 @@ const SelectablePagination = (o: DataGridPluginOptions) => {
                   rowsPerPageOptions={pageSizeOptions || []}
                   onRowsPerPageChange={handleRowsPerPageChange}
                 /> */}
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <div style={{ width: '50%' }}>
+                <div className="py-selectable-pagination-container">
+                    <div className="py-selectable-pagination-left-container">
                         {
                             pageSizeOptions && pageSizeOptions.length > 1 ? (
                                 <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                    <div className="py-selectable-pagination-left-content-container">
                                         <div><span>Showing</span></div>
-                                        <div>
+                                        <div className="py-selectable-pagination-select-field">
                                             <Select
                                                 labelId="rows-per-page-select-label"
                                                 id="rows-per-page-select"
@@ -76,14 +77,14 @@ const SelectablePagination = (o: DataGridPluginOptions) => {
                                                 ))}
                                             </Select>
                                         </div>
-                                        <div><span>{startRecord} - {endRecord} of {totalRecords} Results</span></div>
+                                        <div className="py-selectable-pagination-show-result"><span>{startRecord} - {endRecord} of {totalRecords} Results</span></div>
                                     </div>
                                 </FormControl>
 
                             ) : null
                         }
                     </div>
-                    <div style={{}}>
+                    <div className="py-selectable-pagination-right-container">
                         <Pagination count={totalPages} shape="rounded"
                             onChange={nextPage} page={currentPage + 1}
                         />
