@@ -27,7 +27,7 @@ const j = ({ header: t, children: c, onSortChange: n }) => {
       }
       f(e), n(b, e);
     }
-  }, a = t.column.columnDef.meta, s = "py-dataGrid-header-text" + (((u = a == null ? void 0 : a.columnDef) == null ? void 0 : u.type) === "number" ? "py-dataGrid-header-text-type-number" : "");
+  }, a = t.column.columnDef.meta, s = "py-dataGrid-header-text" + (((u = a == null ? void 0 : a.columnDef) == null ? void 0 : u.type) === "number" ? " py-dataGrid-header-text-type-number" : "");
   return t.column.columnDef.columns ? /* @__PURE__ */ r(p, { className: "py-baseGrid-header-cell", colSpan: t.colSpan, children: /* @__PURE__ */ r("div", { className: s, style: { width: l }, children: c }) }, t.id) : /* @__PURE__ */ r(
     p,
     {
