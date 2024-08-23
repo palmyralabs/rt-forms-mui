@@ -4,7 +4,6 @@ interface IDropdownButtonOptions {
     className?: string;
     disabled?: boolean;
     PrefixAdornment?: JSX.Element;
-    arrowStyle?: React.CSSProperties;
     children?: any;
 }
 interface IDropdown {

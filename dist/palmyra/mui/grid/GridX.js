@@ -1,30 +1,30 @@
-import { jsx as t, Fragment as n, jsxs as o } from "react/jsx-runtime";
-import { forwardRef as s, useRef as f, useMemo as g } from "react";
+import { jsx as i, Fragment as n, jsxs as o } from "react/jsx-runtime";
+import { forwardRef as s, useRef as g, useMemo as f } from "react";
 import { DropdownButton as h } from "../widget/DropdownButton.js";
 import { c as u } from "../../../chunks/index3.js";
 import { FilterForm as P } from "./plugins/filter/FilterForm.js";
-import { DataGrid as G } from "./DataGrid.js";
-import { SelectablePagination as S } from "./plugins/pagination/SelectablePagination.js";
-import { renderTitle as p } from "../widget/InfoTooltip.js";
-import '../../../assets/GridX.css';const R = s(function(i, d) {
-  const r = d || f(), e = i.topic || g(() => "id" + Math.random(), []), a = {
-    ...i.DataGridControlProps,
-    queryRef: r,
-    columns: i.columns,
-    getPluginOptions: i.getPluginOptions,
-    pageSize: i.pageSize,
-    topic: e,
-    quickSearch: i.quickSearch
-  }, c = i.DataGridControls || ((m) => /* @__PURE__ */ t(n, { children: /* @__PURE__ */ t(h, { title: "Filter", PrefixAdornment: /* @__PURE__ */ t(u, {}), children: /* @__PURE__ */ t(P, { ...m }) }) })), l = i.DataGridPagination || S;
+import { DataGrid as p } from "./DataGrid.js";
+import { SelectablePagination as y } from "./plugins/pagination/SelectablePagination.js";
+import { renderTitle as G } from "../widget/InfoTooltip.js";
+import '../../../assets/GridX.css';const O = s(function(t, d) {
+  const e = d || g(), r = t.topic || f(() => "id" + Math.random(), []), a = {
+    ...t.DataGridControlProps,
+    queryRef: e,
+    columns: t.columns,
+    getPluginOptions: t.getPluginOptions,
+    pageSize: t.pageSize,
+    topic: r,
+    quickSearch: t.quickSearch
+  }, c = t.DataGridControls || ((m) => /* @__PURE__ */ i(n, { children: /* @__PURE__ */ i(h, { title: "Filter", PrefixAdornment: /* @__PURE__ */ i(u, {}), children: /* @__PURE__ */ i(P, { ...m }) }) })), l = t.DataGridPagination || y;
   return /* @__PURE__ */ o(n, { children: [
     /* @__PURE__ */ o("div", { className: "py-datagrid-header", children: [
-      /* @__PURE__ */ t("div", { className: "py-datagrid-header-right-container", children: /* @__PURE__ */ t("div", { className: "py-datagrid-title", children: p(i.title) }) }),
-      /* @__PURE__ */ t("div", { className: "py-datagrid-header-left-container", children: /* @__PURE__ */ t(c, { ...a }) })
+      /* @__PURE__ */ i("div", { className: "py-datagrid-header-right-container", children: /* @__PURE__ */ i("div", { className: "py-datagrid-title", children: G(t.title) }) }),
+      /* @__PURE__ */ i("div", { className: "py-datagrid-header-left-container", children: /* @__PURE__ */ i(c, { ...a }) })
     ] }),
-    /* @__PURE__ */ t(G, { ...i, topic: e, ref: r }),
-    /* @__PURE__ */ t(l, { ...a })
+    /* @__PURE__ */ i("div", { className: "py-data-grid-table", children: /* @__PURE__ */ i(p, { ...t, topic: r, ref: e }) }),
+    /* @__PURE__ */ i(l, { ...a })
   ] });
 });
 export {
-  R as GridX
+  O as GridX
 };

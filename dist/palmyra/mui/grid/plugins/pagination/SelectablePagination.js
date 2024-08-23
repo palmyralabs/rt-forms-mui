@@ -1,64 +1,63 @@
-import { jsx as e, Fragment as x, jsxs as l } from "react/jsx-runtime";
-import { FormControl as R, Select as S, MenuItem as C, Pagination as I } from "@mui/material";
+import { jsx as e, jsxs as c } from "react/jsx-runtime";
+import { FormControl as b, Select as w, MenuItem as x, Pagination as y } from "@mui/material";
 import "../../../../../chunks/NoopConverter.js";
 import "dayjs";
-import { o as h } from "../../../../../chunks/topic.js";
-import { t as N } from "../../../../../chunks/delayGenerator.js";
-import { useState as j, useEffect as z } from "react";
-const M = N(10), T = (n) => {
-  var p;
-  const i = (p = n.queryRef) == null ? void 0 : p.current, [q, m] = j(0);
-  if (z(() => {
-    if (n.topic) {
-      const t = h.subscribe(n.topic + "/data", () => {
-        M(() => m((r) => r + 1));
+import { o as m } from "../../../../../chunks/topic.js";
+import { t as R } from "../../../../../chunks/delayGenerator.js";
+import { useState as S, useEffect as C } from "react";
+const I = R(10), E = (i) => {
+  var h;
+  const t = (h = i.queryRef) == null ? void 0 : h.current, [N, p] = S(0);
+  C(() => {
+    if (i.topic) {
+      const n = m.subscribe(i.topic + "/data", () => {
+        I(() => p((r) => r + 1));
       });
       return () => {
-        h.unsubscribe(t);
+        m.unsubscribe(n);
       };
     }
-  }, [n.topic]), !i)
-    return /* @__PURE__ */ e(x, {});
-  const s = i.getTotalRecords(), u = i.getQueryLimit(), a = Array.isArray(n.pageSize) ? n.pageSize : [n.pageSize], { gotoPage: f, getPageNo: c, setPageSize: y } = i, d = c(), o = u.limit || 25, g = Math.ceil(s / o), v = d * o + 1, P = Math.min((d + 1) * o, s), b = (t, r) => {
-    f(r - 1);
-  }, w = (t) => {
-    const r = parseInt(t.target.value, 10);
-    y(r);
+  }, [i.topic]);
+  const a = (t == null ? void 0 : t.getTotalRecords()) || 0, g = (t == null ? void 0 : t.getQueryLimit()) || { limit: 15 }, s = Array.isArray(i.pageSize) ? i.pageSize : [i.pageSize], o = (t == null ? void 0 : t.getPageNo()) || 0, l = g.limit || 25, d = Math.ceil(a / l), u = o * l + 1, f = Math.min((o + 1) * l, a), v = (n, r) => {
+    t.gotoPage(r - 1);
+  }, P = (n) => {
+    const r = parseInt(n.target.value, 10);
+    t.setPageSize(r);
   };
-  return /* @__PURE__ */ e("div", { className: "grid-filter", children: !isNaN(g) && /* @__PURE__ */ e("div", { children: /* @__PURE__ */ l("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between" }, children: [
-    /* @__PURE__ */ e("div", { style: { width: "50%" }, children: a && a.length > 1 ? /* @__PURE__ */ e(R, { variant: "standard", sx: { m: 1, minWidth: 120 }, children: /* @__PURE__ */ l("div", { style: { display: "flex", alignItems: "center", gap: "10px" }, children: [
+  return /* @__PURE__ */ e("div", { className: "grid-filter", children: !isNaN(d) && /* @__PURE__ */ e("div", { children: /* @__PURE__ */ c("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between" }, children: [
+    /* @__PURE__ */ e("div", { style: { width: "50%" }, children: s && s.length > 1 ? /* @__PURE__ */ e(b, { variant: "standard", sx: { m: 1, minWidth: 120 }, children: /* @__PURE__ */ c("div", { style: { display: "flex", alignItems: "center", gap: "10px" }, children: [
       /* @__PURE__ */ e("div", { children: /* @__PURE__ */ e("span", { children: "Showing" }) }),
       /* @__PURE__ */ e("div", { children: /* @__PURE__ */ e(
-        S,
+        w,
         {
           labelId: "rows-per-page-select-label",
           id: "rows-per-page-select",
-          defaultValue: a[0],
-          onChange: w,
+          defaultValue: s[0],
+          onChange: P,
           label: "Rows per page",
-          children: a.map((t) => /* @__PURE__ */ e(C, { value: t, children: t }, t))
+          children: s.map((n) => /* @__PURE__ */ e(x, { value: n, children: n }, n))
         }
       ) }),
-      /* @__PURE__ */ e("div", { children: /* @__PURE__ */ l("span", { children: [
-        v,
+      /* @__PURE__ */ e("div", { children: /* @__PURE__ */ c("span", { children: [
+        u,
         " - ",
-        P,
+        f,
         " of ",
-        s,
+        a,
         " Results"
       ] }) })
     ] }) }) : null }),
     /* @__PURE__ */ e("div", { style: {}, children: /* @__PURE__ */ e(
-      I,
+      y,
       {
-        count: g,
+        count: d,
         shape: "rounded",
-        onChange: b,
-        page: c() + 1
+        onChange: v,
+        page: o + 1
       }
     ) })
   ] }) }) });
 };
 export {
-  T as SelectablePagination
+  E as SelectablePagination
 };

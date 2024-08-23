@@ -1,43 +1,44 @@
-import { jsx as e, Fragment as o, jsxs as s } from "react/jsx-runtime";
+import { jsx as e, Fragment as t, jsxs as d } from "react/jsx-runtime";
 import { KeyboardArrowDown as f } from "@mui/icons-material";
-import { ClickAwayListener as m, Button as u } from "@mui/material";
-import { forwardRef as p, useState as w, useRef as y, useImperativeHandle as h } from "react";
-import '../../../assets/DropdownButton.css';const D = p(function(t, i) {
-  const [r, n] = w(!1), l = i || y();
-  h(l, () => ({
+import { ClickAwayListener as m, Button as p } from "@mui/material";
+import { forwardRef as u, useState as w, useRef as h, useImperativeHandle as b } from "react";
+import '../../../assets/DropdownButton.css';const R = u(function(n, i) {
+  const [r, o] = w(!1), s = i || h(), a = n.className || "py-dropdown-button";
+  b(s, () => ({
     open() {
-      n(!0);
+      o(!0);
     },
     close() {
-      n(!1);
+      o(!1);
     }
   }), []);
-  const a = t.arrowStyle || {
-    transform: r ? "rotate(-180deg)" : "rotate(0deg)",
-    transition: "transform 0.3s ease"
-  }, d = t.PrefixAdornment || /* @__PURE__ */ e(o, {}), c = /* @__PURE__ */ e(f, { style: a });
-  return /* @__PURE__ */ e(o, { children: /* @__PURE__ */ e(m, { onClickAway: () => {
-    n(!1);
-  }, children: /* @__PURE__ */ e("div", { className: "py-dropdown-button", children: /* @__PURE__ */ s("div", { style: { position: "relative" }, children: [
-    /* @__PURE__ */ s(
-      u,
+  const l = n.PrefixAdornment || /* @__PURE__ */ e(t, {}), c = /* @__PURE__ */ e(
+    f,
+    {
+      className: `py-dropdown-button-arrow ${r ? "open" : ""} `
+    }
+  );
+  return /* @__PURE__ */ e(t, { children: /* @__PURE__ */ e(m, { onClickAway: () => {
+    o(!1);
+  }, children: /* @__PURE__ */ d("div", { className: "py-dropdown-button-container", children: [
+    /* @__PURE__ */ d(
+      p,
       {
-        className: t.className,
+        className: a,
         disableRipple: !0,
-        disabled: t.disabled,
-        style: { display: "flex", alignItems: "center", gap: "5px" },
+        disabled: n.disabled,
         fullWidth: !1,
-        onClick: () => n(!r),
+        onClick: () => o(!r),
         children: [
-          d,
-          /* @__PURE__ */ e("span", { children: t.title }),
+          l,
+          /* @__PURE__ */ e("span", { children: n.title }),
           c
         ]
       }
     ),
-    r && /* @__PURE__ */ e("div", { className: "py-dropdown-content", style: { position: "absolute" }, children: t.children })
-  ] }) }) }) });
+    r && /* @__PURE__ */ e("div", { className: "py-dropdown-content", children: n.children })
+  ] }) }) });
 });
 export {
-  D as DropdownButton
+  R as DropdownButton
 };
