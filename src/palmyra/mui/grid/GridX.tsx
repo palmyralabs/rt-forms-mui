@@ -34,7 +34,9 @@ const GridX = forwardRef(function GridX<ControlPropsType>(props: GridXOptions<Co
                 <Controls {...pluginOptions} />
             </div>
         </div>
-        <DataGrid {...props} topic={topic} ref={queryRef} />
+        <div className="py-data-grid-table">
+            <DataGrid {...props} topic={topic} ref={queryRef} />
+        </div>
         <Pagination {...pluginOptions} />
     </>
 });

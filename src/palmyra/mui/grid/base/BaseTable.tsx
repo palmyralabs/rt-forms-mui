@@ -19,17 +19,17 @@ export default function BaseTable(props: BaseTableOptions) {
 
   const { rowData, customizer } = props;
   const { onColumnSort, options, EmptyChild, onRowClick } = useBaseGridManager(props);
-  const tableRef: MutableRefObject<IReactTanstackTable> = customizer?.getTableRef? customizer?.getTableRef() : useRef();
+  const tableRef: MutableRefObject<IReactTanstackTable> = customizer?.getTableRef ? customizer?.getTableRef() : useRef();
 
   const table = useReactTable(options);
   tableRef.current = table;
 
   return (<>
     <div className={props.className}>
-      <Table aria-label={props['aria-label']} className='plr-baseGrid'>
-        <TableHead className='plr-grid-header'>
+      <Table aria-label={props['aria-label']} className='py-baseGrid'>
+        <TableHead className='py-grid-header'>
           {table.getHeaderGroups().map(headerGroup => (
-            <TableRow key={headerGroup.id} className='plr-grid-header-row'>
+            <TableRow key={headerGroup.id} className='py-grid-header-row'>
               {headerGroup.headers.map(header => {
                 return (
                   header.isPlaceholder ? null : (
@@ -54,17 +54,16 @@ export default function BaseTable(props: BaseTableOptions) {
             {
               table.getRowModel().rows
                 .map((row, index) => {
-                  const rowClassName = 'plr-grid-data-row plr-grid-data-row-' + ((1 == index % 2) ? 'even' : 'odd');
+                  const rowClassName = 'py-grid-data-row py-grid-data-row-' + ((1 == index % 2) ? 'even' : 'odd');
                   return (
                     <TableRow key={row.id} className={rowClassName} >
                       {row.getVisibleCells().map(cell => {
                         const meta: any = cell.column.columnDef.meta;
+                        const isTypeNumber = meta?.columnDef?.type === 'number';
+                        const cellClassName = 'py-grid-data-cell' + (isTypeNumber ? 'py-grid-data-cell-type-number' : '')
                         return (
                           <TableCell key={cell.id}
-                            className='plr-grid-data-cell'
-                            style={{
-                              ...(meta?.columnDef?.type === 'number' ? { textAlign: 'end' } : {})
-                            }}
+                            className={cellClassName}
                             onClick={() => onRowClick(row.original)}>
                             {flexRender(
                               cell.column.columnDef.cell,
@@ -79,11 +78,11 @@ export default function BaseTable(props: BaseTableOptions) {
                 })}
           </TableBody>)}
         {(!props.showFooter || null == rowData || undefined == rowData || 0 == rowData.length) ? (<></>) : (
-          <TableFooter className='plr-grid-footer'>
+          <TableFooter className='py-grid-footer'>
             {table.getFooterGroups().map(footerGroup => (
-              <TableRow key={footerGroup.id} style={{ textAlign: 'end' }} className='plr-grid-footer-row'>
+              <TableRow key={footerGroup.id} className='py-grid-footer-row'>
                 {footerGroup.headers.map(header => (
-                  <TableCell key={header.id} className='plr-grid-footer-cell'>
+                  <TableCell key={header.id} className='py-grid-footer-cell'>
                     {header.isPlaceholder
                       ? null
                       : flexRender(

@@ -9,7 +9,6 @@ interface IDropdownButtonOptions {
     className?: string,
     disabled?: boolean,
     PrefixAdornment?: JSX.Element,
-    arrowStyle?: React.CSSProperties,
     children?: any
 }
 
@@ -21,6 +20,7 @@ interface IDropdown {
 const DropdownButton = forwardRef(function DropDownButton(props: IDropdownButtonOptions, ref: MutableRefObject<IDropdown>) {
     const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
     const currentRef = ref || useRef<IDropdown>();
+    const className = props.className || "py-dropdown-button"
 
     useImperativeHandle(currentRef, () => {
         return {
@@ -33,33 +33,27 @@ const DropdownButton = forwardRef(function DropDownButton(props: IDropdownButton
         }
     }, [])
 
-    const arrowStyle = props.arrowStyle || {
-        transform: dropdownOpen ? 'rotate(-180deg)' : 'rotate(0deg)',
-        transition: 'transform 0.3s ease',
-    };
-
     const PrefixAdornment = props.PrefixAdornment || <></>
-    const SuffixAdornment = <KeyboardArrowDown style={arrowStyle} />
+    const SuffixAdornment = <KeyboardArrowDown
+        className={`py-dropdown-button-arrow ${dropdownOpen ? 'open' : ''} `}
+    />
 
     return <><ClickAwayListener onClickAway={() => { setDropdownOpen(false) }}>
-        <div className='py-dropdown-button' >
-            <div style={{ position: "relative" }}>
-                <Button className={props.className} disableRipple
-                    disabled={props.disabled}
-                    style={{ display: "flex", alignItems: "center", gap: "5px" }}
-                    fullWidth={false}
-                    onClick={() => setDropdownOpen(!dropdownOpen)}>
-                    {PrefixAdornment}
-                    <span>{props.title}</span>
-                    {SuffixAdornment}
-                </Button>
+        <div className="py-dropdown-button-container">
+            <Button className={className} disableRipple
+                disabled={props.disabled}
+                fullWidth={false}
+                onClick={() => setDropdownOpen(!dropdownOpen)}>
+                {PrefixAdornment}
+                <span>{props.title}</span>
+                {SuffixAdornment}
+            </Button>
 
-                {dropdownOpen && (
-                    <div className="py-dropdown-content" style={{ position: "absolute" }}>
-                        {props.children}
-                    </div>
-                )}
-            </div>
+            {dropdownOpen && (
+                <div className="py-dropdown-content">
+                    {props.children}
+                </div>
+            )}
         </div>
     </ClickAwayListener></>
 });

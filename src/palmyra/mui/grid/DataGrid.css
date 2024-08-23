@@ -7,10 +7,6 @@
     gap: 10px;
 }
 
-.py-datagrid-title{
-    color: rgb(128, 128, 128);
-}
-
 .py-datagrid-header-right-container{
     display: flex;
     margin-right: auto;
