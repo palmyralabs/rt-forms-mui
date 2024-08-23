@@ -1,13 +1,14 @@
 import { jsx as t, Fragment as c, jsxs as r } from "react/jsx-runtime";
 import { forwardRef as m, useRef as u, useImperativeHandle as d } from "react";
 import v from "./FieldDecorator.js";
+import '../../../assets/TextView.css';/* empty css                       */
 import { useFieldManager as f } from "@palmyralabs/rt-forms";
 import { getFieldLabel as b } from "./util.js";
-import '../../../assets/MuiOptionsView.css';const M = m(function(e, i) {
-  const l = f(e.attribute, e), n = i || u(null), s = e.textAlign || "left", o = e.variant || "standard", { getValue: a } = l;
+const L = m(function(e, l) {
+  const i = f(e.attribute, e), n = l || u(null), s = e.textAlign || "left", o = e.variant || "standard", { getValue: a } = i;
   return d(n, () => ({
     getValue: a
-  }), [l]), /* @__PURE__ */ t(c, { children: l.mutateOptions.visible && /* @__PURE__ */ t(
+  }), [i]), /* @__PURE__ */ t(c, { children: i.mutateOptions.visible && /* @__PURE__ */ t(
     v,
     {
       label: b(e),
@@ -30,5 +31,5 @@ import '../../../assets/MuiOptionsView.css';const M = m(function(e, i) {
   ) });
 });
 export {
-  M as MuiOptionsView
+  L as MuiOptionsView
 };
