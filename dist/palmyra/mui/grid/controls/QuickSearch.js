@@ -1,32 +1,32 @@
-import { jsxs as l, Fragment as h, jsx as n } from "react/jsx-runtime";
-import { TextField as u, InputAdornment as m } from "@mui/material";
+import { jsxs as h, Fragment as d, jsx as r } from "react/jsx-runtime";
+import { TextField as m, InputAdornment as u } from "@mui/material";
 import { useState as p } from "react";
-import { a as d } from "../../../../chunks/index.js";
-const T = (r) => {
-  const { width: c, queryRef: e } = r, [s, a] = p(""), i = r.visible != !1;
-  return /* @__PURE__ */ l(h, { children: [
+import { a as x } from "../../../../chunks/index.js";
+const k = (n) => {
+  const { width: c, queryRef: e, ...a } = n, [s, i] = p(""), o = a.visible != !1;
+  return /* @__PURE__ */ h(d, { children: [
     " ",
-    i && /* @__PURE__ */ n(
-      u,
+    o && /* @__PURE__ */ r(
+      m,
       {
         sx: { width: c },
         type: "text",
         value: s,
-        onChange: (o) => {
-          const t = o.target.value;
-          a(t), e != null && e.current && (t && t.length > 0 ? e.current.setQuickSearch(t) : e.current.setQuickSearch(null));
+        onChange: (l) => {
+          const t = l.target.value;
+          i(t), e != null && e.current && (t && t.length > 0 ? e.current.setQuickSearch(t) : e.current.setQuickSearch(null));
         },
-        style: { border: "0px" },
+        className: "py-dataGrid-search-field",
         size: "small",
         placeholder: "Quick Search",
         InputProps: {
-          endAdornment: /* @__PURE__ */ n(m, { position: "end", children: /* @__PURE__ */ n(d, { className: "card-filter-icon" }) })
+          endAdornment: /* @__PURE__ */ r(u, { position: "end", children: /* @__PURE__ */ r(x, { className: "py-dataGrid-search-icon" }) })
         },
-        ...r
+        ...a
       }
     )
   ] });
 };
 export {
-  T as QuickSearch
+  k as QuickSearch
 };

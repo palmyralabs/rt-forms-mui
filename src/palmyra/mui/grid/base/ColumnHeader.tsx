@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { TableCell } from '@mui/material';
 import { LuArrowDownUp, LuArrowUpDown } from "react-icons/lu";
+import './ColumnHeader.css';
 
 const ColumnHeader = ({ header, children, onSortChange }) => {
 
@@ -30,19 +31,13 @@ const ColumnHeader = ({ header, children, onSortChange }) => {
     };
 
     const meta: any = header.column.columnDef.meta;
-
+    const isTypeNumber = meta?.columnDef?.type === 'number';
+    const cellClassName = 'py-dataGrid-header-text' + (isTypeNumber ? ' py-dataGrid-header-text-type-number' : '')
     if (header.column.columnDef.columns) {
         // Render Grouped Columns
         return (
-            <TableCell className='plr-baseGrid-header-cell' key={header.id} colSpan={header.colSpan}>
-                <div style={{
-                    display: 'flex',
-                    fontWeight: 'bold',
-                    alignItems: 'center',
-                    gap: '10px',
-                    width: width,
-                    justifyContent: 'center'
-                }} >
+            <TableCell className='py-baseGrid-header-cell' key={header.id} colSpan={header.colSpan}>
+                <div className={cellClassName} style={{ width: width }}>
                     {children}
                 </div>
             </TableCell>
@@ -50,21 +45,17 @@ const ColumnHeader = ({ header, children, onSortChange }) => {
     } else
         return (
             <TableCell key={header.id} colSpan={header.colSpan}
-                className='plr-baseGrid-header-cell'>
-                <div style={{
-                    display: 'flex',
-                    fontWeight: 'bold',
-                    alignItems: 'center',
-                    gap: '10px',
-                    width: width,
-                    justifyContent: meta?.columnDef?.type === 'number' ? 'flex-end' : 'flex-start'
-                }} onClick={() => handleSortColumn()}>
+                className='py-baseGrid-header-cell'>
+                <div
+                    className={cellClassName}
+                    style={{ width: width }}
+                    onClick={() => handleSortColumn()}>
                     {children}
                     {sortOrder === 'asc' ? (
-                        <LuArrowUpDown style={{ fontSize: '18px', color: 'rgb(0,0,0,0.5)' }} />
+                        <LuArrowUpDown className='py-baseGrid-header-sort-icon' />
                     ) :
                         sortOrder === 'desc' ? (
-                            <LuArrowDownUp style={{ fontSize: '18px', color: 'rgb(0,0,0,0.5)' }} />
+                            <LuArrowDownUp className='py-baseGrid-header-sort-icon' />
                         ) : null}
 
                 </div>

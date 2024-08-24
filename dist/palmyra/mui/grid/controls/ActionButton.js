@@ -1,21 +1,29 @@
-import { jsx as t, Fragment as i } from "react/jsx-runtime";
-import { Button as r } from "@mui/material";
+import { jsx as n, Fragment as o } from "react/jsx-runtime";
+import { Button as p } from "@mui/material";
 import "../../../../chunks/NoopConverter.js";
 import "dayjs";
-import { o as p } from "../../../../chunks/topic.js";
-const s = (n, e) => {
-  p.publish(n + "/" + e, {});
-}, u = (n) => {
-  const e = n.visible != !1;
-  return /* @__PURE__ */ t(i, { children: e && /* @__PURE__ */ t(r, { ...n, onClick: () => s(n.topic, n.name), children: /* @__PURE__ */ t("span", { children: n.label }) }) });
-}, o = (n) => {
-  console.log(n);
-  const e = n.props.visible != !1;
-  return /* @__PURE__ */ t(i, { children: e && /* @__PURE__ */ t(r, { ...n.props, onClick: () => s(n.props.topic, n.name), children: /* @__PURE__ */ t("span", { children: n.props.label }) }) });
-}, b = (n) => /* @__PURE__ */ t(o, { props: n, name: "new" }), h = (n) => /* @__PURE__ */ t(o, { props: n, name: "edit" }), B = (n) => /* @__PURE__ */ t(o, { props: n, name: "delete" });
+import { o as r } from "../../../../chunks/topic.js";
+const s = (t, e) => {
+  r.publish(t + "/" + e, {});
+}, b = (t) => {
+  const e = t.visible != !1;
+  return /* @__PURE__ */ n(o, { children: e && /* @__PURE__ */ n(p, { ...t, onClick: () => s(t.topic, t.name), children: /* @__PURE__ */ n("span", { children: t.label }) }) });
+}, i = (t) => {
+  const e = t.props.visible != !1;
+  return /* @__PURE__ */ n(o, { children: e && /* @__PURE__ */ n(
+    p,
+    {
+      ...t.props,
+      onClick: () => s(t.props.topic, t.name),
+      className: "py-action-button",
+      disableRipple: !0,
+      children: /* @__PURE__ */ n("span", { children: t.props.label })
+    }
+  ) });
+}, d = (t) => /* @__PURE__ */ n(i, { props: t, name: "new" }), h = (t) => /* @__PURE__ */ n(i, { props: t, name: "edit" }), B = (t) => /* @__PURE__ */ n(i, { props: t, name: "delete" });
 export {
-  u as ActionButton,
+  b as ActionButton,
   B as DeleteButton,
   h as EditButton,
-  b as NewButton
+  d as NewButton
 };

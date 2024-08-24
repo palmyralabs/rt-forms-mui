@@ -8,6 +8,7 @@ import { ColumnDefinition, DataGridPluginOptions } from "../../types";
 import { convertToField } from "./GridFieldConverter";
 import getField from "./FieldGenerator";
 import { FieldGroupContainer } from "../../../form";
+import './FilterForm.css';
 
 
 interface FilterOptions extends DataGridPluginOptions {
@@ -66,21 +67,21 @@ const FilterForm = (o: FilterOptions) => {
 
     const fieldGroupColumn = o.column || 2;
 
-    return <div className='grid-filter-container'>
-        <div className="grid-filter-content">
+    return <div className='py-filter-container'>
+        <div className="py-filter-content">
             <PalmyraForm formData={formattedFilterValue} ref={filterRef}>
                 <FieldGroupContainer columns={fieldGroupColumn}>
                     {getFilterColumns()}
                 </FieldGroupContainer>
             </PalmyraForm>
         </div>
-        <div className="grid-filter-btn-container">
-            <Button className='secondary-filled-button' disableRipple onClick={reset}>
-                <TbRefresh className="button-icon" />
+        <div className="py-filter-button-container">
+            <Button className='py-reset-button' disableRipple onClick={reset}>
+                <TbRefresh className="py-button-icon" />
                 Reset
             </Button>
-            <Button className='filled-button' disableRipple onClick={assignFilter}>
-                <TbFilterShare className='button-icon' />
+            <Button className='py-filter-button' disableRipple onClick={assignFilter}>
+                <TbFilterShare className='py-button-icon' />
                 Filter
             </Button>
         </div>

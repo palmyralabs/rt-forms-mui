@@ -2,6 +2,7 @@ import { FormControl, MenuItem, Pagination, Select } from "@mui/material"
 import { delayGenerator, topic } from "@palmyralabs/ts-utils";
 import { useEffect, useState } from "react";
 import { DataGridPluginOptions } from "../../types";
+import './SelectablePagination.css';
 
 const delay = delayGenerator(10)
 
@@ -20,32 +21,29 @@ const SelectablePagination = (o: DataGridPluginOptions) => {
         }
     }, [o.topic])
 
-    if (!pageQuery)
-        return (<></>);
-
-    const totalRecords = pageQuery.getTotalRecords();
-    const queryLimit = pageQuery.getQueryLimit();
+    const totalRecords = pageQuery?.getTotalRecords() || 0;
+    const queryLimit = pageQuery?.getQueryLimit() || { limit: 15 };
 
     const pageSizeOptions = Array.isArray(o.pageSize) ? o.pageSize : [o.pageSize];
 
-    const { gotoPage, getPageNo, setPageSize } = pageQuery;
+    // const { gotoPage, getPageNo, setPageSize } = pageQuery;
 
-    const currentPage = getPageNo();
+    const currentPage = pageQuery?.getPageNo() || 0;
     const rowsPerPage = queryLimit.limit || 25;
     const totalPages = Math.ceil(totalRecords / rowsPerPage);
     const startRecord = currentPage * rowsPerPage + 1;
     const endRecord = Math.min((currentPage + 1) * rowsPerPage, totalRecords);
 
     const nextPage = (_event: any, newPage: number) => {
-        gotoPage(newPage - 1);
+        pageQuery.gotoPage(newPage - 1);
     };
 
     const handleRowsPerPageChange = (event) => {
         const limit = parseInt(event.target.value, 10);
-        setPageSize(limit);
+        pageQuery.setPageSize(limit);
     }
 
-    return <div className='grid-filter'>
+    return <div>
         {(!isNaN(totalPages)) && (
             <div>
                 {/* <TablePagination
@@ -57,14 +55,14 @@ const SelectablePagination = (o: DataGridPluginOptions) => {
                   rowsPerPageOptions={pageSizeOptions || []}
                   onRowsPerPageChange={handleRowsPerPageChange}
                 /> */}
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <div style={{ width: '50%' }}>
+                <div className="py-selectable-pagination-container">
+                    <div className="py-selectable-pagination-left-container">
                         {
                             pageSizeOptions && pageSizeOptions.length > 1 ? (
                                 <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                    <div className="py-selectable-pagination-left-content-container">
                                         <div><span>Showing</span></div>
-                                        <div>
+                                        <div className="py-selectable-pagination-select-field">
                                             <Select
                                                 labelId="rows-per-page-select-label"
                                                 id="rows-per-page-select"
@@ -79,16 +77,16 @@ const SelectablePagination = (o: DataGridPluginOptions) => {
                                                 ))}
                                             </Select>
                                         </div>
-                                        <div><span>{startRecord} - {endRecord} of {totalRecords} Results</span></div>
+                                        <div className="py-selectable-pagination-show-result"><span>{startRecord} - {endRecord} of {totalRecords} Results</span></div>
                                     </div>
                                 </FormControl>
 
                             ) : null
                         }
                     </div>
-                    <div style={{}}>
+                    <div className="py-selectable-pagination-right-container">
                         <Pagination count={totalPages} shape="rounded"
-                            onChange={nextPage} page={getPageNo() + 1}
+                            onChange={nextPage} page={currentPage + 1}
                         />
                     </div>
                 </div>

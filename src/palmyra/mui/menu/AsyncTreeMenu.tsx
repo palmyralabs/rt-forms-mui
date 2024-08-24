@@ -126,98 +126,99 @@ export default function AsyncTreeMenu(props: IAsyncTreeMenuInput) {
                     aria-live="polite"
                 ></div>
                 <div className="checkbox">
-                    <TreeView className="async-tree-menu-container"
-                        data={data.data}
-                        aria-label="Checkbox tree"
-                        onExpand={(p: ITreeViewOnExpandProps) => {
-                            const isExpanded = p.isExpanded;
-                            const element = p.element;
-                            if (isExpanded) {
-                                if (element.id != "") {
-                                    if (!expandedIdRef.current.includes(element.id))
-                                        expandedIdRef.current.push(element.id);
+                    {(data.data.length > 1) &&
+                        <TreeView className="async-tree-menu-container"
+                            data={data.data}
+                            aria-label="Checkbox tree"
+                            onExpand={(p: ITreeViewOnExpandProps) => {
+                                const isExpanded = p.isExpanded;
+                                const element = p.element;
+                                if (isExpanded) {
+                                    if (element.id != "") {
+                                        if (!expandedIdRef.current.includes(element.id))
+                                            expandedIdRef.current.push(element.id);
+                                    }
+                                } else {
+                                    const idx: number = expandedIdRef.current.indexOf(element.id)
+                                    if (idx > -1) {
+                                        expandedIdRef.current.splice(idx, 1);
+                                    }
                                 }
-                            } else {
-                                const idx: number = expandedIdRef.current.indexOf(element.id)
-                                if (idx > -1) {
-                                    expandedIdRef.current.splice(idx, 1);
+                                persistExpanded();
+                            }}
+                            onSelect={(p: ITreeViewOnSelectProps) => {
+                                const isSelected = p.isSelected;
+                                const element = p.element;
+                                if (isSelected && !p.isHalfSelected) {
+                                    if (element.id !== "") {
+                                        persistSelected(element.id);
+                                    }
                                 }
-                            }
-                            persistExpanded();
-                        }}
-                        onSelect={(p: ITreeViewOnSelectProps) => {
-                            const isSelected = p.isSelected;
-                            const element = p.element;
-                            if (isSelected && !p.isHalfSelected) {
-                                if (element.id !== "") {
-                                    persistSelected(element.id);
-                                }
-                            }
-                        }}
-                        propagateSelect={false}
-                        togglableSelect
-                        multiSelect={false}
-                        selectedIds={data.selectedId}
-                        expandedIds={data.expandedIds}
-                        propagateSelectUpwards={true}
-                        nodeRenderer={({
-                            element,
-                            isBranch,
-                            isExpanded,
-                            isSelected,
-                            isHalfSelected,
-                            getNodeProps,
-                            level,
-                            handleSelect,
-                            handleExpand,
-                        }) => {
+                            }}
+                            propagateSelect={false}
+                            togglableSelect
+                            multiSelect={false}
+                            selectedIds={data.selectedId}
+                            expandedIds={data.expandedIds}
+                            propagateSelectUpwards={true}
+                            nodeRenderer={({
+                                element,
+                                isBranch,
+                                isExpanded,
+                                isSelected,
+                                isHalfSelected,
+                                getNodeProps,
+                                level,
+                                handleSelect,
+                                handleExpand,
+                            }) => {
 
-                            const branchNode = (isExpanded, element) => {
-                                return isExpanded && element.children.length === 0 ? (
-                                    <>
-                                        <span
-                                            role="alert"
-                                            aria-live="assertive"
-                                            className="visually-hidden"
-                                        >
-                                            loading {element.name}
-                                        </span>
-                                        <AiOutlineLoading
-                                            aria-hidden={true}
-                                            className="loading-icon"
-                                        />
-                                    </>
-                                ) : (
-                                    <ArrowIcon isOpen={isExpanded} />
-                                );
-                            };
+                                const branchNode = (isExpanded, element) => {
+                                    return isExpanded && element.children.length === 0 ? (
+                                        <>
+                                            <span
+                                                role="alert"
+                                                aria-live="assertive"
+                                                className="visually-hidden"
+                                            >
+                                                loading {element.name}
+                                            </span>
+                                            <AiOutlineLoading
+                                                aria-hidden={true}
+                                                className="loading-icon"
+                                            />
+                                        </>
+                                    ) : (
+                                        <ArrowIcon isOpen={isExpanded} />
+                                    );
+                                };
 
-                            return (
-                                <div
-                                    {...getNodeProps({ onClick: handleExpand })}
-                                    style={{ marginLeft: 5 * (level - 1) }}
-                                >
-                                    <div className={isSelected ?
-                                        "async-tree-menu-selected-list" : "async-tree-menu-list"}
-                                        onClick={(e) => {
-                                            if (!isSelected) {
-                                                handleSelect(e);
-                                            }
-                                            navigateTo(element);
-                                        }}>
-                                        <div className="async-tree-menu-list-text-container">
-                                            <div className="menu-icon"></div>
-                                            <span className="menu-name">{element.name}</span>
-                                        </div>
-                                        <div className="async-tree-menu-list-arrow-container">
-                                            {isBranch && branchNode(isExpanded, element)}
+                                return (
+                                    <div
+                                        {...getNodeProps({ onClick: handleExpand })}
+                                        style={{ marginLeft: 5 * (level - 1) }}
+                                    >
+                                        <div className={isSelected ?
+                                            "async-tree-menu-selected-list" : "async-tree-menu-list"}
+                                            onClick={(e) => {
+                                                if (!isSelected) {
+                                                    handleSelect(e);
+                                                }
+                                                navigateTo(element);
+                                            }}>
+                                            <div className="async-tree-menu-list-text-container">
+                                                <div className="menu-icon"></div>
+                                                <span className="menu-name">{element.name}</span>
+                                            </div>
+                                            <div className="async-tree-menu-list-arrow-container">
+                                                {isBranch && branchNode(isExpanded, element)}
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            );
-                        }
-                        }
-                    />
+                                );
+                            }
+                            }
+                        />}
                 </div>
             </div >
         </>

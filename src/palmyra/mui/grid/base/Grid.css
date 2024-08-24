@@ -155,49 +155,6 @@
 
 }
 
-/* .density-icon {
-  font-size: 22px;
-} */
-
-.css-78c6dr-MuiToolbar-root-MuiTablePagination-toolbar {
-  width: auto;
-}
-
-/* .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
-  border: 1.3px solid var(--primary-border-color) !important;
-} */
-
-.table {
-  .css-1ex1afd-MuiTableCell-root {
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-    font-weight: 200;
-    font-size: 1rem;
-    line-height: 1.43;
-    letter-spacing: 0.01071em;
-    display: table-cell;
-    vertical-align: inherit;
-    border-bottom: 0px solid rgba(224, 224, 224, 1);
-    text-align: left;
-    padding: 16px;
-    color: rgba(0, 0, 0, 0.87);
-  }
-
-  .css-1ygcj2i-MuiTableCell-root {
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-    font-weight: 500;
-    font-size: 1rem;
-    line-height: 1.5rem;
-    letter-spacing: 0.01071em;
-    display: table-cell;
-    vertical-align: inherit;
-    border-bottom: 1px solid rgba(224, 224, 224, 1);
-    text-align: left;
-    padding: 16px;
-    color: rgba(0, 0, 0, 0.87);
-  }
-
-}
-
 /* grid button  */
 .grid-header-button .MuiButton-root {
   min-width: auto !important;
@@ -218,8 +175,6 @@
 
 .grid-filter-header-container {
   display: flex;
-  /* background-color: rgb(102, 124, 146); */
-  /* color: rgb(255, 255, 255); */
   padding: 20px 30px 0px 38px;
   justify-content: space-between;
   width: auto;
@@ -230,15 +185,6 @@
   margin-left: 0px !important;
   vertical-align: middle !important;
   cursor: pointer !important;
-}
-
-.loading-child-container {
-  display: flex;
-  padding: 10px;
-  align-items: center;
-  text-align: center;
-  gap: 10px;
-  justify-content: center;
 }
 
 .grid-header-text-container {
@@ -271,29 +217,4 @@
 .grid-filter-container {
   background-color: white;
   border-radius: 10px;
-}
-
-/* .filter-header-border {
-  border: 1px solid rgba(175, 175, 175, 0.414);
-} */
-
-/* .grid-filter-content {
-  padding: 10px 0 0 0;
-  margin-top: 10px;
-} */
-
-.grid-filter-btn-container {
-  padding: 20px 35px 15px 0px;
-  display: flex;
-  justify-content: end;
-  gap: 10px;
-}
-
-.dialog-btn {
-  background-color: rgb(102, 124, 146) !important;
-  color: white !important;
-}
-
-.dialog-btn:hover {
-  background-color: rgb(53, 70, 87) !important;
 }

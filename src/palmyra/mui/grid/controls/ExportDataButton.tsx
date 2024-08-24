@@ -6,6 +6,7 @@ import { EXPORT_FORMAT, ExportRequest } from "@palmyralabs/palmyra-wire";
 import { IPageQueryable } from "@palmyralabs/rt-forms";
 import { useRef } from "react";
 import { IPluginBtnControl } from "./types";
+import './ExportDataButton.css';
 
 interface IExportDataOptions extends Pick<DataGridPluginOptions, 'queryRef'>, IPluginBtnControl {
     exportOption: Partial<Record<EXPORT_FORMAT, string>>
@@ -31,20 +32,20 @@ const ExportDataButton = (props: IExportDataOptions) => {
         doc: () => exportData('doc')
     };
     const optionIcons = {
-        csv: <PiFileCsv className='density-icon grid-button-icon' />,
-        pdf: <PiFilePdf className='density-icon grid-button-icon' />,
-        excel: <PiFileXls className='density-icon grid-button-icon' />,
-        doc: <PiFileDoc className='density-icon grid-button-icon' />
+        csv: <PiFileCsv className='py-export-button-list-icon' />,
+        pdf: <PiFilePdf className='py-export-button-list-icon' />,
+        excel: <PiFileXls className='py-export-button-list-icon' />,
+        doc: <PiFileDoc className='py-export-button-list-icon' />
     };
     return (<>{visible &&
         <DropdownButton title='Export' ref={dropDownRef} disabled={props.disabled}
-            PrefixAdornment={<TbTableExport className='grid-button-icon' />}>
-            <div onClick={(e) => e.stopPropagation()}>
+            PrefixAdornment={<TbTableExport className='py-export-button-icon' />}>
+            <div onClick={(e) => e.stopPropagation()} className="py-export-button-container">
                 <ul>
                     {Object.entries(exportOption).map(([key, label]) => (
                         <li key={key} onClick={optionHandlers[key]}>
                             {optionIcons[key]}
-                            <span className='drodown-content-text'>{label}</span>
+                            <span className='py-export-list-text'>{label}</span>
                         </li>
                     ))}
                 </ul>

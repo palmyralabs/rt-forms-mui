@@ -1,55 +1,50 @@
-import { jsx as e, jsxs as x } from "react/jsx-runtime";
-import { useState as k } from "react";
-import { TableCell as m } from "@mui/material";
-import { G as p } from "../../../../chunks/iconBase.js";
-function v(t) {
-  return p({ tag: "svg", attr: { viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" }, child: [{ tag: "path", attr: { d: "m3 16 4 4 4-4" }, child: [] }, { tag: "path", attr: { d: "M7 20V4" }, child: [] }, { tag: "path", attr: { d: "m21 8-4-4-4 4" }, child: [] }, { tag: "path", attr: { d: "M17 4v16" }, child: [] }] })(t);
-}
+import { jsx as r, jsxs as y } from "react/jsx-runtime";
+import { useState as v } from "react";
+import { TableCell as p } from "@mui/material";
+import { G as h } from "../../../../chunks/iconBase.js";
+import '../../../../assets/ColumnHeader.css';/* empty css                              */
 function D(t) {
-  return p({ tag: "svg", attr: { viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" }, child: [{ tag: "path", attr: { d: "m21 16-4 4-4-4" }, child: [] }, { tag: "path", attr: { d: "M17 20V4" }, child: [] }, { tag: "path", attr: { d: "m3 8 4-4 4 4" }, child: [] }, { tag: "path", attr: { d: "M7 4v16" }, child: [] }] })(t);
+  return h({ tag: "svg", attr: { viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" }, child: [{ tag: "path", attr: { d: "m3 16 4 4 4-4" }, child: [] }, { tag: "path", attr: { d: "M7 20V4" }, child: [] }, { tag: "path", attr: { d: "m21 8-4-4-4 4" }, child: [] }, { tag: "path", attr: { d: "M17 4v16" }, child: [] }] })(t);
 }
-const j = ({ header: t, children: l, onSortChange: c }) => {
-  var i, s, d, u;
-  const [n, f] = k(""), g = ((i = t.column.columnDef.meta) == null ? void 0 : i.attribute) || t.id, h = !t.column.columnDef.enableSorting, a = ((d = (s = t.column.columnDef.meta) == null ? void 0 : s.columnDef) == null ? void 0 : d.width) || "auto", b = () => {
-    if (!(c === void 0 || h)) {
-      var o = n;
-      switch (o) {
+function w(t) {
+  return h({ tag: "svg", attr: { viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" }, child: [{ tag: "path", attr: { d: "m21 16-4 4-4-4" }, child: [] }, { tag: "path", attr: { d: "M17 20V4" }, child: [] }, { tag: "path", attr: { d: "m3 8 4-4 4 4" }, child: [] }, { tag: "path", attr: { d: "M7 4v16" }, child: [] }] })(t);
+}
+const j = ({ header: t, children: c, onSortChange: n }) => {
+  var i, d, m, u;
+  const [o, f] = v(""), b = ((i = t.column.columnDef.meta) == null ? void 0 : i.attribute) || t.id, g = !t.column.columnDef.enableSorting, l = ((m = (d = t.column.columnDef.meta) == null ? void 0 : d.columnDef) == null ? void 0 : m.width) || "auto", k = () => {
+    if (!(n === void 0 || g)) {
+      var e = o;
+      switch (e) {
         case "asc":
-          o = "desc";
+          e = "desc";
           break;
         case "desc":
-          o = "";
+          e = "";
           break;
         default:
-          o = "asc";
+          e = "asc";
           break;
       }
-      f(o), c(g, o);
+      f(e), n(b, e);
     }
-  }, r = t.column.columnDef.meta;
-  return t.column.columnDef.columns ? /* @__PURE__ */ e(m, { className: "plr-baseGrid-header-cell", colSpan: t.colSpan, children: /* @__PURE__ */ e("div", { style: {
-    display: "flex",
-    fontWeight: "bold",
-    alignItems: "center",
-    gap: "10px",
-    width: a,
-    justifyContent: "center"
-  }, children: l }) }, t.id) : /* @__PURE__ */ e(
-    m,
+  }, a = t.column.columnDef.meta, s = "py-dataGrid-header-text" + (((u = a == null ? void 0 : a.columnDef) == null ? void 0 : u.type) === "number" ? " py-dataGrid-header-text-type-number" : "");
+  return t.column.columnDef.columns ? /* @__PURE__ */ r(p, { className: "py-baseGrid-header-cell", colSpan: t.colSpan, children: /* @__PURE__ */ r("div", { className: s, style: { width: l }, children: c }) }, t.id) : /* @__PURE__ */ r(
+    p,
     {
       colSpan: t.colSpan,
-      className: "plr-baseGrid-header-cell",
-      children: /* @__PURE__ */ x("div", { style: {
-        display: "flex",
-        fontWeight: "bold",
-        alignItems: "center",
-        gap: "10px",
-        width: a,
-        justifyContent: ((u = r == null ? void 0 : r.columnDef) == null ? void 0 : u.type) === "number" ? "flex-end" : "flex-start"
-      }, onClick: () => b(), children: [
-        l,
-        n === "asc" ? /* @__PURE__ */ e(D, { style: { fontSize: "18px", color: "rgb(0,0,0,0.5)" } }) : n === "desc" ? /* @__PURE__ */ e(v, { style: { fontSize: "18px", color: "rgb(0,0,0,0.5)" } }) : null
-      ] })
+      className: "py-baseGrid-header-cell",
+      children: /* @__PURE__ */ y(
+        "div",
+        {
+          className: s,
+          style: { width: l },
+          onClick: () => k(),
+          children: [
+            c,
+            o === "asc" ? /* @__PURE__ */ r(w, { className: "py-baseGrid-header-sort-icon" }) : o === "desc" ? /* @__PURE__ */ r(D, { className: "py-baseGrid-header-sort-icon" }) : null
+          ]
+        }
+      )
     },
     t.id
   );

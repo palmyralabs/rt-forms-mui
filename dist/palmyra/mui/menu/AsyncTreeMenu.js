@@ -8,7 +8,7 @@ const E = "palmyra.rui.sidemenu.expanded", v = "palmyra.rui.sidemenu.expanded.se
 function q(h) {
   const o = M(), g = S(null);
   let u = { name: "", id: -1, parent: null, children: [], isBranch: !0 };
-  const [d, y] = L({ data: [u], expandedIds: [], selectedId: [] }), A = h.store, i = S([]), b = (e, r, a) => e.map((s) => (s.id === r && !s.loaded && (s.loaded = !0, s.children = a.filter((l) => r == l.parent).map((l) => l.id)), s)).concat(a), w = (e) => e.split(",").map((a) => parseInt(a)), C = (e, r) => e && Array.isArray(e) ? e.map((t) => {
+  const [i, y] = L({ data: [u], expandedIds: [], selectedId: [] }), A = h.store, l = S([]), b = (e, r, a) => e.map((s) => (s.id === r && !s.loaded && (s.loaded = !0, s.children = a.filter((d) => r == d.parent).map((d) => d.id)), s)).concat(a), w = (e) => e.split(",").map((a) => parseInt(a)), C = (e, r) => e && Array.isArray(e) ? e.map((t) => {
     const s = t.children || "";
     return {
       id: t.id,
@@ -30,14 +30,14 @@ function q(h) {
   k(() => {
     A.getRoot().then((e) => {
       var r = C(e.result, -1);
-      const a = b(d.data, -1, r), t = (localStorage.getItem(E) || "").split(",");
-      i.current = t.map((c) => x(c)).filter((c) => r.some((m) => m.id == c));
-      const l = (localStorage.getItem(v) || "").split(",").map((c) => x(c)).filter((c) => r.some((m) => m.id == c));
-      y({ data: a, expandedIds: i.current, selectedId: l });
+      const a = b(i.data, -1, r), t = (localStorage.getItem(E) || "").split(",");
+      l.current = t.map((c) => x(c)).filter((c) => r.some((m) => m.id == c));
+      const d = (localStorage.getItem(v) || "").split(",").map((c) => x(c)).filter((c) => r.some((m) => m.id == c));
+      y({ data: a, expandedIds: l.current, selectedId: d });
     });
   }, []);
   const O = () => {
-    localStorage.setItem(E, i.current.join());
+    localStorage.setItem(E, l.current.join());
   }, R = (e) => {
     localStorage.setItem(v, e);
   }, T = (e) => {
@@ -60,19 +60,19 @@ function q(h) {
         "aria-live": "polite"
       }
     ),
-    /* @__PURE__ */ n("div", { className: "checkbox", children: /* @__PURE__ */ n(
+    /* @__PURE__ */ n("div", { className: "checkbox", children: i.data.length > 1 && /* @__PURE__ */ n(
       j,
       {
         className: "async-tree-menu-container",
-        data: d.data,
+        data: i.data,
         "aria-label": "Checkbox tree",
         onExpand: (e) => {
           const r = e.isExpanded, a = e.element;
           if (r)
-            a.id != "" && (i.current.includes(a.id) || i.current.push(a.id));
+            a.id != "" && (l.current.includes(a.id) || l.current.push(a.id));
           else {
-            const t = i.current.indexOf(a.id);
-            t > -1 && i.current.splice(t, 1);
+            const t = l.current.indexOf(a.id);
+            t > -1 && l.current.splice(t, 1);
           }
           O();
         },
@@ -83,8 +83,8 @@ function q(h) {
         propagateSelect: !1,
         togglableSelect: !0,
         multiSelect: !1,
-        selectedIds: d.selectedId,
-        expandedIds: d.expandedIds,
+        selectedIds: i.selectedId,
+        expandedIds: i.expandedIds,
         propagateSelectUpwards: !0,
         nodeRenderer: ({
           element: e,
@@ -92,7 +92,7 @@ function q(h) {
           isExpanded: a,
           isSelected: t,
           isHalfSelected: s,
-          getNodeProps: l,
+          getNodeProps: d,
           level: c,
           handleSelect: m,
           handleExpand: _
@@ -121,7 +121,7 @@ function q(h) {
           return /* @__PURE__ */ n(
             "div",
             {
-              ...l({ onClick: _ }),
+              ...d({ onClick: _ }),
               style: { marginLeft: 5 * (c - 1) },
               children: /* @__PURE__ */ p(
                 "div",
@@ -147,13 +147,13 @@ function q(h) {
   ] }) });
 }
 const F = (h) => {
-  const { isOpen: o, className: g } = h, u = "arrow", d = B(
+  const { isOpen: o, className: g } = h, u = "arrow", i = B(
     u,
     { [`${u}--closed`]: !o },
     { [`${u}--open`]: o },
     g
   );
-  return /* @__PURE__ */ n(V, { className: d });
+  return /* @__PURE__ */ n(V, { className: i });
 };
 export {
   q as default

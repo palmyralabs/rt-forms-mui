@@ -1,5 +1,5 @@
 import { StoreFactoryContext } from "@palmyralabs/rt-forms";
-import { ColumnDefinition, DataGridDefaultControls, ExportDataButton, GridX, IDataGridDefaultControlConfig } from "../../../src/palmyra"
+import { ColumnDefinition, DataGridDefaultControls, GridX, IDataGridDefaultControlConfig } from "../../../src/palmyra"
 import { PalmyraStoreFactory, StoreFactory } from "@palmyralabs/palmyra-wire";
 
 import './ServerGrid.css'

@@ -1,64 +1,63 @@
-import { jsx as e, Fragment as x, jsxs as l } from "react/jsx-runtime";
-import { FormControl as R, Select as S, MenuItem as C, Pagination as I } from "@mui/material";
+import { jsx as e, jsxs as r } from "react/jsx-runtime";
+import { FormControl as P, Select as N, MenuItem as R, Pagination as w } from "@mui/material";
 import "../../../../../chunks/NoopConverter.js";
 import "dayjs";
-import { o as h } from "../../../../../chunks/topic.js";
-import { t as N } from "../../../../../chunks/delayGenerator.js";
-import { useState as j, useEffect as z } from "react";
-const M = N(10), T = (n) => {
+import { o as m } from "../../../../../chunks/topic.js";
+import { t as y } from "../../../../../chunks/delayGenerator.js";
+import { useState as S, useEffect as x } from "react";
+import '../../../../../assets/SelectablePagination.css';const C = y(10), E = (a) => {
   var p;
-  const i = (p = n.queryRef) == null ? void 0 : p.current, [q, m] = j(0);
-  if (z(() => {
-    if (n.topic) {
-      const t = h.subscribe(n.topic + "/data", () => {
-        M(() => m((r) => r + 1));
+  const t = (p = a.queryRef) == null ? void 0 : p.current, [z, g] = S(0);
+  x(() => {
+    if (a.topic) {
+      const n = m.subscribe(a.topic + "/data", () => {
+        C(() => g((i) => i + 1));
       });
       return () => {
-        h.unsubscribe(t);
+        m.unsubscribe(n);
       };
     }
-  }, [n.topic]), !i)
-    return /* @__PURE__ */ e(x, {});
-  const s = i.getTotalRecords(), u = i.getQueryLimit(), a = Array.isArray(n.pageSize) ? n.pageSize : [n.pageSize], { gotoPage: f, getPageNo: c, setPageSize: y } = i, d = c(), o = u.limit || 25, g = Math.ceil(s / o), v = d * o + 1, P = Math.min((d + 1) * o, s), b = (t, r) => {
-    f(r - 1);
-  }, w = (t) => {
-    const r = parseInt(t.target.value, 10);
-    y(r);
+  }, [a.topic]);
+  const o = (t == null ? void 0 : t.getTotalRecords()) || 0, h = (t == null ? void 0 : t.getQueryLimit()) || { limit: 15 }, s = Array.isArray(a.pageSize) ? a.pageSize : [a.pageSize], c = (t == null ? void 0 : t.getPageNo()) || 0, l = h.limit || 25, d = Math.ceil(o / l), u = c * l + 1, b = Math.min((c + 1) * l, o), f = (n, i) => {
+    t.gotoPage(i - 1);
+  }, v = (n) => {
+    const i = parseInt(n.target.value, 10);
+    t.setPageSize(i);
   };
-  return /* @__PURE__ */ e("div", { className: "grid-filter", children: !isNaN(g) && /* @__PURE__ */ e("div", { children: /* @__PURE__ */ l("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between" }, children: [
-    /* @__PURE__ */ e("div", { style: { width: "50%" }, children: a && a.length > 1 ? /* @__PURE__ */ e(R, { variant: "standard", sx: { m: 1, minWidth: 120 }, children: /* @__PURE__ */ l("div", { style: { display: "flex", alignItems: "center", gap: "10px" }, children: [
+  return /* @__PURE__ */ e("div", { children: !isNaN(d) && /* @__PURE__ */ e("div", { children: /* @__PURE__ */ r("div", { className: "py-selectable-pagination-container", children: [
+    /* @__PURE__ */ e("div", { className: "py-selectable-pagination-left-container", children: s && s.length > 1 ? /* @__PURE__ */ e(P, { variant: "standard", sx: { m: 1, minWidth: 120 }, children: /* @__PURE__ */ r("div", { className: "py-selectable-pagination-left-content-container", children: [
       /* @__PURE__ */ e("div", { children: /* @__PURE__ */ e("span", { children: "Showing" }) }),
-      /* @__PURE__ */ e("div", { children: /* @__PURE__ */ e(
-        S,
+      /* @__PURE__ */ e("div", { className: "py-selectable-pagination-select-field", children: /* @__PURE__ */ e(
+        N,
         {
           labelId: "rows-per-page-select-label",
           id: "rows-per-page-select",
-          defaultValue: a[0],
-          onChange: w,
+          defaultValue: s[0],
+          onChange: v,
           label: "Rows per page",
-          children: a.map((t) => /* @__PURE__ */ e(C, { value: t, children: t }, t))
+          children: s.map((n) => /* @__PURE__ */ e(R, { value: n, children: n }, n))
         }
       ) }),
-      /* @__PURE__ */ e("div", { children: /* @__PURE__ */ l("span", { children: [
-        v,
+      /* @__PURE__ */ e("div", { className: "py-selectable-pagination-show-result", children: /* @__PURE__ */ r("span", { children: [
+        u,
         " - ",
-        P,
+        b,
         " of ",
-        s,
+        o,
         " Results"
       ] }) })
     ] }) }) : null }),
-    /* @__PURE__ */ e("div", { style: {}, children: /* @__PURE__ */ e(
-      I,
+    /* @__PURE__ */ e("div", { className: "py-selectable-pagination-right-container", children: /* @__PURE__ */ e(
+      w,
       {
-        count: g,
+        count: d,
         shape: "rounded",
-        onChange: b,
-        page: c() + 1
+        onChange: f,
+        page: c + 1
       }
     ) })
   ] }) }) });
 };
 export {
-  T as SelectablePagination
+  E as SelectablePagination
 };
