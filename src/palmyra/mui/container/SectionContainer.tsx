@@ -51,4 +51,4 @@ const SectionContainer = (props: SectionContainerInput) => {
     </>
 }
 
-export default SectionContainer;
+export { SectionContainer };

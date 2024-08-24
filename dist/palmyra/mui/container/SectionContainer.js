@@ -1,10 +1,9 @@
 import { jsx as e, Fragment as l, jsxs as i } from "react/jsx-runtime";
 import { Accordion as s, AccordionSummary as m, AccordionDetails as h } from "@mui/material";
-import '../../../assets/SectionLayout.css';/* empty css                            */
 import { ExpandMore as u } from "@mui/icons-material";
 import { useState as x } from "react";
 import { renderTitle as r } from "../widget/InfoTooltip.js";
-const A = (n) => {
+import '../../../assets/SectionContainer.css';const y = (n) => {
   const c = n.title, a = n.customButton, t = n.hideTitle || !1, [o, d] = x(!0);
   return /* @__PURE__ */ e(l, { children: /* @__PURE__ */ e("div", { className: "section-container", children: c ? /* @__PURE__ */ i(s, { expanded: o, onChange: () => {
     d(!o);
@@ -23,5 +22,5 @@ const A = (n) => {
   ] }) }) });
 };
 export {
-  A as default
+  y as SectionContainer
 };

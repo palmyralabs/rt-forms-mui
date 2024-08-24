@@ -1,6 +1,4 @@
-import "react/jsx-runtime";
-import "@mui/material";
-import '../../../assets/SectionLayout.css';/* empty css                            */
-import "@mui/icons-material";
-import "react";
-import "../widget/InfoTooltip.js";
+import { SectionContainer as n } from "./SectionContainer.js";
+export {
+  n as SectionContainer
+};
