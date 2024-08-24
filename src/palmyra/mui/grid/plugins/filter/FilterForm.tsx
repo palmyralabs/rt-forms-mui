@@ -10,8 +10,9 @@ import getField from "./FieldGenerator";
 import { FieldGroupContainer } from "../../../form";
 
 
-interface FilterOptions extends DataGridPluginOptions{    
+interface FilterOptions extends DataGridPluginOptions {
     onClose?: (filter: any) => void,
+    column?: 1 | 2 | 3,
     defaultFilter?: Record<string, any>
 }
 
@@ -53,7 +54,7 @@ const FilterForm = (o: FilterOptions) => {
         var filterData = {};
 
         Object.entries(formData).map(([key, value]) => {
-            if(value && value != ''){
+            if (value && value != '') {
                 filterData[key] = value;
             }
         })
@@ -63,12 +64,12 @@ const FilterForm = (o: FilterOptions) => {
         };
     };
 
-
+    const fieldGroupColumn = o.column || 2;
 
     return <div className='grid-filter-container'>
         <div className="grid-filter-content">
             <PalmyraForm formData={formattedFilterValue} ref={filterRef}>
-                <FieldGroupContainer columns={2}>
+                <FieldGroupContainer columns={fieldGroupColumn}>
                     {getFilterColumns()}
                 </FieldGroupContainer>
             </PalmyraForm>

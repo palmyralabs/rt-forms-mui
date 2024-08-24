@@ -1,4 +1,4 @@
-import { MuiCheckBox, MuiDatePicker, MuiIntegerField, MuiNumberField, 
+import { MuiCheckBox, MuiDatePicker, MuiDateRangePicker, MuiIntegerField, MuiNumberField, 
     MuiPassword, MuiRadioGroup, MuiRating, MuiSelect, 
     MuiServerLookup, MuiSwitch, MuiTextArea, MuiTextField } from "../../../form";
 
@@ -53,10 +53,9 @@ const getField = (fieldDef: ColumnFieldOptions, title?: any) => {
         case 'numbersOnly':
             return getReactField(props, MuiNumberField);
         case 'integer':
-            return getReactField(props, MuiIntegerField);
-        
-        // case 'dateRange':
-        //     return getReactField(props, MuiDateRangePicker);
+            return getReactField(props, MuiIntegerField);        
+        case 'dateRange':
+            return getReactField(props, MuiDateRangePicker);
         case 'autoComplete':
             // return getReactField(props, MuiAutoComplete);
         default:

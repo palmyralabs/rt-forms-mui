@@ -17,5 +17,6 @@ export { MuiTextArea } from './MuiTextArea'
 
 export { MuiTextView } from './MuiTextView'
 export { MuiOptionsView } from './MuiOptionsView'
+export { MuiDateRangePicker } from './MuiDateRangePicker'
 
 export { FieldGroupContainer } from './FieldGroupContainer'

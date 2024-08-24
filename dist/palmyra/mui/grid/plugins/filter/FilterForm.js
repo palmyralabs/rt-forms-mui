@@ -1,13 +1,13 @@
-import { jsxs as o, jsx as i } from "react/jsx-runtime";
+import { jsxs as i, jsx as o } from "react/jsx-runtime";
 import { Button as a } from "@mui/material";
-import { PalmyraForm as h } from "@palmyralabs/rt-forms";
-import { i as R } from "../../../../../chunks/accessor.js";
+import { PalmyraForm as R } from "@palmyralabs/rt-forms";
+import { i as g } from "../../../../../chunks/accessor.js";
 import "../../../../../chunks/NoopConverter.js";
 import "dayjs";
-import { useRef as g } from "react";
+import { useRef as C } from "react";
 import { b as N, c as y } from "../../../../../chunks/index3.js";
-import { convertToField as C } from "./GridFieldConverter.js";
-import j from "./FieldGenerator.js";
+import { convertToField as j } from "./GridFieldConverter.js";
+import v from "./FieldGenerator.js";
 import "../../../form/MuiTextField.js";
 import "../../../form/MuiDatePicker.js";
 import "../../../form/MuiSelect.js";
@@ -24,13 +24,14 @@ import "../../../form/MuiSwitch.js";
 import "../../../form/MuiTextArea.js";
 import "../../../form/MuiTextView.js";
 import "../../../form/MuiOptionsView.js";
-import { FieldGroupContainer as v } from "../../../form/FieldGroupContainer.js";
-const _ = (t) => {
-  const l = {}, s = g(), c = t.defaultFilter || {}, p = C(t.columns), f = () => p.map((r, e) => j(r, r.label)), d = t.onClose || ((r) => {
+import "../../../form/MuiDateRangePicker.js";
+import { FieldGroupContainer as x } from "../../../form/FieldGroupContainer.js";
+const rr = (t) => {
+  const l = {}, s = C(), c = t.defaultFilter || {}, p = j(t.columns), f = () => p.map((r, e) => v(r, r.label)), d = t.onClose || ((r) => {
   });
   Object.keys(c || {}).map((r) => {
     const e = c[r];
-    R(r, l, e);
+    g(r, l, e);
   });
   const n = (r) => {
     t.queryRef.current ? (t.queryRef.current.setFilter(r), d(r)) : console.warn("Query reference not found");
@@ -39,24 +40,24 @@ const _ = (t) => {
   }, F = () => {
     const r = s.current.getData();
     var e = {};
-    Object.entries(r).map(([b, m]) => {
-      m && m != "" && (e[b] = m);
+    Object.entries(r).map(([h, m]) => {
+      m && m != "" && (e[h] = m);
     }), n && n(e);
-  };
-  return /* @__PURE__ */ o("div", { className: "grid-filter-container", children: [
-    /* @__PURE__ */ i("div", { className: "grid-filter-content", children: /* @__PURE__ */ i(h, { formData: l, ref: s, children: /* @__PURE__ */ i(v, { columns: 2, children: f() }) }) }),
-    /* @__PURE__ */ o("div", { className: "grid-filter-btn-container", children: [
-      /* @__PURE__ */ o(a, { className: "secondary-filled-button", disableRipple: !0, onClick: u, children: [
-        /* @__PURE__ */ i(N, { className: "button-icon" }),
+  }, b = t.column || 2;
+  return /* @__PURE__ */ i("div", { className: "grid-filter-container", children: [
+    /* @__PURE__ */ o("div", { className: "grid-filter-content", children: /* @__PURE__ */ o(R, { formData: l, ref: s, children: /* @__PURE__ */ o(x, { columns: b, children: f() }) }) }),
+    /* @__PURE__ */ i("div", { className: "grid-filter-btn-container", children: [
+      /* @__PURE__ */ i(a, { className: "secondary-filled-button", disableRipple: !0, onClick: u, children: [
+        /* @__PURE__ */ o(N, { className: "button-icon" }),
         "Reset"
       ] }),
-      /* @__PURE__ */ o(a, { className: "filled-button", disableRipple: !0, onClick: F, children: [
-        /* @__PURE__ */ i(y, { className: "button-icon" }),
+      /* @__PURE__ */ i(a, { className: "filled-button", disableRipple: !0, onClick: F, children: [
+        /* @__PURE__ */ o(y, { className: "button-icon" }),
         "Filter"
       ] })
     ] })
   ] });
 };
 export {
-  _ as FilterForm
+  rr as FilterForm
 };

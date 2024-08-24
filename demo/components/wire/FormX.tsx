@@ -1,11 +1,12 @@
 import { PalmyraStoreFactory, StoreFactory } from "@palmyralabs/palmyra-wire";
 import { PalmyraForm } from "@palmyralabs/rt-forms";
-import { useState } from "react";
+import { MutableRefObject, useState } from "react";
 import { FieldGroupContainer } from "../../../src/palmyra";
 
 
 interface IFormInput {
-    children: React.ReactNode
+    children: React.ReactNode, 
+    formRef?: MutableRefObject<any>
 }
 const FormX = (props: IFormInput) => {
     const { children } = props;
@@ -15,7 +16,7 @@ const FormX = (props: IFormInput) => {
 
 
     return (
-        <PalmyraForm formData={{}} onValidChange={setValid}
+        <PalmyraForm formData={{}} onValidChange={setValid} ref={props.formRef}
             storeFactory={storeFactory}>
             <FieldGroupContainer>
                 <div className="formx-children-container">
