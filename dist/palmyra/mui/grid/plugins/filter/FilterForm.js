@@ -46,11 +46,11 @@ import '../../../../../assets/FilterForm.css';const _ = (r) => {
   return /* @__PURE__ */ i("div", { className: "py-filter-container", children: [
     /* @__PURE__ */ o("div", { className: "py-filter-content", children: /* @__PURE__ */ o(y, { formData: s, ref: l, children: /* @__PURE__ */ o(v, { columns: 2, children: f() }) }) }),
     /* @__PURE__ */ i("div", { className: "py-filter-button-container", children: [
-      /* @__PURE__ */ i(p, { className: "py-filter-button", disableRipple: !0, onClick: d, children: [
+      /* @__PURE__ */ i(p, { className: "py-reset-button", disableRipple: !0, onClick: d, children: [
         /* @__PURE__ */ o(N, { className: "py-button-icon" }),
         "Reset"
       ] }),
-      /* @__PURE__ */ i(p, { className: "py-reset-button", disableRipple: !0, onClick: F, children: [
+      /* @__PURE__ */ i(p, { className: "py-filter-button", disableRipple: !0, onClick: F, children: [
         /* @__PURE__ */ o(C, { className: "py-button-icon" }),
         "Filter"
       ] })
