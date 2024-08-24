@@ -75,11 +75,11 @@ const FilterForm = (o: FilterOptions) => {
             </PalmyraForm>
         </div>
         <div className="py-filter-button-container">
-            <Button className='py-filter-button' disableRipple onClick={reset}>
+            <Button className='py-reset-button' disableRipple onClick={reset}>
                 <TbRefresh className="py-button-icon" />
                 Reset
             </Button>
-            <Button className='py-reset-button' disableRipple onClick={assignFilter}>
+            <Button className='py-filter-button' disableRipple onClick={assignFilter}>
                 <TbFilterShare className='py-button-icon' />
                 Filter
             </Button>
