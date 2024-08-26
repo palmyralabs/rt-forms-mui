@@ -35,7 +35,7 @@ const MuiSelect = forwardRef(function MuiSelect(props: ISelectDefinition & Selec
         options.inputProps = { readOnly: true };
     }
 
-   // options.onChange = (d: any) => { if (!props.readOnly) setValue(d.target.value); }
+    // options.onChange = (d: any) => { if (!props.readOnly) setValue(d.target.value); }
     options.onChange = (event: SelectChangeEvent<any>, child: React.ReactNode) => {
         if (!props.readOnly) {
             setValue(event.target.value);
@@ -43,7 +43,6 @@ const MuiSelect = forwardRef(function MuiSelect(props: ISelectDefinition & Selec
                 props.onChange(event, child);
         }
     }
-
 
     const fieldMargin: any = 0; //props?.fieldProps?.size == 'small' ? 1 : 0;
     return (<>{!mutateOptions.visible &&
@@ -55,9 +54,9 @@ const MuiSelect = forwardRef(function MuiSelect(props: ISelectDefinition & Selec
                 <Select sx={{
                     m: fieldMargin
                 }} {...options} value={getValue()} inputRef={(i) => { inputRef.current = i; }} >
-                    {options
-                        ? Object.keys(options).map((key, index) => (
-                            <MenuItem key={index} value={key}>{options[key]}</MenuItem>
+                    {options.options
+                        ? Object.keys(options.options).map((key, index) => (
+                            <MenuItem key={index} value={key}>{options.options[key]}</MenuItem>
                         )
                         )
                         : props.children
