@@ -1,7 +1,7 @@
 import { useRef, useImperativeHandle, forwardRef, MutableRefObject } from 'react';
 import { Checkbox, CheckboxProps, FormControl, FormControlLabel, FormHelperText } from '@mui/material';
 import FieldDecorator from './FieldDecorator';
-import { ICheckBoxField, IFormFieldError, ISwitchField, getFieldHandler, useFieldManager } from '@palmyralabs/rt-forms';
+import { ICheckBoxField, IFormFieldError, getFieldHandler, useFieldManager } from '@palmyralabs/rt-forms';
 import { getFieldLabel } from './util';
 import { ICheckBoxGroupDefinition } from './types';
 import { TbSquareRounded, TbSquareRoundedCheckFilled } from 'react-icons/tb';
@@ -9,8 +9,8 @@ import { TbSquareRounded, TbSquareRoundedCheckFilled } from 'react-icons/tb';
 const MuiCheckBoxGroup = forwardRef(function MuiCheckBoxGroup(props: CheckboxProps & ICheckBoxGroupDefinition, ref: MutableRefObject<ICheckBoxField>) {
     const fieldManager = useFieldManager(props.attribute, props);
     const { getError, getValue, setValue, mutateOptions } = fieldManager;
-    const currentRef = ref ? ref : useRef<ISwitchField>(null);
-    // const autoFocus = props.muiProps.autoFocus || false;
+    const currentRef = ref ? ref : useRef<ICheckBoxField>(null);
+    const autoFocus = props.autoFocus || false;
     const error: IFormFieldError = getError();
 
     const inputRef: any = useRef(null);
@@ -31,8 +31,6 @@ const MuiCheckBoxGroup = forwardRef(function MuiCheckBoxGroup(props: CheckboxPro
     }, [fieldManager]);
 
     var options = fieldManager.getFieldProps();
-
-    delete options.muiProps;
 
     function _updateData(value: any, checked: any) {
         const currentData = fieldManager.getValue() ? fieldManager.getValue().split(',') : [];
@@ -67,16 +65,16 @@ const MuiCheckBoxGroup = forwardRef(function MuiCheckBoxGroup(props: CheckboxPro
         <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass} colspan={props.colspan}
             customFieldClass={props.customFieldClass} customLabelClass={props.customLabelClass}>
             <FormControl fullWidth style={{ flexDirection: props.flexDirection }} error={error.status} {...options}
-                value={getValue()}>
-                {props.options ?
-                    Object.keys(props.options).map((key, i) => (
-                        <FormControlLabel key={key} value={key}
+            >
+                {options.options ?
+                    Object.keys(options.options).map((key, i) => (
+                        <FormControlLabel key={i} value={key}
                             control={<Checkbox icon={<TbSquareRounded style={{ fontSize: '20px' }} />} checkedIcon={<TbSquareRoundedCheckFilled style={{ fontSize: '20px' }} />}
-                                checked={isSelected(key)} //autoFocus={autoFocus}
-                                disabled={props.readOnly}
+                                checked={isSelected(key)} autoFocus={autoFocus}
+                                disabled={props.readOnly} {...options}
                                 inputRef={(r) => { if (0 == i) inputRef.current = r }}
                             />}
-                            label={props.options[key]} />
+                            label={options.options[key]} />
                     ))
                     : <div>No options provided</div>}
                 <FormHelperText className='form-error-text'>{error.message}</FormHelperText>

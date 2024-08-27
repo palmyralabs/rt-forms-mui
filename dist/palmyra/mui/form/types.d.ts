@@ -5,6 +5,10 @@ import { FieldOptions, IServerLookupOptions } from '@palmyralabs/rt-forms';
 interface IFieldProps {
     size?: 'small' | 'medium' | 'large';
 }
+interface ITextFieldProps {
+    variant?: 'standard' | 'outlined' | 'filled';
+    fullWidth?: boolean;
+}
 interface ILayoutOptions {
     customContainerClass?: string;
     customLabelClass?: string;
@@ -34,13 +38,13 @@ interface ValueLabel {
 }
 interface ITextFieldDefinition extends MuiInputFieldOptions, ILayoutOptions {
 }
-interface IDatePickerDefinition extends MuiInputFieldOptions, ILayoutOptions {
+interface IDatePickerDefinition extends MuiInputFieldOptions, ILayoutOptions, ITextFieldProps {
     serverPattern?: string;
     displayPattern?: string;
 }
-interface IDateTimePickerDefinition extends IDatePickerDefinition, MuiInputFieldOptions, ILayoutOptions {
+interface IDateTimePickerDefinition extends IDatePickerDefinition, MuiInputFieldOptions, ILayoutOptions, ITextFieldProps {
 }
-interface IServerLookupDefinition extends MuiInputFieldOptions, ILayoutOptions, IServerLookupOptions {
+interface IServerLookupDefinition extends MuiInputFieldOptions, ILayoutOptions, IServerLookupOptions, ITextFieldProps {
     displayAttribute?: string;
     defaultValue?: InputType | any;
     multiple?: boolean;

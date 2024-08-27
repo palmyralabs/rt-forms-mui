@@ -3,28 +3,28 @@ import { IServerLookupDefinition } from "./types";
 import { getFieldHandler, IFormFieldError, IServerLookupField, useServerLookupFieldManager } from '@palmyralabs/rt-forms';
 import FieldDecorator from "./FieldDecorator";
 import { getFieldLabel } from "./util";
-import { Autocomplete, AutocompleteChangeDetails, AutocompleteChangeReason, AutocompleteProps, CircularProgress, FormControl, FormHelperText, TextField } from "@mui/material";
+import {
+    Autocomplete, AutocompleteChangeDetails, AutocompleteChangeReason,
+    AutocompleteProps,
+    CircularProgress, FormControl, FormHelperText, TextField
+} from "@mui/material";
 import { delayGenerator } from "@palmyralabs/ts-utils";
-
 
 const delay100 = delayGenerator(100);
 
-const MuiServerLookup = forwardRef(function MuiServerLookup(props: IServerLookupDefinition & AutocompleteProps<any, any, any, any>,
+const MuiServerLookup = forwardRef(function MuiServerLookup(props: IServerLookupDefinition & Partial<AutocompleteProps<any, any, any, any>>,
     ref: MutableRefObject<IServerLookupField>) {
 
     const [open, setOpen] = useState(false);
-
     const inputRef: any = useRef(null);
-
     const fieldManager = useServerLookupFieldManager(props.attribute, props);
-    const { getError, getValue, setValue, hasValueInOptions, getOptionValue,
+
+    const { getError, /* getValue, */ setValue, hasValueInOptions, getOptionValue,
         setSearchText, refreshOptions, options, getFieldProps } = fieldManager;
 
     const loading = open && options.length < 1;
-
-    const value = getValue();
+    // const value = getValue();
     const error: IFormFieldError = getError();
-
     const currentRef = ref ? ref : useRef<IServerLookupField>(null);
 
     useImperativeHandle(currentRef, () => {
@@ -43,7 +43,7 @@ const MuiServerLookup = forwardRef(function MuiServerLookup(props: IServerLookup
     }, [open]);
 
     const callbacks = {
-        onChange: (event: React.SyntheticEvent, value: any, 
+        onChange: (event: React.SyntheticEvent, value: any,
             reason: AutocompleteChangeReason, details?: AutocompleteChangeDetails<any>,
         ) => {
             setValue(value);
@@ -70,7 +70,8 @@ const MuiServerLookup = forwardRef(function MuiServerLookup(props: IServerLookup
                 isOptionEqualToValue={hasValueInOptions}
                 filterOptions={(x) => x}
                 renderInput={(params) => <TextField {...params} inputRef={(i) => { inputRef.current = i; }}
-                    variant={'standard'} label={props.label}
+                    variant={props.variant || 'standard'} label={props.label}
+                    fullWidth={props.fullWidth || true}
                     // autoFocus={props.autoFocus}
                     required={props.required}
                     InputProps={{
@@ -85,7 +86,7 @@ const MuiServerLookup = forwardRef(function MuiServerLookup(props: IServerLookup
                 />}
                 getOptionLabel={(o) => getOptionValue(o) + ''}
                 {...getFieldProps()}
-                value={value}
+                // value={value}
                 options={options}
                 open={open}
                 onClose={() => { setOpen(false) }}

@@ -43,7 +43,7 @@ const MuiDatePicker = forwardRef(function MuiDatePicker(props: IDatePickerDefini
         };
     }, [fieldManager]);
 
-    var options = fieldManager.getFieldProps();   
+    var options = fieldManager.getFieldProps();
     if (options.defaultValue) {
         options.defaultValue = parse(options.defaultValue);
     }
@@ -61,19 +61,20 @@ const MuiDatePicker = forwardRef(function MuiDatePicker(props: IDatePickerDefini
             colspan={props.colspan} customFieldClass={props.customFieldClass} customLabelClass={props.customLabelClass}>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DatePicker
+                    defaultValue={dayjs(props.defaultValue)}
                     format={displayFormat}
                     label={props.label}
                     slotProps={{
                         textField: {
                             error: error.status,
                             helperText: error.message,
-                            variant: options.variant || 'standard',
-                            fullWidth: true,
+                            variant: props.variant || 'standard',
+                            fullWidth: props.fullWidth || true,
                             inputRef
                         },
                     }}
                     {...options}
-                    value={getValue()}
+                    value={props.defaultValue ? dayjs(props.defaultValue) : getValue()}
                 />
             </LocalizationProvider>
         </FieldDecorator>}

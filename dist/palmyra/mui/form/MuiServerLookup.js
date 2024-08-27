@@ -1,79 +1,79 @@
 import { jsx as r, Fragment as d, jsxs as m } from "react/jsx-runtime";
-import { forwardRef as k, useState as H, useRef as f, useImperativeHandle as M, useEffect as T } from "react";
-import { useServerLookupFieldManager as q, getFieldHandler as y } from "@palmyralabs/rt-forms";
-import A from "./FieldDecorator.js";
-import { getFieldLabel as E } from "./util.js";
-import { FormControl as j, Autocomplete as w, TextField as z, CircularProgress as D, FormHelperText as N } from "@mui/material";
+import { forwardRef as S, useState as k, useRef as f, useImperativeHandle as H, useEffect as M } from "react";
+import { useServerLookupFieldManager as T, getFieldHandler as V } from "@palmyralabs/rt-forms";
+import q from "./FieldDecorator.js";
+import { getFieldLabel as y } from "./util.js";
+import { FormControl as A, Autocomplete as E, TextField as W, CircularProgress as j, FormHelperText as w } from "@mui/material";
 import "../../../chunks/NoopConverter.js";
 import "dayjs";
-import { t as W } from "../../../chunks/delayGenerator.js";
-const g = W(100), $ = k(function(e, i) {
-  const [o, u] = H(!1), a = f(null), l = q(e.attribute, e), {
-    getError: h,
-    getValue: p,
+import { t as z } from "../../../chunks/delayGenerator.js";
+const h = z(100), Z = S(function(e, i) {
+  const [o, u] = k(!1), a = f(null), l = T(e.attribute, e), {
+    getError: g,
+    /* getValue, */
     setValue: C,
-    hasValueInOptions: O,
-    getOptionValue: F,
-    setSearchText: b,
-    refreshOptions: I,
+    hasValueInOptions: p,
+    getOptionValue: O,
+    setSearchText: F,
+    refreshOptions: b,
     options: s,
-    getFieldProps: L
-  } = l, x = o && s.length < 1, v = p(), c = h(), P = i || f(null);
-  M(P, () => ({
-    ...y(l),
+    getFieldProps: I
+  } = l, L = o && s.length < 1, c = g(), x = i || f(null);
+  H(x, () => ({
+    ...V(l),
     focus() {
       a.current.focus();
     }
-  }), [l]), T(() => {
-    o && g(I);
+  }), [l]), M(() => {
+    o && h(b);
   }, [o]);
-  const R = {
-    onChange: (t, n, S, V) => {
-      C(n), e.onChange && e.onChange(t, n, S, V);
+  const v = {
+    onChange: (t, n, P, R) => {
+      C(n), e.onChange && e.onChange(t, n, P, R);
     },
-    onInputChange: (t, n) => (o && g(b, n), !0)
+    onInputChange: (t, n) => (o && h(F, n), !0)
   };
   return /* @__PURE__ */ r(d, { children: /* @__PURE__ */ r(
-    A,
+    q,
     {
-      label: E(e),
+      label: y(e),
       customContainerClass: e.customContainerClass,
       colspan: e.colspan,
       customFieldClass: e.customFieldClass,
       customLabelClass: e.customLabelClass,
-      children: /* @__PURE__ */ m(j, { fullWidth: !0, error: c.status, children: [
+      children: /* @__PURE__ */ m(A, { fullWidth: !0, error: c.status, children: [
         /* @__PURE__ */ r(
-          w,
+          E,
           {
             includeInputInList: !0,
             autoHighlight: !0,
             multiple: e.multiple,
             readOnly: e.readOnly,
             renderOption: e.renderOption,
-            isOptionEqualToValue: O,
+            isOptionEqualToValue: p,
             filterOptions: (t) => t,
             renderInput: (t) => /* @__PURE__ */ r(
-              z,
+              W,
               {
                 ...t,
                 inputRef: (n) => {
                   a.current = n;
                 },
-                variant: "standard",
+                variant: e.variant || "standard",
                 label: e.label,
+                fullWidth: e.fullWidth || !0,
                 required: e.required,
                 InputProps: {
                   ...t.InputProps,
                   endAdornment: /* @__PURE__ */ m(d, { children: [
-                    x ? /* @__PURE__ */ r(D, { color: "inherit", size: 18 }) : null,
+                    L ? /* @__PURE__ */ r(j, { color: "inherit", size: 18 }) : null,
                     t.InputProps.endAdornment
                   ] })
                 }
               }
             ),
-            getOptionLabel: (t) => F(t) + "",
-            ...L(),
-            value: v,
+            getOptionLabel: (t) => O(t) + "",
+            ...I(),
             options: s,
             open: o,
             onClose: () => {
@@ -82,14 +82,14 @@ const g = W(100), $ = k(function(e, i) {
             onOpen: (t) => {
               u(!0);
             },
-            ...R
+            ...v
           }
         ),
-        /* @__PURE__ */ r(N, { className: "form-error-text", children: c.message })
+        /* @__PURE__ */ r(w, { className: "form-error-text", children: c.message })
       ] })
     }
   ) });
 });
 export {
-  $ as MuiServerLookup
+  Z as MuiServerLookup
 };

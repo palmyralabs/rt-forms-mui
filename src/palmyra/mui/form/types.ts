@@ -9,6 +9,10 @@ interface IFieldProps {
     size?: 'small' | 'medium' | 'large'
 }
 
+interface ITextFieldProps {
+    variant?: 'standard' | 'outlined' | 'filled'
+    fullWidth?: boolean
+}
 
 interface ILayoutOptions {
     customContainerClass?: string,
@@ -44,16 +48,17 @@ interface ITextFieldDefinition extends MuiInputFieldOptions, ILayoutOptions {
 
 }
 
-interface IDatePickerDefinition extends MuiInputFieldOptions, ILayoutOptions {
+interface IDatePickerDefinition extends MuiInputFieldOptions, ILayoutOptions, ITextFieldProps {
     serverPattern?: string,
-    displayPattern?: string
+    displayPattern?: string,
+  
 }
 
-interface IDateTimePickerDefinition extends IDatePickerDefinition, MuiInputFieldOptions, ILayoutOptions {
+interface IDateTimePickerDefinition extends IDatePickerDefinition, MuiInputFieldOptions, ILayoutOptions, ITextFieldProps {
 
 }
 
-interface IServerLookupDefinition extends MuiInputFieldOptions, ILayoutOptions, IServerLookupOptions {
+interface IServerLookupDefinition extends MuiInputFieldOptions, ILayoutOptions, IServerLookupOptions, ITextFieldProps {
     displayAttribute?: string,
     defaultValue?: InputType | any,
     multiple?: boolean,
@@ -97,7 +102,6 @@ interface ISliderDefinition extends MuiInputFieldOptions, ILayoutOptions {
 interface IRatingDefinition extends MuiInputFieldOptions, ILayoutOptions {
     variant?: 'standard' | 'outlined' | 'filled'
 }
-
 
 interface IServerCheckboxDefinition extends MuiInputFieldOptions, ILayoutOptions, IServerLookupOptions {
     hideSelectAll?: boolean,

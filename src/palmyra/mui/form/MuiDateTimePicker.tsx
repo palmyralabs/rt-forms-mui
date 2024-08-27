@@ -61,6 +61,7 @@ const MuiDateTimePicker = forwardRef(function MuiDateTimePicker(props: IDatePick
             colspan={props.colspan} customFieldClass={props.customFieldClass} customLabelClass={props.customLabelClass}>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DateTimePicker
+                    defaultValue={dayjs(props.defaultValue)}
                     readOnly={props.readOnly}
                     format={displayFormat}
                     label={props.label}
@@ -69,13 +70,13 @@ const MuiDateTimePicker = forwardRef(function MuiDateTimePicker(props: IDatePick
                         textField: {
                             error: error.status,
                             helperText: error.message,
-                            variant: options.variant,
-                            fullWidth: true,
+                            variant: props.variant || 'standard',
+                            fullWidth: props.fullWidth || true,
                             inputRef
                         },
                     }}
                     {...options}
-                    value={getValue()}
+                    value={props.defaultValue ? dayjs(props.defaultValue) : getValue()}
                 />
             </LocalizationProvider>
         </FieldDecorator>}

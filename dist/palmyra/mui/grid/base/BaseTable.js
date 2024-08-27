@@ -26,7 +26,7 @@ function A(n) {
         const N = "py-grid-data-row py-grid-data-row-" + (l % 2 == 1 ? "even" : "odd");
         return /* @__PURE__ */ e(c, { className: N, children: o.getVisibleCells().map((t) => {
           var g;
-          const s = t.column.columnDef.meta, T = "py-grid-data-cell" + (((g = s == null ? void 0 : s.columnDef) == null ? void 0 : g.type) === "number" ? " py-grid-data-cell-type-number" : "");
+          const s = t.column.columnDef.meta, T = "py-grid-data-cell " + (((g = s == null ? void 0 : s.columnDef) == null ? void 0 : g.type) === "number" ? " py-grid-data-cell-type-number" : "");
           return /* @__PURE__ */ e(
             p,
             {

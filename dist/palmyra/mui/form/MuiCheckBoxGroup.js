@@ -1,71 +1,71 @@
-import { jsx as o, Fragment as F, jsxs as v } from "react/jsx-runtime";
-import { forwardRef as O, useRef as m, useImperativeHandle as R } from "react";
-import { FormControl as k, FormControlLabel as p, Checkbox as D, FormHelperText as S } from "@mui/material";
+import { jsx as o, Fragment as p, jsxs as v } from "react/jsx-runtime";
+import { forwardRef as k, useRef as d, useImperativeHandle as O } from "react";
+import { FormControl as R, FormControlLabel as D, Checkbox as S, FormHelperText as y } from "@mui/material";
 import L from "./FieldDecorator.js";
 import { useFieldManager as M, getFieldHandler as T } from "@palmyralabs/rt-forms";
 import { getFieldLabel as V } from "./util.js";
-import { T as j, a as y } from "../../../chunks/index3.js";
-const w = O(function(e, c) {
-  const n = M(e.attribute, e), { getError: f, getValue: u, setValue: h, mutateOptions: g } = n, C = c || m(null), d = f(), i = m(null);
-  R(C, () => ({
-    ...T(n),
+import { T as j, a as H } from "../../../chunks/index3.js";
+const P = k(function(t, c) {
+  const r = M(t.attribute, t), { getError: f, getValue: m, setValue: h, mutateOptions: g } = r, C = c || d(null), x = t.autoFocus || !1, u = f(), i = d(null);
+  O(C, () => ({
+    ...T(r),
     focus() {
       i.current.checked = !0, i.current.focus();
     },
-    setOptions(r) {
+    setOptions(n) {
     },
     getOptions() {
     }
-  }), [n]);
-  var a = n.getFieldProps();
-  delete a.muiProps;
-  function x(t, r) {
-    const l = n.getValue() ? n.getValue().split(",") : [];
-    var s = l.indexOf(t);
-    r ? s < 0 && l.push(t) : s >= 0 && l.splice(s, 1);
+  }), [r]);
+  var l = r.getFieldProps();
+  function F(e, n) {
+    const a = r.getValue() ? r.getValue().split(",") : [];
+    var s = a.indexOf(e);
+    n ? s < 0 && a.push(e) : s >= 0 && a.splice(s, 1);
   }
-  a.onChange = (t, r) => {
-    e.readOnly || (x(t.target.value, t.target.checked), h(t.target.value), e.onChange && e.onChange(t, r));
+  l.onChange = (e, n) => {
+    t.readOnly || (F(e.target.value, e.target.checked), h(e.target.value), t.onChange && t.onChange(e, n));
   };
-  const b = (t) => u().includes(t);
-  return /* @__PURE__ */ o(F, { children: !g.visible && /* @__PURE__ */ o(
+  const b = (e) => m().includes(e);
+  return /* @__PURE__ */ o(p, { children: !g.visible && /* @__PURE__ */ o(
     L,
     {
-      label: V(e),
-      customContainerClass: e.customContainerClass,
-      colspan: e.colspan,
-      customFieldClass: e.customFieldClass,
-      customLabelClass: e.customLabelClass,
+      label: V(t),
+      customContainerClass: t.customContainerClass,
+      colspan: t.colspan,
+      customFieldClass: t.customFieldClass,
+      customLabelClass: t.customLabelClass,
       children: /* @__PURE__ */ v(
-        k,
+        R,
         {
           fullWidth: !0,
-          style: { flexDirection: e.flexDirection },
-          error: d.status,
-          ...a,
-          value: u(),
+          style: { flexDirection: t.flexDirection },
+          error: u.status,
+          ...l,
           children: [
-            e.options ? Object.keys(e.options).map((t, r) => /* @__PURE__ */ o(
-              p,
+            l.options ? Object.keys(l.options).map((e, n) => /* @__PURE__ */ o(
+              D,
               {
-                value: t,
+                value: e,
                 control: /* @__PURE__ */ o(
-                  D,
+                  S,
                   {
                     icon: /* @__PURE__ */ o(j, { style: { fontSize: "20px" } }),
-                    checkedIcon: /* @__PURE__ */ o(y, { style: { fontSize: "20px" } }),
-                    checked: b(t),
-                    disabled: e.readOnly,
-                    inputRef: (l) => {
-                      r == 0 && (i.current = l);
+                    checkedIcon: /* @__PURE__ */ o(H, { style: { fontSize: "20px" } }),
+                    checked: b(e),
+                    autoFocus: x,
+                    disabled: t.readOnly,
+                    ...l,
+                    inputRef: (a) => {
+                      n == 0 && (i.current = a);
                     }
                   }
                 ),
-                label: e.options[t]
+                label: l.options[e]
               },
-              t
+              n
             )) : /* @__PURE__ */ o("div", { children: "No options provided" }),
-            /* @__PURE__ */ o(S, { className: "form-error-text", children: d.message })
+            /* @__PURE__ */ o(y, { className: "form-error-text", children: u.message })
           ]
         }
       )
@@ -73,5 +73,5 @@ const w = O(function(e, c) {
   ) });
 });
 export {
-  w as MuiCheckBoxGroup
+  P as MuiCheckBoxGroup
 };

@@ -141,8 +141,8 @@ const MuiDateRangePicker = forwardRef(function MuiDatePicker(props: IDatePickerD
                         textField: {
                             error: error.status,
                             helperText: error.message,
-                            variant: options.variant || 'standard',
-                            fullWidth: true,
+                            variant: props.variant || 'standard',
+                            fullWidth: props.fullWidth,
                             inputRef
                         },
                     }}

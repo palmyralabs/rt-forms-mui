@@ -1,28 +1,28 @@
-import { jsx as l, Fragment as b } from "react/jsx-runtime";
-import { forwardRef as v, useRef as d, useImperativeHandle as M } from "react";
-import { LocalizationProvider as Y, DatePicker as V } from "@mui/x-date-pickers";
+import { jsx as l, Fragment as D } from "react/jsx-runtime";
+import { forwardRef as b, useRef as f, useImperativeHandle as v } from "react";
+import { LocalizationProvider as M, DatePicker as Y } from "@mui/x-date-pickers";
 import { getFieldLabel as y } from "./util.js";
 import x from "./FieldDecorator.js";
-import c from "dayjs";
+import n from "dayjs";
 import { useFieldManager as L, getFieldHandler as R } from "@palmyralabs/rt-forms";
 import { A as j } from "../../../chunks/AdapterDayjs.js";
-const q = v(function(e, n) {
-  const i = e.serverPattern || e.displayPattern || "YYYY-MM-DD", m = e.displayPattern || e.serverPattern || "YYYY-MM-DD", o = (t) => t ? c(t, i) : c(void 0), f = (t) => {
+const q = b(function(e, i) {
+  const u = e.serverPattern || e.displayPattern || "YYYY-MM-DD", c = e.displayPattern || e.serverPattern || "YYYY-MM-DD", o = (t) => t ? n(t, u) : n(void 0), m = (t) => {
     if (t && t.isValid && t.isValid())
-      return t.format(i);
-  }, r = L(e.attribute, e, { format: f, parse: o }), { getError: g, getValue: C, setValue: P, mutateOptions: h } = r, F = n || d(null), s = g(), u = d(null);
-  M(F, () => ({
+      return t.format(u);
+  }, r = L(e.attribute, e, { format: m, parse: o }), { getError: g, getValue: C, setValue: h, mutateOptions: P } = r, V = i || f(null), s = g(), d = f(null);
+  v(V, () => ({
     ...R(r),
     focus() {
-      u.current.focus();
+      d.current.focus();
     },
     setCurrent() {
     }
   }), [r]);
   var a = r.getFieldProps();
-  return a.defaultValue && (a.defaultValue = o(a.defaultValue)), a.onChange = (t, D) => {
-    e.readOnly || (P(t), e.onChange && e.onChange(t, D));
-  }, /* @__PURE__ */ l(b, { children: !h.visible && /* @__PURE__ */ l(
+  return a.defaultValue && (a.defaultValue = o(a.defaultValue)), a.onChange = (t, F) => {
+    e.readOnly || (h(t), e.onChange && e.onChange(t, F));
+  }, /* @__PURE__ */ l(D, { children: !P.visible && /* @__PURE__ */ l(
     x,
     {
       label: y(e),
@@ -30,22 +30,23 @@ const q = v(function(e, n) {
       colspan: e.colspan,
       customFieldClass: e.customFieldClass,
       customLabelClass: e.customLabelClass,
-      children: /* @__PURE__ */ l(Y, { dateAdapter: j, children: /* @__PURE__ */ l(
-        V,
+      children: /* @__PURE__ */ l(M, { dateAdapter: j, children: /* @__PURE__ */ l(
+        Y,
         {
-          format: m,
+          defaultValue: n(e.defaultValue),
+          format: c,
           label: e.label,
           slotProps: {
             textField: {
               error: s.status,
               helperText: s.message,
-              variant: a.variant || "standard",
-              fullWidth: !0,
-              inputRef: u
+              variant: e.variant || "standard",
+              fullWidth: e.fullWidth || !0,
+              inputRef: d
             }
           },
           ...a,
-          value: C()
+          value: e.defaultValue ? n(e.defaultValue) : C()
         }
       ) })
     }
