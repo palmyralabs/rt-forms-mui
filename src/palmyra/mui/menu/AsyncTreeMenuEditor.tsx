@@ -11,7 +11,7 @@ import { TreeQueryStore } from "@palmyralabs/palmyra-wire";
 import AsyncTreeCrudDropDown from "./AsyncTreeCrudDropDown";
 import { IAsyncTreeEditor, IAsyncTreeEditorInput, IChildTreeRequest } from "./types";
 
-const AsyncTreeMenuEditor = forwardRef(function AsyncTreeMenuEditor(props: IAsyncTreeEditorInput, 
+const AsyncTreeMenuEditor = forwardRef(function AsyncTreeMenuEditor(props: IAsyncTreeEditorInput,
     ref: MutableRefObject<IAsyncTreeEditor>) {
     const groupId = props.groupId;
     const loadedAlertElement = useRef(null);
@@ -21,7 +21,7 @@ const AsyncTreeMenuEditor = forwardRef(function AsyncTreeMenuEditor(props: IAsyn
     const [data, setData] = useState<INode[]>([rootNode]);
     const [selectedIds, setSelectedIds] = useState([]);
     // const [expandedIds, setExpandedIds] = useState([]);
-    const store: TreeQueryStore<IChildTreeRequest, any> = props.storeFactory.getTreeStore({ groupId: groupId }, props.endPoint);
+    const store: TreeQueryStore<IChildTreeRequest, any> = props.storeFactory.getTreeStore({ endPointOptions: { groupId: groupId } }, props.endPoint);
 
     useImperativeHandle(currentRef, () => {
         return {

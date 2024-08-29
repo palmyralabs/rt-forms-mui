@@ -1,4 +1,4 @@
-import { IEndPoint, StoreFactory, Tree, TreeQueryStore } from '@palmyralabs/palmyra-wire';
+import { IEndPoint, StoreFactory, StoreOptions, Tree, TreeQueryStore } from '@palmyralabs/palmyra-wire';
 import { IconProvider } from './IconProvider';
 
 interface IChildTreeRequest {
@@ -26,7 +26,7 @@ interface IAsyncTreeMenuInput {
     store: TreeQueryStore<IChildTreeRequest, any>;
 }
 interface IAsyncTreeEditorInput {
-    storeFactory: StoreFactory<IChildTreeRequest>;
+    storeFactory: StoreFactory<IChildTreeRequest, StoreOptions>;
     endPoint: IEndPoint;
     groupId: number;
     readOnly?: boolean;
