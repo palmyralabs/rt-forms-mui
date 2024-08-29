@@ -8,7 +8,7 @@ import "../../../chunks/NoopConverter.js";
 import "dayjs";
 import { t as z } from "../../../chunks/delayGenerator.js";
 const h = z(100), Z = S(function(e, i) {
-  const [o, u] = k(!1), a = f(null), l = T(e.attribute, e), {
+  const [l, a] = k(!1), u = f(null), o = T(e.attribute, e), {
     getError: g,
     /* getValue, */
     setValue: C,
@@ -18,20 +18,20 @@ const h = z(100), Z = S(function(e, i) {
     refreshOptions: b,
     options: s,
     getFieldProps: I
-  } = l, L = o && s.length < 1, c = g(), x = i || f(null);
+  } = o, L = l && s.length < 1, c = g(), x = i || f(null);
   H(x, () => ({
-    ...V(l),
+    ...V(o),
     focus() {
-      a.current.focus();
+      u.current.focus();
     }
-  }), [l]), M(() => {
-    o && h(b);
-  }, [o]);
+  }), [o]), M(() => {
+    l && h(b);
+  }, [l]);
   const v = {
     onChange: (t, n, P, R) => {
       C(n), e.onChange && e.onChange(t, n, P, R);
     },
-    onInputChange: (t, n) => (o && h(F, n), !0)
+    onInputChange: (t, n) => (l && h(F, n), !0)
   };
   return /* @__PURE__ */ r(d, { children: /* @__PURE__ */ r(
     q,
@@ -57,10 +57,11 @@ const h = z(100), Z = S(function(e, i) {
               {
                 ...t,
                 inputRef: (n) => {
-                  a.current = n;
+                  u.current = n;
                 },
                 variant: e.variant || "standard",
                 label: e.label,
+                placeholder: e.placeholder,
                 fullWidth: e.fullWidth || !0,
                 required: e.required,
                 InputProps: {
@@ -75,12 +76,12 @@ const h = z(100), Z = S(function(e, i) {
             getOptionLabel: (t) => O(t) + "",
             ...I(),
             options: s,
-            open: o,
+            open: l,
             onClose: () => {
-              u(!1);
+              a(!1);
             },
             onOpen: (t) => {
-              u(!0);
+              a(!0);
             },
             ...v
           }

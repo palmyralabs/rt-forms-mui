@@ -21,4 +21,12 @@ interface ApiDataTableOptions extends Omit<IServerQueryInput, 'store'>, IGridPlu
     EmptyChild?: React.FC;
     onRowClick?: Function;
 }
-export type { BaseTableOptions, ApiDataTableOptions };
+interface StaticGridOptions extends Omit<IServerQueryInput, 'store'>, IGridPlugin {
+    columns: ColumnDefinition[];
+    customizer?: GridCustomizer;
+    EmptyChild?: React.FC;
+    onRowClick?: Function;
+    rowData: any;
+    setSortColumns?: any;
+}
+export type { BaseTableOptions, ApiDataTableOptions, StaticGridOptions };

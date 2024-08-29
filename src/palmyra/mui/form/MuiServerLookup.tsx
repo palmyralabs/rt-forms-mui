@@ -70,7 +70,7 @@ const MuiServerLookup = forwardRef(function MuiServerLookup(props: IServerLookup
                 isOptionEqualToValue={hasValueInOptions}
                 filterOptions={(x) => x}
                 renderInput={(params) => <TextField {...params} inputRef={(i) => { inputRef.current = i; }}
-                    variant={props.variant || 'standard'} label={props.label}
+                    variant={props.variant || 'standard'} label={props.label} placeholder={props.placeholder}
                     fullWidth={props.fullWidth || true}
                     // autoFocus={props.autoFocus}
                     required={props.required}

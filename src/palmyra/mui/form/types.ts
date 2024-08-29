@@ -11,7 +11,8 @@ interface IFieldProps {
 
 interface ITextFieldProps {
     variant?: 'standard' | 'outlined' | 'filled'
-    fullWidth?: boolean
+    fullWidth?: boolean,
+    placeholder?: string
 }
 
 interface ILayoutOptions {

@@ -8,6 +8,7 @@ interface IFieldProps {
 interface ITextFieldProps {
     variant?: 'standard' | 'outlined' | 'filled';
     fullWidth?: boolean;
+    placeholder?: string;
 }
 interface ILayoutOptions {
     customContainerClass?: string;

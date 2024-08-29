@@ -9,3 +9,6 @@ export * from './controls'
 
 export * from './GridX'
 export * from './PalmyraGrid'
+export * from './StaticGrid'
+
+export * from './base/GridColumnCustomizer'
