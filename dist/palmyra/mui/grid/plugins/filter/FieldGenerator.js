@@ -1,6 +1,6 @@
-import { jsxs as u, jsx as m } from "react/jsx-runtime";
-import { MuiTextField as s } from "../../../form/MuiTextField.js";
-import { MuiDatePicker as c } from "../../../form/MuiDatePicker.js";
+import { jsxs as u, jsx as s } from "react/jsx-runtime";
+import { MuiTextField as c } from "../../../form/MuiTextField.js";
+import { MuiDatePicker as m } from "../../../form/MuiDatePicker.js";
 import { MuiSelect as a } from "../../../form/MuiSelect.js";
 import { MuiServerLookup as n } from "../../../form/MuiServerLookup.js";
 import { MuiCheckBox as p } from "../../../form/MuiCheckBox.js";
@@ -16,7 +16,6 @@ import { MuiTextArea as b } from "../../../form/MuiTextArea.js";
 import "../../../form/MuiTextView.js";
 import "../../../form/MuiOptionsView.js";
 import { MuiDateRangePicker as h } from "../../../form/MuiDateRangePicker.js";
-import '../../../../../assets/FieldGroupContainer.css';/* empty css                                        */
 const k = (t) => {
   const { fieldDef: i } = t;
   return /* @__PURE__ */ u("div", { children: [
@@ -25,7 +24,7 @@ const k = (t) => {
   ] });
 }, r = (t, i) => {
   const o = t.fieldDef;
-  return /* @__PURE__ */ m(
+  return /* @__PURE__ */ s(
     i,
     {
       ...o,
@@ -33,17 +32,17 @@ const k = (t) => {
     },
     o.title + o.attribute
   );
-}, z = (t, i) => {
+}, q = (t, i) => {
   const { type: o } = t, e = { fieldDef: t, title: i };
   switch (o) {
     case "string":
-      return r(e, s);
+      return r(e, c);
     case "radio":
       return r(e, M);
     case "select":
       return r(e, a);
     case "date":
-      return r(e, c);
+      return r(e, m);
     case "multiSelect":
       return r(e, a);
     case "checkbox":
@@ -72,5 +71,5 @@ const k = (t) => {
   }
 };
 export {
-  z as default
+  q as default
 };

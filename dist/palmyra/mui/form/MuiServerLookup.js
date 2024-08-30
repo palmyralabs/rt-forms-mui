@@ -1,19 +1,18 @@
 import { jsx as r, Fragment as d, jsxs as m } from "react/jsx-runtime";
 import { forwardRef as S, useState as k, useRef as f, useImperativeHandle as H, useEffect as M } from "react";
-import { useServerLookupFieldManager as T, getFieldHandler as V } from "@palmyralabs/rt-forms";
-import q from "./FieldDecorator.js";
+import { useServerLookupFieldManager as T, getFieldHandler as V, FieldDecorator as q } from "@palmyralabs/rt-forms";
 import { getFieldLabel as y } from "./util.js";
 import { FormControl as A, Autocomplete as E, TextField as W, CircularProgress as j, FormHelperText as w } from "@mui/material";
 import "../../../chunks/NoopConverter.js";
 import "dayjs";
 import { t as z } from "../../../chunks/delayGenerator.js";
-const h = z(100), Z = S(function(e, i) {
+const h = z(100), Y = S(function(e, i) {
   const [l, a] = k(!1), u = f(null), o = T(e.attribute, e), {
     getError: g,
     /* getValue, */
     setValue: C,
-    hasValueInOptions: p,
-    getOptionValue: O,
+    hasValueInOptions: O,
+    getOptionValue: p,
     setSearchText: F,
     refreshOptions: b,
     options: s,
@@ -50,7 +49,7 @@ const h = z(100), Z = S(function(e, i) {
             multiple: e.multiple,
             readOnly: e.readOnly,
             renderOption: e.renderOption,
-            isOptionEqualToValue: p,
+            isOptionEqualToValue: O,
             filterOptions: (t) => t,
             renderInput: (t) => /* @__PURE__ */ r(
               W,
@@ -73,7 +72,7 @@ const h = z(100), Z = S(function(e, i) {
                 }
               }
             ),
-            getOptionLabel: (t) => O(t) + "",
+            getOptionLabel: (t) => p(t) + "",
             ...I(),
             options: s,
             open: l,
@@ -92,5 +91,5 @@ const h = z(100), Z = S(function(e, i) {
   ) });
 });
 export {
-  Z as MuiServerLookup
+  Y as MuiServerLookup
 };

@@ -1,8 +1,7 @@
 import { useRef, useImperativeHandle, forwardRef, MutableRefObject } from 'react';
 import { Rating, RatingProps } from '@mui/material';
-import FieldDecorator from './FieldDecorator';
 import { IRatingDefinition } from './types';
-import { IFormFieldError, IRatingField, getFieldHandler, useFieldManager } from '@palmyralabs/rt-forms';
+import { IFormFieldError, IRatingField, getFieldHandler, useFieldManager, FieldDecorator } from '@palmyralabs/rt-forms';
 import { getFieldLabel } from './util';
 import { Star, StarOutline } from '@mui/icons-material';
 
@@ -39,10 +38,10 @@ const MuiRating = forwardRef(function MuiRating(props: IRatingDefinition & Ratin
 
 
     var options = fieldManager.getFieldProps();
-    
+
     // options.onChange = (d: any) => { if (!props.readOnly) setValue(d.target.value); }
 
-    options.onChange = (event: any, v:any) => {
+    options.onChange = (event: any, v: any) => {
         if (!props.readOnly) {
             setValue(event.target.value);
             if (props.onChange)
@@ -53,7 +52,7 @@ const MuiRating = forwardRef(function MuiRating(props: IRatingDefinition & Ratin
     return (<>{!mutateOptions.visible &&
         <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass} colspan={props.colspan}
             customFieldClass={props.customFieldClass} customLabelClass={props.customLabelClass}>
-            <Rating 
+            <Rating
                 variant={variant}
                 precision={precision}
                 readOnly={props.readOnly}

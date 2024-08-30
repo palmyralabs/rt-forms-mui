@@ -1,13 +1,12 @@
-import { jsx as l, Fragment as x, jsxs as I } from "react/jsx-runtime";
+import { jsx as c, Fragment as x, jsxs as I } from "react/jsx-runtime";
 import { forwardRef as y, useRef as w, useMemo as L, useState as R, useEffect as S, useImperativeHandle as H } from "react";
 import { FormControl as j, FormControlLabel as A, FormHelperText as E, Switch as T } from "@mui/material";
-import U from "./FieldDecorator.js";
-import { useFieldManager as D, getFieldHandler as N } from "@palmyralabs/rt-forms";
+import { useFieldManager as U, getFieldHandler as D, FieldDecorator as N } from "@palmyralabs/rt-forms";
 import { getFieldLabel as P } from "./util.js";
 import q from "./options/OptionsParser.js";
 import { IOSSwitch as z, Android12Switch as B, MaterialUISwitch as G } from "./options/SwitchTypes.js";
-const p = y(function(e, h) {
-  const c = D(e.attribute, e), { getError: b, getValue: a, setValue: O, mutateOptions: F } = c, M = h || w(null), m = b(), i = e.switch, o = L(
+const $ = y(function(e, h) {
+  const r = U(e.attribute, e), { getError: b, getValue: a, setValue: O, mutateOptions: F } = r, M = h || w(null), m = b(), i = e.switch, o = L(
     () => q(e.options, e.label),
     [e.options, e.label]
   ), f = (t, d) => {
@@ -17,7 +16,7 @@ const p = y(function(e, h) {
   S(() => {
     g(f(a(), e.defaultValue));
   }, [a()]), H(M, () => ({
-    ...N(c),
+    ...D(r),
     focus() {
       s.current.checked = !0, s.current.focus();
     },
@@ -25,7 +24,7 @@ const p = y(function(e, h) {
     },
     setOptions(d) {
     }
-  }), [c]);
+  }), [r]);
   const v = () => {
     g(!n);
   };
@@ -39,13 +38,13 @@ const p = y(function(e, h) {
     var t = n ? "checked" : "unchecked";
     return o[t].value;
   };
-  let r;
-  i == "IOSSwitch" ? r = z : i == "Android12Switch" ? r = B : i == "MaterialUISwitch" ? r = G : r = T;
-  var u = c.getFieldProps();
+  let l;
+  i == "IOSSwitch" ? l = z : i == "Android12Switch" ? l = B : i == "MaterialUISwitch" ? l = G : l = T;
+  var u = r.getFieldProps();
   return u.onChange = (t, d) => {
     e.readOnly || (O(t.target.checked), e.onChange && e.onChange(t, t.target.checked));
-  }, /* @__PURE__ */ l(x, { children: !F.visible && /* @__PURE__ */ l(
-    U,
+  }, /* @__PURE__ */ c(x, { children: !F.visible && /* @__PURE__ */ c(
+    N,
     {
       label: P(e),
       customContainerClass: e.customContainerClass,
@@ -53,15 +52,15 @@ const p = y(function(e, h) {
       customFieldClass: e.customFieldClass,
       customLabelClass: e.customLabelClass,
       children: /* @__PURE__ */ I(j, { error: m.status, ...u, value: a(), children: [
-        /* @__PURE__ */ l(
+        /* @__PURE__ */ c(
           A,
           {
             value: V(),
             inputRef: (t) => {
               s.current = t;
             },
-            control: /* @__PURE__ */ l(
-              r,
+            control: /* @__PURE__ */ c(
+              l,
               {
                 sx: { m: 1 },
                 checked: n,
@@ -72,11 +71,11 @@ const p = y(function(e, h) {
             label: C()
           }
         ),
-        /* @__PURE__ */ l(E, { className: "form-error-text", children: m.message })
+        /* @__PURE__ */ c(E, { className: "form-error-text", children: m.message })
       ] })
     }
   ) });
 });
 export {
-  p as MuiSwitch
+  $ as MuiSwitch
 };

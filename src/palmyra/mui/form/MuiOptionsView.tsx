@@ -1,10 +1,8 @@
 import { useRef, useImperativeHandle, forwardRef } from 'react';
-import FieldDecorator from './FieldDecorator';
 import './TextView.css';
-import { ISelectField, useFieldManager } from '@palmyralabs/rt-forms';
+import { ISelectField, useFieldManager, FieldDecorator } from '@palmyralabs/rt-forms';
 import { ISelectDefinition, TextViewAttributeDefinition } from './types';
 import { getFieldLabel } from './util';
-
 
 const MuiOptionsView = forwardRef(function MuiOptionsView(props: ISelectDefinition & TextViewAttributeDefinition, ref) {
     const fieldManager = useFieldManager(props.attribute, props);

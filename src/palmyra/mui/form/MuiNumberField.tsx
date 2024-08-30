@@ -1,9 +1,7 @@
 import { useRef, useImperativeHandle, forwardRef, MutableRefObject } from 'react';
 import { TextField, TextFieldProps } from '@mui/material';
-
-import { getFieldHandler, IFormFieldError, ITextField, useFieldManager } from '@palmyralabs/rt-forms';
+import { getFieldHandler, IFormFieldError, ITextField, useFieldManager, FieldDecorator } from '@palmyralabs/rt-forms';
 import { getFieldLabel } from './util'
-import FieldDecorator from './FieldDecorator';
 import { ITextFieldDefinition } from './types';
 
 const MuiNumberField = forwardRef(function MuiNumberField(props: ITextFieldDefinition & TextFieldProps, ref: MutableRefObject<ITextField>) {

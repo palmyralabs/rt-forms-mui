@@ -1,7 +1,6 @@
 import { useRef, useImperativeHandle, forwardRef, MutableRefObject } from 'react';
 import { FormControl, FormHelperText, InputLabel, MenuItem, Select, SelectChangeEvent, SelectProps } from '@mui/material';
-import FieldDecorator from './FieldDecorator';
-import { getFieldHandler, IFormFieldError, ISelectField, ITextField, useFieldManager } from '@palmyralabs/rt-forms';
+import { getFieldHandler, IFormFieldError, ISelectField, ITextField, useFieldManager, FieldDecorator } from '@palmyralabs/rt-forms';
 import { getFieldLabel } from './util';
 import { ISelectDefinition } from './types';
 

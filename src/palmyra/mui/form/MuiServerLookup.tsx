@@ -1,12 +1,10 @@
 import { forwardRef, MutableRefObject, useEffect, useImperativeHandle, useRef, useState } from "react";
 import { IServerLookupDefinition } from "./types";
-import { getFieldHandler, IFormFieldError, IServerLookupField, useServerLookupFieldManager } from '@palmyralabs/rt-forms';
-import FieldDecorator from "./FieldDecorator";
+import { getFieldHandler, IFormFieldError, IServerLookupField, useServerLookupFieldManager, FieldDecorator } from '@palmyralabs/rt-forms';
 import { getFieldLabel } from "./util";
 import {
     Autocomplete, AutocompleteChangeDetails, AutocompleteChangeReason,
-    AutocompleteProps,
-    CircularProgress, FormControl, FormHelperText, TextField
+    AutocompleteProps, CircularProgress, FormControl, FormHelperText, TextField
 } from "@mui/material";
 import { delayGenerator } from "@palmyralabs/ts-utils";
 

@@ -1,23 +1,21 @@
-import { useRef, useImperativeHandle, forwardRef, MutableRefObject } from 'react';
-import { getFieldHandler, ITextField, useFieldManager, FieldDecorator } from '@palmyralabs/rt-forms';
-import { getFieldLabel } from './util'
-import { ITextFieldDefinition } from './types';
+import { forwardRef, useRef, useImperativeHandle } from 'react';
+import './TextView.css';
+import { IServerLookupDefinition, TextViewAttributeDefinition } from './types';
+import { getValueByKey, hasDot } from '@palmyralabs/ts-utils';
+import { getFieldLabel } from './util';
+import { getFieldHandler, useFieldManager, FieldDecorator } from '@palmyralabs/rt-forms';
 
-
-interface TextViewAttributeDefinition {
-    textAlign?: 'left' | 'right' | 'center',
-    variant?: 'standard' | 'outlined'
-}
-
-const MuiTextView = forwardRef(function MuiTextView(props: ITextFieldDefinition & TextViewAttributeDefinition,
-    ref: MutableRefObject<ITextField>) {
+const MuiLookupView = forwardRef(function MuiLabelDisplay(props: IServerLookupDefinition & TextViewAttributeDefinition, ref) {
 
     const fieldManager = useFieldManager(props.attribute, props);
     const { getValue, setValue, mutateOptions } = fieldManager;
-    const currentRef = ref ? ref : useRef<ITextField>(null);
+    const currentRef: any = ref ? ref : useRef(null);
+    const data = getValue();
+    const lookupOptions = props.lookupOptions;
+    const labelKey = lookupOptions?.labelAttribute || 'name';
     const textAlign: any = props.textAlign || 'left';
+    const variant: string = props.variant || 'standard';
     const inputRef: any = useRef(null);
-    const variant = props.variant || 'standard';
 
     useImperativeHandle(currentRef, () => {
         const handler = getFieldHandler(fieldManager)
@@ -29,9 +27,11 @@ const MuiTextView = forwardRef(function MuiTextView(props: ITextFieldDefinition 
         };
     }, [fieldManager]);
 
+    const labelAccessor = hasDot(labelKey) ?
+        (d: any) => (getValueByKey(labelKey, d)) :
+        (d: any) => (d?.[labelKey]);
 
     var options = fieldManager.getFieldProps();
-
     options.onChange = (d: any) => { if (!props.readOnly) setValue(d.target.value); }
 
     return (<>{!mutateOptions.visible &&
@@ -40,15 +40,14 @@ const MuiTextView = forwardRef(function MuiTextView(props: ITextFieldDefinition 
             {(props.label) ?
                 <div {...options} className='text-view-field-container'>
                     <div className="text-view-label">{props.label}</div>
-                    <div className={props.label ? (variant === 'outlined' ? "text-view-value-outlined" : "text-view-value") : ''}>{getValue()}</div>
+                    <div className={(variant == 'standard') ? "text-view-value" : "text-view-value-outlined"}>{labelAccessor(data) || 'N/A'}</div>
                 </div> :
                 <div {...options} style={{ textAlign: textAlign }}>
-                    {getValue()}
+                    {labelAccessor(data) || 'N/A'}
                 </div>
             }
         </FieldDecorator>}
-    </>
-    );
+    </>);
 });
 
-export { MuiTextView };
+export default MuiLookupView;

@@ -1,7 +1,6 @@
 import { useRef, useImperativeHandle, forwardRef, MutableRefObject } from 'react';
 import { Checkbox, CheckboxProps, FormControlLabel } from '@mui/material';
-import FieldDecorator from './FieldDecorator';
-import { ICheckBoxField, ISwitchField, getFieldHandler, useFieldManager } from '@palmyralabs/rt-forms';
+import { FieldDecorator, ICheckBoxField, ISwitchField, getFieldHandler, useFieldManager } from '@palmyralabs/rt-forms';
 import { getFieldLabel } from './util';
 import { ICheckBoxDefinition } from './types';
 

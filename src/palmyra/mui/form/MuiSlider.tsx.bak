@@ -1,7 +1,6 @@
 import { useRef, useImperativeHandle, forwardRef, useState, useEffect, MutableRefObject } from 'react';
 import { FormControl, FormControlLabel, FormHelperText, Slider, SliderProps } from '@mui/material';
-import FieldDecorator from './FieldDecorator';
-import { IFormFieldError, ISliderField, getFieldHandler, numbers, useFieldManager } from '@palmyralabs/rt-forms';
+import { IFormFieldError, ISliderField, getFieldHandler, numbers, useFieldManager, FieldDecorator } from '@palmyralabs/rt-forms';
 import { generateOptions, getFieldLabel } from './util';
 import { ISliderDefinition } from './types';
 

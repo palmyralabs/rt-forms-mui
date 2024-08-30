@@ -1,9 +1,7 @@
 import { useRef, useImperativeHandle, forwardRef, MutableRefObject, useState } from 'react';
 import { IconButton, TextField, TextFieldProps } from '@mui/material';
-
-import { getFieldHandler, IFormFieldError, ITextField, useFieldManager } from '@palmyralabs/rt-forms';
+import { getFieldHandler, IFormFieldError, ITextField, useFieldManager, FieldDecorator } from '@palmyralabs/rt-forms';
 import { getFieldLabel } from './util'
-import FieldDecorator from './FieldDecorator';
 import { ITextFieldDefinition } from './types';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 

@@ -1,7 +1,6 @@
 import { useRef, useImperativeHandle, forwardRef, MutableRefObject } from 'react';
 import { FormControl, FormControlLabel, FormHelperText, Radio, RadioGroup, RadioProps } from '@mui/material';
-import FieldDecorator from './FieldDecorator';
-import { IFormFieldError, IRadioGroupField, ISwitchField, getFieldHandler, useFieldManager } from '@palmyralabs/rt-forms';
+import { IFormFieldError, IRadioGroupField, ISwitchField, getFieldHandler, useFieldManager, FieldDecorator } from '@palmyralabs/rt-forms';
 import { getFieldLabel } from './util';
 import { IoMdRadioButtonOff } from 'react-icons/io';
 import { RiRadioButtonFill } from 'react-icons/ri';
@@ -36,7 +35,7 @@ const MuiRadioGroup = forwardRef(function MuiRadioGroup(props: IRadioGroupDefini
 
     // fieldOptions.onChange = (d: any) => { if (!props.readOnly) setValue(d.target.value); }
 
-    fieldOptions.onChange = (event: any, v:boolean) => {
+    fieldOptions.onChange = (event: any, v: boolean) => {
         if (!props.readOnly) {
             setValue(event.target.value);
             if (props.onChange)
@@ -52,7 +51,7 @@ const MuiRadioGroup = forwardRef(function MuiRadioGroup(props: IRadioGroupDefini
                     <FormControlLabel key={v.value} value={v.value}
                         control={<Radio
                             icon={<IoMdRadioButtonOff size={24} />} checkedIcon={<RiRadioButtonFill size={24} />}
-                            inputRef={inputRef} />} label={v.label} 
+                            inputRef={inputRef} />} label={v.label}
                     />
                 ))
                 return result;
@@ -63,7 +62,7 @@ const MuiRadioGroup = forwardRef(function MuiRadioGroup(props: IRadioGroupDefini
                     <FormControlLabel key={index} value={key}
                         control={<Radio
                             icon={<IoMdRadioButtonOff size={24} />} checkedIcon={<RiRadioButtonFill size={24} />}
-                            inputRef={inputRef} />} label={options[key]} 
+                            inputRef={inputRef} />} label={options[key]}
                     />
                 ))
             }

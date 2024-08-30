@@ -1,9 +1,7 @@
 import { useRef, useImperativeHandle, forwardRef, MutableRefObject } from 'react';
 import { TextField, TextFieldProps } from '@mui/material';
-
-import { getFieldHandler, IFormFieldError, ITextField, useFieldManager } from '@palmyralabs/rt-forms';
+import { getFieldHandler, IFormFieldError, ITextField, useFieldManager, FieldDecorator } from '@palmyralabs/rt-forms';
 import { getFieldLabel } from './util'
-import FieldDecorator from './FieldDecorator';
 import { ITextFieldDefinition } from './types';
 
 
@@ -37,11 +35,11 @@ const MuiTextArea = forwardRef(function MuiTextArea(props: ITextFieldDefinition 
                 props.onChange(event);
         }
     }
-    
+
     return (<>{!mutateOptions.visible &&
         <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass}
             colspan={props.colspan} customFieldClass={props.customFieldClass} customLabelClass={props.customLabelClass}>
-            <TextField 
+            <TextField
                 variant={variant}
                 label={props.label}
                 minRows={2}

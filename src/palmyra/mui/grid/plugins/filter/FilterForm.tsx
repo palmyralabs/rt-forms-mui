@@ -1,5 +1,5 @@
 import { Button } from "@mui/material";
-import { IForm, PalmyraForm } from "@palmyralabs/rt-forms";
+import { FieldGroupContainer, IForm, PalmyraForm } from "@palmyralabs/rt-forms";
 import { setValueByKey } from "@palmyralabs/ts-utils";
 import { MutableRefObject, useRef } from "react";
 import { TbRefresh } from "react-icons/tb";
@@ -7,7 +7,6 @@ import { TbFilterShare } from "react-icons/tb";
 import { ColumnDefinition, DataGridPluginOptions } from "../../types";
 import { convertToField } from "./GridFieldConverter";
 import getField from "./FieldGenerator";
-import { FieldGroupContainer } from "../../../form";
 import './FilterForm.css';
 
 

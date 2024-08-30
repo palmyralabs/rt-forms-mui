@@ -1,7 +1,6 @@
 import { useRef, useImperativeHandle, forwardRef, MutableRefObject } from 'react';
 import { Checkbox, CheckboxProps, FormControl, FormControlLabel, FormHelperText } from '@mui/material';
-import FieldDecorator from './FieldDecorator';
-import { ICheckBoxField, IFormFieldError, getFieldHandler, useFieldManager } from '@palmyralabs/rt-forms';
+import { FieldDecorator, ICheckBoxField, IFormFieldError, getFieldHandler, useFieldManager } from '@palmyralabs/rt-forms';
 import { getFieldLabel } from './util';
 import { ICheckBoxGroupDefinition } from './types';
 import { TbSquareRounded, TbSquareRoundedCheckFilled } from 'react-icons/tb';
@@ -46,7 +45,6 @@ const MuiCheckBoxGroup = forwardRef(function MuiCheckBoxGroup(props: CheckboxPro
         }
     }
 
-
     options.onChange = (d: React.ChangeEvent<HTMLInputElement>, checked: boolean) => {
         if (!props.readOnly) {
             _updateData(d.target.value, d.target.checked);
@@ -56,7 +54,6 @@ const MuiCheckBoxGroup = forwardRef(function MuiCheckBoxGroup(props: CheckboxPro
         };
     }
 
-
     const isSelected = (key: string) => {
         return getValue().includes(key);
     }
@@ -64,8 +61,7 @@ const MuiCheckBoxGroup = forwardRef(function MuiCheckBoxGroup(props: CheckboxPro
     return (<>{!mutateOptions.visible &&
         <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass} colspan={props.colspan}
             customFieldClass={props.customFieldClass} customLabelClass={props.customLabelClass}>
-            <FormControl fullWidth style={{ flexDirection: props.flexDirection }} error={error.status} {...options}
-            >
+            <FormControl fullWidth style={{ flexDirection: props.flexDirection }} error={error.status} {...options}>
                 {options.options ?
                     Object.keys(options.options).map((key, i) => (
                         <FormControlLabel key={i} value={key}

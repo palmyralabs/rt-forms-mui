@@ -1,14 +1,14 @@
 import { jsx as t, Fragment as c, jsxs as r } from "react/jsx-runtime";
-import { forwardRef as m, useRef as u, useImperativeHandle as d } from "react";
-import v from "./FieldDecorator.js";
-import { useFieldManager as f } from "@palmyralabs/rt-forms";
+import { forwardRef as u, useRef as d, useImperativeHandle as m } from "react";
+import '../../../assets/TextView.css';/* empty css                       */
+import { useFieldManager as v, FieldDecorator as f } from "@palmyralabs/rt-forms";
 import { getFieldLabel as b } from "./util.js";
-import '../../../assets/MuiOptionsView.css';const M = m(function(e, i) {
-  const l = f(e.attribute, e), n = i || u(null), s = e.textAlign || "left", o = e.variant || "standard", { getValue: a } = l;
-  return d(n, () => ({
+const M = u(function(e, i) {
+  const l = v(e.attribute, e), n = i || d(null), s = e.textAlign || "left", o = e.variant || "standard", { getValue: a } = l;
+  return m(n, () => ({
     getValue: a
   }), [l]), /* @__PURE__ */ t(c, { children: l.mutateOptions.visible && /* @__PURE__ */ t(
-    v,
+    f,
     {
       label: b(e),
       customContainerClass: e.customContainerClass,

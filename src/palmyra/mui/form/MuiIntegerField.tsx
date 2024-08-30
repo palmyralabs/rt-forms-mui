@@ -1,13 +1,11 @@
 import { useRef, useImperativeHandle, forwardRef, MutableRefObject } from 'react';
 import { TextField, TextFieldProps } from '@mui/material';
-
-import { getFieldHandler, IFormFieldError, ITextField, useFieldManager } from '@palmyralabs/rt-forms';
+import { FieldDecorator, getFieldHandler, IFormFieldError, ITextField, useFieldManager } from '@palmyralabs/rt-forms';
 import { getFieldLabel } from './util'
-import FieldDecorator from './FieldDecorator';
 import { ITextFieldDefinition } from './types';
 
 const MuiIntegerField = forwardRef(function MuiIntegerField(props: ITextFieldDefinition & TextFieldProps, ref: MutableRefObject<ITextField>) {
-    
+
     const fieldManager = useFieldManager(props.attribute, props);
     const { getError, getValue, setValue, mutateOptions } = fieldManager;
     const currentRef = ref ? ref : useRef<ITextField>(null);
@@ -33,7 +31,7 @@ const MuiIntegerField = forwardRef(function MuiIntegerField(props: ITextFieldDef
     options.onChange = (event: any) => {
         if (!props.readOnly) {
             const value = event.target.value;
-            const v = event.target.value.replace(/\D/g, '');            
+            const v = event.target.value.replace(/\D/g, '');
             if (value == v) {
                 setValue(v);
                 if (props.onChange)
@@ -41,11 +39,11 @@ const MuiIntegerField = forwardRef(function MuiIntegerField(props: ITextFieldDef
             }
         }
     }
-    
+
     return (<>{!mutateOptions.visible &&
         <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass}
             colspan={props.colspan} customFieldClass={props.customFieldClass} customLabelClass={props.customLabelClass}>
-            <TextField                
+            <TextField
                 label={props.label}
                 variant={variant}
                 fullWidth={true}

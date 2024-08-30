@@ -1,22 +1,21 @@
-import { jsx as i, Fragment as k, jsxs as T } from "react/jsx-runtime";
+import { jsx as o, Fragment as k, jsxs as T } from "react/jsx-runtime";
 import { forwardRef as W, useRef as y, useImperativeHandle as H } from "react";
 import { LocalizationProvider as J, DatePicker as V } from "@mui/x-date-pickers";
 import { getFieldLabel as O } from "./util.js";
-import z from "./FieldDecorator.js";
 import x from "dayjs";
-import { useFieldManager as E, getFieldHandler as I } from "@palmyralabs/rt-forms";
+import { useFieldManager as z, getFieldHandler as E, FieldDecorator as I } from "@palmyralabs/rt-forms";
 import { A as S } from "../../../chunks/AdapterDayjs.js";
 const M = (n, e) => {
   if (n && n.isValid && n.isValid())
     return n.format(e);
-}, d = (n, e) => n ? x(n, e) : x(void 0), U = W(function(e, v) {
+}, d = (n, e) => n ? x(n, e) : x(void 0), Q = W(function(e, v) {
   const l = e.serverPattern || e.displayPattern || "YYYY-MM-DD", P = e.displayPattern || e.serverPattern || "YYYY-MM-DD", F = (t) => {
     if (t && typeof t == "string") {
       var r, a;
-      const o = t.charAt(0);
-      if (o == ">")
+      const i = t.charAt(0);
+      if (i == ">")
         r = d(t.slice(1), l);
-      else if (o == "<")
+      else if (i == "<")
         a = d(t.slice(1), l);
       else {
         const C = t.split("...");
@@ -32,9 +31,9 @@ const M = (n, e) => {
       if (a)
         return "<" + a;
     }
-  }, f = E(e.attribute, e, { format: Y, parse: F }), { getError: D, getValue: A, setValue: R, mutateOptions: j } = f, L = v || y(null), u = D(), m = y(null);
+  }, f = z(e.attribute, e, { format: Y, parse: F }), { getError: D, getValue: A, setValue: R, mutateOptions: j } = f, L = v || y(null), u = D(), m = y(null);
   H(L, () => ({
-    ...I(f),
+    ...E(f),
     focus() {
       m.current.focus();
     },
@@ -50,12 +49,12 @@ const M = (n, e) => {
   s.fullwidth = !1;
   const b = (t, r, a) => {
     if (!e.readOnly) {
-      const o = { ...c, [t]: r };
-      R(o), e.onChange && e.onChange(o, a);
+      const i = { ...c, [t]: r };
+      R(i), e.onChange && e.onChange(i, a);
     }
   };
-  return /* @__PURE__ */ i(k, { children: !j.visible && /* @__PURE__ */ i(
-    z,
+  return /* @__PURE__ */ o(k, { children: !j.visible && /* @__PURE__ */ o(
+    I,
     {
       label: O(e),
       customContainerClass: e.customContainerClass,
@@ -63,7 +62,7 @@ const M = (n, e) => {
       customFieldClass: e.customFieldClass,
       customLabelClass: e.customLabelClass,
       children: /* @__PURE__ */ T(J, { dateAdapter: S, children: [
-        /* @__PURE__ */ i(
+        /* @__PURE__ */ o(
           V,
           {
             format: P,
@@ -82,8 +81,8 @@ const M = (n, e) => {
             defaultValue: g
           }
         ),
-        /* @__PURE__ */ i("span", { style: { textAlign: "center", whiteSpace: "nowrap", padding: "1vw" }, children: "to" }),
-        /* @__PURE__ */ i(
+        /* @__PURE__ */ o("span", { style: { textAlign: "center", whiteSpace: "nowrap", padding: "1vw" }, children: "to" }),
+        /* @__PURE__ */ o(
           V,
           {
             format: P,
@@ -107,5 +106,5 @@ const M = (n, e) => {
   ) });
 });
 export {
-  U as MuiDateRangePicker
+  Q as MuiDateRangePicker
 };

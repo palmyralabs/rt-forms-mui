@@ -1,10 +1,9 @@
 import { jsx as l, Fragment as C } from "react/jsx-runtime";
 import { forwardRef as F, useRef as s, useImperativeHandle as h } from "react";
 import { TextField as b } from "@mui/material";
-import { useFieldManager as v, getFieldHandler as x } from "@palmyralabs/rt-forms";
-import { getFieldLabel as M } from "./util.js";
-import R from "./FieldDecorator.js";
-const y = F(function(e, n) {
+import { useFieldManager as v, getFieldHandler as x, FieldDecorator as M } from "@palmyralabs/rt-forms";
+import { getFieldLabel as R } from "./util.js";
+const w = F(function(e, n) {
   const t = v(e.attribute, e), { getError: u, getValue: c, setValue: d, mutateOptions: m } = t, f = n || s(null), r = u(), i = s(null), g = e.variant || "standard";
   h(f, () => ({
     ...x(t),
@@ -16,9 +15,9 @@ const y = F(function(e, n) {
   return o.onChange = (a) => {
     e.readOnly || (d(a.target.value), e.onChange && e.onChange(a));
   }, /* @__PURE__ */ l(C, { children: !m.visible && /* @__PURE__ */ l(
-    R,
+    M,
     {
-      label: M(e),
+      label: R(e),
       customContainerClass: e.customContainerClass,
       colspan: e.colspan,
       customFieldClass: e.customFieldClass,
@@ -40,5 +39,5 @@ const y = F(function(e, n) {
   ) });
 });
 export {
-  y as MuiTextField
+  w as MuiTextField
 };

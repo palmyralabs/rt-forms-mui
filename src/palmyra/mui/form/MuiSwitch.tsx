@@ -1,8 +1,7 @@
 import { useRef, useImperativeHandle, forwardRef, useState, useMemo, useEffect, MutableRefObject } from 'react';
 import { FormControl, FormControlLabel, FormHelperText, Switch, SwitchProps } from '@mui/material';
-import FieldDecorator from './FieldDecorator';
 import { ISwitchDefinition } from './types';
-import { IFormFieldError, ISwitchField, getFieldHandler, useFieldManager } from '@palmyralabs/rt-forms';
+import { IFormFieldError, ISwitchField, getFieldHandler, useFieldManager, FieldDecorator } from '@palmyralabs/rt-forms';
 import { getFieldLabel } from './util';
 import parseOptions from './options/OptionsParser';
 import { Android12Switch, IOSSwitch, MaterialUISwitch } from './options/SwitchTypes';
@@ -82,7 +81,7 @@ const MuiSwitch = forwardRef(function MuiSwitch(props: ISwitchDefinition & Switc
 
     var options = fieldManager.getFieldProps();
 
-    options.onChange = (event: any, checked:boolean) => {
+    options.onChange = (event: any, checked: boolean) => {
         if (!props.readOnly) {
             setValue(event.target.checked);
             if (props.onChange)
@@ -109,4 +108,4 @@ const MuiSwitch = forwardRef(function MuiSwitch(props: ISwitchDefinition & Switc
     );
 });
 
-export {MuiSwitch};
+export { MuiSwitch };
