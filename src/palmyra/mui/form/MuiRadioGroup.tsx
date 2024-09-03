@@ -78,7 +78,7 @@ const MuiRadioGroup = forwardRef(function MuiRadioGroup(props: IRadioGroupDefini
             <FormControl fullWidth error={error.status} >
                 <div>{props.label}</div>
                 <RadioGroup row={row} {...fieldOptions} value={getValue()}>
-                    {getOptions(props.options)}
+                    {getOptions(fieldOptions.options)}
                 </RadioGroup>
                 <FormHelperText className='form-error-text'>{error.message}</FormHelperText>
             </FormControl>
