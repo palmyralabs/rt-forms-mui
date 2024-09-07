@@ -30,10 +30,7 @@ const MuiRadioGroup = forwardRef(function MuiRadioGroup(props: IRadioGroupDefini
         };
     }, [fieldManager]);
 
-
     var fieldOptions = fieldManager.getFieldProps();
-
-    // fieldOptions.onChange = (d: any) => { if (!props.readOnly) setValue(d.target.value); }
 
     fieldOptions.onChange = (event: any, v: boolean) => {
         if (!props.readOnly) {
@@ -51,7 +48,7 @@ const MuiRadioGroup = forwardRef(function MuiRadioGroup(props: IRadioGroupDefini
                     <FormControlLabel key={v.value} value={v.value}
                         control={<Radio
                             icon={<IoMdRadioButtonOff size={24} />} checkedIcon={<RiRadioButtonFill size={24} />}
-                            inputRef={inputRef} />} label={v.label}
+                            inputRef={inputRef} />} label={v.label} disabled={props.disabled}
                     />
                 ))
                 return result;
@@ -62,15 +59,13 @@ const MuiRadioGroup = forwardRef(function MuiRadioGroup(props: IRadioGroupDefini
                     <FormControlLabel key={index} value={key}
                         control={<Radio
                             icon={<IoMdRadioButtonOff size={24} />} checkedIcon={<RiRadioButtonFill size={24} />}
-                            inputRef={inputRef} />} label={options[key]}
+                            inputRef={inputRef} />} label={options[key]} disabled={props.disabled}
                     />
                 ))
             }
         }
-
         return <div>No options provided</div>
     }
-
 
     return (<>{!mutateOptions.visible &&
         <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass} colspan={props.colspan}
