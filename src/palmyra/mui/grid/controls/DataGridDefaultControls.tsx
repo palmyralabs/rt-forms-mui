@@ -1,10 +1,9 @@
 import { QuickSearch } from "./QuickSearch"
 import { FilterButton } from "./FilterButton"
 import { NewButton } from "./ActionButton";
-import { DataGridPluginOptions } from "../types";
 import { ExportDataButton } from "./ExportDataButton";
 import { IDataGridDefaultControlConfig } from "./types";
-
+import { DataGridPluginOptions } from "@palmyralabs/rt-forms";
 
 const DataGridDefaultControls = (props: DataGridPluginOptions) => {
 

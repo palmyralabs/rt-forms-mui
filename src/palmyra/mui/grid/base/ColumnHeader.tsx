@@ -1,38 +1,24 @@
-import { useState } from 'react';
+import { useEffect } from 'react';
 import { TableCell } from '@mui/material';
 import { LuArrowDownUp, LuArrowUpDown } from "react-icons/lu";
 import './ColumnHeader.css';
-
+import { useSortColumn } from '@palmyralabs/rt-forms';
 const ColumnHeader = ({ header, children, onSortChange }) => {
 
-    const [sortOrder, setSortOrder] = useState('');
     const columnAttribute = header.column.columnDef.meta?.attribute || header.id;
     const sortDisabled = !header.column.columnDef.enableSorting;
     const width = header.column.columnDef.meta?.columnDef?.width || 'auto';
 
-    const handleSortColumn = () => {
-        if (onSortChange === undefined || sortDisabled)
-            return;
+    const { sortColumn, order, sortOrder } = useSortColumn({ sortDisabled, onSortChange })
 
-        var order = sortOrder;
-        switch (order) {
-            case 'asc':
-                order = 'desc'
-                break;
-            case 'desc':
-                order = '';
-                break;
-            default:
-                order = 'asc'
-                break;
-        }
-        setSortOrder(order);
+    useEffect(() => {
         onSortChange(columnAttribute, order)
-    };
+    }, [order])
 
     const meta: any = header.column.columnDef.meta;
     const isTypeNumber = meta?.columnDef?.type === 'number';
     const cellClassName = 'py-dataGrid-header-text' + (isTypeNumber ? ' py-dataGrid-header-text-type-number' : '')
+
     if (header.column.columnDef.columns) {
         // Render Grouped Columns
         return (
@@ -49,7 +35,7 @@ const ColumnHeader = ({ header, children, onSortChange }) => {
                 <div
                     className={cellClassName}
                     style={{ width: width }}
-                    onClick={() => handleSortColumn()}>
+                    onClick={() => sortColumn()}>
                     {children}
                     {sortOrder === 'asc' ? (
                         <LuArrowUpDown className='py-baseGrid-header-sort-icon' />

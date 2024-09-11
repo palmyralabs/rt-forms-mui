@@ -5,20 +5,14 @@ import { MutableRefObject, useRef } from 'react'
 import { Table, TableBody, TableCell, TableFooter, TableHead, TableRow } from '@mui/material'
 import './BaseTable.css';
 import ColumnHeader from './ColumnHeader'
-
-import {
-  flexRender,
-  useReactTable,
-} from '@tanstack/react-table'
+import { flexRender, useReactTable, } from '@tanstack/react-table'
 import LoadingChild from './LoadingChild';
-import { IReactTanstackTable } from '..';
-import { BaseTableOptions } from './typesInternal';
-import { useBaseGridManager } from './useBaseGridManager';
+import { BaseTableOptions, IReactTanstackTable, useBaseGridManager } from '@palmyralabs/rt-forms';
 
 export default function BaseTable(props: BaseTableOptions) {
 
   const { rowData, customizer } = props;
-  const { onColumnSort, options, EmptyChild, onRowClick } = useBaseGridManager(props);
+  const { onColumnSort, options, EmptyChildren, onRowClick } = useBaseGridManager(props);
   const tableRef: MutableRefObject<IReactTanstackTable> = customizer?.getTableRef ? customizer?.getTableRef() : useRef();
 
   const table = useReactTable(options);
@@ -99,7 +93,7 @@ export default function BaseTable(props: BaseTableOptions) {
       {(null == rowData) ? (<div>
         <LoadingChild />
       </div>) :
-        (undefined == rowData) ? (<div>Error while loading data</div>) : (0 == rowData.length) ? (<EmptyChild />) : (<></>)}
+        (undefined == rowData) ? (<div>Error while loading data</div>) : (0 == rowData.length) ? (<EmptyChildren />) : (<></>)}
     </div>
   </>
   )

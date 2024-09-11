@@ -1,6 +1,6 @@
 import { ButtonProps } from '@mui/material';
-import { DataGridPluginOptions } from '../types';
 import { IPluginBtnControl } from './types';
+import { DataGridPluginOptions } from '@palmyralabs/rt-forms';
 
 interface ActionButtonProps extends Omit<ButtonProps, 'onClick'>, IPluginBtnControl, Pick<DataGridPluginOptions, 'topic'> {
     label: string;

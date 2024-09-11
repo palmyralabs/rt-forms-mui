@@ -1,4 +1,4 @@
-import { DataGridPluginOptions } from '../../types';
+import { DataGridPluginOptions } from '@palmyralabs/rt-forms';
 
 interface FilterOptions extends DataGridPluginOptions {
     onClose?: (filter: any) => void;

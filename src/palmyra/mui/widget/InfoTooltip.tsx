@@ -1,8 +1,6 @@
 import { Tooltip, TooltipProps, styled, tooltipClasses } from "@mui/material";
+import { ITitle } from "@palmyralabs/rt-forms";
 import { BsInfoCircle } from "react-icons/bs";
-import { ITitle } from "../types";
-
-
 
 const InfoTooltip = styled(({ className, ...props }: TooltipProps) => (
     <Tooltip {...props} classes={{ popper: className }} />

@@ -1,5 +1,4 @@
-import { IPageQueryable } from '@palmyralabs/rt-forms';
-import { StaticGridOptions } from './base/typesInternal';
+import { IPageQueryable, StaticGridOptions } from '@palmyralabs/rt-forms';
 
 declare const StaticGrid: import('react').ForwardRefExoticComponent<StaticGridOptions & import('react').RefAttributes<IPageQueryable>>;
 export { StaticGrid };

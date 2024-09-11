@@ -1,10 +1,7 @@
 import { MutableRefObject, forwardRef, useRef } from 'react';
-import { IPageQueryable } from "@palmyralabs/rt-forms"
+import { IPageQueryable, DataGridOptions } from "@palmyralabs/rt-forms"
 import { ApiDataTable } from './base/ApiDataTable';
 import { topic } from '@palmyralabs/ts-utils';
-import { DataGridOptions } from './types';
-
-
 
 const DataGrid = forwardRef(function ServerDataGrid(props: DataGridOptions,
   ref: MutableRefObject<IPageQueryable>) {

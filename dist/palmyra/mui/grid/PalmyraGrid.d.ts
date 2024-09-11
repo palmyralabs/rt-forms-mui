@@ -1,4 +1,4 @@
-import { IPalmyraGrid, PalmyraGridOptions } from './types';
+import { IPalmyraGrid, PalmyraGridOptions } from '@palmyralabs/rt-forms';
 
 /**
  *

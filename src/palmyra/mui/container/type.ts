@@ -1,4 +1,5 @@
-import { ITitle } from "../types"
+import { ITitle } from "@palmyralabs/rt-forms"
+
 
 interface Parent {
     children?: any
@@ -6,7 +7,7 @@ interface Parent {
 
 interface Titleable {
     name?: string,
-    title?: ITitle
+    title?: ITitle,
     hideTitle?: boolean
 }
 

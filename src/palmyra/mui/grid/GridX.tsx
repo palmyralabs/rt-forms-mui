@@ -1,11 +1,10 @@
-import { IPageQueryable } from "@palmyralabs/rt-forms";
+import { IPageQueryable, DataGridPluginOptions, GridXOptions } from "@palmyralabs/rt-forms";
 import { forwardRef, MutableRefObject, useMemo, useRef } from "react";
 import { DropdownButton } from "../widget/DropdownButton";
 import { TbFilterShare } from "react-icons/tb";
 import { FilterForm } from "./plugins/filter/FilterForm";
 import { DataGrid } from "./DataGrid";
 import { SelectablePagination } from "./plugins/pagination/SelectablePagination";
-import { DataGridPluginOptions, GridXOptions } from "./types";
 import './DataGrid.css'
 import { renderTitle } from "../widget";
 

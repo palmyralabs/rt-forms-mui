@@ -1,9 +1,8 @@
 import { PiFilePdf, PiFileXls, PiFileCsv, PiFileDoc } from "react-icons/pi";
 import { DropdownButton, IDropdown } from "../../widget";
 import { TbTableExport } from "react-icons/tb";
-import { DataGridPluginOptions } from "../types";
 import { EXPORT_FORMAT, ExportRequest } from "@palmyralabs/palmyra-wire";
-import { IPageQueryable } from "@palmyralabs/rt-forms";
+import { DataGridPluginOptions, IPageQueryable } from "@palmyralabs/rt-forms";
 import { useRef } from "react";
 import { IPluginBtnControl } from "./types";
 import './ExportDataButton.css';
@@ -15,7 +14,6 @@ const ExportDataButton = (props: IExportDataOptions) => {
     const { exportOption } = props;
     const dropDownRef = useRef<IDropdown>();
     const visible = props.visible != false;
-
 
     const exportData = (format: EXPORT_FORMAT) => {
         const queryRef: IPageQueryable = props.queryRef.current;

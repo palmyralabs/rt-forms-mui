@@ -1,8 +1,8 @@
 import { InputAdornment, TextField } from "@mui/material"
 import { useState } from "react"
 import { AiOutlineSearch } from "react-icons/ai";
-import { DataGridPluginOptions } from "../types";
 import { IPluginBtnControl } from "./types";
+import { DataGridPluginOptions } from "@palmyralabs/rt-forms";
 
 interface IQuickSearchOptions extends Pick<DataGridPluginOptions, 'queryRef' | 'columns'>, IPluginBtnControl {
     width: string

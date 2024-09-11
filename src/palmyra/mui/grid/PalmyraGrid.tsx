@@ -1,8 +1,7 @@
 import { forwardRef, MutableRefObject, useEffect, useRef } from "react";
-import { IPalmyraGrid, PalmyraGridOptions } from "./types";
 import { GridX } from "./GridX";
 import { topic } from "@palmyralabs/ts-utils";
-import { IPageQueryable } from "@palmyralabs/rt-forms";
+import { IPageQueryable, IPalmyraGrid, PalmyraGridOptions } from "@palmyralabs/rt-forms";
 /**
  * 
  * Emitters 

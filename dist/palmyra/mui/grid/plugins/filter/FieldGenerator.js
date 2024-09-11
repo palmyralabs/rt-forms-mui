@@ -1,75 +1,59 @@
-import { jsxs as u, jsx as s } from "react/jsx-runtime";
-import { MuiTextField as c } from "../../../form/MuiTextField.js";
-import { MuiDatePicker as m } from "../../../form/MuiDatePicker.js";
-import { MuiSelect as a } from "../../../form/MuiSelect.js";
-import { MuiServerLookup as n } from "../../../form/MuiServerLookup.js";
-import { MuiCheckBox as p } from "../../../form/MuiCheckBox.js";
+import { MuiTextField as m } from "../../../form/MuiTextField.js";
+import { MuiDatePicker as s } from "../../../form/MuiDatePicker.js";
+import { MuiSelect as o } from "../../../form/MuiSelect.js";
+import { MuiServerLookup as c } from "../../../form/MuiServerLookup.js";
+import { MuiCheckBox as n } from "../../../form/MuiCheckBox.js";
 import "../../../form/MuiCheckBoxGroup.js";
 import "../../../form/MuiDateTimePicker.js";
-import { MuiIntegerField as l } from "../../../form/MuiIntegerField.js";
-import { MuiNumberField as f } from "../../../form/MuiNumberField.js";
+import { MuiIntegerField as p } from "../../../form/MuiIntegerField.js";
+import { MuiNumberField as l } from "../../../form/MuiNumberField.js";
 import { MuiPassword as d } from "../../../form/MuiPassword.js";
-import { MuiRadioGroup as M } from "../../../form/MuiRadioGroup.js";
-import { MuiRating as g } from "../../../form/MuiRating.js";
-import { MuiSwitch as x } from "../../../form/MuiSwitch.js";
-import { MuiTextArea as b } from "../../../form/MuiTextArea.js";
+import { MuiRadioGroup as f } from "../../../form/MuiRadioGroup.js";
+import { MuiRating as M } from "../../../form/MuiRating.js";
+import { MuiSwitch as g } from "../../../form/MuiSwitch.js";
+import { MuiTextArea as F } from "../../../form/MuiTextArea.js";
 import "../../../form/MuiTextView.js";
 import "../../../form/MuiOptionsView.js";
-import { MuiDateRangePicker as h } from "../../../form/MuiDateRangePicker.js";
-const k = (t) => {
-  const { fieldDef: i } = t;
-  return /* @__PURE__ */ u("div", { children: [
-    "invalid type " + i.type,
-    " "
-  ] });
-}, r = (t, i) => {
-  const o = t.fieldDef;
-  return /* @__PURE__ */ s(
-    i,
-    {
-      ...o,
-      label: t.title
-    },
-    o.title + o.attribute
-  );
-}, q = (t, i) => {
-  const { type: o } = t, e = { fieldDef: t, title: i };
-  switch (o) {
+import { MuiDateRangePicker as k } from "../../../form/MuiDateRangePicker.js";
+import { useFieldGenrator as x } from "@palmyralabs/rt-forms";
+const j = (t, i) => {
+  const { type: a } = t, r = { fieldDef: t, title: i }, { getReactField: e, getInvalidField: u } = x();
+  switch (a) {
     case "string":
-      return r(e, c);
+      return e(r, m);
     case "radio":
-      return r(e, M);
+      return e(r, f);
     case "select":
-      return r(e, a);
+      return e(r, o);
     case "date":
-      return r(e, m);
+      return e(r, s);
     case "multiSelect":
-      return r(e, a);
+      return e(r, o);
     case "checkbox":
-      return r(e, p);
+      return e(r, n);
     case "serverlookup":
-      return r(e, n);
+      return e(r, c);
     case "textarea":
-      return r(e, b);
+      return e(r, F);
     case "switch":
-      return r(e, x);
+      return e(r, g);
     case "password":
-      return r(e, d);
+      return e(r, d);
     case "rating":
-      return r(e, g);
+      return e(r, M);
     case "float":
     case "number":
     case "numbersOnly":
-      return r(e, f);
+      return e(r, l);
     case "integer":
-      return r(e, l);
+      return e(r, p);
     case "dateRange":
-      return r(e, h);
+      return e(r, k);
     case "autoComplete":
     default:
-      return k(e);
+      return u(r);
   }
 };
 export {
-  q as default
+  j as default
 };

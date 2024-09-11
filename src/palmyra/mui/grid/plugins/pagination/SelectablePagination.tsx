@@ -1,8 +1,8 @@
 import { FormControl, MenuItem, Pagination, Select } from "@mui/material"
 import { delayGenerator, topic } from "@palmyralabs/ts-utils";
 import { useEffect, useState } from "react";
-import { DataGridPluginOptions } from "../../types";
 import './SelectablePagination.css';
+import { DataGridPluginOptions } from "@palmyralabs/rt-forms";
 
 const delay = delayGenerator(10)
 
@@ -57,31 +57,28 @@ const SelectablePagination = (o: DataGridPluginOptions) => {
                 /> */}
                 <div className="py-selectable-pagination-container">
                     <div className="py-selectable-pagination-left-container">
-                        {
-                            pageSizeOptions && pageSizeOptions.length > 1 ? (
-                                <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-                                    <div className="py-selectable-pagination-left-content-container">
-                                        <div><span>Showing</span></div>
-                                        <div className="py-selectable-pagination-select-field">
-                                            <Select
-                                                labelId="rows-per-page-select-label"
-                                                id="rows-per-page-select"
-                                                defaultValue={pageSizeOptions[0]}
-                                                onChange={handleRowsPerPageChange}
-                                                label="Rows per page"
-                                            >
-                                                {pageSizeOptions.map((pageSize) => (
-                                                    <MenuItem key={pageSize} value={pageSize}>
-                                                        {pageSize}
-                                                    </MenuItem>
-                                                ))}
-                                            </Select>
-                                        </div>
-                                        <div className="py-selectable-pagination-show-result"><span>{startRecord} - {endRecord} of {totalRecords} Results</span></div>
+                        {pageSizeOptions && pageSizeOptions.length > 1 ? (
+                            <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+                                <div className="py-selectable-pagination-left-content-container">
+                                    <div><span>Showing</span></div>
+                                    <div className="py-selectable-pagination-select-field">
+                                        <Select
+                                            labelId="rows-per-page-select-label"
+                                            id="rows-per-page-select"
+                                            defaultValue={pageSizeOptions[0]}
+                                            onChange={handleRowsPerPageChange}
+                                            label="Rows per page">
+                                            {pageSizeOptions.map((pageSize) => (
+                                                <MenuItem key={pageSize} value={pageSize}>
+                                                    {pageSize}
+                                                </MenuItem>
+                                            ))}
+                                        </Select>
                                     </div>
-                                </FormControl>
-
-                            ) : null
+                                    <div className="py-selectable-pagination-show-result"><span>{startRecord} - {endRecord} of {totalRecords} Results</span></div>
+                                </div>
+                            </FormControl>
+                        ) : null
                         }
                     </div>
                     <div className="py-selectable-pagination-right-container">

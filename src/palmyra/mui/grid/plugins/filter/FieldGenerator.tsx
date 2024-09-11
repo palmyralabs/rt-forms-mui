@@ -1,27 +1,14 @@
-import { MuiCheckBox, MuiDatePicker, MuiDateRangePicker, MuiIntegerField, MuiNumberField, 
-    MuiPassword, MuiRadioGroup, MuiRating, MuiSelect, 
-    MuiServerLookup, MuiSwitch, MuiTextArea, MuiTextField } from "../../../form";
-
-import { ColumnFieldOptions } from "../../../";
-
-
-const getInvalidField = (props: FieldRequest) => {
-    const { fieldDef } = props;
-    return <div>{"invalid type " + fieldDef.type} </div>
-}
-
-const getReactField = (props: FieldRequest, Input: React.FC) => {
-    const fieldDef: any = props.fieldDef;
-
-    return <Input key={fieldDef.title + fieldDef.attribute}
-        {...fieldDef}
-        label={props.title}
-    />;
-}
+import {
+    MuiCheckBox, MuiDatePicker, MuiDateRangePicker, MuiIntegerField, MuiNumberField, MuiPassword,
+    MuiRadioGroup, MuiRating, MuiSelect, MuiServerLookup, MuiSwitch, MuiTextArea, MuiTextField
+} from "../../../form";
+import { FieldRequest, useFieldGenrator, ColumnFieldOptions } from "@palmyralabs/rt-forms";
 
 const getField = (fieldDef: ColumnFieldOptions, title?: any) => {
     const { type } = fieldDef;
     const props: FieldRequest = { fieldDef, title };
+
+    const { getReactField, getInvalidField } = useFieldGenrator();
 
     switch (type) {
         case 'string':
@@ -53,19 +40,14 @@ const getField = (fieldDef: ColumnFieldOptions, title?: any) => {
         case 'numbersOnly':
             return getReactField(props, MuiNumberField);
         case 'integer':
-            return getReactField(props, MuiIntegerField);        
+            return getReactField(props, MuiIntegerField);
         case 'dateRange':
             return getReactField(props, MuiDateRangePicker);
         case 'autoComplete':
-            // return getReactField(props, MuiAutoComplete);
+        // return getReactField(props, MuiAutoComplete);
         default:
             return getInvalidField(props);
     }
 };
 
 export default getField;
-
-interface FieldRequest {
-    fieldDef: ColumnFieldOptions,
-    title?: string
-}
