@@ -17,7 +17,7 @@ const MuiOptionsView = forwardRef(function MuiOptionsView(props: ISelectDefiniti
     }), [fieldManager]);
 
     return (
-        <>{fieldManager.mutateOptions.visible &&
+        <>{!fieldManager.mutateOptions.visible &&
             <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass} colspan={props.colspan}
                 customFieldClass={props.customFieldClass} customLabelClass={props.customLabelClass}>
                 <div className='text-view-field-container'>

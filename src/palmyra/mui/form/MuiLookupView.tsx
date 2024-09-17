@@ -1,7 +1,6 @@
 import { forwardRef, useRef, useImperativeHandle } from 'react';
 import './TextView.css';
 import { IServerLookupDefinition, TextViewAttributeDefinition } from './types';
-import { getValueByKey, hasDot } from '@palmyralabs/ts-utils';
 import { getFieldLabel } from './util';
 import { getFieldHandler, useFieldManager, FieldDecorator } from '@palmyralabs/rt-forms';
 
@@ -27,11 +26,12 @@ const MuiLookupView = forwardRef(function MuiLabelDisplay(props: IServerLookupDe
         };
     }, [fieldManager]);
 
-    const labelAccessor = hasDot(labelKey) ?
-        (d: any) => (getValueByKey(labelKey, d)) :
-        (d: any) => (d?.[labelKey]);
+    // const labelAccessor = hasDot(labelKey) ?
+    //     (d: any) => (getValueByKey(labelKey, d)) :
+    //     (d: any) => (console.log("asd", d, labelKey), d?.[labelKey]);
 
     var options = fieldManager.getFieldProps();
+
 
     return (<>{!mutateOptions.visible &&
         <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass} colspan={props.colspan}
@@ -39,14 +39,14 @@ const MuiLookupView = forwardRef(function MuiLabelDisplay(props: IServerLookupDe
             {(props.label) ?
                 <div {...options} className='text-view-field-container'>
                     <div className="text-view-label">{props.label}</div>
-                    <div className={(variant == 'standard') ? "text-view-value" : "text-view-value-outlined"}>{labelAccessor(data) || 'N/A'}</div>
+                    <div className={(variant == 'standard') ? "text-view-value" : "text-view-value-outlined"}>{data[labelKey] || 'N/A'}</div>
                 </div> :
                 <div {...options} style={{ textAlign: textAlign }}>
-                    {labelAccessor(data) || 'N/A'}
+                    {data[labelKey] || 'N/A'}
                 </div>
             }
         </FieldDecorator>}
     </>);
 });
 
-export default MuiLookupView;
+export { MuiLookupView };

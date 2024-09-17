@@ -1,37 +1,32 @@
-import { jsx as l, Fragment as x, jsxs as h } from "react/jsx-runtime";
-import { forwardRef as C, useRef as u, useImperativeHandle as F } from "react";
+import { jsx as t, Fragment as b, jsxs as g } from "react/jsx-runtime";
+import { forwardRef as x, useRef as o, useImperativeHandle as h } from "react";
 import '../../../assets/TextView.css';/* empty css                       */
-import { e as w } from "../../../chunks/accessor.js";
-import "../../../chunks/NoopConverter.js";
-import "dayjs";
-import { o as A } from "../../../chunks/StringUtil.js";
-import { getFieldLabel as L } from "./util.js";
-import { useFieldManager as N, getFieldHandler as M, FieldDecorator as R } from "@palmyralabs/rt-forms";
-const q = C(function(e, s) {
-  const a = N(e.attribute, e), { getValue: m, mutateOptions: d } = a, f = s || u(null), o = m(), i = e.lookupOptions, n = (i == null ? void 0 : i.labelAttribute) || "name", v = e.textAlign || "left", b = e.variant || "standard", g = u(null);
-  F(f, () => ({
-    ...M(a),
+import { getFieldLabel as C } from "./util.js";
+import { useFieldManager as F, getFieldHandler as w, FieldDecorator as A } from "@palmyralabs/rt-forms";
+const H = x(function(e, n) {
+  const l = F(e.attribute, e), { getValue: r, mutateOptions: d } = l, u = n || o(null), i = r(), a = e.lookupOptions, s = (a == null ? void 0 : a.labelAttribute) || "name", m = e.textAlign || "left", v = e.variant || "standard", f = o(null);
+  h(u, () => ({
+    ...w(l),
     focus() {
-      g.current.focus();
+      f.current.focus();
     }
-  }), [a]);
-  const r = A(n) ? (t) => w(n, t) : (t) => t == null ? void 0 : t[n];
-  var c = a.getFieldProps();
-  return /* @__PURE__ */ l(x, { children: !d.visible && /* @__PURE__ */ l(
-    R,
+  }), [l]);
+  var c = l.getFieldProps();
+  return /* @__PURE__ */ t(b, { children: !d.visible && /* @__PURE__ */ t(
+    A,
     {
-      label: L(e),
+      label: C(e),
       customContainerClass: e.customContainerClass,
       colspan: e.colspan,
       customFieldClass: e.customFieldClass,
       customLabelClass: e.customLabelClass,
-      children: e.label ? /* @__PURE__ */ h("div", { ...c, className: "text-view-field-container", children: [
-        /* @__PURE__ */ l("div", { className: "text-view-label", children: e.label }),
-        /* @__PURE__ */ l("div", { className: b == "standard" ? "text-view-value" : "text-view-value-outlined", children: r(o) || "N/A" })
-      ] }) : /* @__PURE__ */ l("div", { ...c, style: { textAlign: v }, children: r(o) || "N/A" })
+      children: e.label ? /* @__PURE__ */ g("div", { ...c, className: "text-view-field-container", children: [
+        /* @__PURE__ */ t("div", { className: "text-view-label", children: e.label }),
+        /* @__PURE__ */ t("div", { className: v == "standard" ? "text-view-value" : "text-view-value-outlined", children: i[s] || "N/A" })
+      ] }) : /* @__PURE__ */ t("div", { ...c, style: { textAlign: m }, children: i[s] || "N/A" })
     }
   ) });
 });
 export {
-  q as default
+  H as MuiLookupView
 };

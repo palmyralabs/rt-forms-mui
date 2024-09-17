@@ -7,7 +7,7 @@ const M = u(function(e, i) {
   const l = v(e.attribute, e), n = i || d(null), s = e.textAlign || "left", o = e.variant || "standard", { getValue: a } = l;
   return m(n, () => ({
     getValue: a
-  }), [l]), /* @__PURE__ */ t(c, { children: l.mutateOptions.visible && /* @__PURE__ */ t(
+  }), [l]), /* @__PURE__ */ t(c, { children: !l.mutateOptions.visible && /* @__PURE__ */ t(
     f,
     {
       label: b(e),

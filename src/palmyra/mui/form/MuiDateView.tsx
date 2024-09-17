@@ -72,4 +72,4 @@ const MuiDateView = forwardRef(function MuiLabelDisplay(props: IDatePickerDefini
     </>);
 });
 
-export default MuiDateView;
+export { MuiDateView };

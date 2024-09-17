@@ -15,4 +15,6 @@ export { MuiSwitch } from './MuiSwitch';
 export { MuiTextArea } from './MuiTextArea';
 export { MuiTextView } from './MuiTextView';
 export { MuiOptionsView } from './MuiOptionsView';
+export { MuiLookupView } from './MuiLookupView';
+export { MuiDateView } from './MuiDateView';
 export { MuiDateRangePicker } from './MuiDateRangePicker';

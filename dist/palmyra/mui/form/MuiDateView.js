@@ -2806,5 +2806,5 @@ const Fn = De(function(n, e) {
   ) });
 });
 export {
-  Fn as default
+  Fn as MuiDateView
 };
