@@ -1,42 +1,42 @@
-import { jsx as t, Fragment as F } from "react/jsx-runtime";
-import { forwardRef as w, useRef as u, useState as P, useImperativeHandle as v } from "react";
-import { TextField as x, IconButton as y } from "@mui/material";
-import { useFieldManager as M, getFieldHandler as R, FieldDecorator as V } from "@palmyralabs/rt-forms";
-import { getFieldLabel as I } from "./util.js";
-import { Visibility as L, VisibilityOff as O } from "@mui/icons-material";
-const D = w(function(e, l) {
-  const n = M(e.attribute, e), { getError: c, getValue: d, setValue: m, mutateOptions: f } = n, g = l || u(null), s = c(), [r, h] = P(!1), o = u(null), C = (e == null ? void 0 : e.variant) || "standard";
-  v(g, () => ({
-    ...R(n),
+import { jsx as t, Fragment as w } from "react/jsx-runtime";
+import { forwardRef as P, useRef as u, useState as v, useImperativeHandle as x } from "react";
+import { TextField as y, IconButton as M } from "@mui/material";
+import { useFieldManager as R, getFieldHandler as V, FieldDecorator as I } from "@palmyralabs/rt-forms";
+import { getFieldLabel as L } from "./util.js";
+import { Visibility as O, VisibilityOff as B } from "@mui/icons-material";
+const D = P(function(e, l) {
+  const n = R(e.attribute, e), { getError: c, getValue: d, setValue: m, mutateOptions: f, refreshError: g } = n, h = l || u(null), s = c(), [o, C] = v(!1), i = u(null), b = (e == null ? void 0 : e.variant) || "standard";
+  x(h, () => ({
+    ...V(n),
     focus() {
-      o.current.focus();
+      i.current.focus();
     }
   }), [n]);
-  var i = n.getFieldProps();
-  i.onChange = (a) => {
+  var r = n.getFieldProps();
+  r.onChange = (a) => {
     e.readOnly || (m(a.target.value), e.onChange && e.onChange(a));
+  }, r.onBlur = g;
+  const F = {
+    endAdornment: /* @__PURE__ */ t(M, { onClick: () => C((a) => !a), children: o ? /* @__PURE__ */ t(O, {}) : /* @__PURE__ */ t(B, {}) })
   };
-  const b = {
-    endAdornment: /* @__PURE__ */ t(y, { onClick: () => h((a) => !a), children: r ? /* @__PURE__ */ t(L, {}) : /* @__PURE__ */ t(O, {}) })
-  };
-  return /* @__PURE__ */ t(F, { children: !f.visible && /* @__PURE__ */ t(
-    V,
+  return /* @__PURE__ */ t(w, { children: !f.visible && /* @__PURE__ */ t(
+    I,
     {
-      label: I(e),
+      label: L(e),
       customContainerClass: e.customContainerClass,
       colspan: e.colspan,
       customFieldClass: e.customFieldClass,
       customLabelClass: e.customLabelClass,
       children: /* @__PURE__ */ t(
-        x,
+        y,
         {
-          InputProps: b,
-          type: r ? "text" : "password",
+          InputProps: F,
+          type: o ? "text" : "password",
           label: e.label,
-          variant: C,
+          variant: b,
           fullWidth: !0,
-          inputRef: o,
-          ...i,
+          inputRef: i,
+          ...r,
           value: d(),
           error: s.status,
           helperText: s.message

@@ -6,7 +6,7 @@ import { ICheckBoxDefinition } from './types';
 
 const MuiCheckBox = forwardRef(function MuiCheckBox(props: CheckboxProps & ICheckBoxDefinition, ref: MutableRefObject<ICheckBoxField>) {
     const fieldManager = useFieldManager(props.attribute, props);
-    const { getValue, setValue, mutateOptions } = fieldManager;
+    const { getValue, setValue, mutateOptions, refreshError } = fieldManager;
     const currentRef = ref ? ref : useRef<ISwitchField>(null);
     const value: boolean = getValue() == true;
     const inputRef: any = useRef(null);
@@ -36,6 +36,7 @@ const MuiCheckBox = forwardRef(function MuiCheckBox(props: CheckboxProps & IChec
             }
         }
     }
+    options.onBlur = refreshError;
 
     return (<>{!mutateOptions.visible &&
         <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass} colspan={props.colspan}

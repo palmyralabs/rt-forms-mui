@@ -7,7 +7,7 @@ import { ITextFieldDefinition } from './types';
 const MuiIntegerField = forwardRef(function MuiIntegerField(props: ITextFieldDefinition & TextFieldProps, ref: MutableRefObject<ITextField>) {
 
     const fieldManager = useFieldManager(props.attribute, props);
-    const { getError, getValue, setValue, mutateOptions } = fieldManager;
+    const { getError, getValue, setValue, mutateOptions, refreshError } = fieldManager;
     const currentRef = ref ? ref : useRef<ITextField>(null);
     const error: IFormFieldError = getError();
 
@@ -26,8 +26,6 @@ const MuiIntegerField = forwardRef(function MuiIntegerField(props: ITextFieldDef
 
     var options = fieldManager.getFieldProps();
 
-    // options.onChange = (d: any) => { if (!props.readOnly) setValue(d.target.value.replace(/\D/g, '')); }
-
     options.onChange = (event: any) => {
         if (!props.readOnly) {
             const value = event.target.value;
@@ -39,6 +37,7 @@ const MuiIntegerField = forwardRef(function MuiIntegerField(props: ITextFieldDef
             }
         }
     }
+    options.onBlur = refreshError;
 
     return (<>{!mutateOptions.visible &&
         <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass}

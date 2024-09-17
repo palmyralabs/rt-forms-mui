@@ -1,13 +1,13 @@
-import { jsx as o, Fragment as p, jsxs as v } from "react/jsx-runtime";
-import { forwardRef as k, useRef as d, useImperativeHandle as O } from "react";
-import { FormControl as R, FormControlLabel as D, Checkbox as S, FormHelperText as y } from "@mui/material";
-import { useFieldManager as L, getFieldHandler as M, FieldDecorator as T } from "@palmyralabs/rt-forms";
-import { getFieldLabel as V } from "./util.js";
-import { T as j, a as H } from "../../../chunks/index3.js";
-const E = k(function(t, c) {
-  const r = L(t.attribute, t), { getError: f, getValue: m, setValue: h, mutateOptions: g } = r, C = c || d(null), x = t.autoFocus || !1, u = f(), i = d(null);
-  O(C, () => ({
-    ...M(r),
+import { jsx as o, Fragment as v, jsxs as k } from "react/jsx-runtime";
+import { forwardRef as O, useRef as d, useImperativeHandle as R } from "react";
+import { FormControl as D, FormControlLabel as S, Checkbox as y, FormHelperText as L } from "@mui/material";
+import { useFieldManager as M, getFieldHandler as T, FieldDecorator as V } from "@palmyralabs/rt-forms";
+import { getFieldLabel as j } from "./util.js";
+import { T as B, a as H } from "../../../chunks/index3.js";
+const P = O(function(t, c) {
+  const l = M(t.attribute, t), { getError: f, getValue: m, setValue: h, mutateOptions: g, refreshError: C } = l, x = c || d(null), F = t.autoFocus || !1, u = f(), i = d(null);
+  R(x, () => ({
+    ...T(l),
     focus() {
       i.current.checked = !0, i.current.focus();
     },
@@ -15,53 +15,53 @@ const E = k(function(t, c) {
     },
     getOptions() {
     }
-  }), [r]);
-  var l = r.getFieldProps();
-  function F(e, n) {
-    const a = r.getValue() ? r.getValue().split(",") : [];
+  }), [l]);
+  var r = l.getFieldProps();
+  function b(e, n) {
+    const a = l.getValue() ? l.getValue().split(",") : [];
     var s = a.indexOf(e);
     n ? s < 0 && a.push(e) : s >= 0 && a.splice(s, 1);
   }
-  l.onChange = (e, n) => {
-    t.readOnly || (F(e.target.value, e.target.checked), h(e.target.value), t.onChange && t.onChange(e, n));
-  };
-  const b = (e) => m().includes(e);
-  return /* @__PURE__ */ o(p, { children: !g.visible && /* @__PURE__ */ o(
-    T,
+  r.onChange = (e, n) => {
+    t.readOnly || (b(e.target.value, e.target.checked), h(e.target.value), t.onChange && t.onChange(e, n));
+  }, r.onBlur = C;
+  const p = (e) => m().includes(e);
+  return /* @__PURE__ */ o(v, { children: !g.visible && /* @__PURE__ */ o(
+    V,
     {
-      label: V(t),
+      label: j(t),
       customContainerClass: t.customContainerClass,
       colspan: t.colspan,
       customFieldClass: t.customFieldClass,
       customLabelClass: t.customLabelClass,
-      children: /* @__PURE__ */ v(R, { fullWidth: !0, style: { flexDirection: t.flexDirection }, error: u.status, ...l, children: [
-        l.options ? Object.keys(l.options).map((e, n) => /* @__PURE__ */ o(
-          D,
+      children: /* @__PURE__ */ k(D, { fullWidth: !0, style: { flexDirection: t.flexDirection }, error: u.status, ...r, children: [
+        r.options ? Object.keys(r.options).map((e, n) => /* @__PURE__ */ o(
+          S,
           {
             value: e,
             control: /* @__PURE__ */ o(
-              S,
+              y,
               {
-                icon: /* @__PURE__ */ o(j, { style: { fontSize: "20px" } }),
+                icon: /* @__PURE__ */ o(B, { style: { fontSize: "20px" } }),
                 checkedIcon: /* @__PURE__ */ o(H, { style: { fontSize: "20px" } }),
-                checked: b(e),
-                autoFocus: x,
+                checked: p(e),
+                autoFocus: F,
                 disabled: t.readOnly,
-                ...l,
+                ...r,
                 inputRef: (a) => {
                   n == 0 && (i.current = a);
                 }
               }
             ),
-            label: l.options[e]
+            label: r.options[e]
           },
           n
         )) : /* @__PURE__ */ o("div", { children: "No options provided" }),
-        /* @__PURE__ */ o(y, { className: "form-error-text", children: u.message })
+        /* @__PURE__ */ o(L, { className: "form-error-text", children: u.message })
       ] })
     }
   ) });
 });
 export {
-  E as MuiCheckBoxGroup
+  P as MuiCheckBoxGroup
 };

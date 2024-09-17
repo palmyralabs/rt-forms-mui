@@ -23,7 +23,7 @@ const MuiDateTimePicker = forwardRef(function MuiDateTimePicker(props: IDatePick
 
     const fieldManager = useFieldManager(props.attribute, props, { format, parse });
 
-    const { getError, getValue, setValue, mutateOptions } = fieldManager;
+    const { getError, getValue, setValue, mutateOptions, refreshError } = fieldManager;
     const currentRef = ref ? ref : useRef<IDateField>(null);
     const error: IFormFieldError = getError();
     const inputRef: any = useRef(null);
@@ -45,7 +45,6 @@ const MuiDateTimePicker = forwardRef(function MuiDateTimePicker(props: IDatePick
     if (options.defaultValue) {
         options.defaultValue = parse(options.defaultValue);
     }
-    // options.onChange = (d: any) => { if (!props.readOnly) setValue(d); }
 
     options.onChange = (d: any, context: PickerChangeHandlerContext<any>) => {
         if (!props.readOnly) {
@@ -54,6 +53,7 @@ const MuiDateTimePicker = forwardRef(function MuiDateTimePicker(props: IDatePick
                 props.onChange(d, context);
         }
     }
+    options.onBlur = refreshError;
 
     return (<>{!mutateOptions.visible &&
         <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass}

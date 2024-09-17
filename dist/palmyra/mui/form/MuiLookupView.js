@@ -1,39 +1,37 @@
-import { jsx as l, Fragment as x, jsxs as C } from "react/jsx-runtime";
-import { forwardRef as F, useRef as u, useImperativeHandle as w } from "react";
+import { jsx as l, Fragment as x, jsxs as h } from "react/jsx-runtime";
+import { forwardRef as C, useRef as u, useImperativeHandle as F } from "react";
 import '../../../assets/TextView.css';/* empty css                       */
-import { e as A } from "../../../chunks/accessor.js";
+import { e as w } from "../../../chunks/accessor.js";
 import "../../../chunks/NoopConverter.js";
 import "dayjs";
-import { o as L } from "../../../chunks/StringUtil.js";
-import { getFieldLabel as N } from "./util.js";
-import { useFieldManager as y, getFieldHandler as M, FieldDecorator as R } from "@palmyralabs/rt-forms";
-const z = F(function(e, o) {
-  const a = y(e.attribute, e), { getValue: d, setValue: m, mutateOptions: f } = a, v = o || u(null), r = d(), n = e.lookupOptions, i = (n == null ? void 0 : n.labelAttribute) || "name", b = e.textAlign || "left", g = e.variant || "standard", h = u(null);
-  w(v, () => ({
+import { o as A } from "../../../chunks/StringUtil.js";
+import { getFieldLabel as L } from "./util.js";
+import { useFieldManager as N, getFieldHandler as M, FieldDecorator as R } from "@palmyralabs/rt-forms";
+const q = C(function(e, s) {
+  const a = N(e.attribute, e), { getValue: m, mutateOptions: d } = a, f = s || u(null), o = m(), i = e.lookupOptions, n = (i == null ? void 0 : i.labelAttribute) || "name", v = e.textAlign || "left", b = e.variant || "standard", g = u(null);
+  F(f, () => ({
     ...M(a),
     focus() {
-      h.current.focus();
+      g.current.focus();
     }
   }), [a]);
-  const c = L(i) ? (t) => A(i, t) : (t) => t == null ? void 0 : t[i];
-  var s = a.getFieldProps();
-  return s.onChange = (t) => {
-    e.readOnly || m(t.target.value);
-  }, /* @__PURE__ */ l(x, { children: !f.visible && /* @__PURE__ */ l(
+  const r = A(n) ? (t) => w(n, t) : (t) => t == null ? void 0 : t[n];
+  var c = a.getFieldProps();
+  return /* @__PURE__ */ l(x, { children: !d.visible && /* @__PURE__ */ l(
     R,
     {
-      label: N(e),
+      label: L(e),
       customContainerClass: e.customContainerClass,
       colspan: e.colspan,
       customFieldClass: e.customFieldClass,
       customLabelClass: e.customLabelClass,
-      children: e.label ? /* @__PURE__ */ C("div", { ...s, className: "text-view-field-container", children: [
+      children: e.label ? /* @__PURE__ */ h("div", { ...c, className: "text-view-field-container", children: [
         /* @__PURE__ */ l("div", { className: "text-view-label", children: e.label }),
-        /* @__PURE__ */ l("div", { className: g == "standard" ? "text-view-value" : "text-view-value-outlined", children: c(r) || "N/A" })
-      ] }) : /* @__PURE__ */ l("div", { ...s, style: { textAlign: b }, children: c(r) || "N/A" })
+        /* @__PURE__ */ l("div", { className: b == "standard" ? "text-view-value" : "text-view-value-outlined", children: r(o) || "N/A" })
+      ] }) : /* @__PURE__ */ l("div", { ...c, style: { textAlign: v }, children: r(o) || "N/A" })
     }
   ) });
 });
 export {
-  z as default
+  q as default
 };

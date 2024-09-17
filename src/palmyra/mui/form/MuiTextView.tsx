@@ -3,7 +3,6 @@ import { getFieldHandler, ITextField, useFieldManager, FieldDecorator } from '@p
 import { getFieldLabel } from './util'
 import { ITextFieldDefinition } from './types';
 
-
 interface TextViewAttributeDefinition {
     textAlign?: 'left' | 'right' | 'center',
     variant?: 'standard' | 'outlined'
@@ -13,7 +12,7 @@ const MuiTextView = forwardRef(function MuiTextView(props: ITextFieldDefinition 
     ref: MutableRefObject<ITextField>) {
 
     const fieldManager = useFieldManager(props.attribute, props);
-    const { getValue, setValue, mutateOptions } = fieldManager;
+    const { getValue, mutateOptions } = fieldManager;
     const currentRef = ref ? ref : useRef<ITextField>(null);
     const textAlign: any = props.textAlign || 'left';
     const inputRef: any = useRef(null);
@@ -29,10 +28,7 @@ const MuiTextView = forwardRef(function MuiTextView(props: ITextFieldDefinition 
         };
     }, [fieldManager]);
 
-
     var options = fieldManager.getFieldProps();
-
-    options.onChange = (d: any) => { if (!props.readOnly) setValue(d.target.value); }
 
     return (<>{!mutateOptions.visible &&
         <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass} colspan={props.colspan}

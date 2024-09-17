@@ -9,7 +9,7 @@ const MuiPassword = forwardRef(function MuiPassword(props: ITextFieldDefinition 
     // const fieldGroupManager: IFieldGroupManager = useContext(FieldGroupManagerContext);
 
     const fieldManager = useFieldManager(props.attribute, props);
-    const { getError, getValue, setValue, mutateOptions } = fieldManager;
+    const { getError, getValue, setValue, mutateOptions, refreshError } = fieldManager;
     const currentRef = ref ? ref : useRef<ITextField>(null);
     const error: IFormFieldError = getError();
     const [showPassword, setShowPassword] = useState(false);
@@ -38,6 +38,7 @@ const MuiPassword = forwardRef(function MuiPassword(props: ITextFieldDefinition 
                 props.onChange(event);
         }
     }
+    options.onBlur = refreshError;
 
     const inputProps = {
         endAdornment: (

@@ -8,7 +8,7 @@ import { Android12Switch, IOSSwitch, MaterialUISwitch } from './options/SwitchTy
 
 const MuiSwitch = forwardRef(function MuiSwitch(props: ISwitchDefinition & SwitchProps, ref: MutableRefObject<ISwitchField>) {
     const fieldManager = useFieldManager(props.attribute, props);
-    const { getError, getValue, setValue, mutateOptions } = fieldManager;
+    const { getError, getValue, setValue, mutateOptions, refreshError } = fieldManager;
     const currentRef = ref ? ref : useRef<ISwitchField>(null);
     const error: IFormFieldError = getError();
     const switchType = props.switch;
@@ -88,8 +88,7 @@ const MuiSwitch = forwardRef(function MuiSwitch(props: ISwitchDefinition & Switc
                 props.onChange(event, event.target.checked);
         }
     }
-
-    // options.onChange = (d: any) => { if (!props.readOnly) setValue(d.target.checked); }
+    options.onBlur = refreshError;
 
     return (<>{!mutateOptions.visible &&
         <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass} colspan={props.colspan}

@@ -1,41 +1,41 @@
-import { jsx as l, Fragment as h } from "react/jsx-runtime";
-import { forwardRef as b, useRef as s, useImperativeHandle as v } from "react";
-import { TextField as x } from "@mui/material";
-import { useFieldManager as M, getFieldHandler as R, FieldDecorator as I } from "@palmyralabs/rt-forms";
-import { getFieldLabel as L } from "./util.js";
-const w = b(function(e, n) {
-  const t = M(e.attribute, e), { getError: c, getValue: d, setValue: m, mutateOptions: f } = t, g = n || s(null), r = c(), i = s(null), C = (e == null ? void 0 : e.variant) || "standard";
-  v(g, () => ({
-    ...R(t),
+import { jsx as n, Fragment as b } from "react/jsx-runtime";
+import { forwardRef as v, useRef as s, useImperativeHandle as x } from "react";
+import { TextField as M } from "@mui/material";
+import { useFieldManager as R, getFieldHandler as I, FieldDecorator as L } from "@palmyralabs/rt-forms";
+import { getFieldLabel as D } from "./util.js";
+const w = v(function(e, r) {
+  const t = R(e.attribute, e), { getError: c, getValue: d, setValue: m, mutateOptions: f, refreshError: g } = t, C = r || s(null), i = c(), o = s(null), F = (e == null ? void 0 : e.variant) || "standard";
+  x(C, () => ({
+    ...I(t),
     focus() {
-      i.current.focus();
+      o.current.focus();
     }
   }), [t]);
-  var o = t.getFieldProps();
-  return o.onChange = (a) => {
+  var l = t.getFieldProps();
+  return l.onChange = (a) => {
     if (!e.readOnly) {
-      const F = a.target.value, u = a.target.value.replace(/\D/g, "");
-      F == u && (m(u), e.onChange && e.onChange(a));
+      const h = a.target.value, u = a.target.value.replace(/\D/g, "");
+      h == u && (m(u), e.onChange && e.onChange(a));
     }
-  }, /* @__PURE__ */ l(h, { children: !f.visible && /* @__PURE__ */ l(
-    I,
+  }, l.onBlur = g, /* @__PURE__ */ n(b, { children: !f.visible && /* @__PURE__ */ n(
+    L,
     {
-      label: L(e),
+      label: D(e),
       customContainerClass: e.customContainerClass,
       colspan: e.colspan,
       customFieldClass: e.customFieldClass,
       customLabelClass: e.customLabelClass,
-      children: /* @__PURE__ */ l(
-        x,
+      children: /* @__PURE__ */ n(
+        M,
         {
           label: e.label,
-          variant: C,
+          variant: F,
           fullWidth: !0,
-          inputRef: i,
-          ...o,
+          inputRef: o,
+          ...l,
           value: d(),
-          error: r.status,
-          helperText: r.message
+          error: i.status,
+          helperText: i.message
         }
       )
     }

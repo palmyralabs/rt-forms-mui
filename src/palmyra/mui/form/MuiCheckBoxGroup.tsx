@@ -7,7 +7,7 @@ import { TbSquareRounded, TbSquareRoundedCheckFilled } from 'react-icons/tb';
 
 const MuiCheckBoxGroup = forwardRef(function MuiCheckBoxGroup(props: CheckboxProps & ICheckBoxGroupDefinition, ref: MutableRefObject<ICheckBoxField>) {
     const fieldManager = useFieldManager(props.attribute, props);
-    const { getError, getValue, setValue, mutateOptions } = fieldManager;
+    const { getError, getValue, setValue, mutateOptions, refreshError } = fieldManager;
     const currentRef = ref ? ref : useRef<ICheckBoxField>(null);
     const autoFocus = props.autoFocus || false;
     const error: IFormFieldError = getError();
@@ -53,6 +53,7 @@ const MuiCheckBoxGroup = forwardRef(function MuiCheckBoxGroup(props: CheckboxPro
                 props.onChange(d, checked);
         };
     }
+    options.onBlur = refreshError;
 
     const isSelected = (key: string) => {
         return getValue().includes(key);

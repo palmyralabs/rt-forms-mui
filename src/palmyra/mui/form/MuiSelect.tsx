@@ -6,7 +6,7 @@ import { ISelectDefinition } from './types';
 
 const MuiSelect = forwardRef(function MuiSelect(props: ISelectDefinition & SelectProps, ref: MutableRefObject<ISelectField>) {
     const fieldManager = useFieldManager(props.attribute, props);
-    const { getError, getValue, setValue, mutateOptions } = fieldManager;
+    const { getError, getValue, setValue, mutateOptions, refreshError } = fieldManager;
     const currentRef = ref ? ref : useRef<ITextField>(null);
     const error: IFormFieldError = getError();
 
@@ -34,7 +34,6 @@ const MuiSelect = forwardRef(function MuiSelect(props: ISelectDefinition & Selec
         options.inputProps = { readOnly: true };
     }
 
-    // options.onChange = (d: any) => { if (!props.readOnly) setValue(d.target.value); }
     options.onChange = (event: SelectChangeEvent<any>, child: React.ReactNode) => {
         if (!props.readOnly) {
             setValue(event.target.value);
@@ -42,8 +41,10 @@ const MuiSelect = forwardRef(function MuiSelect(props: ISelectDefinition & Selec
                 props.onChange(event, child);
         }
     }
+    options.onBlur = refreshError;
 
     const fieldMargin: any = 0; //props?.fieldProps?.size == 'small' ? 1 : 0;
+
     return (<>{!mutateOptions.visible &&
         <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass} colspan={props.colspan}
             customFieldClass={props.customFieldClass} customLabelClass={props.customLabelClass}>

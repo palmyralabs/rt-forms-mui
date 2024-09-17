@@ -1,12 +1,12 @@
-import { jsx as l, Fragment as C } from "react/jsx-runtime";
-import { forwardRef as h, useRef as i, useImperativeHandle as b } from "react";
-import { FormControlLabel as g, Checkbox as F } from "@mui/material";
-import { useFieldManager as k, getFieldHandler as O, FieldDecorator as x } from "@palmyralabs/rt-forms";
-import { getFieldLabel as R } from "./util.js";
-const V = h(function(e, o) {
-  const n = k(e.attribute, e), { getValue: s, setValue: u, mutateOptions: d } = n, m = o || i(null), f = s() == !0, a = i(null);
-  b(m, () => ({
-    ...O(n),
+import { jsx as l, Fragment as h } from "react/jsx-runtime";
+import { forwardRef as b, useRef as i, useImperativeHandle as g } from "react";
+import { FormControlLabel as F, Checkbox as k } from "@mui/material";
+import { useFieldManager as O, getFieldHandler as x, FieldDecorator as R } from "@palmyralabs/rt-forms";
+import { getFieldLabel as v } from "./util.js";
+const j = b(function(e, o) {
+  const n = O(e.attribute, e), { getValue: s, setValue: u, mutateOptions: d, refreshError: m } = n, f = o || i(null), C = s() == !0, a = i(null);
+  g(f, () => ({
+    ...x(n),
     focus() {
       a.current.checked = !0, a.current.focus();
     },
@@ -18,22 +18,22 @@ const V = h(function(e, o) {
   var r = n.getFieldProps();
   return r.onChange = (t, c) => {
     e.readOnly || (u(t.target.checked), e.onChange && e.onChange(t, c));
-  }, /* @__PURE__ */ l(C, { children: !d.visible && /* @__PURE__ */ l(
-    x,
+  }, r.onBlur = m, /* @__PURE__ */ l(h, { children: !d.visible && /* @__PURE__ */ l(
+    R,
     {
-      label: R(e),
+      label: v(e),
       customContainerClass: e.customContainerClass,
       colspan: e.colspan,
       customFieldClass: e.customFieldClass,
       customLabelClass: e.customLabelClass,
       children: /* @__PURE__ */ l(
-        g,
+        F,
         {
           control: /* @__PURE__ */ l(
-            F,
+            k,
             {
               ...r,
-              checked: f,
+              checked: C,
               disabled: e.disabled,
               readOnly: e.readOnly,
               inputRef: (t) => {
@@ -48,5 +48,5 @@ const V = h(function(e, o) {
   ) });
 });
 export {
-  V as MuiCheckBox
+  j as MuiCheckBox
 };

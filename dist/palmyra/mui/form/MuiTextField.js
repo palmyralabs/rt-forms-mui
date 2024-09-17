@@ -1,38 +1,38 @@
-import { jsx as l, Fragment as C } from "react/jsx-runtime";
-import { forwardRef as F, useRef as s, useImperativeHandle as h } from "react";
-import { TextField as b } from "@mui/material";
-import { useFieldManager as v, getFieldHandler as x, FieldDecorator as M } from "@palmyralabs/rt-forms";
-import { getFieldLabel as R } from "./util.js";
-const w = F(function(e, n) {
-  const t = v(e.attribute, e), { getError: u, getValue: c, setValue: d, mutateOptions: m } = t, f = n || s(null), r = u(), i = s(null), g = e.variant || "standard";
-  h(f, () => ({
-    ...x(t),
+import { jsx as r, Fragment as F } from "react/jsx-runtime";
+import { forwardRef as h, useRef as s, useImperativeHandle as b } from "react";
+import { TextField as v } from "@mui/material";
+import { useFieldManager as x, getFieldHandler as M, FieldDecorator as R } from "@palmyralabs/rt-forms";
+import { getFieldLabel as T } from "./util.js";
+const w = h(function(e, n) {
+  const t = x(e.attribute, e), { getError: u, getValue: c, setValue: d, mutateOptions: m, refreshError: f } = t, g = n || s(null), o = u(), i = s(null), C = e.variant || "standard";
+  b(g, () => ({
+    ...M(t),
     focus() {
       i.current.focus();
     }
   }), [t]);
-  var o = t.getFieldProps();
-  return o.onChange = (a) => {
-    e.readOnly || (d(a.target.value), e.onChange && e.onChange(a));
-  }, /* @__PURE__ */ l(C, { children: !m.visible && /* @__PURE__ */ l(
-    M,
+  var a = t.getFieldProps();
+  return a.onChange = (l) => {
+    e.readOnly || (d(l.target.value), e.onChange && e.onChange(l));
+  }, a.onBlur = f, /* @__PURE__ */ r(F, { children: !m.visible && /* @__PURE__ */ r(
+    R,
     {
-      label: R(e),
+      label: T(e),
       customContainerClass: e.customContainerClass,
       colspan: e.colspan,
       customFieldClass: e.customFieldClass,
       customLabelClass: e.customLabelClass,
-      children: /* @__PURE__ */ l(
-        b,
+      children: /* @__PURE__ */ r(
+        v,
         {
           label: e.label,
-          variant: g,
+          variant: C,
           fullWidth: !0,
           inputRef: i,
-          ...o,
+          ...a,
           value: c(),
-          error: r.status,
-          helperText: r.message
+          error: o.status,
+          helperText: o.message
         }
       )
     }

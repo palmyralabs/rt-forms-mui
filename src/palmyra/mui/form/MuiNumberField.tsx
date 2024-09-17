@@ -8,7 +8,7 @@ const MuiNumberField = forwardRef(function MuiNumberField(props: ITextFieldDefin
     // const fieldGroupManager: IFieldGroupManager = useContext(FieldGroupManagerContext);
 
     const fieldManager = useFieldManager(props.attribute, props);
-    const { getError, getValue, setValue, mutateOptions } = fieldManager;
+    const { getError, getValue, setValue, mutateOptions, refreshError } = fieldManager;
     const currentRef = ref ? ref : useRef<ITextField>(null);
     const error: IFormFieldError = getError();
 
@@ -27,10 +27,6 @@ const MuiNumberField = forwardRef(function MuiNumberField(props: ITextFieldDefin
 
     var options = fieldManager.getFieldProps();
 
-    delete options.muiProps;
-
-    // options.onChange = (d: any) => { if (!props.readOnly) setValue(d.target.value.replace(/[^\d\.\+\-]/g, '')); }
-
     options.onChange = (event: any) => {
         if (!props.readOnly) {
             const value = event.target.value;
@@ -42,7 +38,7 @@ const MuiNumberField = forwardRef(function MuiNumberField(props: ITextFieldDefin
             }
         }
     }
-
+    options.onBlur = refreshError;
 
     return (<>{!mutateOptions.visible &&
         <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass}

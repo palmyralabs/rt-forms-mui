@@ -9,7 +9,7 @@ import { IRadioGroupDefinition } from './types';
 
 const MuiRadioGroup = forwardRef(function MuiRadioGroup(props: IRadioGroupDefinition & RadioProps, ref: MutableRefObject<IRadioGroupField>) {
     const fieldManager = useFieldManager(props.attribute, props);
-    const { getError, getValue, setValue, mutateOptions } = fieldManager;
+    const { getError, getValue, setValue, mutateOptions, refreshError } = fieldManager;
     const currentRef = ref ? ref : useRef<ISwitchField>(null);
     const error: IFormFieldError = getError();
     const row: boolean = props.flexDirection != 'column';
@@ -39,6 +39,7 @@ const MuiRadioGroup = forwardRef(function MuiRadioGroup(props: IRadioGroupDefini
                 props.onChange(event, v);
         }
     }
+    fieldOptions.onBlur = refreshError;
 
     const getOptions = (options: any) => {
         if (options) {

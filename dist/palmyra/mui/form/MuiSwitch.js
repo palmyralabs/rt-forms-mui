@@ -1,49 +1,49 @@
-import { jsx as c, Fragment as x, jsxs as I } from "react/jsx-runtime";
-import { forwardRef as y, useRef as w, useMemo as L, useState as R, useEffect as S, useImperativeHandle as H } from "react";
-import { FormControl as j, FormControlLabel as A, FormHelperText as E, Switch as T } from "@mui/material";
-import { useFieldManager as U, getFieldHandler as D, FieldDecorator as N } from "@palmyralabs/rt-forms";
+import { jsx as l, Fragment as I, jsxs as y } from "react/jsx-runtime";
+import { forwardRef as L, useRef as w, useMemo as R, useState as E, useEffect as S, useImperativeHandle as H } from "react";
+import { FormControl as j, FormControlLabel as A, FormHelperText as T, Switch as U } from "@mui/material";
+import { useFieldManager as B, getFieldHandler as D, FieldDecorator as N } from "@palmyralabs/rt-forms";
 import { getFieldLabel as P } from "./util.js";
 import q from "./options/OptionsParser.js";
-import { IOSSwitch as z, Android12Switch as B, MaterialUISwitch as G } from "./options/SwitchTypes.js";
-const $ = y(function(e, h) {
-  const r = U(e.attribute, e), { getError: b, getValue: a, setValue: O, mutateOptions: F } = r, M = h || w(null), m = b(), i = e.switch, o = L(
+import { IOSSwitch as z, Android12Switch as G, MaterialUISwitch as J } from "./options/SwitchTypes.js";
+const p = L(function(e, h) {
+  const c = B(e.attribute, e), { getError: b, getValue: a, setValue: O, mutateOptions: F, refreshError: M } = c, v = h || w(null), m = b(), o = e.switch, s = R(
     () => q(e.options, e.label),
     [e.options, e.label]
   ), f = (t, d) => {
-    var k = o.checked.value;
+    var k = s.checked.value;
     return t != null && t != null ? k == t : k == d;
-  }, [n, g] = R(f(a(), e.defaultValue)), s = w(null);
+  }, [r, g] = E(f(a(), e.defaultValue)), u = w(null);
   S(() => {
     g(f(a(), e.defaultValue));
-  }, [a()]), H(M, () => ({
-    ...D(r),
+  }, [a()]), H(v, () => ({
+    ...D(c),
     focus() {
-      s.current.checked = !0, s.current.focus();
+      u.current.checked = !0, u.current.focus();
     },
     getOptions() {
     },
     setOptions(d) {
     }
-  }), [r]);
-  const v = () => {
-    g(!n);
+  }), [c]);
+  const V = () => {
+    g(!r);
   };
   S(() => {
-    u.onChange = () => C();
-  }, [n]);
+    i.onChange = () => C();
+  }, [r]);
   const C = () => {
-    var t = n ? "checked" : "unchecked";
-    return o[t].title;
-  }, V = () => {
-    var t = n ? "checked" : "unchecked";
-    return o[t].value;
+    var t = r ? "checked" : "unchecked";
+    return s[t].title;
+  }, x = () => {
+    var t = r ? "checked" : "unchecked";
+    return s[t].value;
   };
-  let l;
-  i == "IOSSwitch" ? l = z : i == "Android12Switch" ? l = B : i == "MaterialUISwitch" ? l = G : l = T;
-  var u = r.getFieldProps();
-  return u.onChange = (t, d) => {
+  let n;
+  o == "IOSSwitch" ? n = z : o == "Android12Switch" ? n = G : o == "MaterialUISwitch" ? n = J : n = U;
+  var i = c.getFieldProps();
+  return i.onChange = (t, d) => {
     e.readOnly || (O(t.target.checked), e.onChange && e.onChange(t, t.target.checked));
-  }, /* @__PURE__ */ c(x, { children: !F.visible && /* @__PURE__ */ c(
+  }, i.onBlur = M, /* @__PURE__ */ l(I, { children: !F.visible && /* @__PURE__ */ l(
     N,
     {
       label: P(e),
@@ -51,31 +51,31 @@ const $ = y(function(e, h) {
       colspan: e.colspan,
       customFieldClass: e.customFieldClass,
       customLabelClass: e.customLabelClass,
-      children: /* @__PURE__ */ I(j, { error: m.status, ...u, value: a(), children: [
-        /* @__PURE__ */ c(
+      children: /* @__PURE__ */ y(j, { error: m.status, ...i, value: a(), children: [
+        /* @__PURE__ */ l(
           A,
           {
-            value: V(),
+            value: x(),
             inputRef: (t) => {
-              s.current = t;
+              u.current = t;
             },
-            control: /* @__PURE__ */ c(
-              l,
+            control: /* @__PURE__ */ l(
+              n,
               {
                 sx: { m: 1 },
-                checked: n,
-                onClick: v,
+                checked: r,
+                onClick: V,
                 disabled: e.readOnly
               }
             ),
             label: C()
           }
         ),
-        /* @__PURE__ */ c(E, { className: "form-error-text", children: m.message })
+        /* @__PURE__ */ l(T, { className: "form-error-text", children: m.message })
       ] })
     }
   ) });
 });
 export {
-  $ as MuiSwitch
+  p as MuiSwitch
 };

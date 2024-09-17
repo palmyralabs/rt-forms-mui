@@ -8,7 +8,7 @@ import { IDatePickerDefinition, TextViewAttributeDefinition } from './types';
 const MuiDateView = forwardRef(function MuiLabelDisplay(props: IDatePickerDefinition & TextViewAttributeDefinition, ref) {
 
     const fieldManager = useFieldManager(props.attribute, props);
-    const { getValue, setValue, mutateOptions } = fieldManager;
+    const { getValue, mutateOptions } = fieldManager;
     const currentRef: any = ref ? ref : useRef<IDateField>(null);
     const value = getValue();
     const textAlign: any = props.textAlign || 'left';
@@ -55,7 +55,6 @@ const MuiDateView = forwardRef(function MuiLabelDisplay(props: IDatePickerDefini
     };
 
     var options = fieldManager.getFieldProps();
-    options.onChange = (d: any) => { if (!props.readOnly) setValue(d.target.value); }
 
     return (<>{!mutateOptions.visible &&
         <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass} colspan={props.colspan}

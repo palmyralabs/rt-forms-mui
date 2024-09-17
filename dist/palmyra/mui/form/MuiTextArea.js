@@ -1,41 +1,41 @@
-import { jsx as l, Fragment as C } from "react/jsx-runtime";
-import { forwardRef as h, useRef as s, useImperativeHandle as F } from "react";
-import { TextField as b } from "@mui/material";
-import { useFieldManager as x, getFieldHandler as v, FieldDecorator as R } from "@palmyralabs/rt-forms";
-import { getFieldLabel as M } from "./util.js";
-const V = h(function(e, n) {
-  const t = x(e.attribute, e), { getError: u, getValue: c, setValue: m, mutateOptions: d } = t, f = n || s(null), r = u(), i = s(null), g = e.variant || "standard";
-  F(f, () => ({
-    ...v(t),
+import { jsx as l, Fragment as h } from "react/jsx-runtime";
+import { forwardRef as F, useRef as s, useImperativeHandle as b } from "react";
+import { TextField as x } from "@mui/material";
+import { useFieldManager as v, getFieldHandler as R, FieldDecorator as M } from "@palmyralabs/rt-forms";
+import { getFieldLabel as T } from "./util.js";
+const V = F(function(e, n) {
+  const t = v(e.attribute, e), { getError: u, getValue: c, setValue: m, mutateOptions: d, refreshError: f } = t, g = n || s(null), o = u(), i = s(null), C = e.variant || "standard";
+  b(g, () => ({
+    ...R(t),
     focus() {
       i.current.focus();
     }
   }), [t]);
-  var o = t.getFieldProps();
-  return o.onChange = (a) => {
-    e.readOnly || (m(a.target.value), e.onChange && e.onChange(a));
-  }, /* @__PURE__ */ l(C, { children: !d.visible && /* @__PURE__ */ l(
-    R,
+  var a = t.getFieldProps();
+  return a.onChange = (r) => {
+    e.readOnly || (m(r.target.value), e.onChange && e.onChange(r));
+  }, a.onBlur = f, /* @__PURE__ */ l(h, { children: !d.visible && /* @__PURE__ */ l(
+    M,
     {
-      label: M(e),
+      label: T(e),
       customContainerClass: e.customContainerClass,
       colspan: e.colspan,
       customFieldClass: e.customFieldClass,
       customLabelClass: e.customLabelClass,
       children: /* @__PURE__ */ l(
-        b,
+        x,
         {
-          variant: g,
+          variant: C,
           label: e.label,
           minRows: 2,
           maxRows: 5,
           fullWidth: !0,
           multiline: !0,
           inputRef: i,
-          ...o,
+          ...a,
           value: c(),
-          error: r.status,
-          helperText: r.message
+          error: o.status,
+          helperText: o.message
         }
       )
     }

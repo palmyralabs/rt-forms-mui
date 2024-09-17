@@ -1,36 +1,36 @@
-import { jsx as r, Fragment as D } from "react/jsx-runtime";
-import { forwardRef as b, useRef as f, useImperativeHandle as v } from "react";
-import { LocalizationProvider as M, DatePicker as Y } from "@mui/x-date-pickers";
-import { getFieldLabel as y } from "./util.js";
+import { jsx as l, Fragment as b } from "react/jsx-runtime";
+import { forwardRef as v, useRef as f, useImperativeHandle as M } from "react";
+import { LocalizationProvider as Y, DatePicker as y } from "@mui/x-date-pickers";
+import { getFieldLabel as x } from "./util.js";
 import n from "dayjs";
-import { useFieldManager as x, getFieldHandler as L, FieldDecorator as R } from "@palmyralabs/rt-forms";
-import { A as j } from "../../../chunks/AdapterDayjs.js";
-const T = b(function(e, i) {
+import { useFieldManager as L, getFieldHandler as R, FieldDecorator as j } from "@palmyralabs/rt-forms";
+import { A as k } from "../../../chunks/AdapterDayjs.js";
+const T = v(function(e, i) {
   const u = e.serverPattern || e.displayPattern || "YYYY-MM-DD", c = e.displayPattern || e.serverPattern || "YYYY-MM-DD", o = (t) => t ? n(t, u) : n(void 0), m = (t) => {
     if (t && t.isValid && t.isValid())
       return t.format(u);
-  }, l = x(e.attribute, e, { format: m, parse: o }), { getError: g, getValue: C, setValue: h, mutateOptions: P } = l, V = i || f(null), s = g(), d = f(null);
-  v(V, () => ({
-    ...L(l),
+  }, r = L(e.attribute, e, { format: m, parse: o }), { getError: g, getValue: h, setValue: C, mutateOptions: P, refreshError: V } = r, F = i || f(null), s = g(), d = f(null);
+  M(F, () => ({
+    ...R(r),
     focus() {
       d.current.focus();
     },
     setCurrent() {
     }
-  }), [l]);
-  var a = l.getFieldProps();
-  return a.defaultValue && (a.defaultValue = o(a.defaultValue)), a.onChange = (t, F) => {
-    e.readOnly || (h(t), e.onChange && e.onChange(t, F));
-  }, /* @__PURE__ */ r(D, { children: !P.visible && /* @__PURE__ */ r(
-    R,
+  }), [r]);
+  var a = r.getFieldProps();
+  return a.defaultValue && (a.defaultValue = o(a.defaultValue)), a.onChange = (t, D) => {
+    e.readOnly || (C(t), e.onChange && e.onChange(t, D));
+  }, a.onBlur = V, /* @__PURE__ */ l(b, { children: !P.visible && /* @__PURE__ */ l(
+    j,
     {
-      label: y(e),
+      label: x(e),
       customContainerClass: e.customContainerClass,
       colspan: e.colspan,
       customFieldClass: e.customFieldClass,
       customLabelClass: e.customLabelClass,
-      children: /* @__PURE__ */ r(M, { dateAdapter: j, children: /* @__PURE__ */ r(
-        Y,
+      children: /* @__PURE__ */ l(Y, { dateAdapter: k, children: /* @__PURE__ */ l(
+        y,
         {
           defaultValue: n(e.defaultValue),
           format: c,
@@ -45,7 +45,7 @@ const T = b(function(e, i) {
             }
           },
           ...a,
-          value: e.defaultValue ? n(e.defaultValue) : C()
+          value: e.defaultValue ? n(e.defaultValue) : h()
         }
       ) })
     }
