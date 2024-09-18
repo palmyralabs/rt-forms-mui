@@ -1,7 +1,6 @@
 import { PalmyraStoreFactory, StoreFactory } from "@palmyralabs/palmyra-wire";
-import { PalmyraForm } from "@palmyralabs/rt-forms";
+import { FieldGroupContainer, PalmyraForm } from "@palmyralabs/rt-forms";
 import { MutableRefObject, useState } from "react";
-import { FieldGroupContainer } from "../../../src/palmyra";
 
 
 interface IFormInput {
@@ -12,7 +11,7 @@ const FormX = (props: IFormInput) => {
     const { children } = props;
     const [_isValid, setValid] = useState<boolean>(false);
 
-    const storeFactory: StoreFactory<any> = new PalmyraStoreFactory({ baseUrl: '/testdata/form' });
+    const storeFactory: StoreFactory<any, any> = new PalmyraStoreFactory({ baseUrl: '/testdata/form' });
 
 
     return (

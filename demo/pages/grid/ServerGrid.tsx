@@ -10,12 +10,20 @@ const columns: ColumnDefinition[] = [
         label: 'Identifier',
         type: 'string',
         searchable: true
-    }, {
+    },
+    {
         attribute: 'thumbnail',
         label: 'Thumbnail',
         type: 'string',
         searchable: true
-    }, {
+    },
+    {
+        attribute: 'date',
+        label: 'Date',
+        type: 'date',
+        searchable: true
+    },
+    {
         attribute: 'count',
         label: 'Count',
         type: 'number',
@@ -23,7 +31,7 @@ const columns: ColumnDefinition[] = [
     }
 ]
 
-const storeFactory: StoreFactory<any> = new PalmyraStoreFactory({ baseUrl: '/api/palmyra/' });
+const storeFactory: StoreFactory<any, any> = new PalmyraStoreFactory({ baseUrl: '/api/palmyra/' });
 
 const ServerGrid = () => {
     const endPoint = 'masterdata/category'; //'grid/simpleGridData.json'

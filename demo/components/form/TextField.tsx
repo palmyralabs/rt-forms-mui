@@ -1,5 +1,6 @@
 
-import { FieldGroupContainer, MuiTextField } from "../../../src/palmyra";
+import { FieldGroupContainer } from "@palmyralabs/rt-forms";
+import { MuiTextField } from "../../../src/palmyra";
 import FormX from "../wire/FormX";
 
 

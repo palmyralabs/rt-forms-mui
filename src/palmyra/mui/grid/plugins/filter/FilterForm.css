@@ -1,5 +1,5 @@
 .py-filter-container {
-    min-width: 550px;
+    max-width: 650px;
     top: 110%;
     right: 0%;
     z-index: 1;

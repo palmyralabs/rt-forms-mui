@@ -101,8 +101,6 @@ const MuiDateRangePicker = forwardRef(function MuiDatePicker(props: IDatePickerD
         to = defValue.to;
     }
 
-    options.fullwidth = false;
-
     const _onChange = (key: string, d: dayjs.Dayjs, context: PickerChangeHandlerContext<any>) => {
         if (!props.readOnly) {
             const v = { ...value, [key]: d }
@@ -133,7 +131,7 @@ const MuiDateRangePicker = forwardRef(function MuiDatePicker(props: IDatePickerD
                     onChange={(d, c) => _onChange('from', d, c)}
                     defaultValue={from}
                 />
-                <span style={{ textAlign: 'center', whiteSpace: 'nowrap', padding: '1vw' }}>to</span>
+               <span style={{ width: '10%', textAlign: 'center', padding: '5px' }}>to</span>
                 <DatePicker
                     format={displayFormat}
                     label={props.label}
@@ -142,7 +140,7 @@ const MuiDateRangePicker = forwardRef(function MuiDatePicker(props: IDatePickerD
                             error: error.status,
                             helperText: error.message,
                             variant: props.variant || 'standard',
-                            fullWidth: props.fullWidth,
+                            fullWidth: true,
                             inputRef
                         },
                     }}

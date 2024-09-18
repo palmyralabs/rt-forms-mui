@@ -22,7 +22,7 @@ const getReactField = (props: FieldRequest, Input: React.FC) => {
 const getField = (fieldDef: ColumnFieldOptions, title?: any) => {
     const { type } = fieldDef;
     const props: FieldRequest = { fieldDef, title };
-
+    props.fieldDef.colspan = 1;
     switch (type) {
         case 'string':
             return getReactField(props, MuiTextField);
@@ -55,6 +55,7 @@ const getField = (fieldDef: ColumnFieldOptions, title?: any) => {
         case 'integer':
             return getReactField(props, MuiIntegerField);        
         case 'dateRange':
+            props.fieldDef.colspan = 2
             return getReactField(props, MuiDateRangePicker);
         case 'autoComplete':
             // return getReactField(props, MuiAutoComplete);

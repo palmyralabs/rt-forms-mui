@@ -64,7 +64,7 @@ const FilterForm = (o: FilterOptions) => {
         };
     };
 
-    const fieldGroupColumn = o.column || 2;
+    const fieldGroupColumn = 2;
 
     return <div className='py-filter-container'>
         <div className="py-filter-content">
