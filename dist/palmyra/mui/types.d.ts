@@ -18,6 +18,7 @@ interface IRange {
 type FieldType = "string" | "number" | "date" | "radio" | "select" | "iosswitch" | "datetime" | "textarea" | "checkbox" | "serverlookup" | "switch" | "autoComplete" | "password" | "multiSelect" | "dateRange" | "float" | "numbersOnly" | "integer" | "slider" | "sliderRange" | "rating";
 interface ColumnFieldOptions extends FieldOptions, IPattern, IRange {
     type: FieldType;
+    colspan?: 1 | 2;
 }
 interface Converter<TEXT, DATA> {
     /**

@@ -28,7 +28,7 @@ type FieldType = "string" | "number" | "date" | "radio" | "select" | "iosswitch"
 
 interface ColumnFieldOptions extends FieldOptions, IPattern, IRange {
     type: FieldType
-    colspan: 1 | 2;
+    colspan?: 1 | 2;
 }
 
 interface Converter<TEXT, DATA> {
