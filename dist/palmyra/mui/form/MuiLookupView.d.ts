@@ -1,4 +1,4 @@
-import { IServerLookupDefinition, TextViewAttributeDefinition } from './types';
+import { ILookupViewOptions, TextViewAttributeDefinition } from './types';
 
-declare const MuiLookupView: import('react').ForwardRefExoticComponent<IServerLookupDefinition & TextViewAttributeDefinition & import('react').RefAttributes<unknown>>;
+declare const MuiLookupView: import('react').ForwardRefExoticComponent<ILookupViewOptions & TextViewAttributeDefinition & import('react').RefAttributes<unknown>>;
 export { MuiLookupView };

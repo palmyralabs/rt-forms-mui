@@ -1,10 +1,10 @@
 import { forwardRef, useRef, useImperativeHandle } from 'react';
 import './TextView.css';
-import { IServerLookupDefinition, TextViewAttributeDefinition } from './types';
+import { ILookupViewOptions, TextViewAttributeDefinition } from './types';
 import { getFieldLabel } from './util';
 import { getFieldHandler, useFieldManager, FieldDecorator } from '@palmyralabs/rt-forms';
 
-const MuiLookupView = forwardRef(function MuiLabelDisplay(props: IServerLookupDefinition & TextViewAttributeDefinition, ref) {
+const MuiLookupView = forwardRef(function MuiLabelDisplay(props: ILookupViewOptions & TextViewAttributeDefinition, ref) {
 
     const fieldManager = useFieldManager(props.attribute, props);
     const { getValue, mutateOptions } = fieldManager;
