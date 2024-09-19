@@ -1,4 +1,4 @@
-import { format as formatDate, isValid, parse } from 'date-fns';
+import dayjs from "dayjs";
 import { forwardRef, useImperativeHandle, useRef } from 'react';
 import './TextView.css';
 import { FieldDecorator, IDateField, getFieldHandler, useFieldManager } from '@palmyralabs/rt-forms';
@@ -30,11 +30,13 @@ const MuiDateView = forwardRef(function MuiLabelDisplay(props: IDatePickerDefini
         const formats = ['yyyy-MM-dd', 'dd-MM-yyyy', 'MM-dd-yyyy', 'dd-yyyy-MM', 'yyyy/MM/dd', 'dd/MM/yyyy',
             "yyyy-MM-dd'T'HH:mm:ss", "dd-MM-yyyy HH:mm", "MM-dd-yyyy h:mm a", "yyyy/MM/dd HH:mm:ss", "dd/MM/yyyy HH:mm"
         ];
+        if(null == value || undefined ==  value || '' == value)
+            return null;
+        
         for (const format of formats) {
-            const date = parse(value, format, new Date());
-            if (isValid(date)) {
+            const date = dayjs(value, format);
+            if (date.isValid())
                 return date;
-            }
         }
         return null;
     };
@@ -45,12 +47,12 @@ const MuiDateView = forwardRef(function MuiLabelDisplay(props: IDatePickerDefini
         }
         if (value) {
             const date = parseDateFromString(value);
-            if (isValid(date)) {
-                return formatDate(date, displayFormat);
-            } else {
-                console.error("Invalid date provided:", value);
-                return "";
+            if (null != date) {
+                return date.format(displayFormat);
             }
+
+            console.error("Invalid date provided:", value);
+            return "";
         }
     };
 
