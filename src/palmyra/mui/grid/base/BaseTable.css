@@ -27,6 +27,25 @@
   cursor: pointer;
 }
 
+.py-baseGrid-header-cell,
+.py-grid-data-cell {
+  border-right: 1px solid rgba(224, 224, 224, 1);
+}
+
+.py-data-grid-table {
+  max-height: 80vh;
+  overflow: auto;
+}
+
+.py-baseGrid {
+  border-collapse: unset !important;
+}
+
+.py-grid-header {
+  position: sticky;
+  top: 0;
+}
+
 .py-grid-header,
 .py-grid-footer {
   background-color: rgba(248, 248, 248);
