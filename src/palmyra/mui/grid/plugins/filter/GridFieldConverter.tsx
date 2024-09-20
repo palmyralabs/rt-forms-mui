@@ -1,6 +1,5 @@
+import { ColumnDefinition } from "@palmyralabs/rt-forms";
 import { FieldType } from "../../../types";
-import { ColumnDefinition } from "../../types";
-
 
 const convertToField = (columns: ColumnDefinition[]): ColumnDefinition[] => {
     var result: ColumnDefinition[] = [];

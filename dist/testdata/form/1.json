@@ -1,0 +1,33 @@
+{
+    "result": {
+        "id": 1,
+        "name": "Tenkasi",
+        "population": 1440795,
+        "select": 2,
+        "radio": 1,
+        "multiSelect": [
+            "3",
+            "4"
+        ],
+        "pass": "asas",
+        "date": "2023-04-18",
+        "dates": "2023-04-12...2023-07-16",
+        "dateTime": "2023-04-23 12:12:12",
+        "serverLookup": {
+            "sid": 2,
+            "location": "Madurai"
+        },
+        "sname": 3,
+        "rating": 2.5,
+        "slider": 80,
+        "rangeSlider": [
+            50,
+            90
+        ],
+        "check": 1,
+        "checkboxGroup": [
+            1,
+            2
+        ]
+    }
+}

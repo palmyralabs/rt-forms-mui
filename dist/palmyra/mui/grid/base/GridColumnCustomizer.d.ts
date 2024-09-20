@@ -1,4 +1,5 @@
-import { CellGetter, GridCustomizer } from '../types';
+import { GridCustomizer } from '@palmyralabs/rt-forms';
+import { CellGetter } from '../types';
 
 declare const gridColumnCustomizer: (config: Record<string, ((d: CellGetter) => CellGetter)>, factory?: {
     header?: Record<string, Function>;

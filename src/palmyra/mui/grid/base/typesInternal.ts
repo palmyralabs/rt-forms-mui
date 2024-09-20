@@ -1,6 +1,6 @@
 import { RowData, ColumnDef } from "@tanstack/react-table";
-import { ColumnDefinition, GridCustomizer, IGridPlugin } from "../types";
-import { IServerQueryInput } from "@palmyralabs/rt-forms";
+import { IGridPlugin } from "../types";
+import { ColumnDefinition, GridCustomizer, IServerQueryInput } from "@palmyralabs/rt-forms";
 import { IEndPoint } from "@palmyralabs/palmyra-wire";
 
 interface BaseTableOptions {

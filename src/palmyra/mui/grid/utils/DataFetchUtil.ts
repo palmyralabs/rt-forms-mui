@@ -1,5 +1,5 @@
+import { ColumnDefinition } from "@palmyralabs/rt-forms";
 import { getValueByKey } from "@palmyralabs/ts-utils";
-import { ColumnDefinition } from "../types";
 
 const getDisplayValue = (field: ColumnDefinition, data: FormData) => {
     const value: any = getValueByKey(field.attribute, data);

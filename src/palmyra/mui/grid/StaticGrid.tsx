@@ -1,6 +1,5 @@
 import { MutableRefObject, forwardRef } from 'react';
-import { IPageQueryable } from "@palmyralabs/rt-forms"
-import { GridCustomizer } from './types';
+import { GridCustomizer, IPageQueryable } from "@palmyralabs/rt-forms"
 import { generateColumns } from './utils/ColumnConverter';
 import BaseTable from './base/BaseTable';
 import { default as defaultEmptyChild } from './base/EmptyChildTable';

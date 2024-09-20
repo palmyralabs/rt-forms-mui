@@ -1,10 +1,10 @@
 import { Button } from "@mui/material";
-import { FieldGroupContainer, IForm, PalmyraForm } from "@palmyralabs/rt-forms";
+import { ColumnDefinition, FieldGroupContainer, IForm, PalmyraForm } from "@palmyralabs/rt-forms";
 import { setValueByKey } from "@palmyralabs/ts-utils";
 import { MutableRefObject, useRef } from "react";
 import { TbRefresh } from "react-icons/tb";
 import { TbFilterShare } from "react-icons/tb";
-import { ColumnDefinition, DataGridPluginOptions } from "../../types";
+import { DataGridPluginOptions } from "../../types";
 import { convertToField } from "./GridFieldConverter";
 import getField from "./FieldGenerator";
 import './FilterForm.css';

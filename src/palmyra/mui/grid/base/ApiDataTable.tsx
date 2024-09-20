@@ -1,7 +1,6 @@
 import { MutableRefObject, forwardRef, useImperativeHandle, useRef } from 'react';
 import { default as defaultEmptyChild } from './EmptyChildTable';
-import { IPageQueryable, useServerQuery } from "@palmyralabs/rt-forms"
-import { GridCustomizer } from '../types';
+import { IPageQueryable, useServerQuery, GridCustomizer } from "@palmyralabs/rt-forms"
 import { generateColumns } from '../utils/ColumnConverter';
 import { NoopGridCustomizer } from './NoopGridCustomizer';
 import BaseTable from './BaseTable';

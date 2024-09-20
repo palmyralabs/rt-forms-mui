@@ -1,7 +1,5 @@
-
-import { ColumnDefinition } from "..";
+import { ColumnDefinition } from "@palmyralabs/rt-forms";
 import { formatValue } from "./DataFetchUtil";
-
 
 const formatBIT = (columnDef) => {
     var pattern = columnDef.displayPattern || [{ "1": "Yes" }, { "0": "No" }];

@@ -1,4 +1,5 @@
-import { CellGetter, ColumnDefinition, GridCustomizer } from "../types";
+import { CellGetter } from "../types";
+import { ColumnDefinition, GridCustomizer } from "@palmyralabs/rt-forms";
 
 const NoopGridCustomizer: GridCustomizer = {
     formatCell: function (column: ColumnDefinition, cellValueGetter: CellGetter): CellGetter {

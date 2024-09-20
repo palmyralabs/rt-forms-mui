@@ -74,7 +74,7 @@ const MuiDatePicker = forwardRef(function MuiDatePicker(props: IDatePickerDefini
                         },
                     }}
                     {...options}
-                    value={props.defaultValue ? dayjs(props.defaultValue) : getValue()}
+                    value={getValue()}
                 />
             </LocalizationProvider>
         </FieldDecorator>}

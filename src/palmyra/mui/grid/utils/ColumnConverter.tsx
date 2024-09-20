@@ -1,52 +1,48 @@
 import { AccessorFn, RowData, createColumnHelper } from '@tanstack/react-table'
-
 import { formatColumn } from './CellFormatter';
 import { getValueByKey, hasDot } from '@palmyralabs/ts-utils';
-import { ColumnDefinition, GridCustomizer } from '../types';
 import { getFormatConverter } from '../../utils/FormatterFactory';
 import { NoopGridCustomizer } from '../base/NoopGridCustomizer';
-
+import { ColumnDefinition, GridCustomizer } from '@palmyralabs/rt-forms';
 
 const columnHelper = createColumnHelper();
 
 function generateColumns(columnDefs: ColumnDefinition[], customizer?: GridCustomizer) {
     const gridCustomizer = customizer || NoopGridCustomizer;
-    if(columnDefs.every((def) => def.columnGroup == undefined))
+    if (columnDefs.every((def) => def.columnGroup == undefined))
         return columnDefs.map(def => convert(def, gridCustomizer));
     else
         return convertGroupedColumns(columnDefs, gridCustomizer);
 }
 
-
 function convertGroupedColumns(columnDefs: ColumnDefinition[], customizer: GridCustomizer) {
     const result: any[] = new Array();
-    var groupedColumn:any = undefined;
+    var groupedColumn: any = undefined;
 
     columnDefs.map(def => {
         const column = convert(def, customizer);
-        if(def.columnGroup){
-            if(!groupedColumn || groupedColumn.header != def.columnGroup){
+        if (def.columnGroup) {
+            if (!groupedColumn || groupedColumn.header != def.columnGroup) {
                 groupedColumn = {};
                 groupedColumn.header = def.columnGroup;
                 groupedColumn.columns = [];
                 result.push(groupedColumn)
             }
             groupedColumn.columns.push(column);
-        }else{
+        } else {
             result.push(column);
         }
     })
     return result;
 }
 
-
 function convert(columnDef: ColumnDefinition, customizer: GridCustomizer) {
     const enableSorting = columnDef.sortable;
     const enableColumnFilter = columnDef.searchable;
 
     var renderer = columnDef.cellRenderer;
-    const header = customizer.formatHeader(columnDef,  getHeader(columnDef));
-    const footer = customizer.formatFooter(columnDef,  getFooter(columnDef));
+    const header = customizer.formatHeader(columnDef, getHeader(columnDef));
+    const footer = customizer.formatFooter(columnDef, getFooter(columnDef));
 
     if (renderer) {
         return columnHelper.display({
@@ -64,7 +60,7 @@ function convert(columnDef: ColumnDefinition, customizer: GridCustomizer) {
 
     let cell: any = customizer.formatCell(columnDef, formatColumn(columnDef));
 
-    return columnHelper.accessor(getAccessor(columnDef), {        
+    return columnHelper.accessor(getAccessor(columnDef), {
         id: getColumnId(columnDef),
         meta: {
             attribute: columnDef.attribute,
@@ -98,8 +94,7 @@ function getHeader(columnDef: ColumnDefinition) {
 }
 
 function getFooter(columnDef: ColumnDefinition) {
-    return (info: any, arg:any) => {return undefined};
+    return (info: any, arg: any) => { return undefined };
 }
-
 
 export { generateColumns }

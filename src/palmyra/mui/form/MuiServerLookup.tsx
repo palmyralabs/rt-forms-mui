@@ -1,27 +1,26 @@
 import { forwardRef, MutableRefObject, useEffect, useImperativeHandle, useRef, useState } from "react";
 import { IServerLookupDefinition } from "./types";
-import { getFieldHandler, IFormFieldError, IServerLookupField, useServerLookupFieldManager, FieldDecorator } from '@palmyralabs/rt-forms';
 import { getFieldLabel } from "./util";
-import {
-    Autocomplete, AutocompleteChangeDetails, AutocompleteChangeReason,
-    AutocompleteProps, CircularProgress, FormControl, FormHelperText, TextField
-} from "@mui/material";
+import { Autocomplete, CircularProgress, FormControl, FormHelperText, TextField } from "@mui/material";
 import { delayGenerator } from "@palmyralabs/ts-utils";
+import { FieldDecorator, getFieldHandler, IFormFieldError, IServerLookupField, useServerLookupFieldManager } from "@palmyralabs/rt-forms";
 
 const delay100 = delayGenerator(100);
 
-const MuiServerLookup = forwardRef(function MuiServerLookup(props: IServerLookupDefinition & Partial<AutocompleteProps<any, any, any, any>>,
+const MuiServerLookup = forwardRef(function MuiServerLookup(props: IServerLookupDefinition,
     ref: MutableRefObject<IServerLookupField>) {
 
     const [open, setOpen] = useState(false);
-    const inputRef: any = useRef(null);
-    const fieldManager = useServerLookupFieldManager(props.attribute, props);
 
-    const { getError, /* getValue, */ setValue, hasValueInOptions, getOptionValue,
+    const inputRef: any = useRef(null);
+
+    const fieldManager = useServerLookupFieldManager(props.attribute, props);
+    const { getError, getValue, setValue, hasValueInOptions, getOptionValue,
         setSearchText, refreshOptions, options, getFieldProps } = fieldManager;
 
     const loading = open && options.length < 1;
-    // const value = getValue();
+
+    const value = getValue();
     const error: IFormFieldError = getError();
     const currentRef = ref ? ref : useRef<IServerLookupField>(null);
 
@@ -41,12 +40,10 @@ const MuiServerLookup = forwardRef(function MuiServerLookup(props: IServerLookup
     }, [open]);
 
     const callbacks = {
-        onChange: (event: React.SyntheticEvent, value: any,
-            reason: AutocompleteChangeReason, details?: AutocompleteChangeDetails<any>,
-        ) => {
+        onChange: (d: any, value: any) => {
             setValue(value);
-            if (props.onChange)
-                props.onChange(event, value, reason, details);
+            // if (props.onChange)
+            //     props.onChange(d, value)
         },
         onInputChange: (d: any, inputValue: any) => {
             if (open) {
@@ -84,7 +81,7 @@ const MuiServerLookup = forwardRef(function MuiServerLookup(props: IServerLookup
                 />}
                 getOptionLabel={(o) => getOptionValue(o) + ''}
                 {...getFieldProps()}
-                // value={value}
+                value={value}
                 options={options}
                 open={open}
                 onClose={() => { setOpen(false) }}

@@ -1,4 +1,4 @@
-import { ColumnDefinition } from '..';
+import { ColumnDefinition } from '@palmyralabs/rt-forms';
 
 declare const formatBIT: (columnDef: any) => (info: any) => any;
 declare const formatColumn: (columnDef: ColumnDefinition) => (info: any) => any;
