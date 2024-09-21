@@ -3,7 +3,7 @@
         "id": 1,
         "name": "Tenkasi",
         "population": 1440795,
-        "select": 2,
+        "select": 1,
         "radio": 1,
         "multiSelect": [
             "3",

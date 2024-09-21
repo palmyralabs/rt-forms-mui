@@ -44,17 +44,8 @@ const SelectablePagination = (o: DataGridPluginOptions) => {
     }
 
     return <div>
-        {(!isNaN(totalPages)) && (
+        {(!isNaN(totalPages)) && totalPages !=0 && (
             <div>
-                {/* <TablePagination
-                  component="div"
-                  count={totalRecords || 0}
-                  page={getPageNo()}
-                  onPageChange={nextPage}
-                  rowsPerPage={queryLimit.limit}
-                  rowsPerPageOptions={pageSizeOptions || []}
-                  onRowsPerPageChange={handleRowsPerPageChange}
-                /> */}
                 <div className="py-selectable-pagination-container">
                     <div className="py-selectable-pagination-left-container">
                         {
