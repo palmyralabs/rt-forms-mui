@@ -14,8 +14,8 @@ class DateTimeConverter implements Converter<any, Date> {
 
     format(data: Date): any {
         if (data) {
-            return dayjs(data)
-                .format(this.serverPattern)
+            return dayjs(data, this.serverPattern)
+                .format(this.displayPattern)
         }
         return data;
     };

@@ -10,7 +10,7 @@ class f {
     this.serverPattern = r.serverPattern || r.displayPattern || t, this.displayPattern = r.displayPattern;
   }
   format(r) {
-    return r && n(r).format(this.serverPattern);
+    return r && n(r, this.serverPattern).format(this.displayPattern);
   }
   parse(r) {
     if (r) {
