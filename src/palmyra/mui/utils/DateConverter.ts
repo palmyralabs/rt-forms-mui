@@ -1,6 +1,8 @@
 import dayjs from "dayjs";
 import { Converter, IPattern } from "../types";
 
+var customParseFormat = require("dayjs/plugin/customParseFormat");
+dayjs.extend(customParseFormat);
 
 
 class DateTimeConverter implements Converter<any, Date> {
@@ -9,7 +11,7 @@ class DateTimeConverter implements Converter<any, Date> {
 
     constructor(props: IPattern, defaultFormat: string) {
         this.serverPattern = props.serverPattern || props.displayPattern || defaultFormat;
-        this.displayPattern = props.displayPattern;
+        this.displayPattern = props.displayPattern || defaultFormat;
     }
 
     format(data: Date): any {
@@ -23,13 +25,11 @@ class DateTimeConverter implements Converter<any, Date> {
     parse(text: any): Date {
         if (text) {
             if (text instanceof Date)
-                return text;
-    
+                return text;    
             const timestamp = Number(text);
             if (!isNaN(timestamp) && timestamp.toString() === text.toString()) {
                 return new Date(timestamp);
             }
-
             return dayjs(text, this.serverPattern)
                 .toDate()
         }
