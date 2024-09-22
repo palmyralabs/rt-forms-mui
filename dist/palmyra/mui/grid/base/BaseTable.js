@@ -5,16 +5,16 @@ import '../../../../assets/BaseTable.css';/* empty css                          
 import F from "./ColumnHeader.js";
 import { useReactTable as B, flexRender as m } from "@tanstack/react-table";
 import H from "./LoadingChild.js";
-import { useBaseGridManager as j } from "./useBaseGridManager.js";
+import { useBaseGridManager as j } from "@palmyralabs/rt-forms";
 function A(n) {
-  const { rowData: a, customizer: r } = n, { onColumnSort: f, options: h, EmptyChild: b, onRowClick: y } = j(n), C = r != null && r.getTableRef ? r == null ? void 0 : r.getTableRef() : w(), i = B(h);
+  const { rowData: a, customizer: r, EmptyChild: f } = n, { onColumnSort: h, options: b, onRowClick: y } = j(n), C = r != null && r.getTableRef ? r == null ? void 0 : r.getTableRef() : w(), i = B(b);
   return C.current = i, /* @__PURE__ */ e(d, { children: /* @__PURE__ */ u("div", { className: n.className, children: [
     /* @__PURE__ */ u(R, { "aria-label": n["aria-label"], className: "py-baseGrid", children: [
       /* @__PURE__ */ e(v, { className: "py-grid-header", children: i.getHeaderGroups().map((o) => /* @__PURE__ */ e(c, { className: "py-grid-header-row", children: o.headers.map((l) => l.isPlaceholder ? null : /* @__PURE__ */ e(
         F,
         {
           header: l,
-          onSortChange: f,
+          onSortChange: h,
           children: m(
             l.column.columnDef.header,
             l.getContext()
@@ -46,7 +46,7 @@ function A(n) {
         l.getContext()
       ) }, l.id)) }, o.id)) })
     ] }),
-    a == null ? /* @__PURE__ */ e("div", { children: /* @__PURE__ */ e(H, {}) }) : a == null ? /* @__PURE__ */ e("div", { children: "Error while loading data" }) : a.length == 0 ? /* @__PURE__ */ e(b, {}) : /* @__PURE__ */ e(d, {})
+    a == null ? /* @__PURE__ */ e("div", { children: /* @__PURE__ */ e(H, {}) }) : a == null ? /* @__PURE__ */ e("div", { children: "Error while loading data" }) : a.length == 0 ? /* @__PURE__ */ e(f, {}) : /* @__PURE__ */ e(d, {})
   ] }) });
 }
 export {

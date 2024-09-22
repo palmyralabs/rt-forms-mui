@@ -1,14 +1,12 @@
 import { jsx as f } from "react/jsx-runtime";
 import { forwardRef as d, useRef as p, useImperativeHandle as y } from "react";
 import R from "./EmptyChildTable.js";
-import { useServerQuery as h } from "@palmyralabs/rt-forms";
-import { generateColumns as w } from "../utils/ColumnConverter.js";
-import { NoopGridCustomizer as D } from "./NoopGridCustomizer.js";
+import { NoopGridCustomizer as h, useServerQuery as w, generateColumns as D } from "@palmyralabs/rt-forms";
 import E from "./BaseTable.js";
-const A = d(function(o, e) {
-  const { columns: n, EmptyChild: m } = o, i = m || R, r = o.customizer || D, t = h(o), s = e || p();
+const g = d(function(o, r) {
+  const { columns: n, EmptyChild: m } = o, i = m || R, e = o.customizer || h, t = w(o), s = r || p();
   y(s, () => t, [t]);
-  const a = w(n, r), c = o.onRowClick ? (C) => {
+  const a = D(n, e), c = o.onRowClick ? (C) => {
     o.onRowClick(C);
   } : () => {
   }, l = t.getCurrentData(), u = t.setSortColumns;
@@ -17,7 +15,7 @@ const A = d(function(o, e) {
     {
       columnDefs: a,
       EmptyChild: i,
-      customizer: r,
+      customizer: e,
       rowData: l,
       onRowClick: c,
       onColumnSort: u
@@ -25,5 +23,5 @@ const A = d(function(o, e) {
   );
 });
 export {
-  A as ApiDataTable
+  g as ApiDataTable
 };

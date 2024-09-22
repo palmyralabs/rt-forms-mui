@@ -1,4 +1,6 @@
-export { generateColumns } from './utils/ColumnConverter';
+import { generateColumns } from '@palmyralabs/rt-forms';
+
+export { generateColumns };
 export * from './DataGrid';
 export * from './plugins';
 export * from './types';
@@ -7,4 +9,3 @@ export * from './controls';
 export * from './GridX';
 export * from './PalmyraGrid';
 export * from './StaticGrid';
-export * from './base/GridColumnCustomizer';

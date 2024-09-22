@@ -13,12 +13,12 @@ import {
 import LoadingChild from './LoadingChild';
 import { IReactTanstackTable } from '..';
 import { BaseTableOptions } from './typesInternal';
-import { useBaseGridManager } from './useBaseGridManager';
+import { useBaseGridManager } from '@palmyralabs/rt-forms';
 
 export default function BaseTable(props: BaseTableOptions) {
 
-  const { rowData, customizer } = props;
-  const { onColumnSort, options, EmptyChild, onRowClick } = useBaseGridManager(props);
+  const { rowData, customizer, EmptyChild } = props;
+  const { onColumnSort, options, onRowClick } = useBaseGridManager(props);  
   const tableRef: MutableRefObject<IReactTanstackTable> = customizer?.getTableRef ? customizer?.getTableRef() : useRef();
 
   const table = useReactTable(options);
