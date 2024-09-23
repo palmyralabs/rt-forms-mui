@@ -16,11 +16,12 @@
   "scripts": {
     "start": "vite",
     "dev": "vite",
-    "build": "tsc --p ./build.tsconfig.json && vite --config vite.config.js build",
+    "build": "vitest --root test/ && tsc --p ./build.tsconfig.json && vite --config vite.config.js build",
     "compile": "tsc --p ./demo.tsconfig.json && tsc --p ./build.tsconfig.json",
     "preview": "vite preview",
     "prepublishOnly": "npm run build",
-    "test": "tsc --p ./test.tsconfig.json && vitest --root test/"
+    "test": "tsc --p ./test.tsconfig.json && vitest --root test/", 
+    "testScript": "vitest --root test/"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.4.6",

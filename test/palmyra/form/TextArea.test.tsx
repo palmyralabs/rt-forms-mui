@@ -1,12 +1,12 @@
 import { describe, test } from "vitest";
 import { act, fireEvent, queryByAttribute, render, renderHook, screen } from '@testing-library/react';
-import { MuiTextField } from "../../../src/palmyra";
+import { MuiTextArea } from "../../../src/palmyra";
 import { IForm, IInputField, PalmyraForm } from "@palmyralabs/rt-forms";
 import { useRef } from "react";
 import { testMandatory2Optional, testOptional2Mandatory } from "./commons/util";
 
 
-describe('Textfield', () => {
+describe('Textarea', () => {
 
     const initProps = () => {
         const getById = queryByAttribute.bind(null, 'id');
@@ -19,16 +19,16 @@ describe('Textfield', () => {
         const getById = queryByAttribute.bind(null, 'id');
         const rdr = renderHook(() => useRef<IForm>());
         const formRef = rdr.result.current;
-        const textFieldDefn = <PalmyraForm formData={{ textInput: "welcome" }} ref={formRef} >
-        <MuiTextField id="textInput" attribute="textInput" />
+        const textAreaDefn = <PalmyraForm formData={{ textInput: "welcome" }} ref={formRef} >
+        <MuiTextArea id="textInput" attribute="textInput" />
     </PalmyraForm>
 
-        const dom = render(textFieldDefn);
+        const dom = render(textAreaDefn);
 
-        const textField = getById(dom.container, 'textInput');
+        const textArea = getById(dom.container, 'textInput');
 
-        fireEvent.change(textField, { target: { value: '42' } });
-        expect(textField.value).toBe('42');
+        fireEvent.change(textArea, { target: { value: '42' } });
+        expect(textArea.value).toBe('42');
     });
 
 
@@ -36,17 +36,17 @@ describe('Textfield', () => {
         const getById = queryByAttribute.bind(null, 'id');
         const rdr = renderHook(() => useRef<IForm>());
         const formRef = rdr.result.current;
-        const textFieldDefn = <PalmyraForm formData={{ emailAddress: "welcome" }} ref={formRef} >
-            <MuiTextField id="emailAddress" attribute="emailAddress"
+        const textAreaDefn = <PalmyraForm formData={{ emailAddress: "welcome" }} ref={formRef} >
+            <MuiTextArea id="emailAddress" attribute="emailAddress"
                 validRule={{ rule: "email", errorMessage: "Invalid Email Address" }} />
         </PalmyraForm>
 
-        const dom = render(textFieldDefn);
+        const dom = render(textAreaDefn);
         expect(screen.getByText("Invalid Email Address")).toBeDefined()
 
-        const textField = getById(dom.container, 'emailAddress');
+        const textArea = getById(dom.container, 'emailAddress');
         act(() => {
-            fireEvent.change(textField, { target: { value: 'hello@gmail.com' } });
+            fireEvent.change(textArea, { target: { value: 'hello@gmail.com' } });
         });
 
         expect(() => screen.getByText("Invalid Email Address")).toThrow();
@@ -54,71 +54,71 @@ describe('Textfield', () => {
 
     test('Disabled -> Enabled', () => {
         const { getById, formRef, fieldRef } = initProps();
-        const textFieldDefn = <PalmyraForm formData={{ emailAddress: "welcome" }} ref={formRef} >
-            <MuiTextField id="emailAddress" attribute="emailAddress" ref={fieldRef}
+        const textAreaDefn = <PalmyraForm formData={{ emailAddress: "welcome" }} ref={formRef} >
+            <MuiTextArea id="emailAddress" attribute="emailAddress" ref={fieldRef}
                 disabled validRule={{ rule: "email", errorMessage: "Invalid Email Address" }} />
         </PalmyraForm>
 
-        const dom = render(textFieldDefn);
+        const dom = render(textAreaDefn);
         expect(screen.getByText("Invalid Email Address")).toBeDefined()
 
-        const textField = getById(dom.container, 'emailAddress');
-        expect(textField).toHaveProperty('disabled', true)
+        const textArea = getById(dom.container, 'emailAddress');
+        expect(textArea).toHaveProperty('disabled', true)
 
         act(() => {
             fieldRef.current.setValue('hello');
             fieldRef.current.setDisabled(false);
         });
 
-        expect(textField).toHaveProperty('disabled', false)
+        expect(textArea).toHaveProperty('disabled', false)
     })
 
     test('Enabled -> Disabled', () => {
         const { getById, formRef, fieldRef } = initProps();
-        const textFieldDefn = <PalmyraForm formData={{ emailAddress: "welcome" }} ref={formRef} >
-            <MuiTextField id="emailAddress" attribute="emailAddress" ref={fieldRef}
+        const textAreaDefn = <PalmyraForm formData={{ emailAddress: "welcome" }} ref={formRef} >
+            <MuiTextArea id="emailAddress" attribute="emailAddress" ref={fieldRef}
                 validRule={{ rule: "email", errorMessage: "Invalid Email Address" }} />
         </PalmyraForm>
 
-        const dom = render(textFieldDefn);
+        const dom = render(textAreaDefn);
         expect(screen.getByText("Invalid Email Address")).toBeDefined()
 
-        const textField = getById(dom.container, 'emailAddress');
-        expect(textField).toHaveProperty('disabled', false)
+        const textArea = getById(dom.container, 'emailAddress');
+        expect(textArea).toHaveProperty('disabled', false)
 
         act(() => {
             fieldRef.current.setValue('hello');
             fieldRef.current.setDisabled(true);
         });
 
-        expect(textField).toHaveProperty('disabled', true)
+        expect(textArea).toHaveProperty('disabled', true)
     })
 
 
     test('Optional -> Mandatory', () => {
         const { getById, formRef, fieldRef } = initProps();
-        const textFieldDefn = <PalmyraForm formData={{ emailAddress: "welcome" }} ref={formRef} >
-            <MuiTextField id="emailAddress" attribute="emailAddress" ref={fieldRef}
+        const textAreaDefn = <PalmyraForm formData={{ emailAddress: "welcome" }} ref={formRef} >
+            <MuiTextArea id="emailAddress" attribute="emailAddress" ref={fieldRef}
                 missingMessage="Blank not allowed" />
         </PalmyraForm>
 
-        const dom = render(textFieldDefn);
+        const dom = render(textAreaDefn);
 
-        const textField = getById(dom.container, 'emailAddress');
-        testOptional2Mandatory(textField, fieldRef, "Blank not allowed");
+        const textArea = getById(dom.container, 'emailAddress');
+        testOptional2Mandatory(textArea, fieldRef, "Blank not allowed");
     })
 
     test('Mandatory -> Optional', () => {
         const { getById, formRef, fieldRef } = initProps();
-        const textFieldDefn = <PalmyraForm formData={{ emailAddress: "welcome" }} ref={formRef} >
-            <MuiTextField id="emailAddress" attribute="emailAddress" ref={fieldRef}
+        const textAreaDefn = <PalmyraForm formData={{ emailAddress: "welcome" }} ref={formRef} >
+            <MuiTextArea id="emailAddress" attribute="emailAddress" ref={fieldRef}
                 missingMessage="Blank not allowed" required />
         </PalmyraForm>
 
-        const dom = render(textFieldDefn);
+        const dom = render(textAreaDefn);
 
-        const textField = getById(dom.container, 'emailAddress');
-        testMandatory2Optional(textField, fieldRef, "Blank not allowed")
+        const textArea = getById(dom.container, 'emailAddress');
+        testMandatory2Optional(textArea, fieldRef, "Blank not allowed")
     })
 
 });
