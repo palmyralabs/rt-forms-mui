@@ -47,7 +47,7 @@ const MuiRadioGroup = forwardRef(function MuiRadioGroup(props: IRadioGroupDefini
                 const o: { value: any, label: string }[] = options;
                 const result = o.map((v: { value: any, label: string }, index: number) => (
                     <FormControlLabel key={v.value} value={v.value}
-                        control={<Radio
+                        control={<Radio required={props.required}
                             icon={<IoMdRadioButtonOff size={24} />} checkedIcon={<RiRadioButtonFill size={24} />}
                             inputRef={inputRef} />} label={v.label} disabled={props.disabled}
                     />
@@ -58,7 +58,7 @@ const MuiRadioGroup = forwardRef(function MuiRadioGroup(props: IRadioGroupDefini
             if (typeof options == 'object') {
                 return Object.keys(options).map((key, index) => (
                     <FormControlLabel key={index} value={key}
-                        control={<Radio
+                        control={<Radio required={props.required}
                             icon={<IoMdRadioButtonOff size={24} />} checkedIcon={<RiRadioButtonFill size={24} />}
                             inputRef={inputRef} />} label={options[key]} disabled={props.disabled}
                     />
@@ -71,7 +71,7 @@ const MuiRadioGroup = forwardRef(function MuiRadioGroup(props: IRadioGroupDefini
     return (<>{!mutateOptions.visible &&
         <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass} colspan={props.colspan}
             customFieldClass={props.customFieldClass} customLabelClass={props.customLabelClass}>
-            <FormControl fullWidth error={error.status} >
+            <FormControl fullWidth error={error.status} required={props.required}>
                 <div>{props.label}</div>
                 <RadioGroup row={row} {...fieldOptions} value={getValue()}>
                     {getOptions(fieldOptions.options)}
