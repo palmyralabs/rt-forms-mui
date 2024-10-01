@@ -1,35 +1,37 @@
 import { generateColumns as f } from "@palmyralabs/rt-forms";
-import { DataGrid as n } from "./DataGrid.js";
+import { DataGrid as x } from "./DataGrid.js";
 import { FilterForm as u } from "./plugins/filter/FilterForm.js";
 import { SelectablePagination as B } from "./plugins/pagination/SelectablePagination.js";
+import { ServerPagination as D } from "./plugins/pagination/ServerPagination.js";
 import "react/jsx-runtime";
 import "react";
 import "@mui/material";
 import '../../../assets/ColumnHeader.css';import '../../../assets/BaseTable.css';/* empty css                        */
 /* empty css                           */
 import "@tanstack/react-table";
-import { DataGridDefaultControls as D } from "./controls/DataGridDefaultControls.js";
-import { ActionButton as F, DeleteButton as S, EditButton as g, NewButton as s } from "./controls/ActionButton.js";
-import { ExportDataButton as E } from "./controls/ExportDataButton.js";
-import { FilterButton as b } from "./controls/FilterButton.js";
-import { QuickSearch as k } from "./controls/QuickSearch.js";
-import { GridX as y } from "./GridX.js";
-import { PalmyraGrid as N } from "./PalmyraGrid.js";
-import { StaticGrid as X } from "./StaticGrid.js";
+import { DataGridDefaultControls as S } from "./controls/DataGridDefaultControls.js";
+import { ActionButton as F, DeleteButton as P, EditButton as s, NewButton as C } from "./controls/ActionButton.js";
+import { ExportDataButton as b } from "./controls/ExportDataButton.js";
+import { FilterButton as k } from "./controls/FilterButton.js";
+import { QuickSearch as w } from "./controls/QuickSearch.js";
+import { GridX as A } from "./GridX.js";
+import { PalmyraGrid as Q } from "./PalmyraGrid.js";
+import { StaticGrid as j } from "./StaticGrid.js";
 export {
   F as ActionButton,
-  n as DataGrid,
-  D as DataGridDefaultControls,
-  S as DeleteButton,
-  g as EditButton,
-  E as ExportDataButton,
-  b as FilterButton,
+  x as DataGrid,
+  S as DataGridDefaultControls,
+  P as DeleteButton,
+  s as EditButton,
+  b as ExportDataButton,
+  k as FilterButton,
   u as FilterForm,
-  y as GridX,
-  s as NewButton,
-  N as PalmyraGrid,
-  k as QuickSearch,
+  A as GridX,
+  C as NewButton,
+  Q as PalmyraGrid,
+  w as QuickSearch,
   B as SelectablePagination,
-  X as StaticGrid,
+  D as ServerPagination,
+  j as StaticGrid,
   f as generateColumns
 };
