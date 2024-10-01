@@ -13,7 +13,7 @@ const MuiDateView = forwardRef(function MuiLabelDisplay(props: IDatePickerDefini
     const value = getValue();
     const textAlign: any = props.textAlign || 'left';
     const variant: string = props.variant || 'standard';
-    const displayFormat: string = props.displayPattern || "dd-MM-yyyy";
+    const displayFormat: string = props.displayPattern || "DD-MM-YYYY";
     const inputRef: any = useRef(null);
 
     useImperativeHandle(currentRef, () => {
@@ -27,12 +27,12 @@ const MuiDateView = forwardRef(function MuiLabelDisplay(props: IDatePickerDefini
     }, [fieldManager]);
 
     const parseDateFromString = (value: any) => {
-        const formats = ['yyyy-MM-dd', 'dd-MM-yyyy', 'MM-dd-yyyy', 'dd-yyyy-MM', 'yyyy/MM/dd', 'dd/MM/yyyy',
-            "yyyy-MM-dd'T'HH:mm:ss", "dd-MM-yyyy HH:mm", "MM-dd-yyyy h:mm a", "yyyy/MM/dd HH:mm:ss", "dd/MM/yyyy HH:mm"
+        const formats = ['YYYY-MM-DD', 'DD-MM-YYYY', 'MM-DD-YYYY', 'DD-YYYY-MM', 'YYYY/MM/DD', 'DD/MM/YYYY',
+            "YYYY-MM-DD'T'HH:mm:ss", "DD-MM-YYYY HH:mm", "MM-DD-YYYY h:mm a", "YYYY/MM/DD HH:mm:ss", "DD/MM/YYYY HH:mm"
         ];
-        if(null == value || undefined ==  value || '' == value)
+        if (null == value || undefined == value || '' == value)
             return null;
-        
+
         for (const format of formats) {
             const date = dayjs(value, format);
             if (date.isValid())
