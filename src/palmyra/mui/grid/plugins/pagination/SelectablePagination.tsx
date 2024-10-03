@@ -1,12 +1,12 @@
 import { FormControl, MenuItem, Pagination, Select } from "@mui/material"
 import { delayGenerator, topic } from "@palmyralabs/ts-utils";
 import { useEffect, useState } from "react";
-import { DataGridPluginOptions } from "../../types";
+import { PageQueryPluginOptions } from "../../types";
 import './SelectablePagination.css';
 
 const delay = delayGenerator(10)
 
-const SelectablePagination = (o: DataGridPluginOptions) => {
+const SelectablePagination = (o: PageQueryPluginOptions) => {
 
     const pageQuery = o.queryRef?.current;
     const [_count, setCount] = useState<number>(0); // Counter used to refresh the state of pagination

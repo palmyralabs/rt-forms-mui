@@ -25,12 +25,15 @@ interface DataGridOptions extends ApiDataTableOptions {
     onNewClick?: Function;
     topic?: string;
 }
-interface DataGridPluginOptions {
+interface PageQueryPluginOptions {
+    topic: string;
+    pageSize?: number | number[];
+    queryRef: MutableRefObject<IPageQueryable>;
+}
+interface DataGridPluginOptions extends PageQueryPluginOptions {
     topic: string;
     getPluginOptions?: () => any;
     quickSearch?: string;
-    queryRef: MutableRefObject<IPageQueryable>;
-    pageSize?: number | number[];
     columns: ColumnDefinition[];
 }
 interface GridXOptions<ControlPropsType> extends DataGridOptions {
@@ -44,4 +47,4 @@ interface PalmyraGridOptions<T> extends GridXOptions<T> {
 }
 interface IPalmyraGrid extends IPageQueryable {
 }
-export type { CellGetter, IExportOptions, IReactTanstackTable, ITableOptions, IGridPlugin, DataGridOptions, DataGridPluginOptions, GridXOptions, PalmyraGridOptions, IPalmyraGrid };
+export type { CellGetter, IExportOptions, IReactTanstackTable, ITableOptions, PageQueryPluginOptions, IGridPlugin, DataGridOptions, DataGridPluginOptions, GridXOptions, PalmyraGridOptions, IPalmyraGrid };

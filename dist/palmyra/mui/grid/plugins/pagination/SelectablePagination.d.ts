@@ -1,4 +1,4 @@
-import { DataGridPluginOptions } from '../../types';
+import { PageQueryPluginOptions } from '../../types';
 
-declare const SelectablePagination: (o: DataGridPluginOptions) => import("react/jsx-runtime").JSX.Element;
+declare const SelectablePagination: (o: PageQueryPluginOptions) => import("react/jsx-runtime").JSX.Element;
 export { SelectablePagination };

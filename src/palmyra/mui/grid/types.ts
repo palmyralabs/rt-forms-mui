@@ -32,12 +32,16 @@ interface DataGridOptions extends ApiDataTableOptions {
     topic?: string
 }
 
-interface DataGridPluginOptions {
+interface PageQueryPluginOptions {
+    topic: string,
+    pageSize?: number | number[],
+    queryRef: MutableRefObject<IPageQueryable>
+}
+
+interface DataGridPluginOptions extends PageQueryPluginOptions {
     topic: string,
     getPluginOptions?: () => any
-    quickSearch?: string
-    queryRef: MutableRefObject<IPageQueryable>,
-    pageSize?: number | number[],
+    quickSearch?: string,
     columns: ColumnDefinition[]
 }
 
@@ -58,6 +62,6 @@ interface IPalmyraGrid extends IPageQueryable {
 }
 
 export type {
-    CellGetter, IExportOptions, IReactTanstackTable, ITableOptions,
+    CellGetter, IExportOptions, IReactTanstackTable, ITableOptions, PageQueryPluginOptions,
     IGridPlugin, DataGridOptions, DataGridPluginOptions, GridXOptions, PalmyraGridOptions, IPalmyraGrid
 };
