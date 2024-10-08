@@ -1,13 +1,17 @@
 import { forwardRef, MutableRefObject, useEffect, useImperativeHandle, useRef, useState } from "react";
 import { IServerLookupDefinition } from "./types";
 import { getFieldLabel } from "./util";
-import { Autocomplete, AutocompleteProps, CircularProgress, FormControl, FormHelperText, TextField } from "@mui/material";
+import { Autocomplete, CircularProgress, FormControl, FormHelperText, TextField } from "@mui/material";
 import { delayGenerator } from "@palmyralabs/ts-utils";
 import { FieldDecorator, getFieldHandler, IFormFieldError, IServerLookupField, useServerLookupFieldManager } from "@palmyralabs/rt-forms";
 
 const delay100 = delayGenerator(100);
 
-const MuiServerLookup = forwardRef(function MuiServerLookup(props: IServerLookupDefinition & AutocompleteProps<any, any, any, any>,
+interface IServerLookupInput extends IServerLookupDefinition {
+    onChange?: any;
+}
+
+const MuiServerLookup = forwardRef(function MuiServerLookup(props: IServerLookupInput,
     ref: MutableRefObject<IServerLookupField>) {
 
     const [open, setOpen] = useState(false);
