@@ -5,17 +5,17 @@ import { MainLayout } from "./layout/main/MainLayout";
 import { SimplGrid } from "./pages/grid/SimpleGrid";
 import ServerCardPage from "./card/ServerCardPage";
 import SideMenu from "./treeMenu/SideMenu";
-import TextFieldPage from "./pages/form/TextFieldPage";
 import { ServerGrid } from "./pages/grid/ServerGrid";
 import DatePickerPage from "./pages/form/DatePickerPage";
-import {ErrorBoundary as E} from './widgets/ErrorBoundary'
+import { ErrorBoundary as E } from './widgets/ErrorBoundary'
+import { TextField } from "./components/form/TextField";
 
 const App = () => {
     return <>
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<MainLayout appTitle='Palmyra UI' />} >
-                    <Route path="/palmyra-ui/textField" element={<E><TextFieldPage /></E>} />
+                    <Route path="/palmyra-ui/textField" element={<E><TextField /></E>} />
                     <Route path="/palmyra-ui/datePicker" element={<DatePickerPage />} />
                     <Route path="/palmyra-ui/layout/treeMenu" element={<TreeMenu />} />
                     <Route path="/palmyra-ui/layout/sideMenu" element={<SideMenu />} />

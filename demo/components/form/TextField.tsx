@@ -1,25 +1,89 @@
 
 import { FieldGroupContainer } from "@palmyralabs/rt-forms";
-import { MuiTextField } from "../../../src/palmyra";
+import { MuiDatePicker, MuiDateTimePicker, MuiServerLookup } from "../../../src/palmyra";
 import FormX from "../wire/FormX";
+// import { useEffect, useRef } from "react";
+// import { TextField } from "@mui/material";
 
+// const fieldRef: any = useRef();
 
-const BasicSetup = `<MuiTextField attribute="name" placeholder="Enter Name" variant="outlined" autoFocus={true} label="Name" />
-<MuiTextField attribute="name" placeholder="Enter Name" variant="filled" label="Name" />
-<MuiTextField attribute="name" placeholder="Enter Name" variant="standard" label="Name" />
-`;
+// useEffect(() => {
+//     fieldRef?.current.setValue("1212a")
+// }, [])
 
-const BasicTextField = () => {
+const TextField = () => {
     return (
         <FormX>
-            <FieldGroupContainer columns={3}>
-                <MuiTextField attribute="name"
+            <FieldGroupContainer columns={1}>
+
+                {/* <MuiCheckBoxGroup attribute="radio" options={{ 1: 'Active', 0: 'De-Active' }} />
+                <MuiCheckBox attribute="radio" /> */}
+
+                <MuiDatePicker attribute="date"
+                    placeholder="Enter Name"
+                    variant="standard"
+                    label="Name"
+                    defaultValue={"2003-01-21"}
+                // displayPattern="DD-MM-YYYY"
+                />
+                <MuiDateTimePicker attribute="dateTime"
+                    placeholder="Enter Name"
+                    variant="standard"
+                    label="Name"
+                    defaultValue={"2003-01-21 12:23:23"}
+                    displayPattern="DD-MM-YYYY hh:mm:ss"
+                />
+
+                <MuiServerLookup attribute="serverLookup"
+                    placeholder="Enter Name"
+                    variant="standard"
+                    label="Name"
+                    onChange={(e, v) => { console.log("onChange", v) }}
+                    queryOptions={{ endPoint: '/lookupData.json', idAttribute: 'sid', labelAttribute: 'location' }}
+                    lookupOptions={{ idAttribute: 'sid', labelAttribute: 'location' }}
+                    required
+                />
+
+                {/* <MuiTextField attribute="names"
+                    placeholder="Enter Name"
+                    variant="outlined"
+                    // autoFocus={true}
+                    defaultValue={1111}
+                    label="Name"
+                    onChange={(e) => { console.log("onCHnage", e.target.value) }}
+                    length={{ eq: 5, errorMessage: "Length is 5" }}
+                    validRule={{ rule: "number", errorMessage: "Numbers Only" }}
+                /> */}
+
+                {/* <MuiServerLookup attribute="serverLookup"
+                    placeholder="Enter Name"
+                    variant="standard"
+                    label="Name"
+                    onChange={(e) => { console.log("onCHnage", e.target.value) }}
+                    queryOptions={{ endPoint: '/lookupData.json', idAttribute: 'sid', labelAttribute: 'location' }}
+                    required
+                />
+                <MuiServerLookup attribute="sName"
+                    placeholder="Enter Name"
+                    variant="standard"
+                    label="Name"
+                    queryOptions={{ endPoint: '/lookupData.json', idAttribute: 'sid', labelAttribute: 'location' }}
+                    required
+                /> */}
+
+                {/* <TextField defaultValue={"Asd"}/> */}
+                {/* <MuiDateView attribute="date" /> */}
+                {/* <MuiTextField attribute="name"
                     placeholder="Enter Name"
                     variant="outlined"
                     autoFocus={true}
                     label="Name"
-                />
-                <MuiTextField attribute="name"
+                    length={{ eq: 5, errorMessage: "Length is 5" }}
+                    validRule={{ rule: "number", errorMessage: "Numbers Only" }}
+                /> */}
+                {/* <MuiNumberField id="numberField" attribute="numberField" //ref={fieldRef}
+                    disabled invalidMessage="Invalid" validRule={"number"} /> */}
+                {/* <MuiTextField attribute="name"
                     placeholder="Enter Name"
                     variant="filled"
                     label="Name"
@@ -28,210 +92,94 @@ const BasicTextField = () => {
                     placeholder="Enter Name"
                     variant="standard"
                     label="Name"
+                    required
+                    validRule={"number"}
+                /> */}
+
+                {/* <MuiDatePicker attribute="date"
+                    placeholder="Enter Name"
+                    variant="standard"
+                    label="Name"
+                // defaultValue={"2003-01-21"}
+                // displayPattern="DD-MM-YYYY"
                 />
+                <MuiDateTimePicker attribute="dateTime"
+                    placeholder="Enter Name"
+                    variant="standard"
+                    label="Name"
+                    // defaultValue={"2003-01-21 12:23:23"}
+                    displayPattern="DD-MM-YYYY hh:mm:ss"
+                />
+                <MuiDateRangePicker attribute="dates"
+                    placeholder="Enter Name"
+                    variant="standard"
+                    label="Name"
+                />
+
+                <MuiPassword attribute="pass"
+                    placeholder="Enter Name"
+                    variant="standard"
+                    label="Name"
+                    validRule={{ rule: 'alphabets' }}
+                /> */}
+
+                {/* <MuiServerLookup attribute="sname"
+                    placeholder="Enter Name"
+                    variant="standard"
+                    label="Name"
+                    queryOptions={{ endPoint: '/lookupData.json', idAttribute: 'sid', labelAttribute: 'location' }}
+                    required
+                />
+                <MuiDateRangePicker attribute="dates"
+                    placeholder="Enter Name"
+                    variant="standard"
+                    label="Name"
+                    serverPattern="YYYY-MM-DD" displayPattern="DD-MM-YYYY"
+                />
+               */}
+
+                {/* <MuiServerLookup attribute="serverLookup"
+                    placeholder="Enter Name"
+                    variant="standard"
+                    label="Name"
+                    lookupOptions={{ idAttribute: 'sid', labelAttribute: 'location' }}
+                    queryOptions={{ endPoint: '/lookupData.json', idAttribute: 'sid', labelAttribute: 'location' }}
+                    required
+                />
+
+                <MuiServerLookup attribute="serverLookups"
+                    placeholder="Enter Name"
+                    variant="standard"
+                    label="Name"
+                    lookupOptions={{ idAttribute: 'sid', labelAttribute: 'location' }}
+                    queryOptions={{ endPoint: '/lookupData.json', idAttribute: 'sid', labelAttribute: 'location' }}
+                    required
+                /> 
+                <MuiDatePicker attribute="dsate"
+                    placeholder="Enter Name"
+                    variant="standard"
+                    label="Name"
+                // defaultValue={"2003-01-21"}
+                // displayPattern="DD-MM-YYYY"
+                />
+                <MuiDateTimePicker attribute="dateTime"
+                    placeholder="Enter Name"
+                    variant="standard"
+                    label="Name"
+                    // defaultValue={"2003-01-21 12:23:23"}
+                    serverPattern="YYYY-MM-DD hh:mm:ss" displayPattern="DD-MM-YYYY hh:mm:ss"
+                />
+
+                <MuiRadioGroup attribute="radio" options={{ 1: 'True', 0: 'False' }} />
+                <MuiSelect attribute="select" options={{ 1: 'True', 0: 'False' }} />*/}
+                {/* <MuiOptionsView attribute="radioView" options={{ 1: 'True', 0: 'False' }} />
+                <MuiRadioGroup attribute="radio" options={{ 1: 'Active', 0: 'De-Active' }} />
+                <MuiSwitch attribute="switch" options={{ 'True': 1, 'False': 0 }} /> */}
             </FieldGroupContainer>
         </FormX>
     )
 }
 
-const TypeValidationSetup = `<MuiTextField
-    attribute="email"
-    placeholder="example@email.com"
-    required={true}
-    validation={{ type: "email", errorMessage: "Invalid Email" }}
-    label="Email"
-/>`;
-
-const TypeValidationTextField = () => {
-    return (
-        <FormX>
-            <MuiTextField
-                attribute="email"
-                placeholder="example@email.com"
-                required={true}
-                validRule={{ rule: "email", errorMessage: 'Invalid Email' }}
-                label="Email"
-            />
-        </FormX>
-    )
-}
-
-
-const LengthValidationSetup = `<MuiTextField
-    attribute="name"
-    placeholder="Enter Name"
-    label="Name"
-    length={{ min: 3, max: 6, errorMessage: "Minimum 3 & Maximum 6 letters only allowed" }}
-/>`;
-
-const LengthValidationTextField = () => {
-    return (
-        <FormX>
-            <MuiTextField
-                attribute="name"
-                placeholder="Enter Name"
-                label="Name"
-                length={{ min: 3, max: 6, errorMessage: "Minimum 3 & Maximum 6 letters only allowed" }}
-            />
-        </FormX>
-    )
-}
-
-const RegexValidationSetup = `<MuiTextField
-    attribute="alphabet"
-    placeholder="Alphabet"
-    label="Alphabet"
-    validation={{ regex: /^[a-zA-Z]+$/, errorMessage: "Alphabets only allowed" }}
-/>`;
-
-const RegexValidationTextField = () => {
-    return (
-        <FormX>
-            <MuiTextField
-                attribute="alphabet"
-                placeholder="Alphabet"
-                label="Alphabet"
-                regExp={{ regex: /^[a-zA-Z]+$/, errorMessage: "Alphabets only allowed" }}
-            />
-        </FormX>
-    )
-}
-
-const FunctionValidationSetup = `const customFn = (n: any): boolean => {
-    if (isNaN(n)) {
-        return false;
-    } else {
-        return true;
-    }
-}
-
-<MuiTextField
-    attribute="number"
-    placeholder="Number"
-    label="Number"
-    validation={{ validateFn: customFn, errorMessage: "Numbers only allowed" }}
-/>`;
-
-const FunctionValidationTextField = () => {
-
-    const customFn = (n: any): boolean => {
-        if (isNaN(n)) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-    return (
-        <FormX>
-            <MuiTextField
-                attribute="number"
-                placeholder="Number"
-                label="Number"
-                validFn={{ fn: customFn, errorMessage: "Numbers only allowed" }}
-            />
-        </FormX>
-    )
-}
-
-const Setup = ''
-// `<MuiTextField
-//     attribute="alphabet"
-//     placeholder="Alphabet"
-//     label="Alphabet"
-//     validation={{ regex: /^[a-zA-Z]+$/, errorMessage: "Alphabets only allowed" }}
-// />`;
-
-const AllTextField = () => {
-    return (
-        <FormX>
-            <MuiTextField
-                attribute="alphabet"
-                placeholder="Alphabet"
-                label="Alphabet"
-                autoFocus
-                defaultValue="Name"
-                fieldProps={{ size: 'small' }}
-                title="Alphabet"
-                variant="outlined"
-                regExp={{ regex: /^[a-zA-Z]+$/, errorMessage: "Alphabets only allowed" }}
-            />
-        </FormX>
-    )
-}
-
-const EventListenerSetup = `const onChangeEventListener: IFieldEventListener = {
-    onChange: function(key, value): void {
-        console.log(key, value)
-    }
-}
-
-const onBlurEventListener: IFieldEventListener = {
-    onBlur: function(key, value): void {
-        console.log(key, value)
-    }
-}
-
-<MuiTextField
-    attribute="name"
-    label="Name"
-    eventListener={onChangeEventListener}
-/>
-
-<MuiTextField
-    attribute="city"
-    label="City Name"
-    eventListener={onBlurEventListener}
-/>`;
-
-
-const EventListenerTextField = () => {
-
-    return (
-        <FormX>
-            <MuiTextField
-                attribute="name"
-                label="Name"
-            />
-            <MuiTextField
-                attribute="city"
-                label="City Name"
-            />
-        </FormX>
-    )
-}
-
-const ValueListenerSetup = `const onValueEventListener: IFieldValueListener = {
-    onValue: function (key, value, valid): void {
-        console.log(key, value, valid)
-    }
-}
-
-<MuiTextField
-     attribute="name"
-     label="Name"
-     valueListener={onValueEventListener}
-/>`;
-
-const ValueListenerTextField = () => {
-
-    return (
-        <FormX>
-            <MuiTextField
-                attribute="name"
-                label="Name"
-            />
-        </FormX>
-    )
-}
-
 export {
-    BasicSetup, BasicTextField,
-    TypeValidationSetup, TypeValidationTextField,
-    LengthValidationSetup, LengthValidationTextField,
-    RegexValidationSetup, RegexValidationTextField,
-    FunctionValidationSetup, FunctionValidationTextField,
-    Setup, AllTextField,
-    EventListenerSetup, EventListenerTextField,
-    ValueListenerSetup, ValueListenerTextField
+    TextField
 }
