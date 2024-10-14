@@ -1,35 +1,44 @@
-import { jsxs as s, Fragment as u, jsx as r } from "react/jsx-runtime";
-import { QuickSearch as c } from "./QuickSearch.js";
-import { FilterButton as l } from "./FilterButton.js";
-import { NewButton as a } from "./ActionButton.js";
-import { ExportDataButton as m } from "./ExportDataButton.js";
-const h = (p) => {
-  var i, n;
-  const { getPluginOptions: e, ...t } = p, o = e ? e() : {};
-  return /* @__PURE__ */ s(u, { children: [
-    t.quickSearch && /* @__PURE__ */ r(
-      c,
+import { jsxs as n, Fragment as p, jsx as o } from "react/jsx-runtime";
+import { QuickSearch as u } from "./QuickSearch.js";
+import { FilterButton as c } from "./FilterButton.js";
+import { NewButton as m } from "./ActionButton.js";
+import { ExportDataButton as f } from "./ExportDataButton.js";
+const g = (a) => {
+  var r, s, d, l;
+  const { getPluginOptions: i, ...e } = a, t = i ? i() : {};
+  return /* @__PURE__ */ n(p, { children: [
+    e.quickSearch && /* @__PURE__ */ o(
+      u,
       {
         width: "200",
-        queryRef: t.queryRef,
-        columns: t.columns,
-        ...o.quickSearch
+        queryRef: e.queryRef,
+        columns: e.columns,
+        ...t.quickSearch
       }
     ),
-    /* @__PURE__ */ r(l, { ...t }),
-    /* @__PURE__ */ r(a, { label: "Add", topic: t.topic, ...o.add }),
-    /* @__PURE__ */ r(
+    /* @__PURE__ */ o(c, { ...e }),
+    /* @__PURE__ */ o(
       m,
       {
+        label: "Add",
+        topic: e.topic,
+        ...t.add,
+        visible: (r = t.add) == null ? void 0 : r.visible,
+        disabled: (s = t.add) == null ? void 0 : s.disabled
+      }
+    ),
+    /* @__PURE__ */ o(
+      f,
+      {
         exportOption: { csv: "CSV" },
-        visible: (i = o.export) == null ? void 0 : i.visible,
-        disabled: (n = o.export) == null ? void 0 : n.disabled,
-        queryRef: t.queryRef,
-        ...o.export
+        visible: (d = t.export) == null ? void 0 : d.visible,
+        disabled: (l = t.export) == null ? void 0 : l.disabled,
+        queryRef: e.queryRef,
+        ...t.export
       }
     )
   ] });
 };
 export {
-  h as DataGridDefaultControls
+  g as DataGridDefaultControls
 };

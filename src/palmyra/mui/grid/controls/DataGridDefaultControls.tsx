@@ -15,7 +15,8 @@ const DataGridDefaultControls = (props: DataGridPluginOptions) => {
         {o.quickSearch && <QuickSearch width="200" queryRef={o.queryRef}
             columns={o.columns} {...pluginOptions.quickSearch} />}
         <FilterButton {...o} />
-        <NewButton label="Add" topic={o.topic} {...pluginOptions.add} />
+        <NewButton label="Add" topic={o.topic} {...pluginOptions.add} visible={pluginOptions.add?.visible}
+            disabled={pluginOptions.add?.disabled} />
         <ExportDataButton exportOption={{ csv: 'CSV' }}
             visible={pluginOptions.export?.visible} disabled={pluginOptions.export?.disabled}
             queryRef={o.queryRef} {...pluginOptions.export} />
