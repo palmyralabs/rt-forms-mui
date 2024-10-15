@@ -14,7 +14,7 @@ const MuiDatePicker = forwardRef(function MuiDatePicker(props: IDatePickerDefini
     const parse = (rawData: any) => {
         if (rawData)
             return dayjs(rawData, serverPattern)
-        return dayjs(undefined);
+        return undefined;
     };
     const format = (v: any) => {
         if (v && v.isValid && v.isValid())
@@ -61,7 +61,6 @@ const MuiDatePicker = forwardRef(function MuiDatePicker(props: IDatePickerDefini
             colspan={props.colspan} customFieldClass={props.customFieldClass} customLabelClass={props.customLabelClass}>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DatePicker
-                    defaultValue={dayjs(props.defaultValue)}
                     format={displayFormat}
                     label={props.label}
                     slotProps={{
