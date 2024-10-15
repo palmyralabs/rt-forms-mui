@@ -17,6 +17,7 @@ const ServerCardPage = () => {
     }
 
     return <>
+        <div>Server Card Page</div>
         <ServerCardLayout Child={serverCard} store={store} />
     </>
 }

@@ -1,6 +1,5 @@
 import { CardLayout } from "@palmyralabs/rt-forms";
 
-
 const CardPage = () => {
 
     const card = () => {

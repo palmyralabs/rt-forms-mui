@@ -1,14 +1,17 @@
-import { jsx as i, Fragment as T, jsxs as E } from "react/jsx-runtime";
-import { forwardRef as H, useRef as y, useImperativeHandle as J } from "react";
-import { LocalizationProvider as O, DatePicker as x } from "@mui/x-date-pickers";
-import { getFieldLabel as W } from "./util.js";
-import V from "dayjs";
+import { jsx as i, Fragment as k, jsxs as T } from "react/jsx-runtime";
+import { forwardRef as E, useRef as y, useImperativeHandle as H } from "react";
+import { LocalizationProvider as J, DatePicker as x } from "@mui/x-date-pickers";
+import { getFieldLabel as O } from "./util.js";
+import W from "dayjs";
 import { useFieldManager as z, getFieldHandler as B, FieldDecorator as I } from "@palmyralabs/rt-forms";
 import { A as _ } from "../../../chunks/AdapterDayjs.js";
-const M = (n, e) => {
+const V = (n, e) => {
   if (n && n.isValid && n.isValid())
     return n.format(e);
-}, d = (n, e) => n ? V(n, e) : V(void 0), X = H(function(e, P) {
+}, d = (n, e) => {
+  if (n)
+    return W(n, e);
+}, X = E(function(e, P) {
   const l = e.serverPattern || e.displayPattern || "YYYY-MM-DD", v = e.displayPattern || e.serverPattern || "YYYY-MM-DD", F = (t) => {
     if (t && typeof t == "string") {
       var r, a;
@@ -23,16 +26,16 @@ const M = (n, e) => {
       }
     }
     return { from: r, to: a };
-  }, Y = (t) => {
+  }, M = (t) => {
     if (t) {
-      const r = M(t.from, l), a = M(t.to, l);
+      const r = V(t.from, l), a = V(t.to, l);
       if (r)
         return a ? r + "..." + a : ">" + r;
       if (a)
         return "<" + a;
     }
-  }, u = z(e.attribute, e, { format: Y, parse: F }), { getError: D, getValue: A, setValue: R, mutateOptions: j, refreshError: L } = u, k = P || y(null), f = D(), m = y(null);
-  J(k, () => ({
+  }, u = z(e.attribute, e, { format: M, parse: F }), { getError: Y, getValue: D, setValue: A, mutateOptions: R, refreshError: j } = u, L = P || y(null), f = Y(), m = y(null);
+  H(L, () => ({
     ...B(u),
     focus() {
       m.current.focus();
@@ -41,7 +44,7 @@ const M = (n, e) => {
     }
   }), [u]);
   var s = u.getFieldProps(), g, h;
-  const c = A();
+  const c = D();
   if (c && (g = c.from, h = c.to), s.defaultValue) {
     const t = F(s.defaultValue);
     g = t.from, h = t.to;
@@ -49,18 +52,18 @@ const M = (n, e) => {
   const b = (t, r, a) => {
     if (!e.readOnly) {
       const o = { ...c, [t]: r };
-      R(o), e.onChange && e.onChange(o, a);
+      A(o), e.onChange && e.onChange(o, a);
     }
   };
-  return s.onBlur = L, /* @__PURE__ */ i(T, { children: !j.visible && /* @__PURE__ */ i(
+  return s.onBlur = j, /* @__PURE__ */ i(k, { children: !R.visible && /* @__PURE__ */ i(
     I,
     {
-      label: W(e),
+      label: O(e),
       customContainerClass: e.customContainerClass,
       colspan: e.colspan,
       customFieldClass: e.customFieldClass,
       customLabelClass: e.customLabelClass,
-      children: /* @__PURE__ */ E(O, { dateAdapter: _, children: [
+      children: /* @__PURE__ */ T(J, { dateAdapter: _, children: [
         /* @__PURE__ */ i(
           x,
           {

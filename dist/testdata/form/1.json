@@ -16,8 +16,8 @@
         "dates": "2023-04-12...2023-07-16",
         "dateTime": "2023-04-23 12:12:12",
         "serverLookup": {
-            "sid": 2,
-            "location": "Madurai"
+            "sid": 1,
+            "location": "Chennai"
         },
         "sname": 3,
         "rating": 2.5,

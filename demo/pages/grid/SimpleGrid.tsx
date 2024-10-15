@@ -1,18 +1,18 @@
-import { ColumnDefinition } from "../../../src/palmyra"
+
+import { ColumnDefinition, generateColumns } from "@palmyralabs/rt-forms";
 import BaseGrid from "../../../src/palmyra/mui/grid/base/BaseTable";
 
-import { generateColumns } from "../../../src/palmyra/mui/grid/utils/ColumnConverter"
 
 const rowData = [
-    { name: "Sundar" },
+    { name: "Sundar", date: "2023-01-21" },
     {
-        name: 'murugan'
+        name: 'murugan', date: "2023-01-21"
     },
     {
-        name: 'valli'
+        name: 'valli', date: "2023-01-21"
     },
     {
-        name: 'surya'
+        name: 'surya', date: "2023-01-21"
     }
 ]
 
@@ -20,6 +20,11 @@ const columns: ColumnDefinition[] = [{
     attribute: 'name',
     label: 'Name',
     type: 'string'
+}, {
+    attribute: 'date',
+    label: 'Date',
+    displayPattern: "MM-DD-YYYY",
+    type: 'date'
 }]
 
 const columnDefs = generateColumns(columns);

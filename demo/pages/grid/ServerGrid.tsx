@@ -1,5 +1,5 @@
-import { StoreFactoryContext } from "@palmyralabs/rt-forms";
-import { ColumnDefinition, DataGridDefaultControls, GridX, IDataGridDefaultControlConfig } from "../../../src/palmyra"
+import { ColumnDefinition, StoreFactoryContext } from "@palmyralabs/rt-forms";
+import { DataGridDefaultControls, GridX, IDataGridDefaultControlConfig } from "../../../src/palmyra"
 import { PalmyraStoreFactory, StoreFactory } from "@palmyralabs/palmyra-wire";
 
 import './ServerGrid.css'
@@ -9,18 +9,19 @@ const columns: ColumnDefinition[] = [
         attribute: 'code',
         label: 'Identifier',
         type: 'string',
-        searchable: true
+        // searchable: true
     },
     {
         attribute: 'thumbnail',
         label: 'Thumbnail',
         type: 'string',
-        searchable: true
+        // searchable: true
     },
     {
-        attribute: 'date',
+        attribute: 'endDate',
         label: 'Date',
         type: 'date',
+        // displayPattern: 'DD-MM-YYYY',
         searchable: true
     },
     {
@@ -34,7 +35,7 @@ const columns: ColumnDefinition[] = [
 const storeFactory: StoreFactory<any, any> = new PalmyraStoreFactory({ baseUrl: '/api/palmyra/' });
 
 const ServerGrid = () => {
-    const endPoint = 'masterdata/category'; //'grid/simpleGridData.json'
+    const endPoint = 'dataRead/assetAllocationHistory'; //'grid/simpleGridData.json'
 
     const getOptions = (): IDataGridDefaultControlConfig => {
         return { export: { disabled: true } }

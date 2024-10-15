@@ -19,7 +19,7 @@ const formatDayJs = (v: dayjs.Dayjs, serverPattern: string): string => {
 const parseToDaysJs = (v: string, serverPattern: string): dayjs.Dayjs => {
     if (v)
         return dayjs(v, serverPattern);
-    return dayjs(undefined);
+    return undefined;
 }
 
 const MuiDateRangePicker = forwardRef(function MuiDatePicker(props: IDatePickerDefinition & DatePickerProps<any>,

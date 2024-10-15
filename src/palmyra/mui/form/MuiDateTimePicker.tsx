@@ -12,10 +12,12 @@ const MuiDateTimePicker = forwardRef(function MuiDateTimePicker(props: IDatePick
     const displayFormat: string = props.displayPattern || props.serverPattern || "YYYY-MM-DD";
 
     const parse = (rawData: any) => {
-        if (rawData)
+        if (rawData) {
             return dayjs(rawData, serverPattern)
-        return dayjs(undefined);
+        }
+        else { return undefined }
     };
+
     const format = (v: any) => {
         if (v && v.isValid && v.isValid())
             return v.format(serverPattern)
@@ -60,7 +62,6 @@ const MuiDateTimePicker = forwardRef(function MuiDateTimePicker(props: IDatePick
             colspan={props.colspan} customFieldClass={props.customFieldClass} customLabelClass={props.customLabelClass}>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DateTimePicker
-                    defaultValue={dayjs(props.defaultValue)}
                     readOnly={props.readOnly}
                     format={displayFormat}
                     label={props.label}
