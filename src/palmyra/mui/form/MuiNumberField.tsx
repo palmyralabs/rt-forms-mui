@@ -47,6 +47,7 @@ const MuiNumberField = forwardRef(function MuiNumberField(props: ITextFieldDefin
                 label={props.label}
                 variant={variant}
                 fullWidth={true}
+                inputProps={{readOnly: options.readOnly}}
                 inputRef={inputRef}
                 {...options}
                 value={getValue()}

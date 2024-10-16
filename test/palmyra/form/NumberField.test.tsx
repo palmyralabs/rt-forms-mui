@@ -128,7 +128,7 @@ describe('NumberField', () => {
         expect(() => screen.getByText("Invalid"))
 
         const numberField = getById(dom.container, 'numberField');
-        // expect(numberField).toHaveProperty('readOnly', false)
+        expect(numberField).toHaveProperty('readOnly', true)
 
         act(() => {
             fieldRef.current.setValue("12345");
@@ -149,13 +149,13 @@ describe('NumberField', () => {
         expect(() => screen.getByText("Invalid")).toBeDefined()
 
         const numberField = getById(dom.container, 'numberField');
-        // expect(numberField).toHaveProperty('readOnly', true)
+        expect(numberField).toHaveProperty('readOnly', false)
 
         act(() => {
             fieldRef.current.setValue('12345');
             fieldRef.current.setReadOnly(true);
         });
 
-        expect(numberField).toHaveProperty('readOnly', false)
+        expect(numberField).toHaveProperty('readOnly', true)
     })
 });
