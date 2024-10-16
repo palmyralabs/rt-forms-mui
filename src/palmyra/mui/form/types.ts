@@ -60,7 +60,6 @@ interface IDateTimePickerDefinition extends IDatePickerDefinition, MuiInputField
 }
 
 interface ILookupViewOptions extends MuiInputFieldOptions, ILayoutOptions, ITextFieldProps {
-    displayAttribute?: string;
     lookupOptions?: {
         idAttribute: string;
         labelAttribute: string;
@@ -68,7 +67,6 @@ interface ILookupViewOptions extends MuiInputFieldOptions, ILayoutOptions, IText
 }
 
 interface IServerLookupDefinition extends MuiInputFieldOptions, ILayoutOptions, IServerLookupOptions, ITextFieldProps {
-    displayAttribute?: string,
     defaultValue?: InputType | any,
     multiple?: boolean,
     renderOption?: (

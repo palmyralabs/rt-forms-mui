@@ -46,14 +46,12 @@ interface IDatePickerDefinition extends MuiInputFieldOptions, ILayoutOptions, IT
 interface IDateTimePickerDefinition extends IDatePickerDefinition, MuiInputFieldOptions, ILayoutOptions, ITextFieldProps {
 }
 interface ILookupViewOptions extends MuiInputFieldOptions, ILayoutOptions, ITextFieldProps {
-    displayAttribute?: string;
     lookupOptions?: {
         idAttribute: string;
         labelAttribute: string;
     };
 }
 interface IServerLookupDefinition extends MuiInputFieldOptions, ILayoutOptions, IServerLookupOptions, ITextFieldProps {
-    displayAttribute?: string;
     defaultValue?: InputType | any;
     multiple?: boolean;
     renderOption?: (props: React.HTMLAttributes<HTMLLIElement> & {

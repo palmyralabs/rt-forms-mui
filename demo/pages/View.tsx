@@ -50,7 +50,6 @@ const BasicView = () => {
                 label="Lookup View"
                 variant="outlined"
                 lookupOptions={{ idAttribute: "sid", labelAttribute: "location" }}
-                displayAttribute="location"
             />
             <MuiDateView
                 attribute="date"
