@@ -52,10 +52,14 @@ interface ITextFieldDefinition extends MuiInputFieldOptions, ILayoutOptions {
 interface IDatePickerDefinition extends MuiInputFieldOptions, ILayoutOptions, ITextFieldProps {
     serverPattern?: string,
     displayPattern?: string,
-  
+
 }
 
 interface IDateTimePickerDefinition extends IDatePickerDefinition, MuiInputFieldOptions, ILayoutOptions, ITextFieldProps {
+
+}
+
+interface ITimePickerDefinition extends IDatePickerDefinition, MuiInputFieldOptions, ILayoutOptions, ITextFieldProps {
 
 }
 
@@ -126,7 +130,8 @@ interface IEventListeners {
 export type {
     ITextFieldDefinition, ISelectDefinition, IDatePickerDefinition, IServerLookupDefinition,
     ISwitchDefinition, IRadioGroupDefinition, ICheckBoxDefinition, ICheckBoxGroupDefinition,
-    ISliderDefinition, IServerCheckboxDefinition, IRatingDefinition, IDateTimePickerDefinition
+    ISliderDefinition, IServerCheckboxDefinition, IRatingDefinition, IDateTimePickerDefinition,
+    ITimePickerDefinition
 }
 
 export type { MuiInputFieldOptions, IEventListeners, ValueLabel, TextViewAttributeDefinition, ILookupViewOptions }

@@ -45,6 +45,8 @@ interface IDatePickerDefinition extends MuiInputFieldOptions, ILayoutOptions, IT
 }
 interface IDateTimePickerDefinition extends IDatePickerDefinition, MuiInputFieldOptions, ILayoutOptions, ITextFieldProps {
 }
+interface ITimePickerDefinition extends IDatePickerDefinition, MuiInputFieldOptions, ILayoutOptions, ITextFieldProps {
+}
 interface ILookupViewOptions extends MuiInputFieldOptions, ILayoutOptions, ITextFieldProps {
     lookupOptions?: {
         idAttribute: string;
@@ -95,5 +97,5 @@ interface IEventListeners {
     onValueChange: (data: any) => void;
     onSearch?: (searchKey: string, limt?: number, offset?: number) => void;
 }
-export type { ITextFieldDefinition, ISelectDefinition, IDatePickerDefinition, IServerLookupDefinition, ISwitchDefinition, IRadioGroupDefinition, ICheckBoxDefinition, ICheckBoxGroupDefinition, ISliderDefinition, IServerCheckboxDefinition, IRatingDefinition, IDateTimePickerDefinition };
+export type { ITextFieldDefinition, ISelectDefinition, IDatePickerDefinition, IServerLookupDefinition, ISwitchDefinition, IRadioGroupDefinition, ICheckBoxDefinition, ICheckBoxGroupDefinition, ISliderDefinition, IServerCheckboxDefinition, IRatingDefinition, IDateTimePickerDefinition, ITimePickerDefinition };
 export type { MuiInputFieldOptions, IEventListeners, ValueLabel, TextViewAttributeDefinition, ILookupViewOptions };

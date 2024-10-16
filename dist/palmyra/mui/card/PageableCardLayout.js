@@ -25,6 +25,7 @@ import "../form/MuiOptionsView.js";
 import "../form/MuiLookupView.js";
 import "../form/MuiDateView.js";
 import "../form/MuiDateRangePicker.js";
+import "../form/MuiTimePicker.js";
 import "../grid/plugins/filter/FilterForm.js";
 import { SelectablePagination as l } from "../grid/plugins/pagination/SelectablePagination.js";
 /* empty css                        */
@@ -36,7 +37,7 @@ import "../widget/DropdownButton.js";
 import "../grid/GridX.js";
 import "../grid/PalmyraGrid.js";
 import "../grid/StaticGrid.js";
-const $ = (t) => {
+const w = (t) => {
   const o = t.queryRef || g(), e = (i, p) => {
     if (t.onDataChange)
       try {
@@ -57,5 +58,5 @@ const $ = (t) => {
   ] });
 };
 export {
-  $ as PageableCardLayout
+  w as PageableCardLayout
 };

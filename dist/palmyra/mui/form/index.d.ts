@@ -18,3 +18,4 @@ export { MuiOptionsView } from './MuiOptionsView';
 export { MuiLookupView } from './MuiLookupView';
 export { MuiDateView } from './MuiDateView';
 export { MuiDateRangePicker } from './MuiDateRangePicker';
+export { MuiTimePicker } from './MuiTimePicker';
