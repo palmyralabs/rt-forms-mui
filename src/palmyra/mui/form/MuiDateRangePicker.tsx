@@ -127,11 +127,12 @@ const MuiDateRangePicker = forwardRef(function MuiDatePicker(props: IDatePickerD
                             inputRef
                         },
                     }}
+                    value={getValue().from}
                     {...options}
                     onChange={(d, c) => _onChange('from', d, c)}
                     defaultValue={from}
                 />
-               <span style={{ width: '10%', textAlign: 'center', padding: '5px' }}>to</span>
+                <span style={{ width: '10%', textAlign: 'center', padding: '5px' }}>to</span>
                 <DatePicker
                     format={displayFormat}
                     label={props.label}
@@ -144,6 +145,7 @@ const MuiDateRangePicker = forwardRef(function MuiDatePicker(props: IDatePickerD
                             inputRef
                         },
                     }}
+                    value={getValue().to}
                     {...options}
                     onChange={(d, c) => _onChange('to', d, c)}
                     defaultValue={to}

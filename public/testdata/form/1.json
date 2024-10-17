@@ -15,12 +15,13 @@
         "date": "2001-04-18",
         "dates": "2023-04-12...2023-07-16",
         "dateTime": "2023-04-23 12:12:12",
+        "time": "10:10:12",
         "serverLookup": {
             "sid": 1,
             "location": "Chennai"
         },
         "sname": 3,
-        "rating": 2.5,
+        "rating": 3.5,
         "slider": 80,
         "rangeSlider": [
             50,
@@ -28,8 +29,8 @@
         ],
         "check": 1,
         "checkboxGroup": [
-            1,
-            2
+            0,
+            1
         ]
     }
 }

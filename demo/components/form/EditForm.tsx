@@ -1,15 +1,17 @@
 
 import { FieldGroupContainer } from "@palmyralabs/rt-forms";
-import { MuiCheckBox, MuiCheckBoxGroup, MuiDatePicker, MuiDateRangePicker, MuiDateTimePicker, MuiNumberField, MuiPassword, MuiRadioGroup, MuiSelect, MuiServerLookup, MuiSwitch, MuiTextField } from "../../../src/palmyra";
+import { MuiCheckBox, MuiCheckBoxGroup, MuiDatePicker, MuiDateRangePicker, MuiDateTimePicker, MuiNumberField, MuiPassword, MuiRadioGroup, MuiRating, MuiSelect, MuiServerLookup, MuiSwitch, MuiTextField } from "../../../src/palmyra";
 import FormX from "../wire/FormX";
 import { MuiTimePicker } from "../../../src/palmyra/mui/form/MuiTimePicker";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 
 const EditForm = () => {
     const formRef = useRef<any>();
 
-    console.log(formRef?.current?.getData())
+    useEffect(() => {
+        console.log(formRef?.current?.getData())
+    })
     return (
         <>
             <FormX formRef={formRef}>
@@ -45,11 +47,12 @@ const EditForm = () => {
 
                     <h4>Option</h4>
 
-                    <MuiCheckBoxGroup attribute="radio" options={{ 1: 'Active', 0: 'De-Active' }} />
-                    <MuiCheckBox attribute="radio" />
+                    <MuiCheckBoxGroup attribute="checkboxGroup" options={{ 1: 'Active', 0: 'De-Active' }} />
+                    <MuiCheckBox attribute="check" />
                     <MuiSelect attribute="select" options={{ 1: 'True', 0: 'False' }} />
                     <MuiRadioGroup attribute="radio" options={{ 1: 'Active', 0: 'De-Active' }} />
                     <MuiSwitch attribute="switch" options={{ 'True': 1, 'False': 0 }} />
+                    <MuiRating attribute="rating" precision={0.5} />
 
                     <h4>Lookup</h4>
 
@@ -109,11 +112,18 @@ const EditForm = () => {
                     />
 
                     <MuiDateRangePicker attribute="dates"
-                        placeholder="Enter Name"
                         variant="standard"
                         label="Date Range"
                         serverPattern="YYYY-MM-DD" displayPattern="DD-MM-YYYY"
                     />
+
+                    <MuiDateRangePicker attribute="dateRange"
+                        defaultValue={'2023-02-12...2023-03-20'}
+                        variant="standard"
+                        label="Date Range"
+                        serverPattern="YYYY-MM-DD" displayPattern="DD-MM-YYYY"
+                    />
+
 
                 </FieldGroupContainer>
             </FormX>
