@@ -24,8 +24,8 @@ export default defineConfig({
     },
     lib: {
       entry: resolve(__dirname, 'src/main.ts'),
-      name: 'PalmyraTsUtils',
-      fileName: 'palmyra-ts-utils',
+      name: 'PalmyraRTFormsMUI',
+      fileName: 'palmyra-rt-forms-mui',
       formats: ['es']
     },
     rollupOptions: {
@@ -38,6 +38,7 @@ export default defineConfig({
         '@palmyralabs/palmyra-wire',
         '@palmyralabs/rt-forms',
         '@palmyralabs/ts-predicates',
+        '@palmyralabs/ts-utils',
         'jspdf',
         'react',
         'html2canvas',
