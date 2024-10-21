@@ -1,6 +1,7 @@
 import { IInputField } from '@palmyralabs/rt-forms';
 import { act, fireEvent, screen } from '@testing-library/react';
 import { MutableRefObject } from 'react';
+import { expect } from 'vitest';
 
 
 const testOptional2Mandatory = (textField: HTMLElement,

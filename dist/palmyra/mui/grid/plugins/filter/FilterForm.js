@@ -7,7 +7,7 @@ import { d as N, T as g } from "../../../../../chunks/index3.js";
 import { convertToField as j } from "./GridFieldConverter.js";
 import v from "./FieldGenerator.js";
 import '../../../../../assets/FilterForm.css';const w = (t) => {
-  const s = {}, c = R(), a = t.defaultFilter || {}, f = j(t.columns), u = () => f.map((e, r) => v(e, e.label)), p = t.onClose || ((e) => {
+  const s = t.queryRef.current.getCurrentFilter() || {}, c = R(), a = t.defaultFilter || {}, f = j(t.columns), u = () => f.map((e, r) => v(e, e.label)), p = t.onClose || ((e) => {
   });
   Object.keys(a || {}).map((e) => {
     const r = a[e];

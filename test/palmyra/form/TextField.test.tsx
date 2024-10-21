@@ -1,9 +1,10 @@
-import { describe, test } from "vitest";
+import { describe, expect, test } from "vitest";
 import { act, fireEvent, queryByAttribute, render, renderHook, screen } from '@testing-library/react';
 import { MuiTextField } from "../../../src/palmyra";
-import { IForm, IInputField, PalmyraForm } from "@palmyralabs/rt-forms";
+import { IForm, PalmyraForm } from "@palmyralabs/rt-forms";
 import { useRef } from "react";
 import { testMandatory2Optional, testOptional2Mandatory } from "./commons/util";
+// import { Button } from "@mui/material";
 
 
 describe('Textfield', () => {
@@ -11,8 +12,9 @@ describe('Textfield', () => {
     const initProps = () => {
         const getById = queryByAttribute.bind(null, 'id');
         const formRef = renderHook(() => useRef<IForm>()).result.current;
-        const fieldRef = renderHook(() => useRef<IInputField>()).result.current;
-        return { getById, formRef, fieldRef }
+        const fieldRef = renderHook(() => useRef<any>()).result.current;
+        const numberFieldRef = renderHook(() => useRef<any>()).result.current;
+        return { getById, formRef, fieldRef, numberFieldRef }
     }
 
     test('Input', () => {
