@@ -59,11 +59,12 @@
   "peerDependencies": {
     "dayjs": "^1.11.13",
     "@palmyralabs/palmyra-wire": "^1.1.0",
-    "@palmyralabs/ts-utils": "0.1.0",    
+    "@palmyralabs/ts-utils": "^0.2.0",    
     "@palmyralabs/ts-predicates": "github:palmyralabs/ts-predicates"
   },
   "overrides": {
     "glob": "^11.0.0",
-    "tough-cookie":"5.0.0"
+    "tough-cookie":"5.0.0",
+    "react": "^18.3.1"
   }
 }
