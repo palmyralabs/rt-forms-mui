@@ -6,6 +6,7 @@
         "select": 1,
         "radio": 1,
         "switch": 1,
+        "switchs": "<",
         "radioView": 1,
         "multiSelect": [
             "3",

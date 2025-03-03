@@ -42,8 +42,8 @@ const P = O(function(t, c) {
             control: /* @__PURE__ */ o(
               y,
               {
-                icon: /* @__PURE__ */ o(H, { style: { fontSize: "20px" } }),
-                checkedIcon: /* @__PURE__ */ o(T, { style: { fontSize: "20px" } }),
+                icon: /* @__PURE__ */ o(T, { style: { fontSize: "20px" } }),
+                checkedIcon: /* @__PURE__ */ o(H, { style: { fontSize: "20px" } }),
                 checked: p(e),
                 autoFocus: x,
                 disabled: t.readOnly,

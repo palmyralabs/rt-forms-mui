@@ -1,15 +1,15 @@
 var t = Object.defineProperty;
 var c = (r, o, e) => o in r ? t(r, o, { enumerable: !0, configurable: !0, writable: !0, value: e }) : r[o] = e;
 var a = (r, o, e) => c(r, typeof o != "symbol" ? o + "" : o, e);
-import { TableView as d, Home as i, Feed as n, InsertChart as s, CreditCard as m, Dashboard as h, AutoAwesomeMosaic as l } from "@mui/icons-material";
+import { AutoAwesomeMosaic as d, Dashboard as i, CreditCard as n, InsertChart as s, Feed as m, Home as h, TableView as l } from "@mui/icons-material";
 const p = {
-  grid: d,
-  home: i,
-  form: n,
+  grid: l,
+  home: h,
+  form: m,
   chart: s,
-  card: m,
-  dashboard: h,
-  layout: l
+  card: n,
+  dashboard: i,
+  layout: d
 };
 class I {
   constructor() {
