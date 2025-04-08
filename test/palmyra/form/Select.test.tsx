@@ -1,9 +1,8 @@
 import { describe, expect, test } from "vitest";
 import { fireEvent, queryByAttribute, render, renderHook } from '@testing-library/react';
 import { MuiSelect } from "../../../src/palmyra";
-import { IForm, IInputField, ISelectField, PalmyraForm } from "@palmyralabs/rt-forms";
-import React, { act, useRef } from "react";
-import { testOptional2Mandatory } from "./commons/util";
+import { IForm, ISelectField, PalmyraForm } from "@palmyralabs/rt-forms";
+import { useRef } from "react";
 
 describe('Mui Select', () => {
 
