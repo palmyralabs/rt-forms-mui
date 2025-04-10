@@ -2,7 +2,7 @@ import { describe, expect, test } from "vitest";
 import { fireEvent, queryByAttribute, render, renderHook } from '@testing-library/react';
 import { MuiSelect } from "../../../src/palmyra";
 import { IForm, ISelectField, PalmyraForm } from "@palmyralabs/rt-forms";
-import { act, useRef } from "react";
+import { useRef } from "react";
 
 describe('Mui Select', () => {
 
