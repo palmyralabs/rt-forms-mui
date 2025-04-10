@@ -34,22 +34,21 @@ describe('MuiDatePicker', () => {
         expect(updatedValue).toBe("2025-12-21");
     });
 
-    // test('Write -> ReadOnly', () => {
-    //     const { formRef, fieldRef } = initProps();
-    //     const datePickerDefn = <PalmyraForm formData={{ datePicker: "2003-01-21" }} ref={formRef} >
-    //         <MuiDatePicker attribute="datePicker" variant="standard" ref={fieldRef} label="Date" />
-    //     </PalmyraForm>
+    test('Write -> ReadOnly', () => {
+        const { formRef, fieldRef } = initProps();
+        const datePickerDefn = <PalmyraForm formData={{ datePicker: "2003-01-21" }} ref={formRef} >
+            <MuiDatePicker attribute="datePicker" variant="standard" ref={fieldRef} label="Date" />
+        </PalmyraForm>
 
-    //     const renderer = render(datePickerDefn);
-    //     const datePicker = renderer.getByLabelText('Date') as HTMLInputElement;
+        const renderer = render(datePickerDefn);
+        const datePicker = renderer.getByLabelText('Date') as HTMLInputElement;
 
-    //     expect(datePicker).toHaveProperty('readOnly', false)
+        expect(datePicker).toHaveProperty('readOnly', false)
 
-    //     act(() => {
-    //         fieldRef.current.setValue(new Date("2003-01-21"));
-    //         fieldRef.current.setReadOnly(true);
-    //     });
-    // })
+        act(() => {
+            fieldRef.current.setReadOnly(true);
+        });
+    })
 
     test('Disabled -> Enabled', () => {
         const { formRef, fieldRef } = initProps();
