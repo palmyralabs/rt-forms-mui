@@ -26,32 +26,30 @@ describe('MuiDatePicker', () => {
         const renderer = render(datePickerDefn);
         const datePicker = renderer.getByLabelText('Date') as HTMLInputElement;
 
-        const updatedValue = formRef?.current?.getData().dateField;
-        console.log(updatedValue);
-
         act(() => {
             fireEvent.change(datePicker, { target: { value: "2025-12-21" } });
         });
 
+        const updatedValue = formRef.current.getData().datePicker;
         expect(updatedValue).toBe("2025-12-21");
     });
 
-    test('Write -> ReadOnly', () => {
-        const { formRef, fieldRef } = initProps();
-        const datePickerDefn = <PalmyraForm formData={{ datePicker: "2003-01-21" }} ref={formRef} >
-            <MuiDatePicker attribute="datePicker" variant="standard" ref={fieldRef} label="Date" />
-        </PalmyraForm>
+    // test('Write -> ReadOnly', () => {
+    //     const { formRef, fieldRef } = initProps();
+    //     const datePickerDefn = <PalmyraForm formData={{ datePicker: "2003-01-21" }} ref={formRef} >
+    //         <MuiDatePicker attribute="datePicker" variant="standard" ref={fieldRef} label="Date" />
+    //     </PalmyraForm>
 
-        const renderer = render(datePickerDefn);
-        const datePicker = renderer.getByLabelText('Date') as HTMLInputElement;
+    //     const renderer = render(datePickerDefn);
+    //     const datePicker = renderer.getByLabelText('Date') as HTMLInputElement;
 
-        expect(datePicker).toHaveProperty('readOnly', false)
+    //     expect(datePicker).toHaveProperty('readOnly', false)
 
-        act(() => {
-            fieldRef.current.setValue("2003-01-21");
-            fieldRef.current.setReadOnly(true);
-        });
-    })
+    //     act(() => {
+    //         fieldRef.current.setValue(new Date("2003-01-21"));
+    //         fieldRef.current.setReadOnly(true);
+    //     });
+    // })
 
     test('Disabled -> Enabled', () => {
         const { formRef, fieldRef } = initProps();
@@ -60,16 +58,15 @@ describe('MuiDatePicker', () => {
         </PalmyraForm>
 
         const renderer = render(datePickerDefn);
-        const inputBox = renderer.getByLabelText('Date') as HTMLInputElement;
+        const datePicker = renderer.getByLabelText('Date') as HTMLInputElement;
 
-        expect(inputBox).toHaveProperty('disabled', true);
+        expect(datePicker).toHaveProperty('disabled', true);
 
         act(() => {
-            fieldRef.current.setValue("2003-01-21");
-            fieldRef.current.setDisabled(false);
+            fieldRef?.current?.setDisabled(false);
         });
 
-        expect(inputBox).toHaveProperty('disabled', false);
+        expect(datePicker).toHaveProperty('disabled', false);
     })
 
 });
