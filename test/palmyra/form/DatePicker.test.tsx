@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { describe, expect, test } from "vitest";
-import { act, fireEvent, queryByAttribute, render, renderHook, screen } from '@testing-library/react';
+import { act, fireEvent, queryByAttribute, render, renderHook } from '@testing-library/react';
 import { MuiDatePicker } from "../../../src/palmyra";
 import { IForm, PalmyraForm } from "@palmyralabs/rt-forms";
 import dayjs from 'dayjs';
@@ -33,23 +33,23 @@ describe('MuiDatePicker', () => {
         expect(updatedValue).toBe("2025-12-21");
     });
 
-    // test('ReadOnly -> Write', () => {
-    //     const { formRef, fieldRef } = initProps();
-    //     const datePickerDefn = <PalmyraForm formData={{ datePicker: "2003-01-21" }} ref={formRef} >
-    //         <MuiDatePicker attribute="datePicker" variant="standard" label="Date" readOnly />
-    //     </PalmyraForm>
+    test('ReadOnly -> Write', () => {
+        const { formRef, fieldRef } = initProps();
+        const datePickerDefn = <PalmyraForm formData={{ datePicker: "2003-01-21" }} ref={formRef} >
+            <MuiDatePicker attribute="datePicker" variant="standard" label="Date" ref={fieldRef} readOnly />
+        </PalmyraForm>
 
-    //     const renderer = render(datePickerDefn);
-    //     const datePicker = renderer.getByLabelText('Date') as HTMLInputElement;
+        const renderer = render(datePickerDefn);
+        const datePicker = renderer.getByLabelText('Date') as HTMLInputElement;
 
-    //     expect(datePicker).toHaveProperty('readOnly', true);
+        expect(datePicker).toHaveProperty('readOnly', true);
 
-    //     act(() => {
-    //         fieldRef.current.setReadOnly(false);
-    //     });
+        act(() => {
+            fieldRef.current.setReadOnly(false);
+        });
 
-    //     expect(datePicker).toHaveProperty('readOnly', false);
-    // })
+        expect(datePicker).toHaveProperty('readOnly', false);
+    })
 
     test('Write -> ReadOnly', () => {
         const { formRef, fieldRef } = initProps();
@@ -95,6 +95,7 @@ describe('MuiDatePicker', () => {
 
         const renderer = render(datePickerDefn);
         const datePicker = renderer.getByLabelText('Date') as HTMLInputElement;
+        expect(datePicker).toHaveProperty('disabled', false);
 
         act(() => {
             fieldRef.current.setDisabled(true);
@@ -119,12 +120,11 @@ describe('MuiDatePicker', () => {
         render(datePickerDefn);
 
         act(() => {
-            if (!newDate.isBefore(minDate))
-                fieldRef.current.setValue(newDate);
+            fieldRef.current.setValue(newDate);
         });
 
         const updatedValue = formRef.current.getData().datePicker;
-        expect(updatedValue).toBe('2003-01-21');
+        expect(updatedValue).toBe('2002-01-01');
     });
 
 
