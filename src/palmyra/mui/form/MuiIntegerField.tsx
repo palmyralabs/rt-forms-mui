@@ -6,7 +6,12 @@ import { ITextFieldDefinition } from './types';
 
 const MuiIntegerField = forwardRef(function MuiIntegerField(props: ITextFieldDefinition & TextFieldProps, ref: MutableRefObject<ITextField>) {
 
-    const fieldManager = useFieldManager(props.attribute, props);
+    const format = (rawData: string) => {
+        if (rawData != undefined && rawData != null)
+            return parseInt(rawData);
+    }
+
+    const fieldManager = useFieldManager(props.attribute, props, { format });
     const { getError, getValue, setValue, mutateOptions, refreshError } = fieldManager;
     const currentRef = ref ? ref : useRef<ITextField>(null);
     const error: IFormFieldError = getError();

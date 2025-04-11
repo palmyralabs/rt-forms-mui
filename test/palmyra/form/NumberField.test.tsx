@@ -57,6 +57,7 @@ describe('NumberField', () => {
             <MuiNumberField id="numberField" attribute="numberField" ref={fieldRef}
                 disabled invalidMessage="Invalid" validRule={"number"} />
         </PalmyraForm>
+        
         const dom = render(numberFieldDefn);
         expect(() => screen.getByText("Invalid"))
 

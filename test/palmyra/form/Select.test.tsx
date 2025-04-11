@@ -1,7 +1,7 @@
-import { describe, test } from "vitest";
+import { describe, expect, test } from "vitest";
 import { fireEvent, queryByAttribute, render, renderHook } from '@testing-library/react';
 import { MuiSelect } from "../../../src/palmyra";
-import { IForm, IInputField, PalmyraForm } from "@palmyralabs/rt-forms";
+import { IForm, ISelectField, PalmyraForm } from "@palmyralabs/rt-forms";
 import { useRef } from "react";
 
 describe('Mui Select', () => {
@@ -9,7 +9,7 @@ describe('Mui Select', () => {
     const initProps = () => {
         const getById = queryByAttribute.bind(null, 'id');
         const formRef = renderHook(() => useRef<IForm>()).result.current;
-        const fieldRef = renderHook(() => useRef<IInputField>()).result.current;
+        const fieldRef = renderHook(() => useRef<ISelectField>()).result.current;
         const getByRole = queryByAttribute.bind(null, 'role')
         // const getByText = queryByAttribute.bind(null, 'text')
         return { getById, formRef, fieldRef, getByRole }
@@ -30,26 +30,45 @@ describe('Mui Select', () => {
         fireEvent.click(selectField);
     });
 
-    // test('Select Change', () => {
-    //     const { formRef, getByRole } = initProps();
-    //     const selectDefn = (
-    //         <PalmyraForm formData={{ select: 1 }} ref={formRef}>
-    //             <MuiSelect id="select" attribute="select" options={{ 1: "True", 2: "False" }} />
-    //         </PalmyraForm>
-    //     );
+    test('Select Change', async () => {
+        const { getById, formRef } = initProps();
+        const selectDefn = (
+            <PalmyraForm formData={{ select: 1 }} ref={formRef}>
+                <MuiSelect id="select" attribute="select" options={{ 1: "True", 2: "False" }} />
+            </PalmyraForm>
+        );
 
-    //     const dom = render(selectDefn);
+        const { getByText } = render(selectDefn);
 
-    //     const selectField = getByRole(dom.container, 'combobox');
+        const dom = render(selectDefn);
 
-    //     fireEvent.mouseDown(selectField);
-    //     // const option = getByText(dom.container, 'False');
-    //     // fireEvent.click(option);
+        const selectField = getById(dom.container, 'select');
 
-    //     expect(selectField).toBeTruthy();
-    // });
+        fireEvent.mouseDown(selectField);
+
+        const option = getByText('False');
+        fireEvent.click(option);
+
+        expect(selectField.textContent).toBe('False');
+    });
+
+    // test('Disabled -> Enabled', () => {
+    //     const { getById, formRef, fieldRef } = initProps();
+    //     const selectFieldDefn = <PalmyraForm formData={{ selectField: 1 }} ref={formRef} >
+    //         <MuiSelect id="selectField" attribute="selectField" options={{ 1: "True", 2: "False" }} disabled />
+    //     </PalmyraForm>
+
+    //     const dom = render(selectFieldDefn);
+
+    //     const selectField = getById(dom.container, 'selectField');
+    //     expect(selectField).toHaveProperty('disabled', true);
+
+    //     act(() => {
+    //         // fieldRef.current.setValue(1);
+    //         fieldRef.current.setDisabled(false);
+    //     });
+
+    //     expect(selectField).toHaveProperty('disabled', false);
+    // })
 
 });
-
-
-
