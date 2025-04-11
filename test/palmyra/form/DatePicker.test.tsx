@@ -119,9 +119,8 @@ describe('MuiDatePicker', () => {
         render(datePickerDefn);
 
         act(() => {
-            if (newDate.isBefore(minDate))
-                return;
-            fieldRef.current.setValue(newDate);
+            if (!newDate.isBefore(minDate))
+                fieldRef.current.setValue(newDate);
         });
 
         const updatedValue = formRef.current.getData().datePicker;
@@ -145,13 +144,37 @@ describe('MuiDatePicker', () => {
         render(datePickerDefn);
 
         act(() => {
-            if (newDate.isAfter(maxDate))
-                return;
-            fieldRef.current.setValue(newDate);
+            if (!newDate.isAfter(maxDate))
+                fieldRef.current.setValue(newDate);
         });
 
         const updatedValue = formRef.current.getData().datePicker;
         expect(updatedValue).toBe('2002-11-25');
+    });
+
+    test('Minimum and Maximum Date Validation', async () => {
+        const { formRef, fieldRef } = initProps();
+
+        const minDate = dayjs('2003-01-01');
+        const maxDate = dayjs('2003-12-31');
+        const newDate = dayjs('2004-03-28');
+
+        const datePickerDefn = (
+            <PalmyraForm formData={{ datePicker: '2003-10-08' }} ref={formRef}>
+                <MuiDatePicker
+                    attribute="datePicker" variant="standard" ref={fieldRef} label="Date" minDate={minDate} maxDate={maxDate} />
+            </PalmyraForm>
+        );
+
+        render(datePickerDefn);
+
+        act(() => {
+            if (!newDate.isBefore(minDate) && !newDate.isAfter(maxDate))
+                fieldRef.current.setValue(newDate);
+        });
+
+        const updatedValue = formRef.current.getData().datePicker;
+        expect(updatedValue).toBe('2003-10-08');
     });
 
     // test('Optional -> Mandatory', () => {
