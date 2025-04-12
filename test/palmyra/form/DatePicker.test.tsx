@@ -239,6 +239,39 @@ describe('MuiDatePicker', () => {
         expect(updatedValue).toBe('2003-10-08');
     });
 
+    test('Minimum and Maximum Date Validation - when user typing', async () => {
+        const { formRef, fieldRef } = initProps();
+        const user = userEvent.setup();
+
+        const minDate = dayjs('2003-01-01');
+        const maxDate = dayjs('2003-12-31');
+        const newDate = dayjs('2004-03-28');
+
+        const datePickerDefn = (
+            <PalmyraForm formData={{ datePicker: '2003-10-08' }} ref={formRef}>
+                <MuiDatePicker
+                    attribute="datePicker" variant="standard" ref={fieldRef} label="Date"
+                    slotProps={{
+                        textField: { inputProps: { 'data-testid': 'date-input' } }
+                    }} minDate={minDate} maxDate={maxDate} />
+            </PalmyraForm>
+        );
+
+        render(datePickerDefn);
+
+        const input = screen.getByTestId('date-input');
+        await user.clear(input);
+        await user.type(input, '2004-03-28');
+
+        act(() => {
+            fieldRef.current.setValue(newDate);
+        });
+
+        expect((input as HTMLInputElement).value).toBe('2004-03-28');
+        await user.tab();
+        expect(input).toHaveAttribute('aria-invalid', 'true');
+    });
+
     // test('Optional -> Mandatory', () => {
     //     const { formRef, fieldRef } = initProps();
     //     const datePickerDefn = <PalmyraForm formData={{ datePicker: "2003-01-21" }} ref={formRef} >
