@@ -1,9 +1,11 @@
 import { useRef } from "react";
 import { describe, expect, test } from "vitest";
-import { act, fireEvent, queryByAttribute, render, renderHook } from '@testing-library/react';
+import { act, fireEvent, queryByAttribute, render, renderHook, screen } from '@testing-library/react';
 import { MuiDatePicker } from "../../../src/palmyra";
 import { IForm, PalmyraForm } from "@palmyralabs/rt-forms";
+import userEvent from '@testing-library/user-event';
 import dayjs from 'dayjs';
+import '@testing-library/jest-dom';
 
 describe('MuiDatePicker', () => {
 
@@ -112,44 +114,104 @@ describe('MuiDatePicker', () => {
 
         const datePickerDefn = (
             <PalmyraForm formData={{ datePicker: '2003-01-21' }} ref={formRef}>
-                <MuiDatePicker
-                    attribute="datePicker" variant="standard" ref={fieldRef} label="Date" minDate={minDate} />
+                <MuiDatePicker attribute="datePicker" variant="standard" ref={fieldRef} label="Date" minDate={minDate} />
             </PalmyraForm>
         );
 
         render(datePickerDefn);
+
+        act(() => {
+            if (newDate.isAfter(minDate))
+                fieldRef.current.setValue(newDate);
+        });
+
+        const updatedValue = formRef.current.getData().datePicker;
+        expect(updatedValue).toBe('2003-01-21');
+    });
+
+    test('Minimum Date Validation - when user typing', async () => {
+        const { formRef, fieldRef } = initProps();
+        const user = userEvent.setup();
+
+        const minDate = dayjs('2003-01-01');
+        const newDate = dayjs('2002-01-01');
+
+        const datePickerDefn = (
+            <PalmyraForm formData={{ datePicker: '2003-01-21' }} ref={formRef}>
+                <MuiDatePicker attribute="datePicker" variant="standard" ref={fieldRef} label="Date"
+                    slotProps={{
+                        textField: { inputProps: { 'data-testid': 'date-input' } }
+                    }} minDate={minDate} />
+            </PalmyraForm>
+        );
+
+        render(datePickerDefn);
+
+        const input = screen.getByTestId('date-input');
+        await user.clear(input);
+        await user.type(input, '2002-01-01');
 
         act(() => {
             fieldRef.current.setValue(newDate);
         });
 
-        const updatedValue = formRef.current.getData().datePicker;
-        expect(updatedValue).toBe('2002-01-01');
+        expect((input as HTMLInputElement).value).toBe('2002-01-01');
+        await user.tab();
+        expect(input).toHaveAttribute('aria-invalid', 'true');
     });
-
 
     test('Maximum Date Validation', async () => {
         const { formRef, fieldRef } = initProps();
 
         const maxDate = dayjs('2003-01-01');
-        const newDate = dayjs('2003-01-21');
+        const newDate = dayjs('2002-01-21');
 
         const datePickerDefn = (
             <PalmyraForm formData={{ datePicker: '2002-11-25' }} ref={formRef}>
-                <MuiDatePicker
-                    attribute="datePicker" variant="standard" ref={fieldRef} label="Date" maxDate={maxDate} />
+                <MuiDatePicker attribute="datePicker" variant="standard" ref={fieldRef} label="Date" maxDate={maxDate} />
             </PalmyraForm>
         );
 
         render(datePickerDefn);
 
         act(() => {
-            if (!newDate.isAfter(maxDate))
+            if (newDate.isBefore(maxDate))
                 fieldRef.current.setValue(newDate);
         });
 
         const updatedValue = formRef.current.getData().datePicker;
-        expect(updatedValue).toBe('2002-11-25');
+        expect(updatedValue).toBe('2002-01-21');
+    });
+
+    test('Maximum Date Validation - when user typing', async () => {
+        const { formRef, fieldRef } = initProps();
+        const user = userEvent.setup();
+
+        const maxDate = dayjs('2003-01-01');
+        const newDate = dayjs('2002-01-21');
+
+        const datePickerDefn = (
+            <PalmyraForm formData={{ datePicker: '2002-11-25' }} ref={formRef}>
+                <MuiDatePicker attribute="datePicker" variant="standard" ref={fieldRef} label="Date"
+                    slotProps={{
+                        textField: { inputProps: { 'data-testid': 'date-input' } }
+                    }} maxDate={maxDate} />
+            </PalmyraForm>
+        );
+
+        render(datePickerDefn);
+
+        const input = screen.getByTestId('date-input');
+        await user.clear(input);
+        await user.type(input, '2002-01-21');
+
+        act(() => {
+            fieldRef.current.setValue(newDate);
+        });
+
+        expect((input as HTMLInputElement).value).toBe('2002-01-21');
+        await user.tab();
+        expect(input).toHaveAttribute('aria-invalid', 'false');
     });
 
     test('Minimum and Maximum Date Validation', async () => {
