@@ -221,12 +221,10 @@ describe('MuiDatePicker', () => {
         const maxDate = dayjs('2003-12-31');
         const newDate = dayjs('2004-03-28');
 
-        const datePickerDefn = (
-            <PalmyraForm formData={{ datePicker: '2003-10-08' }} ref={formRef}>
-                <MuiDatePicker
-                    attribute="datePicker" variant="standard" ref={fieldRef} label="Date" minDate={minDate} maxDate={maxDate} />
-            </PalmyraForm>
-        );
+        const datePickerDefn = <PalmyraForm formData={{ datePicker: '2003-10-08' }} ref={formRef}>
+            <MuiDatePicker
+                attribute="datePicker" variant="standard" ref={fieldRef} label="Date" minDate={minDate} maxDate={maxDate} />
+        </PalmyraForm>
 
         render(datePickerDefn);
 

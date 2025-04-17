@@ -39,8 +39,7 @@ describe('NumberField', () => {
         const { getById, formRef } = initProps();
         const NumberFieldDefn = <PalmyraForm formData={{ numberField: 14542 }} ref={formRef} >
             <MuiNumberField id="numberField" attribute="numberField"
-                length={{ eq: 5, errorMessage: "Length is 5" }}
-            />
+                length={{ eq: 5, errorMessage: "Length is 5" }} />
         </PalmyraForm>
         const dom = render(NumberFieldDefn);
         const NumberField = getById(dom.container, 'numberField');
@@ -57,19 +56,19 @@ describe('NumberField', () => {
             <MuiNumberField id="numberField" attribute="numberField" ref={fieldRef}
                 disabled invalidMessage="Invalid" validRule={"number"} />
         </PalmyraForm>
-        
+
         const dom = render(numberFieldDefn);
-        expect(() => screen.getByText("Invalid"))
+        expect(() => screen.getByText("Invalid"));
 
         const numberField = getById(dom.container, 'numberField');
-        expect(numberField).toHaveProperty('disabled', true)
+        expect(numberField).toHaveProperty('disabled', true);
 
         act(() => {
             fieldRef.current.setValue("12345");
             fieldRef.current.setDisabled(false);
         });
 
-        expect(numberField).toHaveProperty('disabled', false)
+        expect(numberField).toHaveProperty('disabled', false);
     })
 
     test('Enabled -> Disabled', () => {
@@ -126,17 +125,17 @@ describe('NumberField', () => {
                 readOnly invalidMessage="Invalid" validRule={"number"} />
         </PalmyraForm>
         const dom = render(numberFieldDefn);
-        expect(() => screen.getByText("Invalid"))
+        expect(() => screen.getByText("Invalid"));
 
         const numberField = getById(dom.container, 'numberField');
-        expect(numberField).toHaveProperty('readOnly', true)
+        expect(numberField).toHaveProperty('readOnly', true);
 
         act(() => {
             fieldRef.current.setValue("12345");
             fieldRef.current.setReadOnly(false);
         });
 
-        // expect(numberField).toHaveProperty('readOnly', false)
+        expect(numberField).toHaveProperty('readOnly', false);
     })
 
     test('Write -> ReadOnly', () => {
@@ -147,16 +146,16 @@ describe('NumberField', () => {
         </PalmyraForm>
 
         const dom = render(numberFieldDefn);
-        expect(() => screen.getByText("Invalid")).toBeDefined()
+        expect(() => screen.getByText("Invalid")).toBeDefined();
 
         const numberField = getById(dom.container, 'numberField');
-        expect(numberField).toHaveProperty('readOnly', false)
+        expect(numberField).toHaveProperty('readOnly', false);
 
         act(() => {
             fieldRef.current.setValue('12345');
             fieldRef.current.setReadOnly(true);
         });
 
-        // expect(numberField).toHaveProperty('readOnly', true)
+        expect(numberField).toHaveProperty('readOnly', true);
     })
 });
