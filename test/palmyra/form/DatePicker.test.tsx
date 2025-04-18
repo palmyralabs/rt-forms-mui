@@ -270,16 +270,4 @@ describe('MuiDatePicker', () => {
         expect(input).toHaveAttribute('aria-invalid', 'true');
     });
 
-    // test('Optional -> Mandatory', () => {
-    //     const { formRef, fieldRef } = initProps();
-    //     const datePickerDefn = <PalmyraForm formData={{ datePicker: "2003-01-21" }} ref={formRef} >
-    //         <MuiDatePicker attribute="datePicker" variant="standard" ref={fieldRef} label="Date" />
-    //     </PalmyraForm>
-
-    //     const renderer = render(datePickerDefn);
-    //     const datePicker = renderer.getByLabelText('Date') as HTMLInputElement;
-
-    //     testOptional2Mandatory(datePicker, fieldRef, "This Field is mandatory");
-    // })
-
 });

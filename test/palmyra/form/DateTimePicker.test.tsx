@@ -1,8 +1,10 @@
 import { useRef } from "react";
 import { describe, expect, test } from "vitest";
-import { act, fireEvent, queryByAttribute, render, renderHook } from '@testing-library/react';
+import { act, fireEvent, queryByAttribute, render, renderHook, screen } from '@testing-library/react';
 import { MuiDateTimePicker } from "../../../src/palmyra";
 import { IForm, PalmyraForm } from "@palmyralabs/rt-forms";
+import dayjs from "dayjs";
+import userEvent from "@testing-library/user-event";
 import '@testing-library/jest-dom';
 
 describe('MuiDateTimePicker', () => {
@@ -108,5 +110,56 @@ describe('MuiDateTimePicker', () => {
 
         expect(dateTimePicker).toHaveProperty('disabled', true);
     })
+
+    test('Minimum Date Validation', async () => {
+        const { formRef, fieldRef } = initProps();
+
+        const minDate = dayjs('2003-01-01');
+        const newDate = dayjs('2003-02-01 12:23:23');
+
+        const dateTimePickerDefn = <PalmyraForm formData={{ datePicker: '2003-01-17 12:23:23' }} ref={formRef}>
+            <MuiDateTimePicker attribute="dateTimePicker" variant="standard" label="DateTime" ref={fieldRef}
+                serverPattern="YYYY-MM-DD hh:mm:ss" minDate={minDate} />
+        </PalmyraForm>
+
+        render(dateTimePickerDefn);
+
+        act(() => {
+            if (newDate.isAfter(minDate))
+                fieldRef.current.setValue(newDate);
+        });
+
+        const updatedValue = formRef.current.getData().dateTimePicker;
+        expect(updatedValue).toBe('2003-02-01 12:23:23');
+    });
+
+    test('Minimum Date Validation - when user typing', async () => {
+        const { formRef, fieldRef } = initProps();
+        const user = userEvent.setup();
+
+        const minDate = dayjs('2003-01-01');
+        const newDate = dayjs('2002-01-01 12:23:23');
+
+        const dateTimePickerDefn = <PalmyraForm formData={{ datePicker: '2003-01-17 12:23:23' }} ref={formRef}>
+            <MuiDateTimePicker attribute="dateTimePicker" variant="standard" label="DateTime" ref={fieldRef} minDate={minDate}
+                slotProps={{
+                    textField: { inputProps: { 'data-testid': 'date-input' } }
+                }} serverPattern="YYYY-MM-DD hh:mm:ss" />
+        </PalmyraForm>
+
+        render(dateTimePickerDefn);
+
+        const input = screen.getByTestId('date-input');
+        await user.clear(input);
+        await user.type(input, '2002-01-01 12:23:23');
+
+        act(() => {
+            fieldRef.current.setValue(newDate);
+        });
+
+        expect((input as HTMLInputElement).value).toBe('2002-01-01 12:23:23');
+        await user.tab();
+        expect(input).toHaveAttribute('aria-invalid', 'true');
+    });
 
 });
