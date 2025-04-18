@@ -213,4 +213,58 @@ describe('MuiDateTimePicker', () => {
         expect(input).toHaveAttribute('aria-invalid', 'false');
     });
 
+    test('Minimum and Maximum Date Validation', async () => {
+        const { formRef, fieldRef } = initProps();
+
+        const minDate = dayjs('2003-01-01');
+        const maxDate = dayjs('2003-12-31');
+        const newDate = dayjs('2004-03-28 12:23:23');
+
+        const dateTimePickerDefn = <PalmyraForm formData={{ dateTimePicker: '2003-10-08 12:23:23' }} ref={formRef}>
+            <MuiDateTimePicker attribute="dateTimePicker" variant="standard" label="DateTime" ref={fieldRef}
+                serverPattern="YYYY-MM-DD hh:mm:ss" minDate={minDate} maxDate={maxDate} />
+        </PalmyraForm>
+
+        render(dateTimePickerDefn);
+
+        act(() => {
+            if (!newDate.isBefore(minDate) && !newDate.isAfter(maxDate))
+                fieldRef.current.setValue(newDate);
+        });
+
+        const updatedValue = formRef.current.getData().dateTimePicker;
+        expect(updatedValue).toBe('2003-10-08 12:23:23');
+    });
+
+    test('Minimum and Maximum Date Validation - when user typing', async () => {
+        const { formRef, fieldRef } = initProps();
+        const user = userEvent.setup();
+
+        const minDate = dayjs('2003-01-01');
+        const maxDate = dayjs('2003-12-31');
+        const newDate = dayjs('2004-03-28 12:23:23');
+
+        const dateTimePickerDefn = <PalmyraForm formData={{ dateTimePicker: '2003-10-08 12:23:23' }} ref={formRef}>
+            <MuiDateTimePicker attribute="dateTimePicker" variant="standard" label="DateTime" ref={fieldRef}
+                serverPattern="YYYY-MM-DD hh:mm:ss"
+                slotProps={{
+                    textField: { inputProps: { 'data-testid': 'date-input' } }
+                }} minDate={minDate} maxDate={maxDate} />
+        </PalmyraForm>
+
+        render(dateTimePickerDefn);
+
+        const input = screen.getByTestId('date-input');
+        await user.clear(input);
+        await user.type(input, '2004-03-28 12:23:23');
+
+        act(() => {
+            fieldRef.current.setValue(newDate);
+        });
+
+        expect((input as HTMLInputElement).value).toBe('2004-03-28 12:23:23');
+        await user.tab();
+        expect(input).toHaveAttribute('aria-invalid', 'true');
+    });
+
 });
