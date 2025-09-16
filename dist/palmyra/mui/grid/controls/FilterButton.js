@@ -5,7 +5,7 @@ import "../../widget/InfoTooltip.js";
 import { DropdownButton as m } from "../../widget/DropdownButton.js";
 import { FilterForm as n } from "../plugins/filter/FilterForm.js";
 const F = (t) => {
-  const o = e();
+  const o = e(null);
   return /* @__PURE__ */ r(
     m,
     {

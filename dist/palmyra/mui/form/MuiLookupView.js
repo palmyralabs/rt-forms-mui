@@ -1,32 +1,32 @@
-import { jsx as t, Fragment as b, jsxs as g } from "react/jsx-runtime";
-import { forwardRef as x, useRef as o, useImperativeHandle as h } from "react";
+import { jsx as t, Fragment as f, jsxs as b } from "react/jsx-runtime";
+import { forwardRef as g, useRef as o, useImperativeHandle as x } from "react";
 import '../../../assets/TextView.css';/* empty css                       */
-import { getFieldLabel as C } from "./util.js";
-import { useFieldManager as F, getFieldHandler as w, FieldDecorator as A } from "@palmyralabs/rt-forms";
-const H = x(function(e, n) {
-  const l = F(e.attribute, e), { getValue: r, mutateOptions: d } = l, u = n || o(null), i = r(), a = e.lookupOptions, s = (a == null ? void 0 : a.labelAttribute) || "name", m = e.textAlign || "left", v = e.variant || "standard", f = o(null);
-  h(u, () => ({
-    ...w(l),
+import { getFieldLabel as h } from "./util.js";
+import { useFieldManager as C, getFieldHandler as F, FieldDecorator as w } from "@palmyralabs/rt-forms";
+const j = g(function(e, a) {
+  const l = C(e.attribute, e), { getValue: c, mutateOptions: r } = l, u = a || o(null), n = c(), i = e.lookupOptions?.labelAttribute || "name", d = e.textAlign || "left", m = e.variant || "standard", v = o(null);
+  x(u, () => ({
+    ...F(l),
     focus() {
-      f.current.focus();
+      v.current.focus();
     }
   }), [l]);
-  var c = l.getFieldProps();
-  return /* @__PURE__ */ t(b, { children: !d.visible && /* @__PURE__ */ t(
-    A,
+  var s = l.getFieldProps();
+  return /* @__PURE__ */ t(f, { children: !r.visible && /* @__PURE__ */ t(
+    w,
     {
-      label: C(e),
+      label: h(e),
       customContainerClass: e.customContainerClass,
       colspan: e.colspan,
       customFieldClass: e.customFieldClass,
       customLabelClass: e.customLabelClass,
-      children: e.label ? /* @__PURE__ */ g("div", { ...c, className: "text-view-field-container", children: [
+      children: e.label ? /* @__PURE__ */ b("div", { ...s, className: "text-view-field-container", children: [
         /* @__PURE__ */ t("div", { className: "text-view-label", children: e.label }),
-        /* @__PURE__ */ t("div", { className: v == "standard" ? "text-view-value" : "text-view-value-outlined", children: i[s] || "N/A" })
-      ] }) : /* @__PURE__ */ t("div", { ...c, style: { textAlign: m }, children: i[s] || "N/A" })
+        /* @__PURE__ */ t("div", { className: m == "standard" ? "text-view-value" : "text-view-value-outlined", children: n[i] || "N/A" })
+      ] }) : /* @__PURE__ */ t("div", { ...s, style: { textAlign: d }, children: n[i] || "N/A" })
     }
   ) });
 });
 export {
-  H as MuiLookupView
+  j as MuiLookupView
 };

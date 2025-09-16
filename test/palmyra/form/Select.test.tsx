@@ -8,8 +8,8 @@ describe('Mui Select', () => {
 
     const initProps = () => {
         const getById = queryByAttribute.bind(null, 'id');
-        const formRef = renderHook(() => useRef<IForm>()).result.current;
-        const fieldRef = renderHook(() => useRef<ISelectField>()).result.current;
+        const formRef = renderHook(() => useRef<IForm>(null)).result.current;
+        const fieldRef = renderHook(() => useRef<ISelectField>(null)).result.current;
         const getByRole = queryByAttribute.bind(null, 'role')
         // const getByText = queryByAttribute.bind(null, 'text')
         return { getById, formRef, fieldRef, getByRole }

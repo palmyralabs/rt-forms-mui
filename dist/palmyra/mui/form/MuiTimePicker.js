@@ -12,19 +12,19 @@ const I = y(function(e, n) {
   }, c = (t) => {
     if (t && t.isValid && t.isValid())
       return t.format(i);
-  }, r = R(e.attribute, e, { format: c, parse: s }), { getError: f, getValue: h, setValue: g, mutateOptions: C, refreshError: P } = r, F = n || d(null), o = f(), u = d(null);
+  }, a = R(e.attribute, e, { format: c, parse: s }), { getError: f, getValue: h, setValue: g, mutateOptions: C, refreshError: P } = a, F = n || d(null), o = f(), u = d(null);
   V(F, () => ({
-    ...T(r),
+    ...T(a),
     focus() {
       u.current.focus();
     },
     setCurrent() {
     }
-  }), [r]);
-  var a = r.getFieldProps();
-  return a.defaultValue && (a.defaultValue = s(a.defaultValue)), a.onChange = (t, v) => {
+  }), [a]);
+  var r = a.getFieldProps();
+  return r.defaultValue && (r.defaultValue = s(r.defaultValue)), r.onChange = (t, v) => {
     e.readOnly || (g(t), e.onChange && e.onChange(t, v));
-  }, a.onBlur = P, /* @__PURE__ */ l(b, { children: !C.visible && /* @__PURE__ */ l(
+  }, r.onBlur = P, /* @__PURE__ */ l(b, { children: !C.visible && /* @__PURE__ */ l(
     j,
     {
       label: M(e),
@@ -48,7 +48,7 @@ const I = y(function(e, n) {
               inputRef: u
             }
           },
-          ...a,
+          ...r,
           value: h()
         }
       ) })

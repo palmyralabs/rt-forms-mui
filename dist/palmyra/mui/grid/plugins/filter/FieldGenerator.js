@@ -56,6 +56,8 @@ const k = (t) => {
       return r(e, b);
     case "switch":
       return r(e, x);
+    // case 'iosswitch':
+    //     return getReactField(props, MuiIOSSwitch);
     case "password":
       return r(e, d);
     case "rating":
@@ -69,6 +71,7 @@ const k = (t) => {
     case "dateRange":
       return e.fieldDef.colspan = 2, r(e, h);
     case "autoComplete":
+    // return getReactField(props, MuiAutoComplete);
     default:
       return k(e);
   }

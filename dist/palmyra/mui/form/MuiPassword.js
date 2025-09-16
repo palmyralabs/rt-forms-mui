@@ -4,20 +4,20 @@ import { TextField as y, IconButton as M } from "@mui/material";
 import { useFieldManager as R, getFieldHandler as V, FieldDecorator as I } from "@palmyralabs/rt-forms";
 import { getFieldLabel as L } from "./util.js";
 import { Visibility as O, VisibilityOff as B } from "@mui/icons-material";
-const D = P(function(e, l) {
-  const n = R(e.attribute, e), { getError: c, getValue: d, setValue: m, mutateOptions: f, refreshError: g } = n, h = l || u(null), s = c(), [o, C] = v(!1), i = u(null), b = (e == null ? void 0 : e.variant) || "standard";
+const D = P(function(e, s) {
+  const a = R(e.attribute, e), { getError: c, getValue: d, setValue: m, mutateOptions: f, refreshError: g } = a, h = s || u(null), o = c(), [l, C] = v(!1), i = u(null), b = e?.variant || "standard";
   x(h, () => ({
-    ...V(n),
+    ...V(a),
     focus() {
       i.current.focus();
     }
-  }), [n]);
-  var r = n.getFieldProps();
-  r.onChange = (a) => {
-    e.readOnly || (m(a.target.value), e.onChange && e.onChange(a));
-  }, r.onBlur = g;
+  }), [a]);
+  var n = a.getFieldProps();
+  n.onChange = (r) => {
+    e.readOnly || (m(r.target.value), e.onChange && e.onChange(r));
+  }, n.onBlur = g;
   const F = {
-    endAdornment: /* @__PURE__ */ t(M, { onClick: () => C((a) => !a), children: o ? /* @__PURE__ */ t(O, {}) : /* @__PURE__ */ t(B, {}) })
+    endAdornment: /* @__PURE__ */ t(M, { onClick: () => C((r) => !r), children: l ? /* @__PURE__ */ t(O, {}) : /* @__PURE__ */ t(B, {}) })
   };
   return /* @__PURE__ */ t(w, { children: !f.visible && /* @__PURE__ */ t(
     I,
@@ -31,15 +31,15 @@ const D = P(function(e, l) {
         y,
         {
           InputProps: F,
-          type: o ? "text" : "password",
+          type: l ? "text" : "password",
           label: e.label,
           variant: b,
           fullWidth: !0,
           inputRef: i,
-          ...r,
+          ...n,
           value: d(),
-          error: s.status,
-          helperText: s.message
+          error: o.status,
+          helperText: o.message
         }
       )
     }

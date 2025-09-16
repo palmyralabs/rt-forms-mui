@@ -2,7 +2,6 @@ import { RowData, ColumnDef } from '@tanstack/react-table';
 import { IGridPlugin } from '../types';
 import { ColumnDefinition, GridCustomizer, IServerQueryInput } from '@palmyralabs/rt-forms';
 import { IEndPoint } from '@palmyralabs/palmyra-wire';
-
 interface BaseTableOptions {
     'aria-label'?: string;
     showFooter?: boolean;

@@ -1,4 +1,4 @@
-import { MutableRefObject, forwardRef, useRef } from 'react';
+import { RefObject, forwardRef, useRef } from 'react';
 import { IPageQueryable } from "@palmyralabs/rt-forms"
 import { ApiDataTable } from './base/ApiDataTable';
 import { topic } from '@palmyralabs/ts-utils';
@@ -7,8 +7,8 @@ import { DataGridOptions } from './types';
 
 
 const DataGrid = forwardRef(function ServerDataGrid(props: DataGridOptions,
-  ref: MutableRefObject<IPageQueryable>) {
-  const queryRef = ref || useRef<IPageQueryable>();
+  ref: RefObject<IPageQueryable>) {
+  const queryRef = ref || useRef<IPageQueryable>(null);
 
   const onDataChange = (newData: any[], oldData?: any[]) => {
     if (props.onDataChange) {

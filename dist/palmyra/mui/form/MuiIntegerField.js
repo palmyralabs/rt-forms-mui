@@ -1,26 +1,29 @@
 import { jsx as n, Fragment as b } from "react/jsx-runtime";
-import { forwardRef as v, useRef as s, useImperativeHandle as x } from "react";
+import { forwardRef as x, useRef as u, useImperativeHandle as I } from "react";
 import { TextField as M } from "@mui/material";
-import { useFieldManager as R, getFieldHandler as I, FieldDecorator as L } from "@palmyralabs/rt-forms";
-import { getFieldLabel as D } from "./util.js";
-const w = v(function(e, r) {
-  const t = R(e.attribute, e), { getError: c, getValue: d, setValue: m, mutateOptions: f, refreshError: g } = t, C = r || s(null), i = c(), o = s(null), F = (e == null ? void 0 : e.variant) || "standard";
-  x(C, () => ({
-    ...I(t),
+import { useFieldManager as R, getFieldHandler as L, FieldDecorator as E } from "@palmyralabs/rt-forms";
+import { getFieldLabel as H } from "./util.js";
+const P = x(function(e, a) {
+  const c = (t) => {
+    if (t != null && t != null)
+      return parseInt(t);
+  }, l = R(e.attribute, e, { format: c }), { getError: d, getValue: m, setValue: f, mutateOptions: g, refreshError: C } = l, F = a || u(null), o = d(), i = u(null), h = e?.variant || "standard";
+  I(F, () => ({
+    ...L(l),
     focus() {
-      o.current.focus();
+      i.current.focus();
     }
-  }), [t]);
-  var l = t.getFieldProps();
-  return l.onChange = (a) => {
+  }), [l]);
+  var r = l.getFieldProps();
+  return r.onChange = (t) => {
     if (!e.readOnly) {
-      const h = a.target.value, u = a.target.value.replace(/\D/g, "");
-      h == u && (m(u), e.onChange && e.onChange(a));
+      const v = t.target.value, s = t.target.value.replace(/\D/g, "");
+      v == s && (f(s), e.onChange && e.onChange(t));
     }
-  }, l.onBlur = g, /* @__PURE__ */ n(b, { children: !f.visible && /* @__PURE__ */ n(
-    L,
+  }, r.onBlur = C, /* @__PURE__ */ n(b, { children: !g.visible && /* @__PURE__ */ n(
+    E,
     {
-      label: D(e),
+      label: H(e),
       customContainerClass: e.customContainerClass,
       colspan: e.colspan,
       customFieldClass: e.customFieldClass,
@@ -29,18 +32,18 @@ const w = v(function(e, r) {
         M,
         {
           label: e.label,
-          variant: F,
+          variant: h,
           fullWidth: !0,
-          inputRef: o,
-          ...l,
-          value: d(),
-          error: i.status,
-          helperText: i.message
+          inputRef: i,
+          ...r,
+          value: m(),
+          error: o.status,
+          helperText: o.message
         }
       )
     }
   ) });
 });
 export {
-  w as MuiIntegerField
+  P as MuiIntegerField
 };

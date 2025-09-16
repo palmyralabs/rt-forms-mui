@@ -1,22 +1,17 @@
-var t = Object.defineProperty;
-var c = (r, o, e) => o in r ? t(r, o, { enumerable: !0, configurable: !0, writable: !0, value: e }) : r[o] = e;
-var a = (r, o, e) => c(r, typeof o != "symbol" ? o + "" : o, e);
-import { AutoAwesomeMosaic as d, Dashboard as i, CreditCard as n, InsertChart as s, Feed as m, Home as h, TableView as l } from "@mui/icons-material";
-const p = {
-  grid: l,
-  home: h,
-  form: m,
-  chart: s,
-  card: n,
-  dashboard: i,
-  layout: d
+import { AutoAwesomeMosaic as r, Dashboard as e, CreditCard as a, InsertChart as t, Feed as c, Home as d, TableView as i } from "@mui/icons-material";
+const n = {
+  grid: i,
+  home: d,
+  form: c,
+  chart: t,
+  card: a,
+  dashboard: e,
+  layout: r
 };
-class I {
-  constructor() {
-    a(this, "getIcon", (o) => p[o]);
-  }
+class s {
+  getIcon = (o) => n[o];
 }
-const w = new I();
+const l = new s();
 export {
-  w as SimpleIconProvider
+  l as SimpleIconProvider
 };

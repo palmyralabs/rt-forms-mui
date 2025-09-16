@@ -1,5 +1,5 @@
 import { IPageQueryable, ServerCardLayout, ServerCardLayoutInput } from "@palmyralabs/rt-forms"
-import { useRef } from "react";
+import { useRef, JSX } from "react";
 import { PageQueryPluginOptions, SelectablePagination } from "../grid";
 import { topic } from "@palmyralabs/ts-utils";
 
@@ -9,7 +9,7 @@ interface IPageableCardInput extends ServerCardLayoutInput, PageQueryPluginOptio
 
 const PageableCardLayout = (props: IPageableCardInput) => {
 
-    const queryRef = props.queryRef || useRef<IPageQueryable>();
+    const queryRef = props.queryRef || useRef<IPageQueryable>(null);
 
     const onDataChange = (newData: any[], oldData?: any[]) => {
         if (props.onDataChange) {

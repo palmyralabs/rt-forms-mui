@@ -1,6 +1,6 @@
 import { KeyboardArrowDown } from "@mui/icons-material"
 import { Button, ClickAwayListener } from "@mui/material"
-import { forwardRef, MutableRefObject, useImperativeHandle, useRef, useState } from "react"
+import { forwardRef, JSX, RefObject, useImperativeHandle, useRef, useState } from "react"
 
 import './DropDownButton.css'
 
@@ -17,9 +17,9 @@ interface IDropdown {
     close: () => void
 }
 
-const DropdownButton = forwardRef(function DropDownButton(props: IDropdownButtonOptions, ref: MutableRefObject<IDropdown>) {
+const DropdownButton = forwardRef(function DropDownButton(props: IDropdownButtonOptions, ref: RefObject<IDropdown>) {
     const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
-    const currentRef = ref || useRef<IDropdown>();
+    const currentRef = ref || useRef<IDropdown>(null);
     const className = props.className || "py-dropdown-button"
 
     useImperativeHandle(currentRef, () => {

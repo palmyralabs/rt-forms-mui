@@ -1,6 +1,5 @@
 import { IEndPoint, StoreFactory, StoreOptions, Tree, TreeQueryStore } from '@palmyralabs/palmyra-wire';
 import { IconProvider } from './IconProvider';
-
 interface IChildTreeRequest {
     parent?: number;
 }

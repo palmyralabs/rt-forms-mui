@@ -10,8 +10,8 @@ describe('IntegerField', () => {
 
     const initProps = () => {
         const getById = queryByAttribute.bind(null, 'id');
-        const formRef = renderHook(() => useRef<IForm>()).result.current;
-        const fieldRef = renderHook(() => useRef<IInputField>()).result.current;
+        const formRef = renderHook(() => useRef<IForm>(null)).result.current;
+        const fieldRef = renderHook(() => useRef<IInputField>(null)).result.current;
         return { getById, formRef, fieldRef }
     }
 

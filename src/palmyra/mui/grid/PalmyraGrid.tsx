@@ -1,4 +1,4 @@
-import { forwardRef, MutableRefObject, useEffect, useRef } from "react";
+import { forwardRef, RefObject, useEffect, useRef } from "react";
 import { IPalmyraGrid, PalmyraGridOptions } from "./types";
 import { GridX } from "./GridX";
 import { topic } from "@palmyralabs/ts-utils";
@@ -13,10 +13,10 @@ import { IPageQueryable } from "@palmyralabs/rt-forms";
  * ${topic}/filter - apply filter based on the incoming data
  * 
  */
-const PalmyraGrid = forwardRef(function PalmyraGrid<ControlPropsType>(props: PalmyraGridOptions<ControlPropsType>, ref: MutableRefObject<IPalmyraGrid>) {
+const PalmyraGrid = forwardRef(function PalmyraGrid<ControlPropsType>(props: PalmyraGridOptions<ControlPropsType>, ref: RefObject<IPalmyraGrid>) {
 
     const gridTopic = props.topic;
-    const queryRef = ref || useRef<IPageQueryable>();
+    const queryRef = ref || useRef<IPageQueryable>(null);
 
     useEffect(() => {
         if (props.topic) {

@@ -8,19 +8,19 @@ const E = "palmyra.rui.sidemenu.expanded", v = "palmyra.rui.sidemenu.expanded.se
 function q(h) {
   const o = M(), g = S(null);
   let u = { name: "", id: -1, parent: null, children: [], isBranch: !0 };
-  const [i, y] = L({ data: [u], expandedIds: [], selectedId: [] }), A = h.store, l = S([]), b = (e, r, a) => e.map((s) => (s.id === r && !s.loaded && (s.loaded = !0, s.children = a.filter((d) => r == d.parent).map((d) => d.id)), s)).concat(a), w = (e) => e.split(",").map((a) => parseInt(a)), C = (e, r) => e && Array.isArray(e) ? e.map((t) => {
-    const s = t.children || "";
+  const [i, y] = L({ data: [u], expandedIds: [], selectedId: [] }), A = h.store, l = S([]), b = (e, t, r) => e.map((s) => (s.id === t && !s.loaded && (s.loaded = !0, s.children = r.filter((d) => t == d.parent).map((d) => d.id)), s)).concat(r), w = (e) => e.split(",").map((r) => parseInt(r)), C = (e, t) => e && Array.isArray(e) ? e.map((a) => {
+    const s = a.children || "";
     return {
-      id: t.id,
-      name: t.name,
-      parent: t.parent ? t.parent : r,
-      children: t.children ? w(t.children) : [],
+      id: a.id,
+      name: a.name,
+      parent: a.parent ? a.parent : t,
+      children: a.children ? w(a.children) : [],
       isBranch: s.length > 0,
       loaded: !0,
       metadata: {
-        code: t.code,
-        action: t.action,
-        target: t.target
+        code: a.code,
+        action: a.action,
+        target: a.target
       }
     };
   }) : [];
@@ -29,11 +29,11 @@ function q(h) {
   }
   k(() => {
     A.getRoot().then((e) => {
-      var r = C(e.result, -1);
-      const a = b(i.data, -1, r), t = (localStorage.getItem(E) || "").split(",");
-      l.current = t.map((c) => x(c)).filter((c) => r.some((m) => m.id == c));
-      const d = (localStorage.getItem(v) || "").split(",").map((c) => x(c)).filter((c) => r.some((m) => m.id == c));
-      y({ data: a, expandedIds: l.current, selectedId: d });
+      var t = C(e.result, -1);
+      const r = b(i.data, -1, t), a = (localStorage.getItem(E) || "").split(",");
+      l.current = a.map((c) => x(c)).filter((c) => t.some((m) => m.id == c));
+      const d = (localStorage.getItem(v) || "").split(",").map((c) => x(c)).filter((c) => t.some((m) => m.id == c));
+      y({ data: r, expandedIds: l.current, selectedId: d });
     });
   }, []);
   const O = () => {
@@ -41,11 +41,10 @@ function q(h) {
   }, R = (e) => {
     localStorage.setItem(v, e);
   }, T = (e) => {
-    var r, a;
-    if (!e.isBranch && ((r = e.metadata) != null && r.code)) {
+    if (!e.isBranch && e.metadata?.code) {
       const t = e.metadata.code;
       o(t);
-    } else if ((a = e.metadata) != null && a.target) {
+    } else if (e.metadata?.target) {
       const t = e.metadata.target;
       o(t);
     }
@@ -67,18 +66,18 @@ function q(h) {
         data: i.data,
         "aria-label": "Checkbox tree",
         onExpand: (e) => {
-          const r = e.isExpanded, a = e.element;
-          if (r)
-            a.id != "" && (l.current.includes(a.id) || l.current.push(a.id));
+          const t = e.isExpanded, r = e.element;
+          if (t)
+            r.id != "" && (l.current.includes(r.id) || l.current.push(r.id));
           else {
-            const t = l.current.indexOf(a.id);
-            t > -1 && l.current.splice(t, 1);
+            const a = l.current.indexOf(r.id);
+            a > -1 && l.current.splice(a, 1);
           }
           O();
         },
         onSelect: (e) => {
-          const r = e.isSelected, a = e.element;
-          r && !e.isHalfSelected && a.id !== "" && R(a.id);
+          const t = e.isSelected, r = e.element;
+          t && !e.isHalfSelected && r.id !== "" && R(r.id);
         },
         propagateSelect: !1,
         togglableSelect: !0,
@@ -88,9 +87,9 @@ function q(h) {
         propagateSelectUpwards: !0,
         nodeRenderer: ({
           element: e,
-          isBranch: r,
-          isExpanded: a,
-          isSelected: t,
+          isBranch: t,
+          isExpanded: r,
+          isSelected: a,
           isHalfSelected: s,
           getNodeProps: d,
           level: c,
@@ -126,16 +125,16 @@ function q(h) {
               children: /* @__PURE__ */ p(
                 "div",
                 {
-                  className: t ? "async-tree-menu-selected-list" : "async-tree-menu-list",
+                  className: a ? "async-tree-menu-selected-list" : "async-tree-menu-list",
                   onClick: (f) => {
-                    t || m(f), T(e);
+                    a || m(f), T(e);
                   },
                   children: [
                     /* @__PURE__ */ p("div", { className: "async-tree-menu-list-text-container", children: [
                       /* @__PURE__ */ n("div", { className: "menu-icon" }),
                       /* @__PURE__ */ n("span", { className: "menu-name", children: e.name })
                     ] }),
-                    /* @__PURE__ */ n("div", { className: "async-tree-menu-list-arrow-container", children: r && D(a, e) })
+                    /* @__PURE__ */ n("div", { className: "async-tree-menu-list-arrow-container", children: t && D(r, e) })
                   ]
                 }
               )

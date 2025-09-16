@@ -4,20 +4,20 @@ import R from "./EmptyChildTable.js";
 import { NoopGridCustomizer as h, useServerQuery as w, generateColumns as D } from "@palmyralabs/rt-forms";
 import E from "./BaseTable.js";
 const g = d(function(o, r) {
-  const { columns: n, EmptyChild: m } = o, i = m || R, e = o.customizer || h, t = w(o), s = r || p();
-  y(s, () => t, [t]);
-  const a = D(n, e), c = o.onRowClick ? (C) => {
+  const { columns: n, EmptyChild: m } = o, i = m || R, e = o.customizer || h, t = w(o), l = r || p(null);
+  y(l, () => t, [t]);
+  const s = D(n, e), a = o.onRowClick ? (C) => {
     o.onRowClick(C);
   } : () => {
-  }, l = t.getCurrentData(), u = t.setSortColumns;
+  }, c = t.getCurrentData(), u = t.setSortColumns;
   return /* @__PURE__ */ f(
     E,
     {
-      columnDefs: a,
+      columnDefs: s,
       EmptyChild: i,
       customizer: e,
-      rowData: l,
-      onRowClick: c,
+      rowData: c,
+      onRowClick: a,
       onColumnSort: u
     }
   );

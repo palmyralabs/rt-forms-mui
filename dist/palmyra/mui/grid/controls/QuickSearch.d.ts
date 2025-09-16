@@ -1,7 +1,6 @@
 import { TextField } from '@mui/material';
 import { DataGridPluginOptions } from '../types';
 import { IPluginBtnControl } from './types';
-
 interface IQuickSearchOptions extends Pick<DataGridPluginOptions, 'queryRef' | 'columns'>, IPluginBtnControl {
     width: string;
 }

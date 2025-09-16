@@ -1,7 +1,6 @@
 import { InputType } from 'zlib';
 import { AutocompleteRenderOptionState } from '@mui/material';
 import { FieldOptions, IServerLookupOptions } from '@palmyralabs/rt-forms';
-
 interface IFieldProps {
     size?: 'small' | 'medium' | 'large';
 }

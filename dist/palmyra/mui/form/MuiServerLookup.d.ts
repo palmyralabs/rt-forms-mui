@@ -1,6 +1,5 @@
 import { IServerLookupDefinition } from './types';
 import { IServerLookupField } from '@palmyralabs/rt-forms';
-
 interface IServerLookupInput extends IServerLookupDefinition {
     onChange?: any;
 }

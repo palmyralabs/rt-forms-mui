@@ -11,15 +11,15 @@ describe('Textfield', () => {
 
     const initProps = () => {
         const getById = queryByAttribute.bind(null, 'id');
-        const formRef = renderHook(() => useRef<IForm>()).result.current;
-        const fieldRef = renderHook(() => useRef<any>()).result.current;
-        const numberFieldRef = renderHook(() => useRef<any>()).result.current;
+        const formRef = renderHook(() => useRef<IForm>(null)).result.current;
+        const fieldRef = renderHook(() => useRef<any>(null)).result.current;
+        const numberFieldRef = renderHook(() => useRef<any>(null)).result.current;
         return { getById, formRef, fieldRef, numberFieldRef }
     }
 
     test('Input', () => {
         const getById = queryByAttribute.bind(null, 'id');
-        const rdr = renderHook(() => useRef<IForm>());
+        const rdr = renderHook(() => useRef<IForm>(null));
         const formRef = rdr.result.current;
         const textFieldDefn = <PalmyraForm formData={{ textInput: "welcome" }} ref={formRef} >
         <MuiTextField id="textInput" attribute="textInput" />
@@ -36,7 +36,7 @@ describe('Textfield', () => {
 
     test('Verify Email', () => {
         const getById = queryByAttribute.bind(null, 'id');
-        const rdr = renderHook(() => useRef<IForm>());
+        const rdr = renderHook(() => useRef<IForm>(null));
         const formRef = rdr.result.current;
         const textFieldDefn = <PalmyraForm formData={{ emailAddress: "welcome" }} ref={formRef} >
             <MuiTextField id="emailAddress" attribute="emailAddress"

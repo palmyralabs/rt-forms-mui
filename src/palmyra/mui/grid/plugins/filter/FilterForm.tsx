@@ -1,7 +1,7 @@
 import { Button } from "@mui/material";
 import { ColumnDefinition, FieldGroupContainer, IForm, PalmyraForm } from "@palmyralabs/rt-forms";
 import { setValueByKey } from "@palmyralabs/ts-utils";
-import { MutableRefObject, useRef } from "react";
+import { RefObject, useRef } from "react";
 import { TbRefresh } from "react-icons/tb";
 import { TbFilterShare } from "react-icons/tb";
 import { DataGridPluginOptions } from "../../types";
@@ -18,7 +18,7 @@ interface FilterOptions extends DataGridPluginOptions {
 
 const FilterForm = (o: FilterOptions) => {
     const formattedFilterValue = o.queryRef.current.getCurrentFilter() || {};
-    const filterRef: MutableRefObject<IForm> = useRef<IForm>();
+    const filterRef: RefObject<IForm> = useRef<IForm>(null);
     const defaultFilter = o.defaultFilter || {};
 
     const columns: ColumnDefinition[] = convertToField(o.columns);

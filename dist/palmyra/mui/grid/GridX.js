@@ -7,7 +7,7 @@ import { DataGrid as p } from "./DataGrid.js";
 import { SelectablePagination as y } from "./plugins/pagination/SelectablePagination.js";
 import { renderTitle as G } from "../widget/InfoTooltip.js";
 import '../../../assets/GridX.css';const O = s(function(t, d) {
-  const e = d || g(), r = t.topic || f(() => "id" + Math.random(), []), a = {
+  const e = d || g(null), r = t.topic || f(() => "id" + Math.random(), []), a = {
     ...t.DataGridControlProps,
     queryRef: e,
     columns: t.columns,

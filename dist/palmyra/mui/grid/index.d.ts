@@ -1,5 +1,4 @@
 import { generateColumns } from '@palmyralabs/rt-forms';
-
 export { generateColumns };
 export * from './DataGrid';
 export * from './plugins';

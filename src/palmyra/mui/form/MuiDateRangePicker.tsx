@@ -1,4 +1,4 @@
-import { useRef, useImperativeHandle, forwardRef, MutableRefObject } from 'react';
+import { useRef, useImperativeHandle, forwardRef, RefObject } from 'react';
 import { DatePicker, DatePickerProps, LocalizationProvider, PickerChangeHandlerContext } from '@mui/x-date-pickers';
 import { getFieldLabel } from './util';
 import { IDatePickerDefinition } from './types';
@@ -23,7 +23,7 @@ const parseToDaysJs = (v: string, serverPattern: string): dayjs.Dayjs => {
 }
 
 const MuiDateRangePicker = forwardRef(function MuiDatePicker(props: IDatePickerDefinition & DatePickerProps<any>,
-    ref: MutableRefObject<IDateField>) {
+    ref: RefObject<IDateField>) {
     const serverPattern = props.serverPattern || props.displayPattern || "YYYY-MM-DD";
     const displayFormat: string = props.displayPattern || props.serverPattern || "YYYY-MM-DD";
 
@@ -103,7 +103,7 @@ const MuiDateRangePicker = forwardRef(function MuiDatePicker(props: IDatePickerD
 
     const _onChange = (key: string, d: dayjs.Dayjs, context: PickerChangeHandlerContext<any>) => {
         if (!props.readOnly) {
-            const v = { ...value, [key]: d }
+            const v: any = { ...value, [key]: d }
             setValue(v);
             if (props.onChange)
                 props.onChange(v, context);

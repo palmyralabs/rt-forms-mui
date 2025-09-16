@@ -5,7 +5,7 @@ import { DropdownButton, IDropdown } from "../../widget";
 import { FilterForm } from "../plugins/filter/FilterForm";
 
 const FilterButton = (o: DataGridPluginOptions) => {
-    const buttonRef = useRef<IDropdown>();
+    const buttonRef = useRef<IDropdown>(null);
 
     return (<DropdownButton title="Filter" ref={buttonRef}
         PrefixAdornment={<TbFilterShare />}>

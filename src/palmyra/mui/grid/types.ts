@@ -1,5 +1,6 @@
+import { JSX } from 'react';
 import { CellContext, OnChangeFn, Row, RowData, RowModel, RowSelectionState, Table } from "@tanstack/react-table";
-import { MutableRefObject } from "react";
+import { RefObject } from "react";
 import { ITitle } from "../types";
 import { ApiDataTableOptions } from "./base/typesInternal";
 import { ColumnDefinition, IPageQueryable } from "@palmyralabs/rt-forms";
@@ -35,7 +36,7 @@ interface DataGridOptions extends ApiDataTableOptions {
 interface PageQueryPluginOptions {
     topic: string,
     pageSize?: number | number[],
-    queryRef: MutableRefObject<IPageQueryable>
+    queryRef: RefObject<IPageQueryable>
 }
 
 interface DataGridPluginOptions extends PageQueryPluginOptions {

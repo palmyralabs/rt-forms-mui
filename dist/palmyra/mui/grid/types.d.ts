@@ -1,9 +1,8 @@
+import { JSX, RefObject } from 'react';
 import { CellContext, OnChangeFn, Row, RowData, RowModel, RowSelectionState, Table } from '@tanstack/react-table';
-import { MutableRefObject } from 'react';
 import { ITitle } from '../types';
 import { ApiDataTableOptions } from './base/typesInternal';
 import { ColumnDefinition, IPageQueryable } from '@palmyralabs/rt-forms';
-
 type IReactTanstackTable = import('@tanstack/table-core').Table<RowData>;
 type IExportOptions = PartialRecord<'csv' | 'excel' | 'pdf' | 'docx', string>;
 type CellGetter = ((props: CellContext<RowData, any>) => any);
@@ -28,7 +27,7 @@ interface DataGridOptions extends ApiDataTableOptions {
 interface PageQueryPluginOptions {
     topic: string;
     pageSize?: number | number[];
-    queryRef: MutableRefObject<IPageQueryable>;
+    queryRef: RefObject<IPageQueryable>;
 }
 interface DataGridPluginOptions extends PageQueryPluginOptions {
     topic: string;

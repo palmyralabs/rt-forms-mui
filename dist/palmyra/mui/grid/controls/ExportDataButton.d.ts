@@ -1,7 +1,6 @@
 import { DataGridPluginOptions } from '../types';
 import { EXPORT_FORMAT } from '@palmyralabs/palmyra-wire';
 import { IPluginBtnControl } from './types';
-
 interface IExportDataOptions extends Pick<DataGridPluginOptions, 'queryRef'>, IPluginBtnControl {
     exportOption: Partial<Record<EXPORT_FORMAT, string>>;
 }

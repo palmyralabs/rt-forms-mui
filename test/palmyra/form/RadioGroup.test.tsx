@@ -13,8 +13,8 @@ describe('RadioGroup', () => {
 
     const initProps = () => {
         const getById = queryByAttribute.bind(null, 'id');
-        const formRef = renderHook(() => useRef<IForm>()).result.current;
-        const fieldRef = renderHook(() => useRef<IRadioGroupField>()).result.current;
+        const formRef = renderHook(() => useRef<IForm>(null)).result.current;
+        const fieldRef = renderHook(() => useRef<IRadioGroupField>(null)).result.current;
         return { getById, formRef, fieldRef }
     }
 

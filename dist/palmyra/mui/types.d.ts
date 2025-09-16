@@ -1,6 +1,5 @@
 import { FieldOptions } from '@palmyralabs/rt-forms';
 import { ReactNode } from 'react';
-
 interface IDecoratedTitle {
     title: string;
     toolTip?: string;

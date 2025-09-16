@@ -1,7 +1,7 @@
 /**
  * Basic structure to draw the table
  */
-import { MutableRefObject, useRef } from 'react'
+import { RefObject, useRef } from 'react'
 import { Table, TableBody, TableCell, TableFooter, TableHead, TableRow } from '@mui/material'
 import './BaseTable.css';
 import ColumnHeader from './ColumnHeader'
@@ -19,7 +19,7 @@ export default function BaseTable(props: BaseTableOptions) {
 
   const { rowData, customizer, EmptyChild } = props;
   const { onColumnSort, options, onRowClick } = useBaseGridManager(props);  
-  const tableRef: MutableRefObject<IReactTanstackTable> = customizer?.getTableRef ? customizer?.getTableRef() : useRef();
+  const tableRef: RefObject<IReactTanstackTable> = customizer?.getTableRef ? customizer?.getTableRef() : useRef(null);
 
   const table = useReactTable(options);
   tableRef.current = table;

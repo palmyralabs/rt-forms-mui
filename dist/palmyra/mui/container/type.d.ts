@@ -1,5 +1,4 @@
 import { ITitle } from '../types';
-
 interface Parent {
     children?: any;
 }
