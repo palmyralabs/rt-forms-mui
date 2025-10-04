@@ -1,11 +1,11 @@
-import { useRef, useImperativeHandle, forwardRef, MutableRefObject } from 'react';
+import { useRef, useImperativeHandle, forwardRef, RefObject } from 'react';
 import { Checkbox, CheckboxProps, FormControl, FormControlLabel, FormHelperText } from '@mui/material';
 import { FieldDecorator, ICheckBoxField, IFormFieldError, getFieldHandler, useFieldManager } from '@palmyralabs/rt-forms';
 import { getFieldLabel } from './util';
 import { ICheckBoxGroupDefinition } from './types';
 import { TbSquareRounded, TbSquareRoundedCheckFilled } from 'react-icons/tb';
 
-const MuiCheckBoxGroup = forwardRef(function MuiCheckBoxGroup(props: CheckboxProps & ICheckBoxGroupDefinition, ref: MutableRefObject<ICheckBoxField>) {
+const MuiCheckBoxGroup = forwardRef(function MuiCheckBoxGroup(props: CheckboxProps & ICheckBoxGroupDefinition, ref: RefObject<ICheckBoxField>) {
     const fieldManager = useFieldManager(props.attribute, props);
     const { getError, getValue, setValue, mutateOptions, refreshError } = fieldManager;
     const currentRef = ref ? ref : useRef<ICheckBoxField>(null);

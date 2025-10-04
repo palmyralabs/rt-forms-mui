@@ -1,10 +1,10 @@
-import { useRef, useImperativeHandle, forwardRef, MutableRefObject } from 'react';
+import { useRef, useImperativeHandle, forwardRef, RefObject } from 'react';
 import { FormControl, FormHelperText, InputLabel, MenuItem, Select, SelectChangeEvent, SelectProps } from '@mui/material';
 import { getFieldHandler, IFormFieldError, ISelectField, ITextField, useFieldManager, FieldDecorator } from '@palmyralabs/rt-forms';
 import { getFieldLabel } from './util';
 import { ISelectDefinition } from './types';
 
-const MuiSelect = forwardRef(function MuiSelect(props: ISelectDefinition & SelectProps, ref: MutableRefObject<ISelectField>) {
+const MuiSelect = forwardRef(function MuiSelect(props: ISelectDefinition & SelectProps, ref: RefObject<ISelectField>) {
     const fieldManager = useFieldManager(props.attribute, props);
     const { getError, getValue, setValue, mutateOptions, refreshError } = fieldManager;
     const currentRef = ref ? ref : useRef<ITextField>(null);

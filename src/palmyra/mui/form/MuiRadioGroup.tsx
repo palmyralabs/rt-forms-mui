@@ -1,4 +1,4 @@
-import { useRef, useImperativeHandle, forwardRef, MutableRefObject } from 'react';
+import { useRef, useImperativeHandle, forwardRef, RefObject } from 'react';
 import { FormControl, FormControlLabel, FormHelperText, Radio, RadioGroup, RadioProps } from '@mui/material';
 import { IFormFieldError, IRadioGroupField, ISwitchField, getFieldHandler, useFieldManager, FieldDecorator } from '@palmyralabs/rt-forms';
 import { getFieldLabel } from './util';
@@ -7,7 +7,7 @@ import { RiRadioButtonFill } from 'react-icons/ri';
 import { IRadioGroupDefinition } from './types';
 
 
-const MuiRadioGroup = forwardRef(function MuiRadioGroup(props: IRadioGroupDefinition & RadioProps, ref: MutableRefObject<IRadioGroupField>) {
+const MuiRadioGroup = forwardRef(function MuiRadioGroup(props: IRadioGroupDefinition & RadioProps, ref: RefObject<IRadioGroupField>) {
     const fieldManager = useFieldManager(props.attribute, props);
     const { getError, getValue, setValue, mutateOptions, refreshError } = fieldManager;
     const currentRef = ref ? ref : useRef<ISwitchField>(null);

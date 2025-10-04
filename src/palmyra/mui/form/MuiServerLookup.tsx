@@ -1,4 +1,4 @@
-import { forwardRef, MutableRefObject, useEffect, useImperativeHandle, useRef, useState } from "react";
+import { forwardRef, RefObject, useEffect, useImperativeHandle, useRef, useState } from "react";
 import { IServerLookupDefinition } from "./types";
 import { getFieldLabel } from "./util";
 import { Autocomplete, CircularProgress, FormControl, FormHelperText, TextField } from "@mui/material";
@@ -12,7 +12,7 @@ interface IServerLookupInput extends IServerLookupDefinition {
 }
 
 const MuiServerLookup = forwardRef(function MuiServerLookup(props: IServerLookupInput,
-    ref: MutableRefObject<IServerLookupField>) {
+    ref: RefObject<IServerLookupField>) {
 
     const [open, setOpen] = useState(false);
 

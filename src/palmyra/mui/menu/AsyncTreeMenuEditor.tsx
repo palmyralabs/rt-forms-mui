@@ -1,4 +1,4 @@
-import { MutableRefObject, forwardRef, useEffect, useImperativeHandle, useRef, useState } from "react";
+import { RefObject, forwardRef, useEffect, useImperativeHandle, useRef, useState } from "react";
 import { AiOutlineLoading } from "react-icons/ai";
 import { FaRegSquare, FaCheckSquare, FaMinusSquare } from "react-icons/fa";
 import { IoMdArrowDropright } from "react-icons/io";
@@ -12,7 +12,7 @@ import AsyncTreeCrudDropDown from "./AsyncTreeCrudDropDown";
 import { IAsyncTreeEditor, IAsyncTreeEditorInput, IChildTreeRequest } from "./types";
 
 const AsyncTreeMenuEditor = forwardRef(function AsyncTreeMenuEditor(props: IAsyncTreeEditorInput,
-    ref: MutableRefObject<IAsyncTreeEditor>) {
+    ref: RefObject<IAsyncTreeEditor>) {
     const groupId = props.groupId;
     const loadedAlertElement = useRef(null);
     const currentRef = ref ? ref : useRef<IAsyncTreeEditor>(null);

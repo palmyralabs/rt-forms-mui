@@ -1,10 +1,10 @@
-import { MutableRefObject, forwardRef } from 'react';
+import { RefObject, forwardRef } from 'react';
 import { generateColumns, GridCustomizer, IPageQueryable, NoopGridCustomizer } from "@palmyralabs/rt-forms"
 import BaseTable from './base/BaseTable';
 import { default as defaultEmptyChild } from './base/EmptyChildTable';
 import { StaticGridOptions } from './base/typesInternal';
 
-const StaticGrid = forwardRef(function StaticGrid(props: StaticGridOptions, ref: MutableRefObject<IPageQueryable>) {
+const StaticGrid = forwardRef(function StaticGrid(props: StaticGridOptions, ref: RefObject<IPageQueryable>) {
   const { columns, EmptyChild } = props;
   const EmptyChildContainer = EmptyChild || defaultEmptyChild;
   const customizer: GridCustomizer = props.customizer || NoopGridCustomizer;

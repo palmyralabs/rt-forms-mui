@@ -1,4 +1,4 @@
-import { useRef, useImperativeHandle, forwardRef, MutableRefObject } from 'react';
+import { useRef, useImperativeHandle, forwardRef, RefObject } from 'react';
 import { getFieldHandler, ITextField, useFieldManager, FieldDecorator } from '@palmyralabs/rt-forms';
 import { getFieldLabel } from './util'
 import { ITextFieldDefinition } from './types';
@@ -9,7 +9,7 @@ interface TextViewAttributeDefinition {
 }
 
 const MuiTextView = forwardRef(function MuiTextView(props: ITextFieldDefinition & TextViewAttributeDefinition,
-    ref: MutableRefObject<ITextField>) {
+    ref: RefObject<ITextField>) {
 
     const fieldManager = useFieldManager(props.attribute, props);
     const { getValue, mutateOptions } = fieldManager;

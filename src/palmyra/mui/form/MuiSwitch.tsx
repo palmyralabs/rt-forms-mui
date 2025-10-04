@@ -1,4 +1,4 @@
-import { useRef, useImperativeHandle, forwardRef, useState, useMemo, useEffect, MutableRefObject } from 'react';
+import { useRef, useImperativeHandle, forwardRef, useState, useMemo, useEffect, RefObject } from 'react';
 import { FormControl, FormControlLabel, FormHelperText, Switch, SwitchProps } from '@mui/material';
 import { ISwitchDefinition } from './types';
 import { IFormFieldError, ISwitchField, getFieldHandler, useFieldManager, FieldDecorator } from '@palmyralabs/rt-forms';
@@ -6,7 +6,7 @@ import { getFieldLabel } from './util';
 import parseOptions from './options/OptionsParser';
 import { Android12Switch, IOSSwitch, MaterialUISwitch } from './options/SwitchTypes';
 
-const MuiSwitch = forwardRef(function MuiSwitch(props: ISwitchDefinition & SwitchProps, ref: MutableRefObject<ISwitchField>) {
+const MuiSwitch = forwardRef(function MuiSwitch(props: ISwitchDefinition & SwitchProps, ref: RefObject<ISwitchField>) {
     const fieldManager = useFieldManager(props.attribute, props);
     const { getError, getValue, setValue, mutateOptions, refreshError } = fieldManager;
     const currentRef = ref ? ref : useRef<ISwitchField>(null);

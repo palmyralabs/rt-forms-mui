@@ -1,10 +1,10 @@
-import { useRef, useImperativeHandle, forwardRef, MutableRefObject } from 'react';
+import { useRef, useImperativeHandle, forwardRef, RefObject } from 'react';
 import { TextField, TextFieldProps } from '@mui/material';
 import { FieldDecorator, getFieldHandler, IFormFieldError, ITextField, useFieldManager } from '@palmyralabs/rt-forms';
 import { getFieldLabel } from './util'
 import { ITextFieldDefinition } from './types';
 
-const MuiIntegerField = forwardRef(function MuiIntegerField(props: ITextFieldDefinition & TextFieldProps, ref: MutableRefObject<ITextField>) {
+const MuiIntegerField = forwardRef(function MuiIntegerField(props: ITextFieldDefinition & TextFieldProps, ref: RefObject<ITextField>) {
 
     const format = (rawData: string) => {
         if (rawData != undefined && rawData != null)

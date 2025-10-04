@@ -1,11 +1,11 @@
-import { useRef, useImperativeHandle, forwardRef, MutableRefObject, useState } from 'react';
+import { useRef, useImperativeHandle, forwardRef, RefObject, useState } from 'react';
 import { IconButton, TextField, TextFieldProps } from '@mui/material';
 import { getFieldHandler, IFormFieldError, ITextField, useFieldManager, FieldDecorator } from '@palmyralabs/rt-forms';
 import { getFieldLabel } from './util'
 import { ITextFieldDefinition } from './types';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 
-const MuiPassword = forwardRef(function MuiPassword(props: ITextFieldDefinition & TextFieldProps, ref: MutableRefObject<ITextField>) {
+const MuiPassword = forwardRef(function MuiPassword(props: ITextFieldDefinition & TextFieldProps, ref: RefObject<ITextField>) {
     // const fieldGroupManager: IFieldGroupManager = useContext(FieldGroupManagerContext);
 
     const fieldManager = useFieldManager(props.attribute, props);

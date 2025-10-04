@@ -78,7 +78,7 @@ const M = (n, e) => {
                 inputRef: g
               }
             },
-            value: m().from,
+            value: m().from || null,
             ...o,
             onChange: (t, r) => y("from", t, r),
             defaultValue: h
@@ -99,7 +99,7 @@ const M = (n, e) => {
                 inputRef: g
               }
             },
-            value: m().to,
+            value: m().to || null,
             ...o,
             onChange: (t, r) => y("to", t, r),
             defaultValue: C

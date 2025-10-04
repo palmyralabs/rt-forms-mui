@@ -49,7 +49,7 @@ const I = y(function(e, n) {
             }
           },
           ...r,
-          value: h()
+          value: h() || null
         }
       ) })
     }

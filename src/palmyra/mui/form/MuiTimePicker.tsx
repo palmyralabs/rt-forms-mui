@@ -1,4 +1,4 @@
-import { useRef, useImperativeHandle, forwardRef, MutableRefObject } from 'react';
+import { useRef, useImperativeHandle, forwardRef, RefObject } from 'react';
 import { LocalizationProvider, PickerChangeHandlerContext, TimePicker, TimePickerProps } from '@mui/x-date-pickers';
 import { getFieldLabel } from './util';
 import { IDatePickerDefinition } from './types';
@@ -7,7 +7,7 @@ import dayjs from "dayjs";
 import { IDateField, IFormFieldError, useFieldManager, getFieldHandler, FieldDecorator } from '@palmyralabs/rt-forms';
 
 const MuiTimePicker = forwardRef(function MuiTimePicker(props: IDatePickerDefinition & TimePickerProps<any>,
-    ref: MutableRefObject<IDateField>) {
+    ref: RefObject<IDateField>) {
     const serverPattern = props.serverPattern || props.displayPattern || "hh:mm aa";
     const displayFormat: string = props.displayPattern || props.serverPattern || "hh:mm aa";
 
@@ -76,7 +76,7 @@ const MuiTimePicker = forwardRef(function MuiTimePicker(props: IDatePickerDefini
                         },
                     }}
                     {...options}
-                    value={getValue()}
+                    value={getValue() || null}
                 />
             </LocalizationProvider>
         </FieldDecorator>}

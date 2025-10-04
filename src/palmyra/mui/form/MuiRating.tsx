@@ -1,4 +1,4 @@
-import { useRef, useImperativeHandle, forwardRef, MutableRefObject } from 'react';
+import { useRef, useImperativeHandle, forwardRef, RefObject } from 'react';
 import { Rating, RatingProps } from '@mui/material';
 import { IRatingDefinition } from './types';
 import { IFormFieldError, IRatingField, getFieldHandler, useFieldManager, FieldDecorator } from '@palmyralabs/rt-forms';
@@ -6,7 +6,7 @@ import { getFieldLabel } from './util';
 import { Star, StarOutline } from '@mui/icons-material';
 
 
-const MuiRating = forwardRef(function MuiRating(props: IRatingDefinition & RatingProps, ref: MutableRefObject<IRatingField>) {
+const MuiRating = forwardRef(function MuiRating(props: IRatingDefinition & RatingProps, ref: RefObject<IRatingField>) {
     const fieldManager = useFieldManager(props.attribute, props);
     const { getError, getValue, setValue, mutateOptions, refreshError } = fieldManager;
     const currentRef = ref ? ref : useRef<IRatingField>(null);

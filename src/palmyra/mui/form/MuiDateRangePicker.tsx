@@ -127,7 +127,7 @@ const MuiDateRangePicker = forwardRef(function MuiDatePicker(props: IDatePickerD
                             inputRef
                         },
                     }}
-                    value={getValue().from}
+                    value={getValue().from ||  null}
                     {...options}
                     onChange={(d, c) => _onChange('from', d, c)}
                     defaultValue={from}
@@ -145,7 +145,7 @@ const MuiDateRangePicker = forwardRef(function MuiDatePicker(props: IDatePickerD
                             inputRef
                         },
                     }}
-                    value={getValue().to}
+                    value={getValue().to || null}
                     {...options}
                     onChange={(d, c) => _onChange('to', d, c)}
                     defaultValue={to}
