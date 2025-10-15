@@ -61,6 +61,7 @@ const MuiServerLookup = forwardRef(function MuiServerLookup(props: IServerLookup
         customFieldClass={props.customFieldClass} customLabelClass={props.customLabelClass}>
         <FormControl fullWidth error={error.status}>
             <Autocomplete
+                size={props?.fieldProps?.size}
                 includeInputInList
                 autoHighlight
                 multiple={props.multiple}
