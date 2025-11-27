@@ -9,12 +9,14 @@ import { ErrorBoundary as E } from './widgets/ErrorBoundary'
 import { EditForm } from "./components/form/EditForm";
 import PageableCardPage from "./card/PageableCardPage";
 import { BasicView } from "./pages/View";
+import TestingForm from "./testing/TestingForm";
 
 const App = () => {
     return <>
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<MainLayout appTitle='Palmyra UI' />} >
+                    <Route path="/palmyra-ui/test" element={<E><TestingForm /></E>} />
                     <Route path="/palmyra-ui/form" element={<E><EditForm /></E>} />
                     <Route path="/palmyra-ui/formView" element={<E><BasicView /></E>} />
                     <Route path="/palmyra-ui/layout/treeMenu" element={<TreeMenu />} />

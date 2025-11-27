@@ -76,6 +76,11 @@
             "name": "Tree Menu",
             "code": "palmyra-ui/layout/treeMenu",
             "parent": 49
+        },
+        {
+            "id": 66,
+            "name": "Test",
+            "code": "palmyra-ui/test"
         }
     ],
     "status": 200

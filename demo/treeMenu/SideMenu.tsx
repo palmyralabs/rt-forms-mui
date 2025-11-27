@@ -3,7 +3,7 @@ import AsyncTreeMenu from "../../src/palmyra/mui/menu/AsyncTreeMenu";
 
 const SideMenu = () => {
     const SideMenuEndPoint: IEndPoint = '/menuData.json';
-    const treeStore: TreeQueryStore<any, any> = new PalmyraTreeStore({ target: "/testdata" }, SideMenuEndPoint);
+    const treeStore: TreeQueryStore<any, any> = new PalmyraTreeStore("/testdata" , SideMenuEndPoint, {});
 
     return <>
         <div style={{ display: 'flex', backgroundColor: 'white' }}>
