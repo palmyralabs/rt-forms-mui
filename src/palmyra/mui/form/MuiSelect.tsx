@@ -9,6 +9,7 @@ const MuiSelect = forwardRef(function MuiSelect(props: ISelectDefinition & Selec
     const { getError, getValue, setValue, mutateOptions, refreshError } = fieldManager;
     const currentRef = ref ? ref : useRef<ITextField>(null);
     const error: IFormFieldError = getError();
+    const size: any = props?.fieldProps?.size;
 
     const inputRef: any = useRef(null);
     const variant = props.variant || 'standard';
@@ -48,9 +49,9 @@ const MuiSelect = forwardRef(function MuiSelect(props: ISelectDefinition & Selec
     return (<>{!mutateOptions.visible &&
         <FieldDecorator label={getFieldLabel(props)} customContainerClass={props.customContainerClass} colspan={props.colspan}
             customFieldClass={props.customFieldClass} customLabelClass={props.customLabelClass}>
-            <FormControl variant={variant} fullWidth error={error.status}>
+            <FormControl variant={variant} fullWidth error={error.status} size={size}>
                 {props.label ?
-                    <InputLabel required={options.required}>{props.label}</InputLabel> : <></>}
+                    <InputLabel required={options.required} size={size}>{props.label}</InputLabel> : <></>}
                 <Select sx={{
                     m: fieldMargin
                 }} {...options} value={getValue()} inputRef={(i) => { inputRef.current = i; }} >

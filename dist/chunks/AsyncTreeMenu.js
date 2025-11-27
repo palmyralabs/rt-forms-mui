@@ -1,11 +1,6 @@
 import { g as mt } from "./_commonjsHelpers.js";
 import oe, { useRef as Ee, useReducer as Lt, useEffect as se } from "react";
 import '../assets/AsyncTreeMenu.css';var Ne = { exports: {} };
-/*!
-	Copyright (c) 2018 Jed Watson.
-	Licensed under the MIT License (MIT), see
-	http://jedwatson.github.io/classnames
-*/
 var st;
 function Ut() {
   return st || (st = 1, (function(t) {
@@ -42,14 +37,6 @@ function Ut() {
 var Nt = Ut();
 const _e = /* @__PURE__ */ mt(Nt);
 var xe = { exports: {} }, Ae = { exports: {} }, $ = {};
-/** @license React v16.13.1
- * react-is.production.min.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
 var lt;
 function $t() {
   if (lt) return $;
@@ -117,14 +104,6 @@ function $t() {
   }, $.typeOf = P, $;
 }
 var F = {};
-/** @license React v16.13.1
- * react-is.development.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
 var ot;
 function Ft() {
   return ot || (ot = 1, process.env.NODE_ENV !== "production" && (function() {
@@ -212,11 +191,6 @@ var ct;
 function It() {
   return ct || (ct = 1, process.env.NODE_ENV === "production" ? Ae.exports = $t() : Ae.exports = Ft()), Ae.exports;
 }
-/*
-object-assign
-(c) Sindre Sorhus
-@license MIT
-*/
 var $e, dt;
 function qt() {
   if (dt) return $e;

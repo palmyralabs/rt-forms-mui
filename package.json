@@ -20,51 +20,53 @@
     "compile": "tsc --p ./demo.tsconfig.json && tsc --p ./build.tsconfig.json",
     "preview": "vite preview",
     "prepublishOnly": "npm run build",
-    "test": "tsc --p ./test.tsconfig.json && vitest --root test/", 
+    "test": "tsc --p ./test.tsconfig.json && vitest --root test/",
     "testScript": "vitest --root test/"
   },
   "devDependencies": {
+    "@playwright/experimental-ct-react": "^1.56.1",
+    "@playwright/test": "^1.56.1",
     "@testing-library/react": "^16.3.0",
-    "@types/node": "^24.5.0",
-    "@types/react": "^19.1.13",
-    "@types/react-dom": "^19.1.9",
-    "@vitejs/plugin-react-swc": "^4.0.1",
-    "glob": "^11.0.3",
-    "jsdom": "^27.0.0",
+    "@types/node": "^24.10.1",
+    "@types/react": "^19.2.6",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react-swc": "^4.2.2",
+    "glob": "^13.0.0",
+    "jsdom": "^27.2.0",
     "serve-static": "^2.2.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.9.2",
+    "typescript": "^5.9.3",
     "usehooks-ts": "^3.1.1",
-    "vite": "^7.1.5",
+    "vite": "^7.2.4",
     "vite-plugin-dts": "^4.5.4",
     "vite-plugin-lib-inject-css": "^2.2.2",
-    "vitest": "^3.2.4"
+    "vitest": "^4.0.13"
   },
   "sideEffects": [
     "**/*.css"
   ],
   "dependencies": {
     "@emotion/styled": "^11.14.1",
-    "@mui/icons-material": "^7.3.2",
-    "@mui/material": "^7.3.2",
-    "@mui/x-date-pickers": "^8.11.2",
+    "@mui/icons-material": "^7.3.5",
+    "@mui/material": "^7.3.5",
+    "@mui/x-date-pickers": "^8.19.0",
     "@palmyralabs/rt-forms": "github:palmyralabs/rt-forms",
     "@tanstack/react-table": "^8.21.3",
     "classnames": "^2.5.1",
     "react-accessible-treeview": "^2.11.2",
+    "react-dom": "^19.2.0",
     "react-icons": "^5.5.0",
-    "react-dom": "^19.1.1",
-    "react-router-dom": "^7.9.1",
-    "react-syntax-highlighter": "^15.6.6"
+    "react-router-dom": "^7.9.6",
+    "react-syntax-highlighter": "^16.1.0"
   },
   "peerDependencies": {
-    "dayjs": "^1.11.13",
     "@palmyralabs/palmyra-wire": "^1.2.0",
-    "@palmyralabs/ts-utils": "^0.3.0",    
-    "@palmyralabs/ts-predicates": "github:palmyralabs/ts-predicates"
+    "@palmyralabs/ts-predicates": "github:palmyralabs/ts-predicates",
+    "@palmyralabs/ts-utils": "^0.3.0",
+    "dayjs": "^1.11.13"
   },
   "overrides": {
-    "glob": "^11.0.3",
-    "tough-cookie":"5.0.0"
+    "glob": "^13.0.0",
+    "tough-cookie": "5.0.0"
   }
 }

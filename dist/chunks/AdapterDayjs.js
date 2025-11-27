@@ -25,8 +25,8 @@ function Te() {
             var u = a(this).startOf(r).add(1, r).date(p), M = a(this).endOf(t);
             if (u.isBefore(M)) return 1;
           }
-          var g = a(this).startOf(r).date(p).startOf(t).subtract(1, "millisecond"), A = this.diff(g, t, !0);
-          return A < 0 ? a(this).startOf("week").week() : Math.ceil(A);
+          var g = a(this).startOf(r).date(p).startOf(t).subtract(1, "millisecond"), $ = this.diff(g, t, !0);
+          return $ < 0 ? a(this).startOf("week").week() : Math.ceil($);
         }, s.weeks = function(i) {
           return i === void 0 && (i = null), this.week(i);
         };
@@ -57,7 +57,7 @@ function Oe() {
       }], g = function(n) {
         var o = i[n];
         return o && (o.indexOf ? o : o.s.concat(o.f));
-      }, A = function(n, o) {
+      }, $ = function(n, o) {
         var d, h = i.meridiem;
         if (h) {
           for (var D = 1; D <= 24; D += 1) if (n.indexOf(h(D, 0, o)) > -1) {
@@ -67,9 +67,9 @@ function Oe() {
         } else d = n === (o ? "pm" : "PM");
         return d;
       }, q = { A: [s, function(n) {
-        this.afternoon = A(n, !1);
+        this.afternoon = $(n, !1);
       }], a: [s, function(n) {
-        this.afternoon = A(n, !0);
+        this.afternoon = $(n, !0);
       }], Q: [c, function(n) {
         this.month = 3 * (n - 1) + 1;
       }], S: [c, function(n) {
@@ -94,7 +94,7 @@ function Oe() {
       }], Y: [/[+-]?\d+/, u("year")], YY: [f, function(n) {
         this.year = p(n);
       }], YYYY: [/\d{4}/, u("year")], Z: M, ZZ: M };
-      function P(n) {
+      function A(n) {
         var o, d;
         o = n, d = i && i.formats;
         for (var h = (n = o.replace(/(\[[^\]]+])|(LTS?|l{1,4}|L{1,4})/g, (function(S, L, Y) {
@@ -111,8 +111,8 @@ function Oe() {
             var k = h[Y];
             if (typeof k == "string") T += k.length;
             else {
-              var z = k.regex, j = k.parser, b = S.slice(T), $ = z.exec(b)[0];
-              j.call(L, $), S = S.replace($, "");
+              var z = k.regex, j = k.parser, b = S.slice(T), P = z.exec(b)[0];
+              j.call(L, P), S = S.replace(P, "");
             }
           }
           return (function(C) {
@@ -133,10 +133,10 @@ function Oe() {
           var x = O[1];
           if (typeof x == "string") {
             var S = O[2] === !0, L = O[3] === !0, Y = S || L, T = O[2];
-            L && (T = O[2]), i = this.$locale(), !S && T && (i = d.Ls[T]), this.$d = (function(b, $, C, H) {
+            L && (T = O[2]), i = this.$locale(), !S && T && (i = d.Ls[T]), this.$d = (function(b, P, C, H) {
               try {
-                if (["x", "X"].indexOf($) > -1) return new Date(($ === "X" ? 1e3 : 1) * b);
-                var y = P($)(b), _ = y.year, W = y.month, le = y.day, me = y.hours, pe = y.minutes, Me = y.seconds, ye = y.milliseconds, se = y.zone, ae = y.week, R = /* @__PURE__ */ new Date(), X = le || (_ || W ? 1 : R.getDate()), Q = _ || R.getFullYear(), E = 0;
+                if (["x", "X"].indexOf(P) > -1) return new Date((P === "X" ? 1e3 : 1) * b);
+                var y = A(P)(b), _ = y.year, W = y.month, le = y.day, me = y.hours, pe = y.minutes, Me = y.seconds, ye = y.milliseconds, se = y.zone, ae = y.week, R = /* @__PURE__ */ new Date(), X = le || (_ || W ? 1 : R.getDate()), Q = _ || R.getFullYear(), E = 0;
                 _ && !W || (E = W > 0 ? W - 1 : R.getMonth());
                 var B, J = me || 0, K = pe || 0, ee = Me || 0, te = ye || 0;
                 return se ? new Date(Date.UTC(Q, E, X, J, K, ee, te + 60 * se.offset * 1e3)) : C ? new Date(Date.UTC(Q, E, X, J, K, ee, te)) : (B = new Date(Q, E, X, J, K, ee, te), ae && (B = H(B).week(ae).toDate()), B);
@@ -173,9 +173,9 @@ function ze() {
         f.en.formats = t, a.format = function(i) {
           i === void 0 && (i = "YYYY-MM-DDTHH:mm:ssZ");
           var p = this.$locale().formats, u = (function(M, g) {
-            return M.replace(/(\[[^\]]+])|(LTS?|l{1,4}|L{1,4})/g, (function(A, q, P) {
-              var n = P && P.toUpperCase();
-              return q || g[P] || t[P] || g[n].replace(/(\[[^\]]+])|(MMMM|MM|DD|dddd)/g, (function(o, d, h) {
+            return M.replace(/(\[[^\]]+])|(LTS?|l{1,4}|L{1,4})/g, (function($, q, A) {
+              var n = A && A.toUpperCase();
+              return q || g[A] || t[A] || g[n].replace(/(\[[^\]]+])|(MMMM|MM|DD|dddd)/g, (function(o, d, h) {
                 return d || h.slice(1);
               }));
             }));
@@ -203,14 +203,14 @@ function Ce() {
     }));
   })(Z)), Z.exports;
 }
-var Ae = Ce();
-const Pe = /* @__PURE__ */ F(Ae);
-var G = { exports: {} }, $e = G.exports, de;
+var $e = Ce();
+const Ae = /* @__PURE__ */ F($e);
+var G = { exports: {} }, Pe = G.exports, de;
 function Ue() {
   return de || (de = 1, (function(m, e) {
     (function(t, r) {
       m.exports = r();
-    })($e, (function() {
+    })(Pe, (function() {
       return function(t, r) {
         var c = r.prototype, f = c.format;
         c.format = function(a) {
@@ -266,7 +266,7 @@ function He(m, e = "warning") {
 }
 l.extend(Se);
 l.extend(De);
-l.extend(Pe);
+l.extend(Ae);
 l.extend(be);
 const We = {
   // Year
